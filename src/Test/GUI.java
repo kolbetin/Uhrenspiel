@@ -1,4 +1,4 @@
-package PROD;
+package Test;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.util.Random;
 
-public class Test extends Application {
+public class GUI extends Application {
 
 
         Button antwort1;
@@ -106,7 +106,7 @@ public class Test extends Application {
         }
 
 
-        public Pane antwortLeiste() {
+         public Pane antwortLeiste() {
             final HBox hBox = new HBox(10);
             hBox.setPadding(new Insets(15, 10, 10, 100));
 
@@ -114,7 +114,6 @@ public class Test extends Application {
             antwort2 = new Button("Antwort B");
             antwort3 = new Button("Antwort C");
             antwort4 = new Button("Antwort D");
-
 
             hBox.getChildren().addAll(
                     new Text("Antwort"), antwort1,antwort2,antwort3, antwort4);
@@ -127,7 +126,5 @@ public class Test extends Application {
 
 
     }
-
-
 
 
