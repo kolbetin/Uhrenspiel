@@ -121,11 +121,6 @@ public class GUI extends Application {
             launch(args);
         }
 
-    /*    public GUI (){
-            GUI gui = new GUI();
-
-        }*/
-
 
 
     }

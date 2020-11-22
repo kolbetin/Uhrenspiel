@@ -14,12 +14,6 @@ import java.util.Random;
 
 public class GUIFreieAntwort extends GUI {
 
-  /*  public GUIFreieAntwort(Stage p){
-       // super();
-        super.start(p);
-
-    }*/
-
 
     @Override
     public Pane antwortLeiste() {

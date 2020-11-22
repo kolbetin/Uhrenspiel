@@ -10,50 +10,52 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
  public class Uhrenspiel extends Application {
 
 
-        Button antwort1;
-        Button antwort2;
-        Button antwort3;
-        Button antwort4;
-        Label uberschrift;
-        Text frage;
-        Button submitButton;
-        TextField textField;
         Random random;
-        FlowPane pane;
-        VBox root;
-        private static  GUI gui;
-        private static  GUIFreieAntwort gui2;
+
+        private  GUI guiMC;
+        private   GUIFreieAntwort guiFA;
+        ArrayList<GUI> gui;
 
 
          public void start(Stage primaryStage)
          {
-
-                 gui = new GUI();
-                //gui = new GUIFreieAntwort();
-
-                 gui.start(primaryStage);
-              //   gui.test(primaryStage);
+                getGUI().start(primaryStage);
 
 
 
          }
+
+         public void fillGuiList() {
+         gui = new ArrayList<>();
+
+         gui.add(guiFA);
+         gui.add(guiMC);
+     }
+
+         public GUI getGUI(){
+
+             random = new Random();
+             int index = random.nextInt(gui.size());
+             return gui.get(index);
+          }
+
          public Uhrenspiel() {
-
-
-
+             guiMC = new GUI();
+             guiFA = new GUIFreieAntwort();
+             fillGuiList();
+             System.out.println(getGUI());
+             System.out.println(gui);
         }
 
         public static void main(String[] args) {
-
                         launch(args);
-
-
         }
 
 
