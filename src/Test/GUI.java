@@ -10,6 +10,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class GUI extends Application {
@@ -20,11 +21,7 @@ public class GUI extends Application {
         Button antwort4;
         Label uberschrift;
         Text frage;
-        Button submitButton;
-        TextField textField;
-        Random random;
-        FlowPane pane;
-        VBox root;
+
 
 
         public void start(Stage primaryStage) {
@@ -39,6 +36,8 @@ public class GUI extends Application {
 
             // rootTop.setTop(menuBar);
             Scene scene = new Scene(borderPane, 700, 400);
+            scene.getStylesheets().add
+                    (Test.class.getResource("clock.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.setTitle("Uhrenspiel");
             primaryStage.show();
@@ -117,9 +116,11 @@ public class GUI extends Application {
             return hBox;
         }
 
-        public static void main(String[] args) {
-            launch(args);
+          public static void main(String[] args) { launch(args);
         }
+
+
+
 
 
 
