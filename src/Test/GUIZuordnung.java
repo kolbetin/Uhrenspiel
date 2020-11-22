@@ -3,9 +3,9 @@ package Test;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-public class GUIZuordnung extends GUI {
+/*public abstract class GUIZuordnung extends GUI {
 
-    public GUIZuordnung(){
+    /*public GUIZuordnung(){
         super();
     }
 
@@ -16,4 +16,4 @@ public class GUIZuordnung extends GUI {
     }
 
 
-}
+}*/

@@ -14,7 +14,6 @@ import java.util.Random;
 
 public class GUI extends Application {
 
-
         Button antwort1;
         Button antwort2;
         Button antwort3;
@@ -31,8 +30,6 @@ public class GUI extends Application {
         public void start(Stage primaryStage) {
 
             final BorderPane borderPane = new BorderPane();
-
-            pane = new FlowPane();
 
             borderPane.setPadding(new Insets(7,7,7,7));
             borderPane.setTop(obereLeiste());
@@ -123,6 +120,12 @@ public class GUI extends Application {
         public static void main(String[] args) {
             launch(args);
         }
+
+    /*    public GUI (){
+            GUI gui = new GUI();
+
+        }*/
+
 
 
     }
