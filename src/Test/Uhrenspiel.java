@@ -39,17 +39,19 @@ import java.util.Random;
 
        //  getGUI().start(stage 3);
         // guiMC.start(stage 2);
-         //guiFA.start(stage 3);
-          willKommen.start(stage1);
+      //   guiFA.start(stage3);
+         willKommen.start(stage1);
 
-         PauseTransition delay = new PauseTransition(Duration.seconds(5));
+
+
+       /*  PauseTransition delay = new PauseTransition(Duration.seconds(5));
          delay.setOnFinished( event -> {
              stage1.close();
              verAbschieden.start(stage1);
                  }
          );
          delay.play();
-/*
+
          Task<Void> sleeper = new Task<Void>() {
              @Override
              protected Void call() throws Exception {

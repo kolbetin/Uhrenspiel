@@ -1,12 +1,58 @@
 /** clock.css (place input same directory as Clock.java and ensure build script copies the file to the same location as Clock.class) */
+
+.menu-item{
+    -fx-font-size: 5px;
+}
+
+.text{
+    -fx-font-size: 25px;
+}
+
+.upperArea{
+    -fx-font-size: 45px;
+    -fx-background-color: #e5e1e1;
+}
+
+
+.label {
+    -fx-font-size: 45px;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    -fx-alignment: CENTER;
+}
+
 .root {
     -fx-background-color: linear-gradient(to bottom, cornsilk, wheat);
     -fx-padding: 12;
     -fx-background-insets: 5;
     -fx-effect: dropshadow(three-pass-box, wheat, 10, 0, 0, 0);
     -fx-alignment: CENTER;
+
 }
 
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.text-field{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+}
+/*
+.text-area{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+}
 
 
 #face {
@@ -52,31 +98,6 @@
     -fx-stroke-width: 3;
     -fx-stroke-line-cap: round;
 }
+*/
 
-.label {
-    -fx-font-size: 48px;
-    -fx-font-weight: bold;
-    -fx-font-family: Arial;
-    -fx-text-fill: #333333;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
-    -fx-alignment: CENTER;
-}
-.text-area{
-    -fx-font-size: 25px;
-    -fx-font-weight: bold;
-    -fx-font-family: Arial;
-}
-.text-field{
-    -fx-font-size: 25px;
-    -fx-font-weight: bold;
-    -fx-font-family: Arial;
-}
 
-.button {
-    -fx-text-fill: white;
-    -fx-font-family: "Arial Narrow";
-    -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-
-}
