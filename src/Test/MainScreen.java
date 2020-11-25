@@ -10,25 +10,28 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
 
-public class Willkommensbildschirm extends GUI {
+public class MainScreen extends GUI  {
 
-     private Label label;
+     private Label willkommensText;
+     public Button newGameButton;
+
 
     @Override
     public BorderPane middleArea(){
-      //  primaryStage.setTitle("Willkommen im Uhrenspiel");
 
-        label = new Label();
-        label.setText("Willkommen zum Uhrenspiel");
+        willkommensText = new Label();
+        willkommensText.setText("Willkommen zum Uhrenspiel");
 
-        Button newGameButton = new Button("Neues Spiel");
+        newGameButton = new Button("Neues Spiel");
         Button loadGameButton = new Button("Laden des letzten Spiels");
         Button endButton = new Button("Beenden");
         Button lernmodusButton = new Button("Lernmodus");
@@ -36,18 +39,31 @@ public class Willkommensbildschirm extends GUI {
 
         VBox middle = new VBox(10);
         middle.getChildren().addAll(newGameButton,loadGameButton,lernmodusButton,spielanleitungButton,endButton);
-        middle.setPadding(new Insets(70,7,7,7));
+        middle.setPadding(new Insets(70,170,7,70));
         BorderPane root = new BorderPane();
-        root.setTop(label);
-        root.setPadding(new Insets(150,370,7,2));
+        root.setTop(willkommensText);
+        root.setPadding(new Insets(150,370,7,20));
         root.setCenter(middle);
       //  root.getChildren().add(label);
         root.getStylesheets().add
                 (Test.class.getResource("clock.css").toExternalForm());
         return  root;
-      //  primaryStage.setScene(new Scene(root, 1100, 800));
-      //  primaryStage.show();
+
     }
+
+    @Override
+    public Pane leftArea() {
+        VBox vBox = new VBox(5);
+
+      //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: blue");
+        vBox.setPadding(new Insets(7, 150, 7, 70));
+        //vBox.getChildren().addAll(new Text("Fortschrittsleiste"));
+
+
+        return vBox;
+    }
+
+
 
 
 

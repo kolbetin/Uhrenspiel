@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 public class GUI extends Application {
 
+        public Button endButton;
 
 
         public void start(Stage primaryStage) {
@@ -24,8 +25,9 @@ public class GUI extends Application {
             borderPane.setRight(middleArea());
             borderPane.setLeft(leftArea());
 
+
             // rootTop.setTop(menuBar);
-            Scene scene = new Scene(borderPane, 1200, 700);
+            Scene scene = new Scene(borderPane, 1300, 700);
             scene.getStylesheets().add
                     (Test.class.getResource("clock.css").toExternalForm());
             primaryStage.setScene(scene);
@@ -36,29 +38,46 @@ public class GUI extends Application {
     public BorderPane middleArea() {
 
         final BorderPane middleArea = new BorderPane();
+        middleArea.setId("middleArea");
 
-        middleArea.setRight(questionArea());
-        middleArea.setBottom(antwortLeiste());
+        Label antwortzähler = new Label("Antwort 1 von 10");
+
+        BorderPane borderPane = new BorderPane();
+        borderPane.setTop(questionArea());
+        borderPane.setBottom(answerArea());
+
+
+        middleArea.setTop(antwortzähler);
+        middleArea.setBottom(borderPane);
         middleArea.setLeft(clockArea());
+
+
 
         return middleArea;
 
     }
 
-        private Pane questionArea() {
-            final HBox hBox = new HBox(2);
-            hBox.setPadding(new Insets(50, 250, 10, 25));
+        public Pane questionArea() {
+            final BorderPane borderPane = new BorderPane();
+            borderPane.setId("questionArea");
+            borderPane.setPadding(new Insets(7, 750, 10, 50));
 
-            Text frage = new Text("Wie spät is es?");
-            Text frageLabel = new Text("Frage: ");
+           // Text frage = new Text("Wie spät is es?");
+            Text frageLabel = new Text("Frage: " + "Es ist __:00 Uhr?" );
+            Text antwortzähler = new Text("Antwort 1 von 10");
 
-            hBox.getChildren().addAll( frageLabel,frage  );
-            return hBox;
+            //borderPane.setTop(antwortzähler);
+            borderPane.setCenter(frageLabel);
+           // borderPane.setBottom(answerArea());
+
+            return borderPane;
         }
 
         private Pane upperArea() {
             final VBox vBox = new VBox();
-            vBox.setStyle("-fx-border-width:  1; -fx-border-color: black");
+            vBox.setId("upperArea");
+
+          //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: black");
 
             Label uberschrift = new Label("Uhrenspiel");
 
@@ -89,32 +108,45 @@ public class GUI extends Application {
             return vBox;
         }
 
-        private Pane clockArea(){
-            VBox vBox= new VBox(5);
-            Circle circle = new Circle(100);
-            vBox.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-            vBox.setPadding(new Insets(7,7,7,7));
-            vBox.getChildren().addAll(new Text("Uhrenbsp"),
-                    circle
-            );
-            return vBox;
+        public Pane clockArea(){
+            BorderPane borderPane= new BorderPane();
+            borderPane.setId("clockArea");
+
+            Circle circle = new Circle(200);
+
+         //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
+            borderPane.setPadding(new Insets(7,370,7,250));
+
+            borderPane.setTop(new Text("Uhrenbsp"));
+            borderPane.setCenter(circle);
+
+
+
+            return borderPane;
         }
 
-         private Pane leftArea() {
-            VBox vBox = new VBox(5);
+         public Pane leftArea() {
+            BorderPane borderPane = new BorderPane();
+            borderPane.setId("leftArea");
 
-            vBox.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-            vBox.setPadding(new Insets(7, 7, 7, 7));
-            vBox.getChildren().addAll(new Text("Fortschrittsleiste")
+            endButton = new Button("Spiel beenden");
 
-            );
-            return vBox;
+
+           // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
+            borderPane.setPadding(new Insets(7, 50, 7, 25));
+
+            borderPane.setTop(new Text("Fortschrittsleiste"));
+            borderPane.setBottom(endButton);
+
+            return borderPane;
         }
 
 
-         public Pane antwortLeiste() {
-            final HBox hBox = new HBox(10);
-            hBox.setPadding(new Insets(15, 10, 10, 100));
+         public Pane answerArea() {
+            final HBox hBox = new HBox(35);
+            hBox.setId("answerArea");
+
+            hBox.setPadding(new Insets(15, 10, 10, 50));
 
             Button antwort1 = new Button("Antwort A");
             Button antwort2 = new Button("Antwort B");
@@ -122,8 +154,8 @@ public class GUI extends Application {
             Button antwort4 = new Button("Antwort D");
 
             Text antwort = new Text("Antwort");
-            hBox.getChildren().addAll(
-                    antwort, antwort1,antwort2,antwort3, antwort4);
+            hBox.getChildren().addAll(antwort, antwort1,antwort2,antwort3, antwort4);
+
             return hBox;
         }
 

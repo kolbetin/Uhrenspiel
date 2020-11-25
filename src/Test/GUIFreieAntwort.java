@@ -16,9 +16,9 @@ public class GUIFreieAntwort extends GUI {
 
 
     @Override
-    public Pane antwortLeiste() {
+    public Pane answerArea() {
         final HBox hBox = new HBox(10);
-        hBox.setPadding(new Insets(15, 10, 10, 120));
+        hBox.setPadding(new Insets(15, 10, 10, 50));
         Button submitButton = new Button("Submit");
         TextField textField = new TextField();
         submitButton.setOnAction(event -> {
