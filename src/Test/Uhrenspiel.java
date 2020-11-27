@@ -1,6 +1,9 @@
 package Test;
 
 import javafx.application.Application;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
@@ -10,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-  public class Uhrenspiel extends Application {
+  public class Uhrenspiel extends Application  {
 
 
     Random random;
@@ -30,7 +33,8 @@ import java.util.Random;
     private ProgressData progressData;
 
 
-     public void start(Stage primarystage) {
+
+      public void start(Stage primarystage) {
          //  getGUI().start(primaryStage);
          //   guiMC.start(primaryStage);
          //  guiFA.start(primarystage);
@@ -45,11 +49,10 @@ import java.util.Random;
          // guiMC.start(stage 2);
          //   guiFA.start(stage3);
          mainScreen.start(stage1);
-
-
          mainScreen.newGameButton.setOnAction(event ->
                  newGame()
          );
+
 
 
 
@@ -85,20 +88,22 @@ import java.util.Random;
          });
 
          new Thread(sleeper).start();
-*/
 
+*/
 
      }
 
     public void newGame(){
          stage1.close();
          qa.start(stage1);
+         qa.antwortenMap.keySet();
       //   game.start(stage2);
        //  game.start(stage2);
          //guiFA.start(stage2);
         // guiMC.start(stage1);
    //     guiFA.endButton.setOnAction(event -> endGame());}
         qa.endButton.setOnAction(event -> endGame());
+        qa.saveButton.setOnAction(event -> saveProgress());
 
   }
 
@@ -120,7 +125,21 @@ import java.util.Random;
      //
     }
 
+      private void saveProgress() {
+          try {
+              File file = new File(createFileName());
+              progressData.saveProgress( file);
 
+              alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "'Was tun?'","Liste gespeichert in Datei " + file + ".");
+          } catch (IOException e) {
+              alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
+          }
+      }
+
+      private String createFileName () {
+          return  System.getProperty("user.home") + System.getProperty("file.separator") +
+                  (progressData.getIOInterface() instanceof IOSerialisierung ?  "decision.ser" : "decision.txt");
+      }
 
     public void fillGuiList() {
         guiList = new ArrayList<>();
@@ -144,16 +163,18 @@ import java.util.Random;
         mainScreen = new MainScreen();
       //  game = new Game();
         qa = new QuestionsAnswer();
+        progressData = new ProgressData();
+
+
         verAbschieden = new Verabschiedungsbildschirm();
         fillGuiList();
 
         System.out.println(getGUI());
         System.out.println(guiList);
+        System.out.println(qa.antwortenMap);
     }
 
-     public static void main(String[] args) {
-        launch(args);
-    }
+     public static void main(String[] args) { launch(args);    }
 
 
 }

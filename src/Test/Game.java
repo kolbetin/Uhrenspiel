@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Game extends GUI {
@@ -19,8 +21,25 @@ public class Game extends GUI {
         private QuestionsAnswer questionsAnswermap;
         private ProgressData progressData;
         private AlertHelper alertHelper;
+        private List<String> liste;
+        private IOSerialisierung ioSerialisierung;
 
-        @Override
+        public Game(){
+            progressData = new ProgressData();
+            questionsAnswermap = new QuestionsAnswer();
+            liste = new ArrayList<>();
+            fillListe();
+
+        }
+
+        public void fillListe(){
+            liste.add("ein Uhr");
+            liste.add("zwei Uhr");
+            liste.add("drei Uhr");
+            liste.add("vier Uhr");
+        }
+
+   /*     @Override
         public Pane answerArea() {
             final HBox hBox = new HBox(35);
             hBox.setId("answerArea");
@@ -38,23 +57,10 @@ public class Game extends GUI {
             hBox.getChildren().addAll(antwort, antwort1,antwort2,antwort3, antwort4);
 
             return hBox;
-        }
+        }*/
 
 
-    private void saveProgress() {
-        try {
-            File file = new File(createFileName());
-            progressData.saveProgress(file);
-            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "'Was tun?'","Liste gespeichert in Datei " + file + ".");
-        } catch (IOException e) {
-            alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
-        }
-    }
 
-    private String createFileName () {
-        return  System.getProperty("user.home") + System.getProperty("file.separator") +
-                (progressData.getIOInterface() instanceof IOSerialisierung ?  "decision.ser" : "decision.txt");
-    }
 
 
 

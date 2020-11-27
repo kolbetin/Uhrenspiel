@@ -5,5 +5,5 @@ package Test;
 public interface GuiVisible {
 
 
-    void showGui(GUI gui);
+    void run(GUI gui);
 }

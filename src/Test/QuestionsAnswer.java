@@ -18,8 +18,9 @@ import static javafx.application.Application.launch;
 
 public class QuestionsAnswer extends GUI {
 
-    private HashMap<Integer, String> antwortenMap;
-
+    public HashMap<Integer, String> antwortenMap;
+    private ProgressData progressData;
+    private IOInterface ioInterface;
 
     /*public void start(Stage primarystage){
 
@@ -30,8 +31,11 @@ public class QuestionsAnswer extends GUI {
         antwortenMap = new HashMap<>();
         antwortenMapVolleStunde();
         //System.out.println(antwortenMap.get(3));
-        System.out.println(getKey());
-        System.out.println(getValue());
+        //System.out.println(getKey());
+        //System.out.println(getValue());
+        System.out.println(antwortenMap);
+
+        //progressData.add(antwortenMap);
        // System.out.println(antwortenMap.size());
        // generateRandom(1,12);
     }
@@ -39,7 +43,7 @@ public class QuestionsAnswer extends GUI {
     private void antwortenMapVolleStunde() {
         antwortenMap.put(1, "1");
         antwortenMap.put(2, "2");
-        antwortenMap.put(3, "3");
+        antwortenMap.put(3, "drei");
         antwortenMap.put(4, "4");
      /*   antwortenMap.put(5,5);
         antwortenMap.put(6,6);
@@ -51,7 +55,9 @@ public class QuestionsAnswer extends GUI {
         antwortenMap.put(12,12);*/
     }
 
-    public Integer getKey(){
+
+
+    public HashMap<Integer,String> getKey(){
         for (Integer i : antwortenMap.keySet()){
             System.out.println(i);
         }
@@ -64,6 +70,11 @@ public class QuestionsAnswer extends GUI {
     return null;
     }
 
+    public void add(Integer key, String answer){
+        antwortenMap.put(key,answer);
+    }
+
+
     @Override
     public Pane answerArea() {
         final HBox hBox = new HBox(35);
@@ -71,7 +82,7 @@ public class QuestionsAnswer extends GUI {
 
         hBox.setPadding(new Insets(15, 10, 10, 50));
 
-        antwort1 = new Button(getValue());
+        antwort1 = new Button("Antwort A");
         antwort2 = new Button("Antwort B");
         antwort3 = new Button("Antwort C");
         antwort4 = new Button("Antwort D");
@@ -115,6 +126,8 @@ public class QuestionsAnswer extends GUI {
         return random;
     }
 */
+
+
 
 
     public static void main(String[] args) {
