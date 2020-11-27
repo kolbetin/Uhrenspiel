@@ -2,11 +2,11 @@ package Test;
 
 import javafx.application.Application;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.Random;
 
 
@@ -16,8 +16,9 @@ import java.util.Random;
     Random random;
 
     private GUI guiMC;
-    private GUIFreieAntwort guiFA;
+    private GUIFreeAnswer guiFA;
     private MainScreen mainScreen;
+    private QuestionsAnswer qa;
     private Verabschiedungsbildschirm verAbschieden;
     private Stage stage1;
     private Stage stage2;
@@ -25,30 +26,35 @@ import java.util.Random;
     ArrayList<GUI> guiList;
     private GuiVisible gui;
     private AlertHelper alertHelper;
+    public Game game;
+    private ProgressData progressData;
 
 
      public void start(Stage primarystage) {
-      //  getGUI().start(primaryStage);
-     //   guiMC.start(primaryStage);
-      //  guiFA.start(primarystage);
+         //  getGUI().start(primaryStage);
+         //   guiMC.start(primaryStage);
+         //  guiFA.start(primarystage);
          stage1 = new Stage();
          stage2 = new Stage();
          stage3 = new Stage();
 
-        // stage2.show();
-        // stage1.show();
+         // stage2.show();
+         // stage1.show();
 
-       //  getGUI().start(stage 3);
-        // guiMC.start(stage 2);
-      //   guiFA.start(stage3);
+         //  getGUI().start(stage 3);
+         // guiMC.start(stage 2);
+         //   guiFA.start(stage3);
          mainScreen.start(stage1);
 
-         mainScreen.newGameButton.setOnAction(event ->
-                    newGame()
-                );
-        /*
 
-*/
+         mainScreen.newGameButton.setOnAction(event ->
+                 newGame()
+         );
+
+
+
+
+
 
        /*  PauseTransition delay = new PauseTransition(Duration.seconds(5));
          delay.setOnFinished( event -> {
@@ -86,10 +92,14 @@ import java.util.Random;
 
     public void newGame(){
          stage1.close();
-         guiFA.start(stage2);
-         guiMC.start(stage1);
+         qa.start(stage1);
+      //   game.start(stage2);
+       //  game.start(stage2);
+         //guiFA.start(stage2);
+        // guiMC.start(stage1);
    //     guiFA.endButton.setOnAction(event -> endGame());}
-        guiMC.endButton.setOnAction(event -> endGame());
+        qa.endButton.setOnAction(event -> endGame());
+
   }
 
     public void endGame(){
@@ -126,10 +136,14 @@ import java.util.Random;
     }
 
 
+
+
     public Uhrenspiel() {
         guiMC = new GUI();
-        guiFA = new GUIFreieAntwort();
+        guiFA = new GUIFreeAnswer();
         mainScreen = new MainScreen();
+      //  game = new Game();
+        qa = new QuestionsAnswer();
         verAbschieden = new Verabschiedungsbildschirm();
         fillGuiList();
 

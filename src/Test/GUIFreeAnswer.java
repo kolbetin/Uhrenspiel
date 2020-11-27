@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.util.Random;
 
-public class GUIFreieAntwort extends GUI {
+public class GUIFreeAnswer extends GUI {
 
 
     @Override

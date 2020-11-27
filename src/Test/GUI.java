@@ -14,6 +14,11 @@ import javafx.stage.Stage;
 public class GUI extends Application {
 
         public Button endButton;
+        public Button antwort1;
+        public Button antwort2;
+        public Button antwort3;
+        public Button antwort4;
+        public Button saveButton;
 
 
         public void start(Stage primaryStage) {
@@ -129,14 +134,17 @@ public class GUI extends Application {
             BorderPane borderPane = new BorderPane();
             borderPane.setId("leftArea");
 
-            endButton = new Button("Spiel beenden");
+            VBox vbox = new VBox(20);
 
+            endButton = new Button("Spiel beenden");
+            saveButton = new Button ("Speichern");
+            vbox.getChildren().addAll(saveButton,endButton);
 
            // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(7, 50, 7, 25));
 
             borderPane.setTop(new Text("Fortschrittsleiste"));
-            borderPane.setBottom(endButton);
+            borderPane.setBottom(vbox);
 
             return borderPane;
         }
@@ -148,10 +156,10 @@ public class GUI extends Application {
 
             hBox.setPadding(new Insets(15, 10, 10, 50));
 
-            Button antwort1 = new Button("Antwort A");
-            Button antwort2 = new Button("Antwort B");
-            Button antwort3 = new Button("Antwort C");
-            Button antwort4 = new Button("Antwort D");
+            antwort1 = new Button("Antwort A");
+            antwort2 = new Button("Antwort B");
+            antwort3 = new Button("Antwort C");
+            antwort4 = new Button("Antwort D");
 
             Text antwort = new Text("Antwort");
             hBox.getChildren().addAll(antwort, antwort1,antwort2,antwort3, antwort4);
