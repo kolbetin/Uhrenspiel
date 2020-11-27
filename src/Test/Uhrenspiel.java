@@ -31,7 +31,7 @@ import java.util.Random;
     private AlertHelper alertHelper;
     public Game game;
     private ProgressData progressData;
-
+    private File file;
 
 
       public void start(Stage primarystage) {
@@ -52,6 +52,9 @@ import java.util.Random;
          mainScreen.newGameButton.setOnAction(event ->
                  newGame()
          );
+       /*   mainScreen.newGameButton.setOnAction(event ->
+                  loadProgress()
+          );*/
 
 
 
@@ -96,14 +99,15 @@ import java.util.Random;
     public void newGame(){
          stage1.close();
          qa.start(stage1);
-         qa.antwortenMap.keySet();
+        // qa.antwortenMap.keySet();
       //   game.start(stage2);
        //  game.start(stage2);
-         //guiFA.start(stage2);
+        // guiFA.start(stage2);
         // guiMC.start(stage1);
    //     guiFA.endButton.setOnAction(event -> endGame());}
         qa.endButton.setOnAction(event -> endGame());
         qa.saveButton.setOnAction(event -> saveProgress());
+        qa.saveButton.setOnAction(event -> loadProgress());
 
   }
 
@@ -119,6 +123,9 @@ import java.util.Random;
                 mainScreen.newGameButton.setOnAction(event ->
                         newGame()
                 );
+                mainScreen.newGameButton.setOnAction(event ->
+                       loadProgress()
+                );
             }
 
 
@@ -127,8 +134,8 @@ import java.util.Random;
 
       private void saveProgress() {
           try {
-              File file = new File(createFileName());
-              progressData.saveProgress( file);
+              file = new File(createFileName());
+              progressData.saveProgress(file);
 
               alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "'Was tun?'","Liste gespeichert in Datei " + file + ".");
           } catch (IOException e) {
@@ -139,6 +146,16 @@ import java.util.Random;
       private String createFileName () {
           return  System.getProperty("user.home") + System.getProperty("file.separator") +
                   (progressData.getIOInterface() instanceof IOSerialisierung ?  "decision.ser" : "decision.txt");
+      }
+
+      private void loadProgress() {
+          try {
+              progressData.loadProgress(file);
+
+              alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "'Was tun?'", "Liste von Datei " + file + " geladen.");
+          } catch (IOException | ClassNotFoundException e) {
+              alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
+          }
       }
 
     public void fillGuiList() {
@@ -171,7 +188,7 @@ import java.util.Random;
 
         System.out.println(getGUI());
         System.out.println(guiList);
-        System.out.println(qa.antwortenMap);
+
     }
 
      public static void main(String[] args) { launch(args);    }

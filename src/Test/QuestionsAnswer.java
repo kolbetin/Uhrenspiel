@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.sound.sampled.Line;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ import static javafx.application.Application.launch;
 public class QuestionsAnswer extends GUI {
 
     public HashMap<Integer, String> antwortenMap;
+    public HashMap<Line, Line>  Uhrzeit;
+    public HashMap<HashMap,String> ende;
     private ProgressData progressData;
     private IOInterface ioInterface;
 
@@ -70,8 +73,8 @@ public class QuestionsAnswer extends GUI {
     return null;
     }
 
-    public void add(Integer key, String answer){
-        antwortenMap.put(key,answer);
+    public void add(Integer Uhrenbild, String answer){
+        antwortenMap.put(Uhrenbild,answer);
     }
 
 
@@ -82,9 +85,9 @@ public class QuestionsAnswer extends GUI {
 
         hBox.setPadding(new Insets(15, 10, 10, 50));
 
-        antwort1 = new Button("Antwort A");
-        antwort2 = new Button("Antwort B");
-        antwort3 = new Button("Antwort C");
+        antwort1 = new Button("Antwort ");
+        antwort2 = new Button("Antwort 2");
+        antwort3 = new Button("Antwort 3");
         antwort4 = new Button("Antwort D");
 
         antwort1.setMinSize(120,40);

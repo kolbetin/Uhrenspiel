@@ -2,6 +2,7 @@ package Test;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -19,6 +20,7 @@ public class GUI extends Application {
         public Button antwort3;
         public Button antwort4;
         public Button saveButton;
+        private ClockTest clock;
 
 
         public void start(Stage primaryStage) {
@@ -117,13 +119,16 @@ public class GUI extends Application {
             BorderPane borderPane= new BorderPane();
             borderPane.setId("clockArea");
 
-            Circle circle = new Circle(200);
+            Circle circle = new Circle(100);
+            Clock clock = new Clock();
+
+
 
          //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(7,370,7,250));
 
             borderPane.setTop(new Text("Uhrenbsp"));
-            borderPane.setCenter(circle);
+            borderPane.setCenter(clock.root());
 
 
 
