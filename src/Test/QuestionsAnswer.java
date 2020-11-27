@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import javax.sound.sampled.Line;
+import javafx.scene.shape.Line;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,10 +20,11 @@ import static javafx.application.Application.launch;
 public class QuestionsAnswer extends GUI {
 
     public HashMap<Integer, String> antwortenMap;
-    public HashMap<Line, Line>  Uhrzeit;
-    public HashMap<HashMap,String> ende;
+    public HashMap<Line, Line>  uhrzeit;
+    public HashMap<HashMap,String>  antworten;
     private ProgressData progressData;
     private IOInterface ioInterface;
+    private ClockTest clock;
 
     /*public void start(Stage primarystage){
 
@@ -32,6 +33,15 @@ public class QuestionsAnswer extends GUI {
     public QuestionsAnswer() {
 
         antwortenMap = new HashMap<>();
+        antworten = new HashMap<>();
+        uhrzeit = new HashMap<>();
+        clock = new ClockTest();
+        uhrzeit.put(clock.stunde_1,clock.minuten_volleStunde);
+        uhrzeit.put(clock.stunde_2,clock.minuten_volleStunde);
+        add(uhrzeit,"1 Uhr");
+        add(uhrzeit,"2 Uhr");
+        System.out.println(antworten);
+        System.out.println(uhrzeit.size());
         antwortenMapVolleStunde();
         //System.out.println(antwortenMap.get(3));
         //System.out.println(getKey());
@@ -73,8 +83,8 @@ public class QuestionsAnswer extends GUI {
     return null;
     }
 
-    public void add(Integer Uhrenbild, String answer){
-        antwortenMap.put(Uhrenbild,answer);
+    public void add(HashMap Uhrenbild, String answer){
+        antworten.put(Uhrenbild,answer);
     }
 
 
