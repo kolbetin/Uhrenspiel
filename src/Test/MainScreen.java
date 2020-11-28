@@ -23,6 +23,8 @@ public class MainScreen extends GUI  {
 
      private Label willkommensText;
      public Button newGameButton;
+     public Button loadGameButton;
+     public Button endGameButton;
 
 
     @Override
@@ -32,13 +34,13 @@ public class MainScreen extends GUI  {
         willkommensText.setText("Willkommen zum Uhrenspiel");
 
         newGameButton = new Button("Neues Spiel");
-        Button loadGameButton = new Button("Laden des letzten Spiels");
-        Button endButton = new Button("Beenden");
+        loadGameButton = new Button("Laden des letzten Spiels");
+        endGameButton = new Button("Beenden");
         Button lernmodusButton = new Button("Lernmodus");
         Button spielanleitungButton = new Button("Spielanleitung");
 
         VBox middle = new VBox(10);
-        middle.getChildren().addAll(newGameButton,loadGameButton,lernmodusButton,spielanleitungButton,endButton);
+        middle.getChildren().addAll(newGameButton,loadGameButton,lernmodusButton,spielanleitungButton,endGameButton);
         middle.setPadding(new Insets(70,170,7,70));
         BorderPane root = new BorderPane();
         root.setTop(willkommensText);

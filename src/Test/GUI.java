@@ -34,7 +34,7 @@ public class GUI extends Application {
 
 
             // rootTop.setTop(menuBar);
-            Scene scene = new Scene(borderPane, 1300, 700);
+            Scene scene = new Scene(borderPane, 1300, 900);
             scene.getStylesheets().add
                     (Test.class.getResource("clock.css").toExternalForm());
             primaryStage.setScene(scene);
