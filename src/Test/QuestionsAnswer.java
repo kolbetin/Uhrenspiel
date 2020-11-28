@@ -13,11 +13,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 import static javafx.application.Application.launch;
 
-public class QuestionsAnswer extends GUI {
+public class QuestionsAnswer extends Application {
 
     public HashMap<Integer, String> antwortenMap;
     public HashMap<Line, Line>  uhrzeit;
@@ -25,10 +26,11 @@ public class QuestionsAnswer extends GUI {
     private ProgressData progressData;
     private IOInterface ioInterface;
     private ClockTest clock;
+    public ArrayList<Integer> liste;
 
-    /*public void start(Stage primarystage){
+    public void start(Stage primarystage){
 
-    }*/
+    }
 
     public QuestionsAnswer() {
 
@@ -36,49 +38,57 @@ public class QuestionsAnswer extends GUI {
         antworten = new HashMap<>();
         uhrzeit = new HashMap<>();
         clock = new ClockTest();
-        uhrzeit.put(clock.stunde_1,clock.minuten_volleStunde);
+
+      /*  uhrzeit.put(clock.stunde_1,clock.minuten_volleStunde);
         uhrzeit.put(clock.stunde_2,clock.minuten_volleStunde);
         add(uhrzeit,"1 Uhr");
-        add(uhrzeit,"2 Uhr");
-        System.out.println(antworten);
-        System.out.println(uhrzeit.size());
+        add(uhrzeit,"2 Uhr");*/
+      //  System.out.println(antworten);
+    //    System.out.println(uhrzeit.size());
         antwortenMapVolleStunde();
         //System.out.println(antwortenMap.get(3));
-        //System.out.println(getKey());
-        //System.out.println(getValue());
-        System.out.println(antwortenMap);
+       // System.out.println(getKey());
+       // System.out.println(getValue());
+       // System.out.println(antwortenMap);
+      // listebefüllen();
 
+        System.out.println(antwortenMap.size());
+        randomAnswer(3);
+        System.out.println(liste.size());
+        System.out.println(liste);
         //progressData.add(antwortenMap);
        // System.out.println(antwortenMap.size());
        // generateRandom(1,12);
     }
 
     private void antwortenMapVolleStunde() {
-        antwortenMap.put(1, "1");
-        antwortenMap.put(2, "2");
+        antwortenMap.put(1, "eins");
+        antwortenMap.put(2, "zwei");
         antwortenMap.put(3, "drei");
-        antwortenMap.put(4, "4");
-     /*   antwortenMap.put(5,5);
-        antwortenMap.put(6,6);
-        antwortenMap.put(7,7);
-        antwortenMap.put(8,8);
-        antwortenMap.put(9,9);
-        antwortenMap.put(10,10);
-        antwortenMap.put(11,11);
-        antwortenMap.put(12,12);*/
+        antwortenMap.put(4, "vier");
+        antwortenMap.put(5,"fünf");
+        antwortenMap.put(6,"6");
+        antwortenMap.put(7,"7");
+        antwortenMap.put(8,"8");
+        antwortenMap.put(9,"9");
+        antwortenMap.put(10,"10");
+        antwortenMap.put(11,"11");
+        antwortenMap.put(12,"12");
     }
 
 
 
-    public HashMap<Integer,String> getKey(){
-        for (Integer i : antwortenMap.keySet()){
-            System.out.println(i);
+    public Integer getKey() {
+        for (Integer i : antwortenMap.keySet()) {
+            return (i);
         }
-       return null;
+        return null;
     }
+
+
     public String getValue(){
     for (String i : antwortenMap.values()) {
-       return(i);
+        return(i);
     }
     return null;
     }
@@ -88,28 +98,6 @@ public class QuestionsAnswer extends GUI {
     }
 
 
-    @Override
-    public Pane answerArea() {
-        final HBox hBox = new HBox(35);
-        hBox.setId("answerArea");
-
-        hBox.setPadding(new Insets(15, 10, 10, 50));
-
-        antwort1 = new Button("Antwort ");
-        antwort2 = new Button("Antwort 2");
-        antwort3 = new Button("Antwort 3");
-        antwort4 = new Button("Antwort D");
-
-        antwort1.setMinSize(120,40);
-
-
-
-            Text antwort = new Text("Antwort");
-            hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);
-
-            return hBox;
-
-    }
 
   /*  private void antwortenMapVSfalsch(){
         antwortenMap.put(1,2+4+8);
@@ -120,25 +108,24 @@ public class QuestionsAnswer extends GUI {
 
 
 
-   /*public int generateRandom(int start, int end ) {
+   public List randomAnswer(int key) {
         Random rand = new Random();
-
-
-       int  exclude = getKey();
-
-        int range = end - start +1 ;
-        int random = rand.nextInt(range) + 1;
-
-        for(int i = 0; i < exclude; i++) {
-            if(exclude > random) {
-                return random;
+        liste =  new ArrayList<Integer>();
+        int zufall;
+        liste.add(key);
+        for (int i = 0; liste.size() <4; i++) {
+            zufall = rand.nextInt(antwortenMap.size());
+            String value = antwortenMap.get(zufall);
+            if (!liste.contains(value) || !liste.contains(key)) {
+                liste.add(zufall);
             }
-            random++;
+
+        }
+        return null;
+
         }
 
-        return random;
-    }
-*/
+
 
 
 

@@ -57,9 +57,9 @@ public class ProgressData extends Application {
         return this.qa.antwortenMap.size();
     }
 
-   /* public void add(HashMap antwort) {
-        progress.put(antwort);
-    }*/
+    public void add(Integer key, String antwort) {
+        progress.put(key, antwort);
+    }
 
     public static void main(String[] args) {
         launch(args);

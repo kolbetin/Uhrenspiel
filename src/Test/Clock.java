@@ -1,5 +1,6 @@
 package Test;
 
+import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -14,13 +15,15 @@ import javafx.stage.Stage;
 
 import java.util.Random;
 
-public class Clock extends GUI {
+public class Clock extends Application {
 
     Line stunde;
     Line minuten;
 
+    @Override
+    public void start(Stage p)
+    {
 
-    public Group root () {
         EventHandler<MouseEvent> eventHandler = getEventHandler();
 
         // Layout to transfer in CSS File
@@ -109,10 +112,21 @@ public class Clock extends GUI {
 
         // Kreiert Hauptgruppe & Scene
          Group root = new Group (circleGroup, nummerGroup,uhrZeiger);
-         return root;
 
+
+        Scene scene = new Scene(root,600,600);
+
+        // Setting the fill color to the scene and the title
+        scene.setFill(Color.LAVENDER);
+        p.setTitle("Event Filters Example");
+        //scene.getStylesheets().add  (Test.class.getResource("clock.css").toExternalForm());
+        p.setScene(scene);
+
+        //Displaying the contents of the stage
+        p.show();
 
     }
+
 
     EventHandler<MouseEvent> getEventHandler () {
         //Creating the mouse event handler
@@ -132,5 +146,8 @@ public class Clock extends GUI {
                 }
             }
         };
+    }
+    public static void main(String[] args) {
+        launch(args);
     }
 }

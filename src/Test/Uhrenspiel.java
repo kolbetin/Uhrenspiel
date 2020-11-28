@@ -35,26 +35,24 @@ import java.util.Random;
 
 
       public void start(Stage primarystage) {
-         //  getGUI().start(primaryStage);
-         //   guiMC.start(primaryStage);
-         //  guiFA.start(primarystage);
+
          stage1 = new Stage();
-         stage2 = new Stage();
-         stage3 = new Stage();
 
-         // stage2.show();
-         // stage1.show();
-
-         //  getGUI().start(stage 3);
-         // guiMC.start(stage 2);
-         //   guiFA.start(stage3);
          mainScreen.start(stage1);
          mainScreen.newGameButton.setOnAction(event ->
                  newGame()
          );
-       /*   mainScreen.newGameButton.setOnAction(event ->
-                  loadProgress()
-          );*/
+          mainScreen.loadGameButton.setOnAction(event ->
+                 loadProgress()
+          );
+          mainScreen.endGameButton.setOnAction(event -> {
+                  Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION,  "Spiel beenden!",
+                  "Willst du wirklich beenden? " );
+                  if(alert){
+                        stage1.close();
+                 }
+          }
+          );
 
 
 
@@ -98,38 +96,29 @@ import java.util.Random;
 
     public void newGame(){
          stage1.close();
-         qa.start(stage1);
+         game.start(stage1);
+
         // qa.antwortenMap.keySet();
       //   game.start(stage2);
        //  game.start(stage2);
         // guiFA.start(stage2);
         // guiMC.start(stage1);
    //     guiFA.endButton.setOnAction(event -> endGame());}
-        qa.endButton.setOnAction(event -> endGame());
-        qa.saveButton.setOnAction(event -> saveProgress());
-        qa.saveButton.setOnAction(event -> loadProgress());
+        game.endButton.setOnAction(event -> endGame());
+        game.saveButton.setOnAction(event -> saveProgress());
+
 
   }
 
     public void endGame(){
 
-             // guiFA.endButton.setOnAction(event -> {
-           /*   alertHelper.displayAlert(Alert.AlertType.INFORMATION, "Bitte Text eingeben!");*/
             Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION,  "Spiel beenden!",
                 "Wenn du das Spiel beendest, geht der Fortschritt verloren! Willst du wirklich beenden? " );
             if(alert){
-                stage2.close();
-                mainScreen.start(stage1);
-                mainScreen.newGameButton.setOnAction(event ->
-                        newGame()
-                );
-                mainScreen.newGameButton.setOnAction(event ->
-                       loadProgress()
-                );
+                stage1.close();
+                start(stage1);
             }
 
-
-     //
     }
 
       private void saveProgress() {

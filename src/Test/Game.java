@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class Game extends GUI {
@@ -21,13 +22,14 @@ public class Game extends GUI {
         private QuestionsAnswer questionsAnswermap;
         private ProgressData progressData;
         private AlertHelper alertHelper;
+        private Random random;
 
         private IOSerialisierung ioSerialisierung;
 
         public Game(){
             progressData = new ProgressData();
             questionsAnswermap = new QuestionsAnswer();
-
+            questionsAnswermap.antwortenMap.keySet();
         }
 
 
@@ -39,10 +41,11 @@ public class Game extends GUI {
 
             hBox.setPadding(new Insets(15, 10, 10, 50));
 
-            antwort1 = new Button("Antwort 1");
-            antwort2 = new Button("Antwort B");
-            antwort3 = new Button("Antwort C");
-            antwort4 = new Button("Antwort D");
+
+            antwort1 = new Button(String.valueOf(questionsAnswermap.liste.get(0)));
+            antwort2 = new Button(String.valueOf(questionsAnswermap.liste.get(1)));
+            antwort3 = new Button(String.valueOf(questionsAnswermap.liste.get(2)));
+            antwort4 = new Button(String.valueOf(questionsAnswermap.liste.get(3)));
 
 
 
@@ -53,7 +56,11 @@ public class Game extends GUI {
         }
 
 
-
+       private String getAntworten() {
+        random = new Random();
+        int index = random.nextInt(questionsAnswermap.liste.size());
+        return String.valueOf(questionsAnswermap.liste.get(index));
+    }
 
 
 
