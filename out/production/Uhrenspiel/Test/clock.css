@@ -4,8 +4,12 @@
     -fx-font-size: 25px;
 }
 #answerArea {
-    -fx-font-size: 25px;
-    -fx-font-weight: bold
+     -fx-font-size: 25px;
+     -fx-font-weight: bold
+
+ }
+#answerArea Button {
+-fx-min-width: 150;
 
 }
 

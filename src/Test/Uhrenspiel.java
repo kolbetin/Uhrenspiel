@@ -167,8 +167,8 @@ import java.util.Random;
         guiMC = new GUI();
         guiFA = new GUIFreeAnswer();
         mainScreen = new MainScreen();
-      //  game = new Game();
-        qa = new QuestionsAnswer();
+        game = new Game();
+       // qa = new QuestionsAnswer();
         progressData = new ProgressData();
 
 

@@ -29,38 +29,30 @@ public class Game extends GUI {
         public Game(){
             progressData = new ProgressData();
             questionsAnswermap = new QuestionsAnswer();
-            questionsAnswermap.antwortenMap.keySet();
+
         }
 
 
+            @Override
+            public Pane answerArea () {
+                final HBox hBox = new HBox(35);
+                hBox.setId("answerArea");
 
-        @Override
-        public Pane answerArea() {
-            final HBox hBox = new HBox(35);
-            hBox.setId("answerArea");
+                hBox.setPadding(new Insets(15, 10, 10, 50));
 
-            hBox.setPadding(new Insets(15, 10, 10, 50));
-
-
-            antwort1 = new Button(String.valueOf(questionsAnswermap.liste.get(0)));
-            antwort2 = new Button(String.valueOf(questionsAnswermap.liste.get(1)));
-            antwort3 = new Button(String.valueOf(questionsAnswermap.liste.get(2)));
-            antwort4 = new Button(String.valueOf(questionsAnswermap.liste.get(3)));
+                antwort1 = new Button(String.valueOf(questionsAnswermap.answers.get(0)));
+                antwort2 = new Button(String.valueOf(questionsAnswermap.answers.get(1)));
+                antwort3 = new Button(String.valueOf(questionsAnswermap.answers.get(2)));
+                antwort4 = new Button(String.valueOf(questionsAnswermap.answers.get(3)));
 
 
+                Text antwort = new Text("Antwort");
+                hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);
 
-            Text antwort = new Text("Antwort");
-            hBox.getChildren().addAll(antwort, antwort1,antwort2,antwort3, antwort4);
-
-            return hBox;
-        }
+                return hBox;
+            }
 
 
-       private String getAntworten() {
-        random = new Random();
-        int index = random.nextInt(questionsAnswermap.liste.size());
-        return String.valueOf(questionsAnswermap.liste.get(index));
-    }
 
 
 
