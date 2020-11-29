@@ -99,12 +99,6 @@ public class Clock extends Application {
         minuten.setStroke(Color.RED);
         minuten.setStrokeWidth(5);
 
-        // Setting titel text
-        //Text text = new Text(300, 150, "Uhr");
-        // Setting the font of the text and setting the color of the text
-        //text.setFont(Font.font(null, FontWeight.BOLD, 15));
-        //text.setFill(Color.CRIMSON);
-
         // Kreiert Uhr Grafik Gruppierungen
         Group circleGroup = new Group(outerCircle, circle1,circle2, circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10, circle11, circle12, innerCircle);
         Group nummerGroup = new Group (nummer1, nummer2, nummer3, nummer4, nummer5, nummer6, nummer7, nummer8, nummer9,nummer10, nummer11, nummer12);
@@ -147,7 +141,6 @@ public class Clock extends Application {
             }
         };
     }
-    public static void main(String[] args) {
-        launch(args);
-    }
+
+    public static void main(String[] args) { launch(args);}
 }

@@ -120,15 +120,16 @@ public class GUI extends Application {
             borderPane.setId("clockArea");
 
             Circle circle = new Circle(200);
-            Clock clock = new Clock();
 
+            ClockSkin clock = new ClockSkin();
 
 
          //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(7,370,7,250));
 
-            borderPane.setTop(new Text("Uhrenbsp"));
-            borderPane.setCenter(circle);
+            borderPane.setTop(new Text("Uhrenbeispiel"));
+            borderPane.setCenter(clock.createClockSkin());
+
 
 
 
