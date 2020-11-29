@@ -43,13 +43,13 @@ public class Game extends GUI {
         }
         return total;
          }
+
             @Override
             public Pane clockArea(){
                 BorderPane borderPane= new BorderPane();
                 borderPane.setId("clockArea");
 
                 ClockSkin clock = new ClockSkin();
-
 
                 //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
                 borderPane.setPadding(new Insets(7,370,7,250));
@@ -60,7 +60,7 @@ public class Game extends GUI {
             }
 
             @Override
-            public Pane answerArea () {
+                public Pane answerArea () {
                 final HBox hBox = new HBox(35);
                 hBox.setId("answerArea");
 

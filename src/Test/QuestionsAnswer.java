@@ -34,10 +34,10 @@ public class QuestionsAnswer extends Application {
         uhrzeit = new HashMap<>();
         clock = new ClockTest();
 
-      /*  uhrzeit.put(clock.stunde_1,clock.minuten_volleStunde);
-        uhrzeit.put(clock.stunde_2,clock.minuten_volleStunde);
-        add(uhrzeit,"1 Uhr");
-        add(uhrzeit,"2 Uhr");*/
+        uhrzeit.put(clock.stunde_1,clock.minuten_volleStunde);
+        //uhrzeit.put(clock.stunde_2,clock.minuten_volleStunde);
+       // add(uhrzeit,"1 Uhr");
+       // add(uhrzeit,"2 Uhr");
       //  System.out.println(antworten);
     //    System.out.println(uhrzeit.size());
         antwortenMapVolleStunde();
@@ -68,6 +68,7 @@ public class QuestionsAnswer extends Application {
 
     private void antwortenMapVolleStunde() {
         antwortenMap.put(1, "eins");
+        antworten.put(uhrzeit,"1");
         antwortenMap.put(2, "zwei");
         antwortenMap.put(3, "drei");
         antwortenMap.put(4, "vier");
