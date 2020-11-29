@@ -105,16 +105,13 @@ public class ClockSkin {
 
         // Konstruktor mit Parameter: Line stunde, Line minuten
         //this.stunde = stunde;
-        // this.minuten = minuten;
+        //this.minuten = minuten;
 
         // Konstruktor mit Parameter: HashMap uhrzeit
-       //  stunde = uhrzeit.get("Key1");
-       //  minuten = uhrzeit.get("Value");
 
         this.stunde = stunde_3;
         this.minuten = minuten_volleStunde;
         createClockSkin();
-
     }
 
 
