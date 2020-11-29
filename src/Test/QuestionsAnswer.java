@@ -5,10 +5,7 @@ import javafx.stage.Stage;
 
 import javafx.scene.shape.Line;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static javafx.application.Application.launch;
 
@@ -21,7 +18,8 @@ public class QuestionsAnswer extends Application {
     private ClockTest clock;
     public ArrayList<Integer> liste;
     public List answers;
-    public List playedGames;
+    private int key;
+
     private Random random;
 
     public void start(Stage primarystage){
@@ -30,6 +28,7 @@ public class QuestionsAnswer extends Application {
 
     public QuestionsAnswer() {
         random = new Random();
+        liste =  new ArrayList<Integer>();
         antwortenMap = new HashMap<>();
         antworten = new HashMap<>();
         uhrzeit = new HashMap<>();
@@ -49,12 +48,17 @@ public class QuestionsAnswer extends Application {
       // listebefüllen();
 
       //  System.out.println(antwortenMap.size());
-        taskkey();
-        System.out.println(taskkey());
-        randomkey(taskkey());
-        System.out.println(liste);
+       taskkey();
+    //    System.out.println(taskkey());
+        randomkey();
+      //  System.out.println(liste);
         answerSet();
+        //gameset();
+
+        System.out.println(key);
+        System.out.println(liste);
         System.out.println(answers);
+
 
 
         //progressData.add(antwortenMap);
@@ -109,28 +113,39 @@ public class QuestionsAnswer extends Application {
         antworten.put(Uhrenbild,answer);
     }
 
+  /*  public void gameset(){
+        taskkey();
+      randomkey(taskkey());
+       answerSet();
+
+    }*/
+
 
     public int taskkey() {
-        Random rand = new Random();
-        int keys = rand.nextInt(antwortenMap.size());
-        return keys;
+
+        for( int i = 0; liste.size() <2; i++){
+            int zufall = random.nextInt(antwortenMap.size());
+            if (zufall != 0) {
+                key = zufall;
+                liste.add(key);
+            }
+        }
+
+        return key;
     }
 
 
 
-   public List randomkey(int task) {
-        Random rand = new Random();
-        liste =  new ArrayList<Integer>();
-        int zufall;
-        liste.add(task);
-        for (int i = 0; liste.size() <4; i++) {
-            zufall = rand.nextInt(antwortenMap.size());
+   public List randomkey() {
+       int zufall;
 
-            if (!liste.contains(zufall) & zufall !=0 ) {
+        for (int i = 0; liste.size() <4; i++) {
+            zufall = random.nextInt(antwortenMap.size());
+            if (!liste.contains(zufall) & zufall!= 0 & zufall!= key) {
                 liste.add(zufall);
             }
-
         }
+
         return null;
 
         }
@@ -139,10 +154,12 @@ public class QuestionsAnswer extends Application {
         answers = new ArrayList<String>();
 
         for (int i = 0; i < 4; i++) {
-            String value = antwortenMap.get(liste.get(i));
+            String value =antwortenMap.get(liste.get(i));
             answers.add(value);
-
+            Collections.shuffle(answers);
         }
+
+
     }
 
 

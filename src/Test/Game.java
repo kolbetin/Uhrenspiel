@@ -23,14 +23,25 @@ public class Game extends GUI {
         private ProgressData progressData;
         private AlertHelper alertHelper;
         private Random random;
-
+        public List playedGames;
         private IOSerialisierung ioSerialisierung;
 
         public Game(){
             progressData = new ProgressData();
             questionsAnswermap = new QuestionsAnswer();
+            //game();
 
         }
+
+        public int game() {
+           int total = 0;
+
+        for (int i = 0; total < 11; i++) {
+
+            total = total+1;
+        }
+        return total;
+         }
 
 
             @Override
