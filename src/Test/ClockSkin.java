@@ -202,7 +202,7 @@ public class ClockSkin {
 
         // Kreiert Hauptgruppe & Scene
         Group root = new Group(circleGroup, nummerGroup, uhrZeiger);
-        Scene scene = new Scene(root, 600, 600);
+        //Scene scene = new Scene(root, 600, 600);
 
         // Creates stage and scene
         Node clockSkin;

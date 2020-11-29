@@ -119,8 +119,7 @@ public class GUI extends Application {
             BorderPane borderPane= new BorderPane();
             borderPane.setId("clockArea");
 
-            Circle circle = new Circle(200);
-
+            // Circle circle = new Circle(200);
             ClockSkin clock = new ClockSkin();
 
 
@@ -129,9 +128,6 @@ public class GUI extends Application {
 
             borderPane.setTop(new Text("Uhrenbeispiel"));
             borderPane.setCenter(clock.createClockSkin());
-
-
-
 
             return borderPane;
         }
