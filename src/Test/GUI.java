@@ -155,7 +155,7 @@ public class GUI extends Application {
         }
 
 
-         public Pane answerArea() {
+         public  Pane answerArea() {
             final HBox hBox = new HBox(35);
             hBox.setId("answerArea");
 
@@ -170,7 +170,7 @@ public class GUI extends Application {
             hBox.getChildren().addAll(antwort, antwort1,antwort2,antwort3, antwort4);
 
             return hBox;
-        }
+         }
 
           public static void main(String[] args) { launch(args);
         }
