@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -42,7 +43,21 @@ public class Game extends GUI {
         }
         return total;
          }
+            @Override
+            public Pane clockArea(){
+                BorderPane borderPane= new BorderPane();
+                borderPane.setId("clockArea");
 
+                ClockSkin clock = new ClockSkin();
+
+
+                //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
+                borderPane.setPadding(new Insets(7,370,7,250));
+
+                borderPane.setCenter(clock.createClockSkin());
+
+                return borderPane;
+            }
 
             @Override
             public Pane answerArea () {
