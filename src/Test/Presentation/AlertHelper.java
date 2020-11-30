@@ -1,5 +1,6 @@
-package Test;
+package Test.Presentation;
 
+import Test.Test;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;

@@ -1,5 +1,7 @@
-package Test;
+package Test.Presentation;
 
+import Test.Test;
+import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 
 
-public class MainScreen extends GUI  {
+public class MainScreen extends GUI {
 
      private Label willkommensText;
      public Button newGameButton;
@@ -61,6 +63,6 @@ public class MainScreen extends GUI  {
 
 
     public static void main(String[] args) {
-        launch(args);
+        Application.launch(args);
     }
 }

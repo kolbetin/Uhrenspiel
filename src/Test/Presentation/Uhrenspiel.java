@@ -1,9 +1,11 @@
-package Test;
+package Test.Presentation;
+
+import Test.Domain.Game;
+import Test.Domain.ProgressData;
+import Test.Domain.QuestionsAnswer;
+import Test.Persistenz.IOSerialisierung;
 
 import javafx.application.Application;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
@@ -27,7 +29,6 @@ import java.util.Random;
     private Stage stage2;
     private Stage stage3;
     ArrayList<GUI> guiList;
-    private GuiVisible gui;
     private AlertHelper alertHelper;
     public Game game;
     private ProgressData progressData;
@@ -126,7 +127,7 @@ import java.util.Random;
               file = new File(createFileName());
               progressData.saveProgress(file);
 
-              alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "'Was tun?'","Liste gespeichert in Datei " + file + ".");
+              alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Liste gespeichert in Datei " + file + ".");
           } catch (IOException e) {
               alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
           }
@@ -134,14 +135,14 @@ import java.util.Random;
 
       private String createFileName () {
           return  System.getProperty("user.home") + System.getProperty("file.separator") +
-                  (progressData.getIOInterface() instanceof IOSerialisierung ?  "decision.ser" : "decision.txt");
+                  (progressData.getIOInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
       }
 
       private void loadProgress() {
           try {
               progressData.loadProgress(file);
 
-              alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "'Was tun?'", "Liste von Datei " + file + " geladen.");
+              alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + file + " geladen.");
           } catch (IOException | ClassNotFoundException e) {
               alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
           }

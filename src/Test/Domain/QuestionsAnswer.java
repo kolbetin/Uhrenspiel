@@ -1,5 +1,7 @@
-package Test;
+package Test.Domain;
 
+import Test.Domain.ProgressData;
+import Test.Test;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -15,7 +17,6 @@ public class QuestionsAnswer extends Application {
     public HashMap<Line, Line>  uhrzeit;
     public HashMap<HashMap,String>  antworten;
     private ProgressData progressData;
-    private ClockTest clock;
     public ArrayList<Integer> liste;
     public List answers;
     private int key;
@@ -32,9 +33,9 @@ public class QuestionsAnswer extends Application {
         antwortenMap = new HashMap<>();
         antworten = new HashMap<>();
         uhrzeit = new HashMap<>();
-        clock = new ClockTest();
 
-        uhrzeit.put(clock.stunde_1,clock.minuten_volleStunde);
+
+      // uhrzeit.put(clock.stunde_1,clock.minuten_volleStunde);
         //uhrzeit.put(clock.stunde_2,clock.minuten_volleStunde);
        // add(uhrzeit,"1 Uhr");
        // add(uhrzeit,"2 Uhr");
@@ -68,7 +69,7 @@ public class QuestionsAnswer extends Application {
 
     private void antwortenMapVolleStunde() {
         antwortenMap.put(1, "eins");
-        antworten.put(uhrzeit,"1");
+      //  antwortenMap.put("03:15", "eins");
         antwortenMap.put(2, "zwei");
         antwortenMap.put(3, "drei");
         antwortenMap.put(4, "vier");

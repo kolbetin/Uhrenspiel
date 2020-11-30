@@ -1,13 +1,14 @@
-package Test;
+package Test.Domain;
 
+import Test.Persistenz.IOInterface;
+import Test.Persistenz.IOSerialisierung;
+import Test.Test;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import javax.print.attribute.HashPrintJobAttributeSet;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class ProgressData extends Application {

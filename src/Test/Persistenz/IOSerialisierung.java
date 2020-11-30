@@ -1,6 +1,9 @@
-package Test;
+package Test.Persistenz;
 
 
+
+import Test.Persistenz.IOInterface;
+import Test.Test;
 
 import java.io.*;
 import java.util.HashMap;

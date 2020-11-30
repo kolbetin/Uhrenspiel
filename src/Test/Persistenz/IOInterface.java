@@ -1,4 +1,6 @@
-package Test;
+package Test.Persistenz;
+
+import Test.Test;
 
 import java.io.File;
 import java.io.IOException;

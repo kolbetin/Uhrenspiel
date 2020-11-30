@@ -1,19 +1,16 @@
-package Test;
+package Test.Domain;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import javafx.application.Application;
+import Test.Persistenz.IOSerialisierung;
+
+import Test.Presentation.GUI;
+import Test.ClockSkin;
 import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+import Test.Presentation.AlertHelper;
 import java.util.List;
 import java.util.Random;
 
@@ -34,15 +31,6 @@ public class Game extends GUI {
 
         }
 
-        public int game() {
-           int total = 0;
-
-        for (int i = 0; total < 11; i++) {
-
-            total = total+1;
-        }
-        return total;
-         }
 
             @Override
             public Pane clockArea(){

@@ -100,6 +100,8 @@ public class ClockSkin {
     Line stunde_viertelNach_12 = new Line(300, 300, 315, 200);
     Line stunde_halb_12 = new Line(300, 300, 275, 200);
 
+    String anzuzeigendeZeit = "03:15";
+    //localTime
 
     public ClockSkin() {
 
