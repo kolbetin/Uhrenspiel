@@ -5,8 +5,9 @@ import Test.Persistenz.IOSerialisierung;
 import Test.Presentation.Question;
 import javafx.application.Application;
 import Test.Presentation.AlertHelper;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import Test.Presentation.GUI;
 
 import java.util.*;
 
@@ -26,6 +27,7 @@ public class Game extends Application {
         private  ArrayList<QuestionsAnswer> frageListe;
         private QuestionsAnswer aktuelleFrage;
         private Question question;
+        private GUI gui;
 
 
     public void start(Stage primarystage){
@@ -34,25 +36,27 @@ public class Game extends Application {
 
 
         public Game(){
-            progressData = new ProgressData();
+          //  progressData = new ProgressData();
           //  question = new Question();
             questionsAnswermap = new QuestionsAnswer();
+            answers = new ArrayList<String>();
             random = new Random();
             liste =  new ArrayList<Integer>();
-            nextQuestion();
-           // playGame();
+           // nextQuestion();
+            playGame();
             //System.out.println(playedGames);
 
             }
 
     public void nextQuestion() {
-
-        taskkey();
+        liste. clear();
+        answers.clear();
+        getTaskkey();
         randomAnswer();
         answerSet();
         aufgabennummer++;
 
-        System.out.println(taskkey());
+        System.out.println(getTaskkey());
         System.out.println(liste);
         System.out.println(answers);
         System.out.println(aufgabennummer);
@@ -61,25 +65,30 @@ public class Game extends Application {
 
 
     public void playGame() {
-        int i = 0;
 
-        while (i < 11 ) {
+      //  liste. clear();
+      //  answers.clear();
+        for (int i = 0; i < 10; i++)  {
             nextQuestion();
-            System.out.println(taskkey());
+
+            System.out.println(getTaskkey());
             System.out.println(liste);
             System.out.println(answers);
-            i++;
+            System.out.println(aufgabennummer);
+
         }
     }
-    public int taskkey() {
+
+    public int getTaskkey() {
+
          for( int i = 0; liste.size() <2; i++){
             int zufall = random.nextInt(questionsAnswermap.antwortenMap.size());
             if (zufall != 0) {
                 key = zufall;
                 liste.add(key);
             }
-        }
 
+        }
         return key;
     }
 
@@ -96,23 +105,22 @@ public class Game extends Application {
 
         for (int i = 0; liste.size() <4; i++) {
             zufall = random.nextInt(questionsAnswermap.antwortenMap.size());
-            if (!liste.contains(zufall) & zufall!= 0 & zufall!= key) {
+            if (!liste.contains(zufall) & zufall!= 0 & zufall != key) {
                 liste.add(zufall);
             }
         }
-
-        return null;
-
+        return liste;
     }
 
     public void answerSet() {
-        answers = new ArrayList<String>();
+
 
         for (int i = 0; i < 4; i++) {
             String value =questionsAnswermap.antwortenMap.get(liste.get(i));
             answers.add(value);
             Collections.shuffle(answers);
         }
+
     }
 
 
