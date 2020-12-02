@@ -107,7 +107,7 @@ public class ClockSkin {
     // Substing methode zur Auslesung der Minuten
     // public String substring(int startIndex, int endIndex)
 
-    private LocalTime time = new LocalTime(12,30,0,0);
+    // private LocalTime time = new LocalTime(12,30,0,0);
 
     // set up hashmap mit String Key, Line Value
     // befüllen der HashMaps mit String Keys "01" , "02" , usw. für Stunden und Minuten
