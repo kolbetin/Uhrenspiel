@@ -31,7 +31,6 @@ public class QuestionsAnswer extends Application {
         antworten = new HashMap<>();
         uhrzeit = new HashMap<>();
 
-
         antwortenMapVolleStunde();
         //System.out.println(antwortenMap.get(3));
        // System.out.println(getKey());

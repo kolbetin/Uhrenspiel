@@ -22,6 +22,7 @@ public class GUI extends Application {
         public Button antwort3;
         public Button antwort4;
         public Button saveButton;
+        public Label antwortzähler;
 
 
 
@@ -49,7 +50,7 @@ public class GUI extends Application {
         final BorderPane middleArea = new BorderPane();
         middleArea.setId("middleArea");
 
-        Label antwortzähler = new Label("Antwort 1 von 10");
+        antwortzähler = new Label("Antwort 1 von 10");
 
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(questionArea());
@@ -121,7 +122,7 @@ public class GUI extends Application {
             BorderPane borderPane= new BorderPane();
             borderPane.setId("clockArea");
 
-            // Circle circle = new Circle(200);
+            Circle circle = new Circle(200);
             ClockSkin clock = new ClockSkin();
 
 
@@ -129,7 +130,8 @@ public class GUI extends Application {
             borderPane.setPadding(new Insets(7,370,7,250));
 
             borderPane.setTop(new Text("Uhrenbeispiel"));
-            borderPane.setCenter(clock.createClockSkin());
+           //borderPane.setCenter(clock.createClockSkin());
+            borderPane.setCenter(circle);
 
             return borderPane;
         }

@@ -31,6 +31,7 @@ import java.util.Random;
     ArrayList<GUI> guiList;
     private AlertHelper alertHelper;
     public Game game;
+    public Question question;
     private ProgressData progressData;
     private File file;
 
@@ -97,16 +98,16 @@ import java.util.Random;
 
     public void newGame(){
          stage1.close();
-         game.start(stage1);
-
+         question.start(stage1);
+         question.goOn.setOnAction(event -> game.nextQuestion());
         // qa.antwortenMap.keySet();
       //   game.start(stage2);
        //  game.start(stage2);
         // guiFA.start(stage2);
         // guiMC.start(stage1);
    //     guiFA.endButton.setOnAction(event -> endGame());}
-        game.endButton.setOnAction(event -> endGame());
-        game.saveButton.setOnAction(event -> saveProgress());
+        question.endButton.setOnAction(event -> endGame());
+        question.saveButton.setOnAction(event -> saveProgress());
 
 
   }
@@ -165,15 +166,16 @@ import java.util.Random;
 
 
     public Uhrenspiel() {
-        guiMC = new GUI();
-        guiFA = new GUIFreeAnswer();
+       // guiMC = new GUI();
+       // guiFA = new GUIFreeAnswer();
         mainScreen = new MainScreen();
-        game = new Game();
-       // qa = new QuestionsAnswer();
-        progressData = new ProgressData();
-
-
         verAbschieden = new Verabschiedungsbildschirm();
+        question = new Question();
+        progressData = new ProgressData();
+        game = new Game();
+
+
+
         fillGuiList();
 
         System.out.println(getGUI());
