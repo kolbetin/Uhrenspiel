@@ -141,7 +141,7 @@ import java.util.Random;
                   start(stage1);
               }*/
           });
-          guiFA
+          //guiFA
 
           guiFA.endButton.setOnAction(event -> endGame());
           guiFA.saveButton.setOnAction(event -> saveProgress());
