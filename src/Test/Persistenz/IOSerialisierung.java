@@ -2,9 +2,6 @@ package Test.Persistenz;
 
 
 
-import Test.Persistenz.IOInterface;
-import Test.Test;
-
 import java.io.*;
 import java.util.HashMap;
 
@@ -12,7 +9,7 @@ import java.util.HashMap;
 public class IOSerialisierung implements IOInterface {
 
 
-        public void save(File file, HashMap<Integer, String> antwortenmap) throws IOException {
+        public void save(File file, HashMap<String, String> antwortenmap) throws IOException {
             try (OutputStream outStream = new FileOutputStream(file);
                  ObjectOutputStream outObject = new ObjectOutputStream(outStream)) {
 
@@ -23,10 +20,10 @@ public class IOSerialisierung implements IOInterface {
             }
         }
 
-        public HashMap<Integer, String> load(File file) throws IOException, ClassNotFoundException    {
+        public HashMap<String, String> load(File file) throws IOException, ClassNotFoundException    {
             try (InputStream inStream = new FileInputStream(file);
                  ObjectInputStream inObject = new ObjectInputStream(inStream)) {
-                return (HashMap<Integer, String>) inObject.readObject();
+                return (HashMap<String, String>) inObject.readObject();
 
             } catch (ClassNotFoundException | IOException e) {
                 throw new IOException("Die Daten können nicht von der Datei " + file + " gelesen werden");

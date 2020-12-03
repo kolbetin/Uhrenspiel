@@ -5,7 +5,6 @@ import Test.Persistenz.IOSerialisierung;
 import Test.Presentation.Question;
 import javafx.application.Application;
 import Test.Presentation.AlertHelper;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import Test.Presentation.GUI;
 
@@ -20,9 +19,9 @@ public class Game extends Application {
         private Random random;
         public List playedGames;
         private IOSerialisierung ioSerialisierung;
-        public ArrayList<Integer> liste;
+        public ArrayList<String> liste;
         public List answers;
-        private int key;
+        private String key;
         public int aufgabennummer;
         private  ArrayList<QuestionsAnswer> frageListe;
         private QuestionsAnswer aktuelleFrage;
@@ -41,10 +40,18 @@ public class Game extends Application {
             questionsAnswermap = new QuestionsAnswer();
             answers = new ArrayList<String>();
             random = new Random();
-            liste =  new ArrayList<Integer>();
-            nextQuestion();
+            liste =  new ArrayList<String>();
+           // nextQuestion();
+            getTaskkey();
+         //   randomAnswer();
+         //   answerSet();
             //playGame();
-            //System.out.println(playedGames);
+           // getkey();
+         //   System.out.println(key);
+          //  System.out.println(questionsAnswermap.antwortenMap.get(getTaskkey()));
+            System.out.println(randomAnswer());
+            System.out.println(answers);
+
 
             }
 
@@ -56,7 +63,8 @@ public class Game extends Application {
         answerSet();
         aufgabennummer++;
 
-        System.out.println(getTaskkey());
+      //  System.out.println(getTaskkey());
+        System.out.println(key);
         System.out.println(liste);
         System.out.println(answers);
         System.out.println(aufgabennummer);
@@ -71,7 +79,7 @@ public class Game extends Application {
         for (int i = 0; i < 10; i++)  {
             nextQuestion();
 
-            System.out.println(getTaskkey());
+         //   System.out.println(getTaskkey());
             System.out.println(liste);
             System.out.println(answers);
             System.out.println(aufgabennummer);
@@ -79,34 +87,37 @@ public class Game extends Application {
         }
     }
 
-    public int getTaskkey() {
+    public void getTaskkey() {
 
-         for( int i = 0; liste.size() <2; i++){
-            int zufall = random.nextInt(questionsAnswermap.antwortenMap.size());
-            if (zufall != 0) {
-                key = zufall;
-                liste.add(key);
-            }
+        Object[] test = questionsAnswermap.antwortenMap.keySet().toArray();
+        Object key = test[new Random().nextInt(test.length)];
+        System.out.println("************ Random Value ************ \n" + key + " :: " + questionsAnswermap.antwortenMap.get(key));
 
-        }
-        return key;
+       //  for( int i = 0; liste.size() <; i++){
+          //   String zufall = random.nextInt(questionsAnswermap.antwortenMap.size());
+          //   String zufall = random.questionsAnswermap.antwortenMap.keySet();
+          //   String value  = questionsAnswermap.antwortenMap.get(zufall);
+                //key = value;
+              //  liste.add(value);
+       // }
+     //   return  zufall;
     }
 
-    private Integer getkey()
-    {
-        for (Integer key : questionsAnswermap.antwortenMap.keySet()){
+
+
+     /*   for (String key : questionsAnswermap.antwortenMap.keySet()){
             return key;
         }
-        return null;
-    }
+        return null;*/
 
     public List randomAnswer() {
         int zufall;
 
         for (int i = 0; liste.size() <4; i++) {
             zufall = random.nextInt(questionsAnswermap.antwortenMap.size());
-            if (!liste.contains(zufall) & zufall!= 0 & zufall != key) {
-                liste.add(zufall);
+            String value = questionsAnswermap.antwortenMap.get(zufall);
+            if (!liste.contains(value) /*& value != key*/) {
+                liste.add(value);
             }
         }
         return liste;

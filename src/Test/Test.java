@@ -1,50 +1,41 @@
 package Test;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
-import javafx.application.Application;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+/**
+ * @author Crunchify.com
+ *
+ */
 
-import javax.swing.*;
-
-public class Test extends Application {
-    private static Label label;
-
+public class Test {
     public static void main(String[] args) {
-        launch(args);
-    }
+        //
+        // Create a hashtable and put some key-value pair.
+        //
+        HashMap<String, String> companies = new HashMap<String, String>();
+        companies.put("eBay", "South San Jose");
+        companies.put("Paypal", "North San Jose");
+        companies.put("Google", "Mountain View");
+        companies.put("Yahoo", "Santa Clara");
+        companies.put("Twitter", "San Francisco");
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello World!");
-        label = new Label();
-        label.setText("Waiting...");
-        StackPane root = new StackPane();
-        root.getChildren().add(label);
-        primaryStage.setScene(new Scene(root, 300, 250));
-        primaryStage.show();
+        // Get a random entry from the HashMap.
+        Object[] crunchifyKeys = companies.keySet().toArray();
+        Object key = crunchifyKeys[new Random().nextInt(crunchifyKeys.length)];
+        System.out.println("************ Random Value ************ \n" + key + " :: " + companies.get(key));
 
-        Task<Void> sleeper = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                }
-                return null;
-            }
-        };
-        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                label.setText("Hello World");
-            }
-        });
-        new Thread(sleeper).start();
+        List<Map.Entry<String, String>> list = new ArrayList<Map.Entry<String, String>>(companies.entrySet());
+
+        // Bonus Crunchify Tips: How to Shuffle a List??
+        // Each time you get a different order...
+        System.out.println("\n************ Now Let's start shuffling list ************");
+        Collections.shuffle(list);
+        for (Map.Entry<String, String> entry : list) {
+            System.out.println(entry.getKey() + " :: " + entry.getValue());
+        }
     }
 }
-

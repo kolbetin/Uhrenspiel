@@ -27,14 +27,12 @@ public class ProgressData extends Application {
         qa = new QuestionsAnswer();
         random = new Random();
         ioInterface = new IOSerialisierung();
-        qa.antwortenMap.put(5,"fünf");
-        qa.antwortenMap.put(6,"sechs");
         System.out.println(qa.antwortenMap);
 
 
     }
 
-    public void setProgress(HashMap<Integer, String> key) {
+    public void setProgress(HashMap<String, String> key) {
         this.qa.antwortenMap.clear();
         this.qa.antwortenMap.putAll(key);
     }

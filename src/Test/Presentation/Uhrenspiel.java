@@ -42,8 +42,8 @@ import java.util.Random;
 
           mainScreen.start(stage1);
           mainScreen.newGameButton.setOnAction(event ->
-                      //newGameMultipleChoice()
-                    newGameFreeAnswer()
+                    newGameMultipleChoice()
+                    //newGameFreeAnswer()
 
           );
           mainScreen.loadGameButton.setOnAction(event ->
