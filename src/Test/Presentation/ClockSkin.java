@@ -17,12 +17,14 @@ import javafx.stage.Stage;
 
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class ClockSkin {
 
-    Line stunde;
-    Line minuten;
+
+    // set up Hashmap mit String Key, Line Value für Minuten
+    private HashMap<String, Line> minutenMap = new HashMap();
 
     // Koordinaten für Minutenzeiger
     private Line minuten_volleStunde = new Line(300, 300, 300, 200);
@@ -102,23 +104,26 @@ public class ClockSkin {
     private Line stunde_viertelNach_12 = new Line(300, 300, 315, 200);
     private Line stunde_halb_12 = new Line(300, 300, 275, 200);
 
+    // Übergebener Key an die Klasse ClockSkin
     String anzuzeigendeZeit = "03:15";
-    // Substring methode zur Auslesung der Stunde
-    // Substing methode zur Auslesung der Minuten
-    // public String substring(int startIndex, int endIndex)
 
-    // private LocalTime time = new LocalTime(12,30,0,0);
+    // Substring Methoden zur Auslesung der Stunde und Minuten
+    String substringStunde = anzuzeigendeZeit.substring(0,2); // liefert den Substring "03"
+    String substringMinuten = anzuzeigendeZeit.substring(3); // liefert den Substring "15"
 
     // set up hashmap mit String Key, Line Value
     // befüllen der HashMaps mit String Keys "01" , "02" , usw. für Stunden und Minuten
     // befüllen der Hashmaps mit Line Vriablen für die jeweilige  Stunde oder Minuten
-    private HashMap minutenMap;
+
     private HashMap stundenMap;
 
     // "Parser":
     // Methode zum entgegennehmen des subString Stunde, auslesen der Line Variablen und Übergabe an Konstruktor "Line stunde"
     // Methode zur Entgegenhame des subString Minute, auslesen der Line Variable und Übergabe an ClockSkin Konstruktor "Line minuten"
 
+    // Lineien Variablen für Stunde & Minuten zur Übergabe an createClockSkin() Methode
+    Line stunde;
+    Line minuten;
 
     public ClockSkin() {
 
@@ -127,6 +132,14 @@ public class ClockSkin {
         //this.minuten = minuten;
 
         // Konstruktor mit Parameter: HashMap uhrzeit
+
+        // separate Methode minutenMap erstellen hinzufügen
+        minutenMap.put("00", minuten_volleStunde);
+        minutenMap.put("15", minuten_viertelNach);
+        minutenMap.put("30", minuten_halbeStunde);
+
+        // Methode minutenMap erstellen in Konstruktor aufrufem
+        // Methode StundenMap erstellen in Konstruktor aufrufem
 
         this.stunde = stunde_3;
         this.minuten = minuten_volleStunde;
