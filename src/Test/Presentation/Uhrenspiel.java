@@ -21,7 +21,7 @@ import java.util.Random;
     Random random;
 
     private GUI guiMC;
-    private GUIFreeAnswer guiFA;
+    private QuestionFreeAnswer guiFA;
     private MainScreen mainScreen;
     private QuestionsAnswer qa;
     private Verabschiedungsbildschirm verAbschieden;
@@ -38,23 +38,26 @@ import java.util.Random;
 
       public void start(Stage primarystage) {
 
-         stage1 = new Stage();
+          stage1 = new Stage();
 
-         mainScreen.start(stage1);
-         mainScreen.newGameButton.setOnAction(event ->
-                 newGame()
-         );
+          mainScreen.start(stage1);
+          mainScreen.newGameButton.setOnAction(event ->
+                      //newGameMultipleChoice()
+                    newGameFreeAnswer()
+
+          );
           mainScreen.loadGameButton.setOnAction(event ->
-                 loadProgress()
+                  loadProgress()
           );
           mainScreen.endGameButton.setOnAction(event -> {
-                  Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION,  "Spiel beenden!",
-                  "Willst du wirklich beenden? " );
-                  if(alert){
-                        stage1.close();
-                 }
-          }
+                      Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Spiel beenden!",
+                              "Willst du wirklich beenden? ");
+                      if (alert) {
+                          stage1.close();
+                      }
+                  }
           );
+      }
 
 
 
@@ -94,23 +97,55 @@ import java.util.Random;
 
 */
 
-     }
 
-    public void newGame(){
+
+    public void newGameMultipleChoice(){
          stage1.close();
+         //getGUI().start(stage1);
          question.start(stage1);
-         question.goOn.setOnAction(event -> game.nextQuestion());
-        // qa.antwortenMap.keySet();
-      //   game.start(stage2);
-       //  game.start(stage2);
-        // guiFA.start(stage2);
-        // guiMC.start(stage1);
-   //     guiFA.endButton.setOnAction(event -> endGame());}
+         question.goOn.setOnAction(event -> {
+
+            //  if(game.aufgabennummer< 6) {
+                    game.nextQuestion();
+                    question.antwort1.setText((String) game.answers.get(0));
+                    question.antwort2.setText((String) game.answers.get(1));
+                    question.antwort3.setText((String) game.answers.get(2));
+                    question.antwort4.setText((String) game.answers.get(3));
+                    question.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
+           /*     }
+
+                else {
+                    stage1.close();
+                    start(stage1);
+                }*/
+                 });
+
         question.endButton.setOnAction(event -> endGame());
         question.saveButton.setOnAction(event -> saveProgress());
-
-
+        guiFA.endButton.setOnAction(event -> endGame());
+        guiFA.saveButton.setOnAction(event -> saveProgress());
   }
+      public void newGameFreeAnswer(){
+          stage1.close();
+          //getGUI().start(stage1);
+
+          guiFA.start(stage1);
+          guiFA.goOn.setOnAction(event -> {
+                   System.out.println(game.aufgabennummer);
+             // if(game.aufgabennummer< 6) {
+                  game.nextQuestion();
+                  guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
+            /*  }
+                  else {
+                  stage1.close();
+                  start(stage1);
+              }*/
+          });
+          guiFA
+
+          guiFA.endButton.setOnAction(event -> endGame());
+          guiFA.saveButton.setOnAction(event -> saveProgress());
+      }
 
     public void endGame(){
 
@@ -167,7 +202,7 @@ import java.util.Random;
 
     public Uhrenspiel() {
        // guiMC = new GUI();
-       // guiFA = new GUIFreeAnswer();
+        guiFA = new QuestionFreeAnswer();
         mainScreen = new MainScreen();
         verAbschieden = new Verabschiedungsbildschirm();
         question = new Question();

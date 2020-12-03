@@ -28,6 +28,7 @@ public class Game extends Application {
         private QuestionsAnswer aktuelleFrage;
         private Question question;
         private GUI gui;
+        private Stage stage1;
 
 
     public void start(Stage primarystage){
@@ -37,13 +38,12 @@ public class Game extends Application {
 
         public Game(){
           //  progressData = new ProgressData();
-          //  question = new Question();
             questionsAnswermap = new QuestionsAnswer();
             answers = new ArrayList<String>();
             random = new Random();
             liste =  new ArrayList<Integer>();
-           // nextQuestion();
-            playGame();
+            nextQuestion();
+            //playGame();
             //System.out.println(playedGames);
 
             }

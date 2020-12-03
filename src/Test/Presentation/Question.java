@@ -1,6 +1,6 @@
 package Test.Presentation;
 
-import Test.ClockSkin;
+import Test.Presentation.ClockSkin;
 import Test.Domain.Game;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

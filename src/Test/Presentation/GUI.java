@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -71,7 +72,7 @@ public class GUI extends Application {
 
            // Text frage = new Text("Wie spät is es?");
             Text frageLabel = new Text("Frage: " + "Es ist __:00 Uhr?" );
-            Text antwortzähler = new Text("Antwort 1 von 10");
+            Text antwortzähler = new Text("Antwort 10 von 10");
 
             //borderPane.setTop(antwortzähler);
             borderPane.setCenter(frageLabel);
