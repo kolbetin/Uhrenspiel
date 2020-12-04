@@ -43,7 +43,7 @@ public class QuestionFreeAnswer extends GUI {
     public Pane answerArea() {
         final HBox hBox = new HBox(10);
         hBox.setPadding(new Insets(15, 10, 10, 50));
-        submitButton = new Button("Submit");
+        submitButton = new Button("abschicken");
         givenAnswer = new TextField();
         submitButton.setOnAction(event -> {
             submitButton.setText("ich überlege");

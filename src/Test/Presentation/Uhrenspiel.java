@@ -20,6 +20,7 @@ import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -40,6 +41,8 @@ public class Uhrenspiel extends Application  {
     public Game game;
     private ProgressData progressData;
     private File file;
+    private int richtigeAntwort;
+    private int falscheAntwort;
 
 
 
@@ -51,6 +54,8 @@ public class Uhrenspiel extends Application  {
           mainScreen.newGameButton.setOnAction(event -> {
               stage1.close();
               game.aufgabennummer = 0;
+              richtigeAntwort =0;
+              falscheAntwort= 0;
               newGameMultipleChoice();
               //newGameFreeAnswer()
 
@@ -156,6 +161,7 @@ public class Uhrenspiel extends Application  {
             if(guiFA.givenAnswer.getText().equals(game.getAnswerFA(game.key))) {
                 guiFA.submitButton.setStyle("-fx-background-color: #5e8c5e");
                 guiFA.submitButton.setText("Super, korrekte Antwort!");
+                richtigeAntwort++;
             /*    PauseTransition wait = new PauseTransition(Duration.seconds(5));
                 wait.setOnFinished(event -> newGameFreeAnswer());
                 wait.play();*/
@@ -164,6 +170,7 @@ public class Uhrenspiel extends Application  {
                  guiFA.submitButton.setStyle("-fx-background-color: #ea6969");
                  guiFA.submitButton.setText("Leider, falsche Antwort!");
                  guiFA.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
+                 falscheAntwort++;
              }
       }
 
@@ -258,7 +265,6 @@ public class Uhrenspiel extends Application  {
         guiFA = new QuestionFreeAnswer();
         mainScreen = new MainScreen();
         verAbschieden = new Verabschiedungsbildschirm();
-       // question = new Question();
         progressData = new ProgressData();
         game = new Game();
 

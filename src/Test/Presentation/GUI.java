@@ -2,7 +2,9 @@ package Test.Presentation;
 
 import Test.Test;
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -23,6 +25,7 @@ public class GUI extends Application {
         public Button goOn;
         public ClockSkin clock;
         public Text questionLabel;
+        public Label uberschrift;
 
 
 
@@ -37,7 +40,7 @@ public class GUI extends Application {
 
 
             // rootTop.setTop(menuBar);
-            Scene scene = new Scene(borderPane, 1300, 900);
+            Scene scene = new Scene(borderPane, 1400, 800);
             scene.getStylesheets().add
                     (Test.class.getResource("clock.css").toExternalForm());
             primaryStage.setScene(scene);
@@ -73,10 +76,8 @@ public class GUI extends Application {
            // Text frage = new Text("Wie spät is es?");
             questionLabel = new Text("Frage: " + "Es ist __:00 Uhr?" );
 
-
-            //borderPane.setTop(antwortzähler);
             borderPane.setCenter(questionLabel);
-           // borderPane.setBottom(answerArea());
+
 
             return borderPane;
         }
@@ -87,7 +88,7 @@ public class GUI extends Application {
 
           //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: black");
 
-            Label uberschrift = new Label("Uhrenspiel");
+            uberschrift = new Label("Uhrenspiel");
 
 
             // Create MenuBar
@@ -144,14 +145,29 @@ public class GUI extends Application {
             saveButton = new Button ("Speichern");
             vbox.getChildren().addAll(saveButton,endButton);
 
+
+             final ProgressBar pbs = new ProgressBar();
+             final ProgressIndicator pins = new ProgressIndicator();
+             final HBox hbs  = new HBox ();
+
+
+            Text text = new Text("Richtige Antworten:");
+            Text text2 = new Text("Falsche Antworten:");
+
+             final VBox vb = new VBox();
+             vb.setSpacing(5);
+             vb.getChildren().addAll(hbs, text,text2,pbs,pins);
+
            // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(7, 50, 7, 25));
 
             borderPane.setTop(new Text("Fortschrittsleiste"));
+            borderPane.setCenter(vb);
             borderPane.setBottom(vbox);
 
             return borderPane;
         }
+
 
 
          public  Pane answerArea() {
