@@ -6,7 +6,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -23,7 +22,7 @@ public class GUI extends Application {
         public Label antwortzähler;
         public Button goOn;
         public ClockSkin clock;
-        public Text frageLabel;
+        public Text questionLabel;
 
 
 
@@ -72,11 +71,11 @@ public class GUI extends Application {
             borderPane.setPadding(new Insets(7, 750, 10, 50));
 
            // Text frage = new Text("Wie spät is es?");
-            frageLabel = new Text("Frage: " + "Es ist __:00 Uhr?" );
+            questionLabel = new Text("Frage: " + "Es ist __:00 Uhr?" );
 
 
             //borderPane.setTop(antwortzähler);
-            borderPane.setCenter(frageLabel);
+            borderPane.setCenter(questionLabel);
            // borderPane.setBottom(answerArea());
 
             return borderPane;

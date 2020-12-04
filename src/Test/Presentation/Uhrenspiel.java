@@ -7,17 +7,20 @@ import Test.Persistenz.IOSerialisierung;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import Test.Presentation.ClockSkin;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 
-  public class Uhrenspiel extends Application  {
+public class Uhrenspiel extends Application  {
 
 
     Random random;
@@ -114,12 +117,16 @@ import java.util.Random;
                 newGameMultipleChoice();
             }
             else {
-                //stage1.close();
                 newGameFreeAnswer();
             }
         });
         guiMC.endButton.setOnAction(event -> endGame());
-        guiMC.saveButton.setOnAction(event -> saveProgress());;
+        guiMC.saveButton.setOnAction(event -> saveProgress());
+     /*   EventHandler<MouseEvent> eventHandler = getEventHandler();
+        guiMC.antwort1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        guiMC.antwort2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        guiMC.antwort3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        guiMC.antwort4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);*/
         System.out.println(game.key);
         System.out.println(game.liste);
         System.out.println(game.answers);
@@ -150,18 +157,46 @@ import java.util.Random;
 
       public void correctAnswerFA(){
             if(guiFA.givenAnswer.getText().equals(game.getAnswerFA(game.key))) {
-                guiFA.submitButton.setStyle("-fx-background-color: #b5e9b5");
+                guiFA.submitButton.setStyle("-fx-background-color: #5e8c5e");
                 guiFA.submitButton.setText("Super, korrekte Antwort!");
-                PauseTransition wait = new PauseTransition(Duration.seconds(5));
+            /*    PauseTransition wait = new PauseTransition(Duration.seconds(5));
                 wait.setOnFinished(event -> newGameFreeAnswer());
-                wait.play();
+                wait.play();*/
              }
              else {
                  guiFA.submitButton.setStyle("-fx-background-color: #ea6969");
                  guiFA.submitButton.setText("Leider, falsche Antwort!");
-                 guiFA.frageLabel.setText("Die korrekte Antwort ist: " + game.key + " Uhr.");
+                 guiFA.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
              }
       }
+
+      public void correctAnswerMC() {
+          EventHandler<MouseEvent> eventHandler = getEventHandler();
+          guiMC.antwort1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+          guiMC.antwort2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+          guiMC.antwort3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+          guiMC.antwort4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+      }
+
+          EventHandler<MouseEvent> getEventHandler() {
+              //Creating the mouse event handler
+              return new EventHandler<MouseEvent>() {
+              @Override
+                  public void handle(MouseEvent event) {
+                      if (guiMC.antwort1.getText().contains(game.getAnswerFA(game.key))) {
+                          guiMC.antwort1.setStyle("-fx-background-color: #5e8c5e");
+                          guiMC.antwort1.setText("Super, korrekte Antwort!");
+                        } else {
+                          guiMC.antwort1.setStyle("-fx-background-color: #ea6969");
+                          guiMC.antwort1.setText("Leider, falsche Antwort!");
+                          guiMC.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
+                      }
+                  }
+              };
+          }
+
+
+
 
 
 
