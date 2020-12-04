@@ -19,9 +19,10 @@ public class Question extends GUI {
 
     public Question(){
         game = new Game();
+        //game.key;
        // game.nextQuestion();
        // System.out.println(game.answers);
-       // System.out.println(game.taskkey());
+       System.out.println(game.getTaskkey());
     }
     @Override
     public BorderPane middleArea() {

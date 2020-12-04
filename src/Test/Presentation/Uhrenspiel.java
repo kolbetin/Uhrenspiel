@@ -102,7 +102,9 @@ import java.util.Random;
     public void newGameMultipleChoice(){
          stage1.close();
          //getGUI().start(stage1);
-         question.start(stage1);
+
+        System.out.println(game.key);
+        question.start(stage1);
          question.goOn.setOnAction(event -> {
 
             //  if(game.aufgabennummer< 6) {
