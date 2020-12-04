@@ -121,7 +121,7 @@ public class GUI extends Application {
             borderPane.setId("clockArea");
 
             Circle circle = new Circle(200);
-            ClockSkin clock = new ClockSkin();
+            ClockSkin clock = new ClockSkin("01:00");
 
 
          //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");

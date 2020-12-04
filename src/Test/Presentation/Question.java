@@ -52,12 +52,12 @@ public class Question extends GUI {
      BorderPane borderPane= new BorderPane();
       borderPane.setId("clockArea");
 
-      ClockSkin clock = new ClockSkin();
+      ClockSkin clock = new ClockSkin("01:00");
 
         //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
         borderPane.setPadding(new Insets(7,370,7,250));
 
-        borderPane.setCenter(clock.createClockSkin());
+        borderPane.setCenter(clock.createClock());
 
         return borderPane;
     }

@@ -13,30 +13,19 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
-import java.time.LocalTime;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class ClockSkin {
 
 
     // set up Hashmap mit String Key, Line Value für Minuten
-    private HashMap<String, Line> minutenMap = new HashMap();
+    private HashMap<String, Line> minutenMap = new HashMap<>();
+    private HashMap <String, Line> stundenMap = new HashMap<>();
 
-    // Koordinaten für Minutenzeiger
-    private Line minuten_volleStunde = new Line(300, 300, 300, 200);
-    private Line minuten_viertelNach = new Line(300, 300, 400, 300);
-    private Line minuten_viertelVor = new Line(300, 300, 200, 300);
-    private Line minuten_halbeStunde = new Line(300, 300, 300, 400);
+    // Linie Minuten für Test (to delete)
+    Line minuten_halbeStunde = new Line(300, 300, 300, 400);
 
-    // Koordinaten Stunde 1 Uhr
-    private Line stunde_1 = new Line(300, 300, 345, 220);
-    private Line stunde_viertelVor_1 = new Line(300, 300, 335, 215);
-    private Line stunde_viertelNach_1 = new Line(300, 300, 355, 225);
-    private Line stunde_halb_1 = new Line(300, 300, 325, 210);
 
     // Koordinaten Stunde 2 Uhr
     private Line stunde_2 = new Line(300, 300, 380, 255);
@@ -104,50 +93,32 @@ public class ClockSkin {
     private Line stunde_viertelNach_12 = new Line(300, 300, 315, 200);
     private Line stunde_halb_12 = new Line(300, 300, 275, 200);
 
-    // Übergebener Key an die Klasse ClockSkin
-    String anzuzeigendeZeit = "03:15";
 
-    // Substring Methoden zur Auslesung der Stunde und Minuten
-    String substringStunde = anzuzeigendeZeit.substring(0,2); // liefert den Substring "03"
-    String substringMinuten = anzuzeigendeZeit.substring(3); // liefert den Substring "15"
-
-    // set up hashmap mit String Key, Line Value
-    // befüllen der HashMaps mit String Keys "01" , "02" , usw. für Stunden und Minuten
-    // befüllen der Hashmaps mit Line Vriablen für die jeweilige  Stunde oder Minuten
-
-    private HashMap stundenMap;
-
-    // "Parser":
-    // Methode zum entgegennehmen des subString Stunde, auslesen der Line Variablen und Übergabe an Konstruktor "Line stunde"
-    // Methode zur Entgegenhame des subString Minute, auslesen der Line Variable und Übergabe an ClockSkin Konstruktor "Line minuten"
 
     // Lineien Variablen für Stunde & Minuten zur Übergabe an createClockSkin() Methode
     Line stunde;
     Line minuten;
 
-    public ClockSkin() {
+    public ClockSkin(String anzuzeigendeZeit) {
 
-        // Konstruktor mit Parameter: Line stunde, Line minuten
-        //this.stunde = stunde;
-        //this.minuten = minuten;
+        createMinuteMap();
+        createStundenMap();
 
-        // Konstruktor mit Parameter: HashMap uhrzeit
+        String substringMinuten = anzuzeigendeZeit.substring(3);
 
-        // separate Methode minutenMap erstellen hinzufügen
-        minutenMap.put("00", minuten_volleStunde);
-        minutenMap.put("15", minuten_viertelNach);
-        minutenMap.put("30", minuten_halbeStunde);
+        this.stunde = parserStunde(anzuzeigendeZeit);
+        this.minuten = parserMinuten(substringMinuten);
 
-        // Methode minutenMap erstellen in Konstruktor aufrufem
-        // Methode StundenMap erstellen in Konstruktor aufrufem
+        System.out.println(anzuzeigendeZeit);
+        System.out.println(substringMinuten);
+        System.out.println(stunde);
+        System.out.println(minuten);
 
-        this.stunde = stunde_3;
-        this.minuten = minuten_volleStunde;
-        createClockSkin();
+        createClock();
     }
 
 
-    public Node createClockSkin() {
+    public Node createClock() {
 
         EventHandler<MouseEvent> eventHandler = getEventHandler();
 
@@ -234,13 +205,7 @@ public class ClockSkin {
         //Scene scene = new Scene(root, 600, 600);
 
         // Creates stage and scene
-        Node clockSkin;
-        clockSkin = root;
-
-        //scene.setFill(Color.LAVENDER);
-        //stage.setTitle("Uhren Skin");
-        //scene.getStylesheets().add  (Test.class.getResource("clock.css").toExternalForm());
-        //stage.setScene(scene);
+        Node clockSkin = root;
 
         //Displaying the contents of the stage
         return clockSkin;
@@ -264,6 +229,45 @@ public class ClockSkin {
                 }
             }
         };
+    }
+
+    public void createMinuteMap(){
+
+        // Koordinaten für Minutenzeiger
+        Line minuten_volleStunde = new Line(300, 300, 300, 200);
+        Line minuten_viertelNach = new Line(300, 300, 400, 300);
+        Line minuten_viertelVor = new Line(300, 300, 200, 300);
+        Line minuten_halbeStunde = new Line(300, 300, 300, 400);
+
+        // Initialisierung Key, Value Werte in minutenMap
+        minutenMap.put("00", minuten_volleStunde);
+        minutenMap.put("15", minuten_viertelNach);
+        minutenMap.put("30", minuten_halbeStunde);
+        minutenMap.put("45", minuten_viertelVor);
+    }
+
+    public void createStundenMap(){
+
+        // Koordinaten Stunde 1 Uhr
+        Line stunde_1 = new Line(300, 300, 345, 220);
+        Line stunde_viertelVor_1 = new Line(300, 300, 335, 215);
+        Line stunde_viertelNach_1 = new Line(300, 300, 355, 225);
+        Line stunde_halb_1 = new Line(300, 300, 325, 210);
+
+        // Initialisierung Key, Value Werte in stundenMap
+        stundenMap.put("01:00", stunde_1);
+        stundenMap.put("01:15", stunde_viertelNach_1);
+        stundenMap.put("01:30", stunde_halb_1);
+        stundenMap.put("01:45", stunde_viertelVor_1);
+
+    }
+
+    public Line parserMinuten(String minuten){
+       return minutenMap.get(minuten);
+    }
+
+    public Line parserStunde(String stunde){
+        return stundenMap.get(stunde);
     }
 
 }
