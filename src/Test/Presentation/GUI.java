@@ -62,7 +62,7 @@ public class GUI extends Application {
 
         middleArea.setTop(antwortzähler);
         middleArea.setBottom(borderPane);
-        middleArea.setLeft(clockArea("01:00"));
+        middleArea.setLeft(clockArea("11:15"));
 
         return middleArea;
 

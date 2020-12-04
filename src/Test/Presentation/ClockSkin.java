@@ -21,8 +21,8 @@ public class ClockSkin {
     Line minuten;
 
     // Hashmaps mit Uhrzeit (Key) und Stunden- & Minutenzeiger Position (Value)
-    private HashMap<String, Line> minutenMap = new HashMap<>();
-    private HashMap<String, Line> stundenMap = new HashMap<>();
+    private final HashMap<String, Line> minutenMap = new HashMap<>();
+    private final HashMap<String, Line> stundenMap = new HashMap<>();
 
     // Konstruktor nimmt Parameter anzuzeigende Zeit entgegen und führt Methode clock() zur Erstellung der Uhr aus
     public ClockSkin(String anzuzeigendeZeit) {
@@ -139,20 +139,17 @@ public class ClockSkin {
 
     EventHandler<MouseEvent> getEventHandler() {
         //Creating the mouse event handler
-        return new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Random rand = new Random();
-                double r = rand.nextDouble();
-                double g = rand.nextDouble();
-                double b = rand.nextDouble();
-                Color randomColor = new Color(r, g, b, 1);
-                System.out.println("The color is: " +
-                        randomColor.toString());
-                if (event.getSource() instanceof Circle) {
-                    Circle c = (Circle) event.getSource();
-                    c.setFill(randomColor);
-                }
+        return event -> {
+            Random rand = new Random();
+            double r = rand.nextDouble();
+            double g = rand.nextDouble();
+            double b = rand.nextDouble();
+            Color randomColor = new Color(r, g, b, 1);
+            System.out.println("The color is: " +
+                    randomColor.toString());
+            if (event.getSource() instanceof Circle) {
+                Circle c = (Circle) event.getSource();
+                c.setFill(randomColor);
             }
         };
     }
@@ -271,9 +268,9 @@ public class ClockSkin {
 
         // Koordinaten Stunde 9 Uhr
         Line stunde_08_30 = new Line(300, 300, 205, 325);
-        Line stunde_08_45 = new Line(300, 300, 390, 315);
+        Line stunde_08_45 = new Line(300, 300, 210, 315);
         Line stunde_09_00 = new Line(300, 300, 210, 300);
-        Line stunde_09_15 = new Line(300, 300, 390, 285);
+        Line stunde_09_15 = new Line(300, 300, 205, 285);
         //  HashMap Erstellung für Stunde 9 Uhr
         stundenMap.put("08:30", stunde_08_30);
         stundenMap.put("08:45", stunde_08_45);
