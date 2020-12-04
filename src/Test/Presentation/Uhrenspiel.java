@@ -5,10 +5,12 @@ import Test.Domain.ProgressData;
 import Test.Domain.QuestionsAnswer;
 import Test.Persistenz.IOSerialisierung;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
+import javafx.util.Duration;
+import Test.Presentation.ClockSkin;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ import java.util.Random;
     public Question question;
     private ProgressData progressData;
     private File file;
+
 
 
       public void start(Stage primarystage) {
@@ -97,13 +100,10 @@ import java.util.Random;
 
 
     public void newGameMultipleChoice() {
-        game.liste.clear();
-        game.answers.clear();
-        game.getTaskkey();
-        game.randomAnswer();
-        game.answerSet();
-        game.aufgabennummer++;
+        game.nextQuestion();
         guiMC.start(stage1);
+       // guiMC.clockArea(game.key);
+        guiMC.clockArea("01:00");
         guiMC.antwort1.setText((String) game.answers.get(0));
         guiMC.antwort2.setText((String) game.answers.get(1));
         guiMC.antwort3.setText((String) game.answers.get(2));
@@ -126,31 +126,44 @@ import java.util.Random;
         System.out.println(game.aufgabennummer);
   }
       public void newGameFreeAnswer(){
-          game.liste.clear();
-          game.answers.clear();
-          game.getTaskkey();
-          game.randomAnswer();
-          game.answerSet();
-          game.aufgabennummer++;
+          game.nextQuestion();
           guiFA.start(stage1);
+         // guiFA.clockArea(game.key);
+          guiFA.clockArea("01:00");
           guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
           guiFA.goOn.setOnAction(event -> {
           System.out.println(game.aufgabennummer);
               if(game.aufgabennummer<10) {
                 newGameFreeAnswer();
-             }
-                  else {
+                } else {
                   stage1.close();
                   start(stage1);
                    }
           });
+          guiFA.submitButton.setOnAction(event -> correctAnswerFA());
           guiFA.endButton.setOnAction(event -> endGame());
           guiFA.saveButton.setOnAction(event -> saveProgress());
           System.out.println(game.key);
-          System.out.println(game.liste);
-          System.out.println(game.answers);
+          System.out.println(game.getAnswerFA(game.key));
           System.out.println(game.aufgabennummer);
       }
+
+      public void correctAnswerFA(){
+            if(guiFA.givenAnswer.getText().equals(game.getAnswerFA(game.key))) {
+                guiFA.submitButton.setStyle("-fx-background-color: #b5e9b5");
+                guiFA.submitButton.setText("Super, korrekte Antwort!");
+                PauseTransition wait = new PauseTransition(Duration.seconds(5));
+                wait.setOnFinished(event -> newGameFreeAnswer());
+                wait.play();
+             }
+             else {
+                 guiFA.submitButton.setStyle("-fx-background-color: #ea6969");
+                 guiFA.submitButton.setText("Leider, falsche Antwort!");
+                 guiFA.frageLabel.setText("Die korrekte Antwort ist: " + game.key + " Uhr.");
+             }
+      }
+
+
 
     public void endGame(){
             Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION,  "Spiel beenden!",
@@ -209,9 +222,10 @@ import java.util.Random;
         guiFA = new QuestionFreeAnswer();
         mainScreen = new MainScreen();
         verAbschieden = new Verabschiedungsbildschirm();
-        question = new Question();
+       // question = new Question();
         progressData = new ProgressData();
         game = new Game();
+
 
 
 

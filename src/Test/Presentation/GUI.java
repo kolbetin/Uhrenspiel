@@ -22,6 +22,8 @@ public class GUI extends Application {
         public Button saveButton;
         public Label antwortzähler;
         public Button goOn;
+        public ClockSkin clock;
+        public Text frageLabel;
 
 
 
@@ -58,9 +60,7 @@ public class GUI extends Application {
 
         middleArea.setTop(antwortzähler);
         middleArea.setBottom(borderPane);
-        middleArea.setLeft(clockArea());
-
-
+        middleArea.setLeft(clockArea("01:00"));
 
         return middleArea;
 
@@ -72,8 +72,8 @@ public class GUI extends Application {
             borderPane.setPadding(new Insets(7, 750, 10, 50));
 
            // Text frage = new Text("Wie spät is es?");
-            Text frageLabel = new Text("Frage: " + "Es ist __:00 Uhr?" );
-            Text antwortzähler = new Text("Antwort 10 von 10");
+            frageLabel = new Text("Frage: " + "Es ist __:00 Uhr?" );
+
 
             //borderPane.setTop(antwortzähler);
             borderPane.setCenter(frageLabel);
@@ -121,8 +121,8 @@ public class GUI extends Application {
             BorderPane borderPane= new BorderPane();
             borderPane.setId("clockArea");
 
-            Circle circle = new Circle(200);
-            ClockSkin clock = new ClockSkin(anzuzeigendeZeit);
+           // Circle circle = new Circle(200);
+            clock = new ClockSkin(anzuzeigendeZeit);
 
 
          //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
@@ -130,7 +130,7 @@ public class GUI extends Application {
 
             borderPane.setTop(new Text("Uhrenbeispiel"));
             borderPane.setCenter(clock.createClock());
-            borderPane.setCenter(circle);
+           // borderPane.setCenter(circle);
 
             return borderPane;
         }
@@ -167,6 +167,7 @@ public class GUI extends Application {
             antwort4 = new Button("Antwort D");
 
              goOn = new Button ("weiter");
+
 
              Text antwort = new Text("Antwort");
              hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);

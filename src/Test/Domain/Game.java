@@ -68,18 +68,6 @@ public class Game extends Application  {
         randomAnswer();
         answerSet();
         aufgabennummer++;
-        gui.start(stage1);
-        gui.antwort1.setText((String) answers.get(0));
-        gui.antwort2.setText((String) answers.get(1));
-        gui.antwort3.setText((String) answers.get(2));
-        gui.antwort4.setText((String) answers.get(3));
-        gui.antwortzähler.setText("Aufgabe: " + aufgabennummer + "  von 10");
-        gui.goOn.setOnAction(event -> {
-            nextQuestion();
-              });
-//        gui.endButton.setOnAction(event -> uhrenspiel.endGame());
-  //      gui.saveButton.setOnAction(event -> uhrenspiel.saveProgress());
-      //  System.out.println(getTaskkey());
         System.out.println(key);
         System.out.println(liste);
         System.out.println(answers);
@@ -87,21 +75,6 @@ public class Game extends Application  {
     }
 
 
-
-    public void playGame() {
-
-      //  liste. clear();
-      //  answers.clear();
-        for (int i = 0; i < 10; i++)  {
-            nextQuestion();
-
-         //   System.out.println(getTaskkey());
-            System.out.println(liste);
-            System.out.println(answers);
-            System.out.println(aufgabennummer);
-
-        }
-    }
 
     public Object getTaskkey() {
         Object[] objects = questionsAnswermap.antwortenMap.keySet().toArray();
@@ -149,13 +122,16 @@ public class Game extends Application  {
     }
 
     public void answerSet() {
-
         for (int i = 0; i < 4; i++) {
             String value =questionsAnswermap.antwortenMap.get(liste.get(i));
             answers.add(value);
             Collections.shuffle(answers);
         }
+    }
 
+    public String getAnswerFA(String keys) {
+            String value =questionsAnswermap.antwortenMap.get(keys);
+            return value;
     }
 
 

@@ -24,7 +24,7 @@ public class Question extends GUI {
        // System.out.println(game.answers);
        System.out.println(game.getTaskkey());
     }
-    @Override
+   /* @Override
     public BorderPane middleArea() {
 
         final BorderPane middleArea = new BorderPane();
@@ -45,9 +45,9 @@ public class Question extends GUI {
 
         return middleArea;
 
-    }
+    }*/
 
-    @Override
+  /*  @Override
      public Pane clockArea(){
      BorderPane borderPane= new BorderPane();
       borderPane.setId("clockArea");
@@ -60,8 +60,7 @@ public class Question extends GUI {
         borderPane.setCenter(clock.createClock());
 
         return borderPane;
-    }
-
+    }*/
 
      @Override
     public Pane answerArea () {
