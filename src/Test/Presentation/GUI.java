@@ -117,19 +117,19 @@ public class GUI extends Application {
             return vBox;
         }
 
-        public Pane clockArea(){
+        public Pane clockArea(String anzuzeigendeZeit){
             BorderPane borderPane= new BorderPane();
             borderPane.setId("clockArea");
 
             Circle circle = new Circle(200);
-            ClockSkin clock = new ClockSkin("01:00");
+            ClockSkin clock = new ClockSkin(anzuzeigendeZeit);
 
 
          //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(7,370,7,250));
 
             borderPane.setTop(new Text("Uhrenbeispiel"));
-           //borderPane.setCenter(clock.createClockSkin());
+            borderPane.setCenter(clock.createClock());
             borderPane.setCenter(circle);
 
             return borderPane;

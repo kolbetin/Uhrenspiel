@@ -101,6 +101,26 @@ public class ClockSkin {
 
     public ClockSkin(String anzuzeigendeZeit) {
 
+       /* createMinuteMap();
+        createStundenMap();
+
+        String substringMinuten = anzuzeigendeZeit.substring(3);
+
+        this.stunde = parserStunde(anzuzeigendeZeit);
+        this.minuten = parserMinuten(substringMinuten);
+
+        System.out.println(anzuzeigendeZeit);
+        System.out.println(substringMinuten);
+        System.out.println(stunde);
+        System.out.println(minuten);
+
+        createClock();*/
+
+        clock(anzuzeigendeZeit);
+    }
+
+    public Node clock(String anzuzeigendeZeit) {
+
         createMinuteMap();
         createStundenMap();
 
@@ -114,7 +134,7 @@ public class ClockSkin {
         System.out.println(stunde);
         System.out.println(minuten);
 
-        createClock();
+        return createClock();
     }
 
 
@@ -257,8 +277,8 @@ public class ClockSkin {
         // Initialisierung Key, Value Werte in stundenMap
         stundenMap.put("01:00", stunde_1);
         stundenMap.put("01:15", stunde_viertelNach_1);
-        stundenMap.put("01:30", stunde_halb_1);
-        stundenMap.put("01:45", stunde_viertelVor_1);
+        stundenMap.put("12:30", stunde_halb_1);
+        stundenMap.put("12:45", stunde_viertelVor_1);
 
     }
 
