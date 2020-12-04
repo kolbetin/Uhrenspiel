@@ -1,18 +1,16 @@
 package Test.Presentation;
 
 import Test.Test;
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -21,78 +19,7 @@ public class ClockSkin {
 
     // set up Hashmap mit String Key, Line Value für Minuten
     private HashMap<String, Line> minutenMap = new HashMap<>();
-    private HashMap <String, Line> stundenMap = new HashMap<>();
-
-    // Linie Minuten für Test (to delete)
-    Line minuten_halbeStunde = new Line(300, 300, 300, 400);
-
-
-    // Koordinaten Stunde 2 Uhr
-    private Line stunde_2 = new Line(300, 300, 380, 255);
-    private Line stunde_viertelVor_2 = new Line(300, 300, 375, 245);
-    private Line stunde_viertelNach_2 = new Line(300, 300, 385, 265);
-    private Line stunde_halb_2 = new Line(300, 300, 365, 235);
-
-    // Koordinaten Stunde 3 Uhr
-    private Line stunde_3 = new Line(300, 300, 390, 300);
-    private Line stunde_viertelVor_3 = new Line(300, 300, 390, 285);
-    private Line stunde_viertelNach_3 = new Line(300, 300, 390, 315);
-    private Line stunde_halb_3 = new Line(300, 300, 395, 275);
-
-    // Koordinaten Stunde 4 Uhr
-    private Line stunde_4 = new Line(300, 300, 380, 345);
-    private Line stunde_viertelVor_4 = new Line(300, 300, 385, 335);
-    private Line stunde_viertelNach_4 = new Line(300, 300, 375, 355);
-    private Line stunde_halb_4 = new Line(300, 300, 395, 325);
-
-    // Koordinaten Stunde 5 Uhr
-    private Line stunde_5 = new Line(300, 300, 345, 380);
-    private Line stunde_viertelVor_5 = new Line(300, 300, 355, 375);
-    private Line stunde_viertelNach_5 = new Line(300, 300, 335, 385);
-    private Line stunde_halb_5 = new Line(300, 300, 365, 365);
-
-    // Koordinaten Stunde 6 Uhr
-    private Line stunde_6 = new Line(300, 300, 300, 390);
-    private Line stunde_viertelVor_6 = new Line(300, 300, 315, 390);
-    private Line stunde_viertelNach_6 = new Line(300, 300, 285, 390);
-    private Line stunde_halb_6 = new Line(300, 300, 325, 400);
-
-    // Koordinaten Stunde 7 Uhr
-    private Line stunde_7 = new Line(300, 300, 255, 380);
-    private Line stunde_viertelVor_7 = new Line(300, 300, 265, 385);
-    private Line stunde_viertelNach_7 = new Line(300, 300, 245, 375);
-    private Line stunde_halb_7 = new Line(300, 300, 275, 400);
-
-    // Koordinaten Stunde 8 Uhr
-    private Line stunde_8 = new Line(300, 300, 220, 345);
-    private Line stunde_viertelVor_8 = new Line(300, 300, 225, 355);
-    private Line stunde_viertelNach_8 = new Line(300, 300, 215, 335);
-    private Line stunde_halb_8 = new Line(300, 300, 235, 365);
-
-    // Koordinaten Stunde 9 Uhr
-    private Line stunde_9 = new Line(300, 300, 210, 300);
-    private Line stunde_viertelVor_9 = new Line(300, 300, 390, 315);
-    private Line stunde_viertelNach_9 = new Line(300, 300, 390, 285);
-    private Line stunde_halb_9 = new Line(300, 300, 205, 325);
-
-    // Koordinaten Stunde 10 Uhr
-    private Line stunde_10 = new Line(300, 300, 220, 255);
-    private Line stunde_viertelVor_10 = new Line(300, 300, 215, 265);
-    private Line stunde_viertelNach_10 = new Line(300, 300, 225, 245);
-    private Line stunde_halb_10 = new Line(300, 300, 205, 275);
-
-    // Koordinaten Stunde 11 Uhr
-    private Line stunde_11 = new Line(300, 300, 255, 220);
-    private Line stunde_viertelVor_11 = new Line(300, 300, 245, 225);
-    private Line stunde_viertelNach_11 = new Line(300, 300, 265, 215);
-    private Line stunde_halb_11 = new Line(300, 300, 235, 235);
-
-    // Koordinaten Stunde 12 Uhr
-    private Line stunde_12 = new Line(300, 300, 300, 210);
-    private Line stunde_viertelVor_12 = new Line(300, 300, 285, 210);
-    private Line stunde_viertelNach_12 = new Line(300, 300, 315, 200);
-    private Line stunde_halb_12 = new Line(300, 300, 275, 200);
-
+    private HashMap<String, Line> stundenMap = new HashMap<>();
 
 
     // Lineien Variablen für Stunde & Minuten zur Übergabe an createClockSkin() Methode
@@ -100,22 +27,6 @@ public class ClockSkin {
     Line minuten;
 
     public ClockSkin(String anzuzeigendeZeit) {
-
-       /* createMinuteMap();
-        createStundenMap();
-
-        String substringMinuten = anzuzeigendeZeit.substring(3);
-
-        this.stunde = parserStunde(anzuzeigendeZeit);
-        this.minuten = parserMinuten(substringMinuten);
-
-        System.out.println(anzuzeigendeZeit);
-        System.out.println(substringMinuten);
-        System.out.println(stunde);
-        System.out.println(minuten);
-
-        createClock();*/
-
         clock(anzuzeigendeZeit);
     }
 
@@ -220,11 +131,8 @@ public class ClockSkin {
         Group nummerGroup = new Group(nummer1, nummer2, nummer3, nummer4, nummer5, nummer6, nummer7, nummer8, nummer9, nummer10, nummer11, nummer12);
         Group uhrZeiger = new Group(stunde, minuten, innerCircle);
 
-        // Kreiert Hauptgruppe & Scene
+        // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
         Group root = new Group(circleGroup, nummerGroup, uhrZeiger);
-        //Scene scene = new Scene(root, 600, 600);
-
-        // Creates stage and scene
         Node clockSkin = root;
 
         //Displaying the contents of the stage
@@ -251,7 +159,14 @@ public class ClockSkin {
         };
     }
 
-    public void createMinuteMap(){
+    public Line parserMinuten(String minuten) {
+        return minutenMap.get(minuten);
+    }
+    public Line parserStunde(String stunde) {
+        return stundenMap.get(stunde);
+    }
+
+    public void createMinuteMap() {
 
         // Koordinaten für Minutenzeiger
         Line minuten_volleStunde = new Line(300, 300, 300, 200);
@@ -266,28 +181,92 @@ public class ClockSkin {
         minutenMap.put("45", minuten_viertelVor);
     }
 
-    public void createStundenMap(){
+    public void createStundenMap() {
 
-        // Koordinaten Stunde 1 Uhr
-        Line stunde_1 = new Line(300, 300, 345, 220);
-        Line stunde_viertelVor_1 = new Line(300, 300, 335, 215);
-        Line stunde_viertelNach_1 = new Line(300, 300, 355, 225);
-        Line stunde_halb_1 = new Line(300, 300, 325, 210);
+        // Linien Koordinaten für Stunde 1 Uhr
+        Line stunde_12_45 = new Line(300, 300, 335, 215);
+        Line stunde_12_30 = new Line(300, 300, 325, 210);
+        Line stunde_01_00 = new Line(300, 300, 345, 220);
+        Line stunde_01_15 = new Line(300, 300, 355, 225);
+        //  HashMap Erstellung für Stunde 1 Uhr
+        stundenMap.put("12:30", stunde_12_30);
+        stundenMap.put("12:45", stunde_12_45);
+        stundenMap.put("01:00", stunde_01_00);
+        stundenMap.put("01:15", stunde_01_15);
 
-        // Initialisierung Key, Value Werte in stundenMap
-        stundenMap.put("01:00", stunde_1);
-        stundenMap.put("01:15", stunde_viertelNach_1);
-        stundenMap.put("12:30", stunde_halb_1);
-        stundenMap.put("12:45", stunde_viertelVor_1);
+        // Koordinaten Stunde 2 Uhr
+        private Line stunde_01_30 = new Line(300, 300, 365, 235);
+        private Line stunde_01_45 = new Line(300, 300, 375, 245);
+        private Line stunde_02_00 = new Line(300, 300, 380, 255);
+        private Line stunde_02_15 = new Line(300, 300, 385, 265);
+        //  HashMap Erstellung für Stunde 2 Uhr
+        stundenMap.put("01:30", stunde_01_30);
+        stundenMap.put("01:45", stunde_01_45);
+        stundenMap.put("02:00", stunde_02_00);
+        stundenMap.put("02:15", stunde_02_15);
 
-    }
 
-    public Line parserMinuten(String minuten){
-       return minutenMap.get(minuten);
-    }
+        // Koordinaten Stunde 3 Uhr
+        private Line stunde_3 = new Line(300, 300, 390, 300);
+        private Line stunde_viertelVor_3 = new Line(300, 300, 390, 285);
+        private Line stunde_viertelNach_3 = new Line(300, 300, 390, 315);
+        private Line stunde_halb_3 = new Line(300, 300, 395, 275);
 
-    public Line parserStunde(String stunde){
-        return stundenMap.get(stunde);
+        // Koordinaten Stunde 4 Uhr
+        private Line stunde_4 = new Line(300, 300, 380, 345);
+        private Line stunde_viertelVor_4 = new Line(300, 300, 385, 335);
+        private Line stunde_viertelNach_4 = new Line(300, 300, 375, 355);
+        private Line stunde_halb_4 = new Line(300, 300, 395, 325);
+
+        // Koordinaten Stunde 5 Uhr
+        private Line stunde_5 = new Line(300, 300, 345, 380);
+        private Line stunde_viertelVor_5 = new Line(300, 300, 355, 375);
+        private Line stunde_viertelNach_5 = new Line(300, 300, 335, 385);
+        private Line stunde_halb_5 = new Line(300, 300, 365, 365);
+
+        // Koordinaten Stunde 6 Uhr
+        private Line stunde_6 = new Line(300, 300, 300, 390);
+        private Line stunde_viertelVor_6 = new Line(300, 300, 315, 390);
+        private Line stunde_viertelNach_6 = new Line(300, 300, 285, 390);
+        private Line stunde_halb_6 = new Line(300, 300, 325, 400);
+
+        // Koordinaten Stunde 7 Uhr
+        private Line stunde_7 = new Line(300, 300, 255, 380);
+        private Line stunde_viertelVor_7 = new Line(300, 300, 265, 385);
+        private Line stunde_viertelNach_7 = new Line(300, 300, 245, 375);
+        private Line stunde_halb_7 = new Line(300, 300, 275, 400);
+
+        // Koordinaten Stunde 8 Uhr
+        private Line stunde_8 = new Line(300, 300, 220, 345);
+        private Line stunde_viertelVor_8 = new Line(300, 300, 225, 355);
+        private Line stunde_viertelNach_8 = new Line(300, 300, 215, 335);
+        private Line stunde_halb_8 = new Line(300, 300, 235, 365);
+
+        // Koordinaten Stunde 9 Uhr
+        private Line stunde_9 = new Line(300, 300, 210, 300);
+        private Line stunde_viertelVor_9 = new Line(300, 300, 390, 315);
+        private Line stunde_viertelNach_9 = new Line(300, 300, 390, 285);
+        private Line stunde_halb_9 = new Line(300, 300, 205, 325);
+
+        // Koordinaten Stunde 10 Uhr
+        private Line stunde_10 = new Line(300, 300, 220, 255);
+        private Line stunde_viertelVor_10 = new Line(300, 300, 215, 265);
+        private Line stunde_viertelNach_10 = new Line(300, 300, 225, 245);
+        private Line stunde_halb_10 = new Line(300, 300, 205, 275);
+
+        // Koordinaten Stunde 11 Uhr
+        private Line stunde_11 = new Line(300, 300, 255, 220);
+        private Line stunde_viertelVor_11 = new Line(300, 300, 245, 225);
+        private Line stunde_viertelNach_11 = new Line(300, 300, 265, 215);
+        private Line stunde_halb_11 = new Line(300, 300, 235, 235);
+
+        // Koordinaten Stunde 12 Uhr
+        private Line stunde_12 = new Line(300, 300, 300, 210);
+        private Line stunde_viertelVor_12 = new Line(300, 300, 285, 210);
+        private Line stunde_viertelNach_12 = new Line(300, 300, 315, 200);
+        private Line stunde_halb_12 = new Line(300, 300, 275, 200);
+
+
     }
 
 }
