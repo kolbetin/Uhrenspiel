@@ -41,11 +41,13 @@ import java.util.Random;
           stage1 = new Stage();
 
           mainScreen.start(stage1);
-          mainScreen.newGameButton.setOnAction(event ->
-                    newGameMultipleChoice()
-                    //newGameFreeAnswer()
+          mainScreen.newGameButton.setOnAction(event -> {
+              stage1.close();
+              game.aufgabennummer = 0;
+              newGameMultipleChoice();
+              //newGameFreeAnswer()
 
-          );
+          });
           mainScreen.loadGameButton.setOnAction(event ->
                   loadProgress()
           );
@@ -58,11 +60,6 @@ import java.util.Random;
                   }
           );
       }
-
-
-
-
-
 
 
        /*  PauseTransition delay = new PauseTransition(Duration.seconds(5));
@@ -99,58 +96,63 @@ import java.util.Random;
 
 
 
-    public void newGameMultipleChoice(){
-         stage1.close();
-         //getGUI().start(stage1);
-
+    public void newGameMultipleChoice() {
+        game.liste.clear();
+        game.answers.clear();
+        game.getTaskkey();
+        game.randomAnswer();
+        game.answerSet();
+        game.aufgabennummer++;
+        guiMC.start(stage1);
+        guiMC.antwort1.setText((String) game.answers.get(0));
+        guiMC.antwort2.setText((String) game.answers.get(1));
+        guiMC.antwort3.setText((String) game.answers.get(2));
+        guiMC.antwort4.setText((String) game.answers.get(3));
+        guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
+        guiMC.goOn.setOnAction(event -> {
+            if(game.aufgabennummer<5) {
+                newGameMultipleChoice();
+            }
+            else {
+                //stage1.close();
+                newGameFreeAnswer();
+            }
+        });
+        guiMC.endButton.setOnAction(event -> endGame());
+        guiMC.saveButton.setOnAction(event -> saveProgress());;
         System.out.println(game.key);
-        question.start(stage1);
-         question.goOn.setOnAction(event -> {
-
-            //  if(game.aufgabennummer< 6) {
-                    game.nextQuestion();
-                    question.antwort1.setText((String) game.answers.get(0));
-                    question.antwort2.setText((String) game.answers.get(1));
-                    question.antwort3.setText((String) game.answers.get(2));
-                    question.antwort4.setText((String) game.answers.get(3));
-                    question.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-           /*     }
-
-                else {
-                    stage1.close();
-                    start(stage1);
-                }*/
-                 });
-
-        question.endButton.setOnAction(event -> endGame());
-        question.saveButton.setOnAction(event -> saveProgress());
-        guiFA.endButton.setOnAction(event -> endGame());
-        guiFA.saveButton.setOnAction(event -> saveProgress());
+        System.out.println(game.liste);
+        System.out.println(game.answers);
+        System.out.println(game.aufgabennummer);
   }
       public void newGameFreeAnswer(){
-          stage1.close();
-          //getGUI().start(stage1);
-
+          game.liste.clear();
+          game.answers.clear();
+          game.getTaskkey();
+          game.randomAnswer();
+          game.answerSet();
+          game.aufgabennummer++;
           guiFA.start(stage1);
+          guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
           guiFA.goOn.setOnAction(event -> {
-                   System.out.println(game.aufgabennummer);
-             // if(game.aufgabennummer< 6) {
-                  game.nextQuestion();
-                  guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-            /*  }
+          System.out.println(game.aufgabennummer);
+              if(game.aufgabennummer<10) {
+                newGameFreeAnswer();
+             }
                   else {
                   stage1.close();
                   start(stage1);
-              }*/
+                   }
           });
-          //guiFA
-
           guiFA.endButton.setOnAction(event -> endGame());
           guiFA.saveButton.setOnAction(event -> saveProgress());
+          System.out.println(game.key);
+          System.out.println(game.liste);
+          System.out.println(game.answers);
+          System.out.println(game.aufgabennummer);
       }
 
     public void endGame(){
-
             Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION,  "Spiel beenden!",
                 "Wenn du das Spiel beendest, geht der Fortschritt verloren! Willst du wirklich beenden? " );
             if(alert){
@@ -160,7 +162,7 @@ import java.util.Random;
 
     }
 
-      private void saveProgress() {
+      public void saveProgress() {
           try {
               file = new File(createFileName());
               progressData.saveProgress(file);
@@ -203,7 +205,7 @@ import java.util.Random;
 
 
     public Uhrenspiel() {
-       // guiMC = new GUI();
+        guiMC = new GUI();
         guiFA = new QuestionFreeAnswer();
         mainScreen = new MainScreen();
         verAbschieden = new Verabschiedungsbildschirm();

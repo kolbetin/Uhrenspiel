@@ -21,6 +21,7 @@ public class GUI extends Application {
         public Button antwort4;
         public Button saveButton;
         public Label antwortzähler;
+        public Button goOn;
 
 
 
@@ -165,8 +166,12 @@ public class GUI extends Application {
             antwort3 = new Button("Antwort C");
             antwort4 = new Button("Antwort D");
 
-            Text antwort = new Text("Antwort");
-            hBox.getChildren().addAll(antwort, antwort1,antwort2,antwort3, antwort4);
+             goOn = new Button ("weiter");
+
+             Text antwort = new Text("Antwort");
+             hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);
+             hBox.getChildren().add(goOn);
+
 
             return hBox;
          }

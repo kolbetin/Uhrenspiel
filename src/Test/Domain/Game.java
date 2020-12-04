@@ -3,6 +3,7 @@ package Test.Domain;
 import Test.Persistenz.IOSerialisierung;
 
 import Test.Presentation.Question;
+import Test.Presentation.Uhrenspiel;
 import javafx.application.Application;
 import Test.Presentation.AlertHelper;
 import javafx.stage.Stage;
@@ -11,7 +12,7 @@ import Test.Presentation.GUI;
 import java.util.*;
 
 
-public class Game  {
+public class Game extends Application  {
 
         private QuestionsAnswer questionsAnswermap;
         private ProgressData progressData;
@@ -28,8 +29,11 @@ public class Game  {
         private Question question;
         private GUI gui;
         private Stage stage1;
+        private Uhrenspiel uhrenspiel;
 
+  public void start(Stage p){
 
+  }
 
 
         public Game(){
@@ -38,7 +42,10 @@ public class Game  {
             answers = new ArrayList<String>();
             random = new Random();
             liste =  new ArrayList<String>();
-           nextQuestion();
+            stage1 = new Stage();
+            //question = new Question();
+            gui = new GUI();
+          // nextQuestion();
          /*   getTaskkey();
             System.out.println(liste);
             randomAnswer();
@@ -61,7 +68,17 @@ public class Game  {
         randomAnswer();
         answerSet();
         aufgabennummer++;
-
+        gui.start(stage1);
+        gui.antwort1.setText((String) answers.get(0));
+        gui.antwort2.setText((String) answers.get(1));
+        gui.antwort3.setText((String) answers.get(2));
+        gui.antwort4.setText((String) answers.get(3));
+        gui.antwortzähler.setText("Aufgabe: " + aufgabennummer + "  von 10");
+        gui.goOn.setOnAction(event -> {
+            nextQuestion();
+              });
+//        gui.endButton.setOnAction(event -> uhrenspiel.endGame());
+  //      gui.saveButton.setOnAction(event -> uhrenspiel.saveProgress());
       //  System.out.println(getTaskkey());
         System.out.println(key);
         System.out.println(liste);
