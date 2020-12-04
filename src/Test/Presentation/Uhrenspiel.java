@@ -10,7 +10,10 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -28,7 +31,6 @@ public class Uhrenspiel extends Application  {
     private GUI guiMC;
     private QuestionFreeAnswer guiFA;
     private MainScreen mainScreen;
-    private QuestionsAnswer qa;
     private Verabschiedungsbildschirm verAbschieden;
     private Stage stage1;
     private Stage stage2;
@@ -36,7 +38,6 @@ public class Uhrenspiel extends Application  {
     ArrayList<GUI> guiList;
     private AlertHelper alertHelper;
     public Game game;
-    public Question question;
     private ProgressData progressData;
     private File file;
 
@@ -122,11 +123,7 @@ public class Uhrenspiel extends Application  {
         });
         guiMC.endButton.setOnAction(event -> endGame());
         guiMC.saveButton.setOnAction(event -> saveProgress());
-     /*   EventHandler<MouseEvent> eventHandler = getEventHandler();
-        guiMC.antwort1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        guiMC.antwort2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        guiMC.antwort3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        guiMC.antwort4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);*/
+        correctAnswerMC();
         System.out.println(game.key);
         System.out.println(game.liste);
         System.out.println(game.answers);
@@ -183,15 +180,19 @@ public class Uhrenspiel extends Application  {
               return new EventHandler<MouseEvent>() {
               @Override
                   public void handle(MouseEvent event) {
-                      if (guiMC.antwort1.getText().contains(game.getAnswerFA(game.key))) {
-                          guiMC.antwort1.setStyle("-fx-background-color: #5e8c5e");
-                          guiMC.antwort1.setText("Super, korrekte Antwort!");
-                        } else {
-                          guiMC.antwort1.setStyle("-fx-background-color: #ea6969");
-                          guiMC.antwort1.setText("Leider, falsche Antwort!");
+
+                  if (event.getSource() instanceof Button) {
+                      Button button = (Button) event.getSource();
+                      if (button.getText().contains(game.getAnswerFA(game.key))) {
+                          button.setStyle("-fx-background-color: green");
+                          button.setText("Super, korrekte Antwort!");
+                      } else {
+                          button.setStyle("-fx-background-color: red");
+                          button.setText("Leider, falsche Antwort!");
                           guiMC.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
                       }
                   }
+                }
               };
           }
 
