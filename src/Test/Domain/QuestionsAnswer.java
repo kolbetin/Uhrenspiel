@@ -1,6 +1,7 @@
 package Test.Domain;
 
 import Test.Domain.ProgressData;
+import Test.Presentation.ClockSkin;
 import Test.Test;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -22,6 +23,9 @@ public class QuestionsAnswer {
     public QuestionsAnswer() {
         antwortenMap = new HashMap<>();
         antwortenMapLevel1();
+        antwortenMapLevel2();
+        antwortenMapLevel3();
+        System.out.println(antwortenMap.size());
 
     }
 

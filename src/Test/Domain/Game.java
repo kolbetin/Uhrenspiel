@@ -2,12 +2,9 @@ package Test.Domain;
 
 import Test.Persistenz.IOSerialisierung;
 
-import Test.Presentation.Question;
-import Test.Presentation.Uhrenspiel;
+import Test.Presentation.*;
 import javafx.application.Application;
-import Test.Presentation.AlertHelper;
 import javafx.stage.Stage;
-import Test.Presentation.GUI;
 
 import java.util.*;
 
@@ -42,10 +39,9 @@ public class Game extends Application  {
             answers = new ArrayList<String>();
             random = new Random();
             liste =  new ArrayList<String>();
-            stage1 = new Stage();
+
             //question = new Question();
-            gui = new GUI();
-          // nextQuestion();
+            // nextQuestion();
          /*   getTaskkey();
             System.out.println(liste);
             randomAnswer();
@@ -67,11 +63,12 @@ public class Game extends Application  {
         getTaskkey();
         randomAnswer();
         answerSet();
+      //  ClockSkin clock = new ClockSkin(key);
         aufgabennummer++;
-        System.out.println(key);
+   /*     System.out.println(key);
         System.out.println(liste);
         System.out.println(answers);
-        System.out.println(aufgabennummer);
+        System.out.println(aufgabennummer);*/
     }
 
 

@@ -46,6 +46,7 @@ public class Uhrenspiel extends Application  {
 
 
 
+
       public void start(Stage primarystage) {
 
           stage1 = new Stage();
@@ -111,8 +112,8 @@ public class Uhrenspiel extends Application  {
     public void newGameMultipleChoice() {
         game.nextQuestion();
         guiMC.start(stage1);
-       // guiMC.clockArea(game.key);
-        guiMC.clockArea("01:00");
+        guiMC.clockArea(game.key);
+       // guiMC.clockArea("04:00");
         guiMC.antwort1.setText((String) game.answers.get(0));
         guiMC.antwort2.setText((String) game.answers.get(1));
         guiMC.antwort3.setText((String) game.answers.get(2));
@@ -133,12 +134,13 @@ public class Uhrenspiel extends Application  {
         System.out.println(game.liste);
         System.out.println(game.answers);
         System.out.println(game.aufgabennummer);
+
   }
       public void newGameFreeAnswer(){
           game.nextQuestion();
           guiFA.start(stage1);
-         // guiFA.clockArea(game.key);
-          guiFA.clockArea("01:00");
+          guiFA.clockArea(game.key);
+         // guiFA.clockArea("01:00");
           guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
           guiFA.goOn.setOnAction(event -> {
           System.out.println(game.aufgabennummer);
@@ -267,6 +269,7 @@ public class Uhrenspiel extends Application  {
         verAbschieden = new Verabschiedungsbildschirm();
         progressData = new ProgressData();
         game = new Game();
+
 
 
 
