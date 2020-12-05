@@ -63,7 +63,7 @@ public class Game extends Application  {
         getTaskkey();
         randomAnswer();
         answerSet();
-      //  ClockSkin clock = new ClockSkin(key);
+
         aufgabennummer++;
    /*     System.out.println(key);
         System.out.println(liste);

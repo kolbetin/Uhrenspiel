@@ -1,5 +1,6 @@
 package Test.Presentation;
 
+import Test.Domain.Game;
 import Test.Test;
 import javafx.application.Application;
 import javafx.concurrent.Task;
@@ -29,6 +30,8 @@ public class GUI extends Application {
 
 
 
+
+
         public void start(Stage primaryStage) {
 
             final BorderPane borderPane = new BorderPane();
@@ -50,7 +53,7 @@ public class GUI extends Application {
 
     public BorderPane middleArea() {
 
-        final BorderPane middleArea = new BorderPane();
+        BorderPane middleArea = new BorderPane();
         middleArea.setId("middleArea");
 
         antwortzähler = new Label("Antwort 1 von 10");
@@ -59,10 +62,9 @@ public class GUI extends Application {
         borderPane.setTop(questionArea());
         borderPane.setBottom(answerArea());
 
-
         middleArea.setTop(antwortzähler);
         middleArea.setBottom(borderPane);
-        middleArea.setLeft(clockArea("11:15"));
+        middleArea.setLeft(clockArea( "01:00"));
 
         return middleArea;
 
@@ -117,12 +119,12 @@ public class GUI extends Application {
             return vBox;
         }
 
-        public Pane clockArea(String anzuzeigendeZeit){
+        public Pane clockArea(String zit){
             BorderPane borderPane= new BorderPane();
             borderPane.setId("clockArea");
 
            // Circle circle = new Circle(200);
-            clock = new ClockSkin(anzuzeigendeZeit);
+            clock = new ClockSkin(zit);
 
 
          //  borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");

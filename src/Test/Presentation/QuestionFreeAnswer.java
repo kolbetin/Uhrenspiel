@@ -8,36 +8,10 @@ import javafx.scene.text.Text;
 
 public class QuestionFreeAnswer extends GUI {
     public Button goOn;
-    private Game game;
     public TextField givenAnswer;
     public Button submitButton;
 
 
-    public QuestionFreeAnswer(){
-        game = new Game();
-    }
-   /* @Override
-    public BorderPane middleArea() {
-
-        final BorderPane middleArea = new BorderPane();
-        middleArea.setId("middleArea");
-
-        antwortzähler = new Label("Aufgabe: " + game.aufgabennummer+ "  von 10");
-
-        BorderPane borderPane = new BorderPane();
-        borderPane.setTop(questionArea());
-        borderPane.setBottom(answerArea());
-
-
-        middleArea.setTop(antwortzähler);
-        middleArea.setBottom(borderPane);
-        middleArea.setLeft(clockArea("01:00"));
-
-
-
-        return middleArea;
-
-    }*/
 
     @Override
     public Pane answerArea() {
