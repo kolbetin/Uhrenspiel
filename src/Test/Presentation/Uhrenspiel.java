@@ -7,6 +7,9 @@ import Test.Persistenz.IOSerialisierung;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -46,6 +49,7 @@ public class Uhrenspiel extends Application  {
     private int falscheAntwort;
     private ClockSkin clockSkin;
     public Node node;
+
 
 
 
@@ -170,27 +174,38 @@ public class Uhrenspiel extends Application  {
           System.out.println(game.key);
           System.out.println(game.getAnswerFA(game.key));
           System.out.println(game.aufgabennummer);
-          System.out.println("Richtige Antwort; " + richtigeAntwort);
-          System.out.println("Falsche Antwort; " + falscheAntwort);
+          System.out.println("Richtige Antwort: " + richtigeAntwort);
+          System.out.println("Falsche Antwort: " + falscheAntwort);
 
       }
 
-      public void correctAnswerFA(){
-            if(guiFA.givenAnswer.getText().equals(game.getAnswerFA(game.key))) {
-                guiFA.submitButton.setStyle("-fx-background-color: #5e8c5e");
-                guiFA.submitButton.setText("Super, korrekte Antwort!");
-                richtigeAntwort++;
+      public void correctAnswerFA() {
+          if (!guiFA.givenAnswer.getText().isEmpty() & guiFA.givenAnswer.getText() != null & guiFA.givenAnswer.getText().matches("[0-9]*")) {
+              if (guiFA.givenAnswer.getText().equals(game.getAnswerFA(game.key))) {
+                  guiFA.submitButton.setStyle("-fx-background-color: #1cf61c");
+                  guiFA.questionLabel.setText("Toll gemacht, die korrekte Antwort ist " + game.key + "Uhr.");
+                  guiFA.givenAnswer.setDisable(true);
+                  guiFA.submitButton.setDisable(true);
+                  richtigeAntwort++;
             /*    PauseTransition wait = new PauseTransition(Duration.seconds(5));
                 wait.setOnFinished(event -> newGameFreeAnswer());
                 wait.play();*/
-             }
-             else {
-                 guiFA.submitButton.setStyle("-fx-background-color: #ea6969");
-                 guiFA.submitButton.setText("Leider, falsche Antwort!");
-                 guiFA.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
-                 falscheAntwort++;
-             }
+              } else {
+                  guiFA.submitButton.setStyle("-fx-background-color: #dd2323");
+                  guiFA.submitButton.setText("Leider, falsche Antwort!");
+                  guiFA.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
+                  falscheAntwort++;
+                  guiFA.givenAnswer.setDisable(true);
+                  guiFA.submitButton.setDisable(true);
+              }
+          } else {
+              //guiFA.submitButton.setDisable(true);
+              alertHelper.showAlert(Alert.AlertType.ERROR,"Fehler" ,"Bitte eine Zahl eingeben, z.B. 8 oder 12.");
+              guiFA.givenAnswer.clear();
+
+          }
       }
+
 
       public void correctAnswerMC() {
           EventHandler<MouseEvent> eventHandler = getEventHandler();
@@ -198,6 +213,7 @@ public class Uhrenspiel extends Application  {
           guiMC.antwort2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
           guiMC.antwort3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
           guiMC.antwort4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
       }
 
           EventHandler<MouseEvent> getEventHandler() {
@@ -205,20 +221,29 @@ public class Uhrenspiel extends Application  {
               return new EventHandler<MouseEvent>() {
               @Override
                   public void handle(MouseEvent event) {
+                 // BooleanProperty isDisabled = new SimpleBooleanProperty();
+
 
                   if (event.getSource() instanceof Button) {
                       Button button = (Button) event.getSource();
+                      //button.disableProperty().bind(isDisabled);
 
-                          if (button.getText().contains(game.getAnswerFA(game.key))) {
+
+                          if (button.getText().contains(game.getAnswerFA(game.key)) ) {
                               button.setStyle("-fx-background-color: green");
                               button.setText("Super, korrekte Antwort!");
+
+                              button.setDisable(true);
                               richtigeAntwort++;
                           } else {
                               button.setStyle("-fx-background-color: red");
                               button.setText("Leider, falsche Antwort!");
                               guiMC.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
                               falscheAntwort++;
+                              button.setDisable(true);
                           }
+
+
                       }
                   }
 

@@ -28,10 +28,8 @@ public class GUI extends Application {
         public ClockSkin clock;
         public Text questionLabel;
         public Label uberschrift;
-        public String zeit;
+        public String zeit = "01:00";
         public Node node;
-
-
 
 
 
@@ -61,10 +59,10 @@ public class GUI extends Application {
 
         antwortzähler = new Label("Antwort 1 von 10");
 
+
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(questionArea());
         borderPane.setBottom(answerArea());
-       // zeit = "02:00";
         middleArea.setTop(antwortzähler);
         middleArea.setBottom(borderPane);
         middleArea.setLeft(clockArea(zeit ));
@@ -152,9 +150,9 @@ public class GUI extends Application {
             vbox.getChildren().addAll(saveButton,endButton);
 
 
-             final ProgressBar pbs = new ProgressBar();
-             final ProgressIndicator pins = new ProgressIndicator();
-             final HBox hbs  = new HBox ();
+         //    final ProgressBar pbs = new ProgressBar();
+          //   final ProgressIndicator pins = new ProgressIndicator();
+          //   final HBox hbs  = new HBox ();
 
 
             Text text = new Text("Richtige Antworten:");
@@ -162,7 +160,7 @@ public class GUI extends Application {
 
              final VBox vb = new VBox();
              vb.setSpacing(5);
-             vb.getChildren().addAll(hbs, text,text2,pbs,pins);
+             vb.getChildren().addAll( text,text2);
 
            // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(7, 50, 7, 25));
