@@ -22,14 +22,14 @@ public class QuestionsAnswer {
 
     public QuestionsAnswer() {
         antwortenMap = new HashMap<>();
-        antwortenMapLevel1();
+     //   antwortenMapLevel1();
       //  antwortenMapLevel2();
       //  antwortenMapLevel3();
         System.out.println(antwortenMap.size());
 
     }
 
-    private void antwortenMapLevel1() {
+    public void antwortenMapLevel1() {
         antwortenMap.put("01:00","1");
         antwortenMap.put("02:00","2");
         antwortenMap.put("03:00","3");
@@ -44,7 +44,7 @@ public class QuestionsAnswer {
         antwortenMap.put("12:00","12");
     }
 
-    private void antwortenMapLevel2() {
+    public void antwortenMapLevel2() {
         antwortenMap.put("01:30","1:30");
         antwortenMap.put("02:30","2:30");
         antwortenMap.put("03:30","3:30");
@@ -58,7 +58,7 @@ public class QuestionsAnswer {
         antwortenMap.put("11:30","11:30");
         antwortenMap.put("12:30","12:30");
     }
-    private void antwortenMapLevel3() {
+    public void antwortenMapLevel3() {
         antwortenMap.put("01:15","1:15");
         antwortenMap.put("02:15","2:15");
         antwortenMap.put("03:15","3:15");

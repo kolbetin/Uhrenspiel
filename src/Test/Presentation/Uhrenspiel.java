@@ -50,6 +50,7 @@ public class Uhrenspiel extends Application  {
     private int falscheAntwort;
     private ClockSkin clockSkin;
     public Node node;
+    private int level;
 
 
 
@@ -83,11 +84,24 @@ public class Uhrenspiel extends Application  {
 
 
     public void newGame(){
-        choiceScreen.start(stage1);
+
         game.aufgabennummer = 0;
         richtigeAntwort =0;
         falscheAntwort= 0;
-        choiceScreen.level1.setOnAction(e -> newGameMultipleChoice());
+        choiceScreen.start(stage1);
+        choiceScreen.level1.setOnAction(e -> {
+            level = 1;
+            game.getLevel(1);
+            newGameMultipleChoice();
+        });
+        choiceScreen.level2.setOnAction(e -> {
+            game.getLevel(2);
+            newGameMultipleChoice();
+        });
+        choiceScreen.level3.setOnAction(e -> {
+            game.getLevel(3);
+            newGameMultipleChoice();
+        });
         choiceScreen.backButton.setOnAction(event -> {
                  start(stage1);
         });
@@ -99,21 +113,12 @@ public class Uhrenspiel extends Application  {
         game.nextQuestion();
         guiMC.zeit = game.key;
         guiMC.start(stage1);
-       // guiMC.clock = new ClockSkin(game.key);
-      //  guiMC.clockArea();
-
-       // guiMC.clockArea (game.key);
-//        guiMC.clock.clock(game.key);
-       // guiMC.node.setEventDispatcher(game.key);
-      //  guiMC.clock.clock(game.key);
-       // guiMC.clock.createClock();
-
-
         guiMC.antwort1.setText((String) game.answers.get(0));
         guiMC.antwort2.setText((String) game.answers.get(1));
         guiMC.antwort3.setText((String) game.answers.get(2));
         guiMC.antwort4.setText((String) game.answers.get(3));
         guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
+        guiMC.level.setText("Level: " + level);
         guiMC.goOn.setOnAction(event -> {
             if(game.aufgabennummer<5) {
                 newGameMultipleChoice();
@@ -193,8 +198,17 @@ public class Uhrenspiel extends Application  {
           guiMC.antwort2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
           guiMC.antwort3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
           guiMC.antwort4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-
+          guiMC.goOn.setDisable(true);
       }
+
+      private void disableButtons(){
+          guiMC.antwort1.setDisable(true);
+          guiMC.antwort2.setDisable(true);
+          guiMC.antwort3.setDisable(true);
+          guiMC.antwort4.setDisable(true);
+      }
+
+
 
           EventHandler<MouseEvent> getEventHandler() {
               //Creating the mouse event handler
@@ -211,18 +225,20 @@ public class Uhrenspiel extends Application  {
 
                           if (button.getText().contains(game.getAnswerFA(game.key)) ) {
                               button.setStyle("-fx-background-color: green");
-                              button.setText("Super, korrekte Antwort!");
-
-                              button.setDisable(true);
+                              button.setText("Super!!");
+                              guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.key + " Uhr.");
                               richtigeAntwort++;
-                          } else {
-                              button.setStyle("-fx-background-color: red");
-                              button.setText("Leider, falsche Antwort!");
-                              guiMC.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
-                              falscheAntwort++;
-                              button.setDisable(true);
-                          }
+                              disableButtons();
+                              guiMC.goOn.setDisable(false);
 
+                              } else {
+                              button.setStyle("-fx-background-color: red");
+                              button.setText("Leider falsch!");
+                              guiMC.questionLabel.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.key + " Uhr.");
+                              falscheAntwort++;
+                              disableButtons();
+                               guiMC.goOn.setDisable(false);
+                          }
 
                       }
                   }

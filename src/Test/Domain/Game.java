@@ -70,6 +70,25 @@ public class Game extends Application  {
         System.out.println(answers);
         System.out.println(aufgabennummer);*/
     }
+    public void getLevel(int level) {
+      questionsAnswermap.antwortenMap.clear();
+        if (level == 1) {
+            questionsAnswermap.antwortenMapLevel1();
+        }
+        if (level == 2) {
+            questionsAnswermap.antwortenMapLevel2();
+        }
+        if
+        (level == 3) {
+            questionsAnswermap.antwortenMapLevel3();
+        } /*else {
+            questionsAnswermap.antwortenMapLevel1();
+            questionsAnswermap.antwortenMapLevel2();
+            questionsAnswermap.antwortenMapLevel3();
+        }*/
+        System.out.println(questionsAnswermap.antwortenMap.keySet());
+        System.out.println(level);
+    }
 
 
 

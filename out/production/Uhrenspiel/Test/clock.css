@@ -9,7 +9,7 @@
 
  }
 #answerArea Button {
--fx-min-width: 150;
+-fx-min-width: 180;
 
 }
 
@@ -17,6 +17,11 @@
     -fx-font-size: 25px;
     -fx-font-weight: bold;
 
+
+}
+#choiceMiddleArea Text{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
 
 }
 #upperArea {

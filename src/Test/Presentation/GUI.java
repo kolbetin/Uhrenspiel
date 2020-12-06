@@ -9,10 +9,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
+import java.io.FileInputStream;
+import java.util.Collection;
 
 
 public class GUI extends Application {
@@ -26,10 +30,11 @@ public class GUI extends Application {
         public Label antwortzähler;
         public Button goOn;
         public ClockSkin clock;
-        public Text questionLabel;
+        public Label questionLabel;
         public Label uberschrift;
         public String zeit = "01:00";
         public Node node;
+        public Label level;
 
 
 
@@ -58,12 +63,21 @@ public class GUI extends Application {
         middleArea.setId("middleArea");
 
         antwortzähler = new Label("Antwort 1 von 10");
+        level = new Label ("Level");
+        //Image image1 = new Image( System.getProperty("user.home"));
 
 
+       // VBox vBox2= new VBox(2);
+       // vBox2.getChildren().addAll(level);
+        VBox vBox= new VBox(2);
+        vBox.getChildren().addAll(antwortzähler, level);
+        vBox.setPadding(new Insets(7,7,7,7));
+       // vBox2.setPadding(new Insets(7,170,370,7));
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(questionArea());
         borderPane.setBottom(answerArea());
-        middleArea.setTop(antwortzähler);
+        //borderPane.setRight(vBox2);
+        middleArea.setTop(vBox);
         middleArea.setBottom(borderPane);
         middleArea.setLeft(clockArea(zeit ));
 
@@ -77,9 +91,9 @@ public class GUI extends Application {
             borderPane.setPadding(new Insets(7, 750, 10, 50));
 
            // Text frage = new Text("Wie spät is es?");
-            questionLabel = new Text("Frage: " + "Es ist __:00 Uhr?" );
+            questionLabel = new Label("Frage: " + "Es ist __:00 Uhr?" );
 
-            borderPane.setCenter(questionLabel);
+            borderPane.setTop(questionLabel);
 
 
             return borderPane;
@@ -125,15 +139,17 @@ public class GUI extends Application {
             borderPane.setId("clockArea");
 
 
+
            // Circle circle = new Circle(200);
             clock = new ClockSkin(zit);
             node = clock.createClock();
 
-          // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-            borderPane.setPadding(new Insets(7,370,7,250));
+           //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
+            borderPane.setPadding(new Insets(70,170,7,250));
 
-            borderPane.setTop(new Text("Level"));
-            borderPane.setCenter(node);
+
+
+            borderPane.setTop(node);
            // borderPane.setCenter(circle);
 
             return borderPane;
@@ -175,7 +191,7 @@ public class GUI extends Application {
 
 
          public  Pane answerArea() {
-            final HBox hBox = new HBox(35);
+            final HBox hBox = new HBox(25);
             hBox.setId("answerArea");
 
             hBox.setPadding(new Insets(15, 10, 10, 50));
