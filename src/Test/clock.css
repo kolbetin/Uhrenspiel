@@ -12,6 +12,9 @@
 -fx-min-width: 180;
 
 }
+#entryTextfield Textfield {
+    -fx-min-width: 25;
+}
 
 #upperArea Label{
     -fx-font-size: 25px;
@@ -74,6 +77,7 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-font-family: Arial;
+    -fx-max-width: 50;
   }
 
 .circle{

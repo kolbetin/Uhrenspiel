@@ -204,7 +204,7 @@ public class GUI extends Application {
              goOn = new Button ("weiter");
 
 
-             Text antwort = new Text("Antwort");
+             Label antwort = new Label("Antwort");
              hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);
              hBox.getChildren().add(goOn);
 
