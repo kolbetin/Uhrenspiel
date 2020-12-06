@@ -37,6 +37,7 @@ public class Uhrenspiel extends Application  {
     private QuestionFreeAnswer guiFA;
     private MainScreen mainScreen;
     private Verabschiedungsbildschirm verAbschieden;
+    private GamesChoiceScreen choiceScreen;
     private Stage stage1;
     private Stage stage2;
     private Stage stage3;
@@ -57,15 +58,12 @@ public class Uhrenspiel extends Application  {
       public void start(Stage primarystage) {
 
           stage1 = new Stage();
+          stage2 = new Stage();
 
           mainScreen.start(stage1);
+
           mainScreen.newGameButton.setOnAction(event -> {
-              stage1.close();
-              game.aufgabennummer = 0;
-              richtigeAntwort =0;
-              falscheAntwort= 0;
-              newGameMultipleChoice();
-              //newGameFreeAnswer()
+                  newGame();
 
           });
           mainScreen.loadGameButton.setOnAction(event ->
@@ -82,41 +80,23 @@ public class Uhrenspiel extends Application  {
       }
 
 
-       /*  PauseTransition delay = new PauseTransition(Duration.seconds(5));
-         delay.setOnFinished( event -> {
-             stage1.close();
-             verAbschieden.start(stage1);
-                 }
-         );
-         delay.play();
 
-         Task<Void> sleeper = new Task<Void>() {
-             @Override
-             protected Void call() throws Exception {
-                 try {
-                     Thread.sleep(5000);
 
-                 } catch (InterruptedException e) {
-                 }
-                 return null;
-             }
-         };
-         sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-             @Override
-             public void handle(WorkerStateEvent event) {
-                 stage1.close();
-                 verAbschieden.start(stage2);
-                 //guiMC.start(stage2);
-             }
-         });
+    public void newGame(){
+        choiceScreen.start(stage1);
+        game.aufgabennummer = 0;
+        richtigeAntwort =0;
+        falscheAntwort= 0;
+        choiceScreen.level1.setOnAction(e -> newGameMultipleChoice());
+        choiceScreen.backButton.setOnAction(event -> {
+                 start(stage1);
+        });
 
-         new Thread(sleeper).start();
 
-*/
+    }
 
     public void newGameMultipleChoice() {
         game.nextQuestion();
-
         guiMC.zeit = game.key;
         guiMC.start(stage1);
        // guiMC.clock = new ClockSkin(game.key);
@@ -311,9 +291,13 @@ public class Uhrenspiel extends Application  {
         guiMC = new GUI();
         guiFA = new QuestionFreeAnswer();
         mainScreen = new MainScreen();
+        choiceScreen = new GamesChoiceScreen();
         verAbschieden = new Verabschiedungsbildschirm();
-        progressData = new ProgressData();
+        //progressData = new ProgressData();
         game = new Game();
+        choiceScreen = new GamesChoiceScreen();
+
+
 
 
 

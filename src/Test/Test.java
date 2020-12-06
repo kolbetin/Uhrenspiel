@@ -22,7 +22,7 @@ public class Test extends Application {
    private Game game;
    public Node node;
 
-    public void start(Stage primarystage) {}
+
 
    public Node Test(){
        game = new Game();
@@ -32,7 +32,7 @@ public class Test extends Application {
        return node;
    }
 
-
+    public void start(Stage primarystage) {}
     public static void main(String[] args) { launch(args);    }
 
 }
