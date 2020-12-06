@@ -25,6 +25,9 @@ public class ClockSkin {
     private final HashMap<String, Line> minutenMap = new HashMap<>();
     private final HashMap<String, Line> stundenMap = new HashMap<>();
 
+    // Hashmap für Zifferblätter
+    private final HashMap<Integer, Group> ziffernMap = new HashMap<>();
+
     // Konstruktor nimmt Parameter anzuzeigende Zeit entgegen zur kompletten Erstellung der Uhr
     public ClockSkin(String anzuzeigendeZeit) {
         clock(anzuzeigendeZeit);
@@ -46,6 +49,7 @@ public class ClockSkin {
         this.minuten = parserMinuten(substringMinuten);
         return createClock();
     }
+
 
     public Node clockLerningMode (String anzuzeigendeZeit, String ziffernblatt){
 
@@ -133,23 +137,38 @@ public class ClockSkin {
         Group grundgeruest_Uhr = new Group (outerCircle, stunde, minuten, innerCircle);
 
         // Gruppe Uhrzeiten
-        Group zeit_1 = new Group(circle1, nummer1);
-        Group zeit_2 = new Group (circle2, nummer2);
-        Group zeit_3 = new Group (circle3, nummer3);
-        Group zeit_4 = new Group (circle4, nummer4);
-        Group zeit_5 = new Group (circle5, nummer5);
-        Group zeit_6 = new Group (circle6, nummer6);
-        Group zeit_7 = new Group (circle7, nummer7);
-        Group zeit_8 = new Group (circle8, nummer8);
-        Group zeit_9 = new Group (circle9, nummer9);
-        Group zeit_10 = new Group (circle10, nummer10);
-        Group zeit_11 = new Group (circle11, nummer11);
-        Group zeit_12 = new Group (circle12, nummer12);
+        Group ziffer_1 = new Group(circle1, nummer1);
+        Group ziffer_2 = new Group (circle2, nummer2);
+        Group ziffer_3 = new Group (circle3, nummer3);
+        Group ziffer_4 = new Group (circle4, nummer4);
+        Group ziffer_5 = new Group (circle5, nummer5);
+        Group ziffer_6 = new Group (circle6, nummer6);
+        Group ziffer_7 = new Group (circle7, nummer7);
+        Group ziffer_8 = new Group (circle8, nummer8);
+        Group ziffer_9 = new Group (circle9, nummer9);
+        Group ziffer_10 = new Group (circle10, nummer10);
+        Group ziffer_11 = new Group (circle11, nummer11);
+        Group ziffer_12 = new Group (circle12, nummer12);
+
+        // HashMap für einzelne Ziffernblätter
+        ziffernMap.put(1, ziffer_1);
+        ziffernMap.put(2, ziffer_2);
+        ziffernMap.put(3, ziffer_3);
+        ziffernMap.put(4, ziffer_4);
+        ziffernMap.put(5, ziffer_5);
+        ziffernMap.put(6, ziffer_6);
+        ziffernMap.put(7, ziffer_7);
+        ziffernMap.put(8, ziffer_8);
+        ziffernMap.put(9, ziffer_9);
+        ziffernMap.put(10, ziffer_10);
+        ziffernMap.put(11, ziffer_11);
+        ziffernMap.put(12, ziffer_12);
 
         // Gruppe Uhrzeiten komplett
-        Group zeit = new Group (zeit_1,zeit_2,zeit_3,zeit_4,zeit_5,zeit_6,zeit_7,zeit_8,zeit_9,zeit_10,zeit_11,zeit_12);
+        Group ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
+        //Group alleZiffern = new Group(getAlleZiffern);
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
-        Group root = new Group (grundgeruest_Uhr, zeit);
+        Group root = new Group (grundgeruest_Uhr, ziffern);
         // Group root = new Group(circleGroup, nummerGroup, uhrZeiger);
         Node clockSkin = root;
         //Displaying the contents of the stage
