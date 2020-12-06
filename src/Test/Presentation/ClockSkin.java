@@ -20,13 +20,19 @@ public class ClockSkin {
     Line stunde;
     Line minuten;
 
+
     // Hashmaps mit Uhrzeit (Key) und Stunden- & Minutenzeiger Position (Value)
     private final HashMap<String, Line> minutenMap = new HashMap<>();
     private final HashMap<String, Line> stundenMap = new HashMap<>();
 
-    // Konstruktor nimmt Parameter anzuzeigende Zeit entgegen und führt Methode clock() zur Erstellung der Uhr aus
+    // Konstruktor nimmt Parameter anzuzeigende Zeit entgegen zur kompletten Erstellung der Uhr
     public ClockSkin(String anzuzeigendeZeit) {
         clock(anzuzeigendeZeit);
+    }
+
+    // Konstruktor nimmt Parameter anzuzeigende Zeit sowie ziffernblatt entgegen für einzelnen Aufbau der Ziffern
+    public ClockSkin(String anzuzeigendeZeit, String zifferblatt) {
+        clockLerningMode(anzuzeigendeZeit, zifferblatt);
     }
 
     public Node clock(String anzuzeigendeZeit) {
@@ -41,6 +47,11 @@ public class ClockSkin {
         return createClock();
     }
 
+    public Node clockLerningMode (String anzuzeigendeZeit, String ziffernblatt){
+
+        return createClock(); // ersetzen mit LearningMode Clock Skin
+    }
+
     public Node createClock() {
 
         EventHandler<MouseEvent> eventHandler = getEventHandler();
@@ -51,8 +62,6 @@ public class ClockSkin {
         outerCircle.toBack();
         Circle innerCircle = new Circle(300, 300, 5, Color.BLACK);
         innerCircle.toFront();
-
-
 
         // Drawing a Circle1 and registering the event handler
         Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
