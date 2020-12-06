@@ -43,6 +43,7 @@ public class ClockSkin {
         System.out.println(substringMinuten);
         System.out.println(stunde);
         System.out.println(minuten);
+        System.out.println("ich habe die Uhr erstellt");
 
         return createClock();
     }

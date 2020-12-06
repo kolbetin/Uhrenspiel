@@ -23,8 +23,8 @@ public class QuestionsAnswer {
     public QuestionsAnswer() {
         antwortenMap = new HashMap<>();
         antwortenMapLevel1();
-        antwortenMapLevel2();
-        antwortenMapLevel3();
+      //  antwortenMapLevel2();
+      //  antwortenMapLevel3();
         System.out.println(antwortenMap.size());
 
     }

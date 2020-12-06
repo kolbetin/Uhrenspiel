@@ -9,6 +9,7 @@ import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -43,7 +44,8 @@ public class Uhrenspiel extends Application  {
     private File file;
     private int richtigeAntwort;
     private int falscheAntwort;
-    //private ClockSkin clock;
+    private ClockSkin clockSkin;
+    public Node node;
 
 
 
@@ -108,14 +110,20 @@ public class Uhrenspiel extends Application  {
 
 */
 
-
-
     public void newGameMultipleChoice() {
         game.nextQuestion();
 
+        guiMC.zeit = game.key;
         guiMC.start(stage1);
+       // guiMC.clock = new ClockSkin(game.key);
+      //  guiMC.clockArea();
 
-        guiMC.clockArea (game.key);
+       // guiMC.clockArea (game.key);
+//        guiMC.clock.clock(game.key);
+       // guiMC.node.setEventDispatcher(game.key);
+      //  guiMC.clock.clock(game.key);
+       // guiMC.clock.createClock();
+
 
         guiMC.antwort1.setText((String) game.answers.get(0));
         guiMC.antwort2.setText((String) game.answers.get(1));
@@ -137,14 +145,15 @@ public class Uhrenspiel extends Application  {
         System.out.println(game.liste);
         System.out.println(game.answers);
         System.out.println(game.aufgabennummer);
+        System.out.println("Richtige Antwort; " + richtigeAntwort);
+        System.out.println("Falsche Antwort; " + falscheAntwort);
 
   }
       public void newGameFreeAnswer(){
           game.nextQuestion();
+          guiFA.zeit = game.key;
           guiFA.start(stage1);
-          guiFA.clockArea (game.key);
-         // guiFA.clockArea(game.key);
-         // guiFA.clockArea("01:00");
+
           guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
           guiFA.goOn.setOnAction(event -> {
           System.out.println(game.aufgabennummer);
@@ -161,6 +170,9 @@ public class Uhrenspiel extends Application  {
           System.out.println(game.key);
           System.out.println(game.getAnswerFA(game.key));
           System.out.println(game.aufgabennummer);
+          System.out.println("Richtige Antwort; " + richtigeAntwort);
+          System.out.println("Falsche Antwort; " + falscheAntwort);
+
       }
 
       public void correctAnswerFA(){
@@ -196,16 +208,20 @@ public class Uhrenspiel extends Application  {
 
                   if (event.getSource() instanceof Button) {
                       Button button = (Button) event.getSource();
-                      if (button.getText().contains(game.getAnswerFA(game.key))) {
-                          button.setStyle("-fx-background-color: green");
-                          button.setText("Super, korrekte Antwort!");
-                      } else {
-                          button.setStyle("-fx-background-color: red");
-                          button.setText("Leider, falsche Antwort!");
-                          guiMC.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
+
+                          if (button.getText().contains(game.getAnswerFA(game.key))) {
+                              button.setStyle("-fx-background-color: green");
+                              button.setText("Super, korrekte Antwort!");
+                              richtigeAntwort++;
+                          } else {
+                              button.setStyle("-fx-background-color: red");
+                              button.setText("Leider, falsche Antwort!");
+                              guiMC.questionLabel.setText("Die korrekte Antwort ist: " + game.key + "Uhr.");
+                              falscheAntwort++;
+                          }
                       }
                   }
-                }
+
               };
           }
 
