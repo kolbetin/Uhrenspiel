@@ -75,7 +75,10 @@
     -fx-font-weight: bold;
     -fx-font-family: Arial;
   }
-.Circle{
+
+.circle{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 30px;
 
 }
 

@@ -38,13 +38,6 @@ public class ClockSkin {
 
         this.stunde = parserStunde(anzuzeigendeZeit);
         this.minuten = parserMinuten(substringMinuten);
-
-        System.out.println(anzuzeigendeZeit);
-        System.out.println(substringMinuten);
-        System.out.println(stunde);
-        System.out.println(minuten);
-        System.out.println("ich habe die Uhr erstellt");
-
         return createClock();
     }
 
@@ -58,6 +51,8 @@ public class ClockSkin {
         outerCircle.toBack();
         Circle innerCircle = new Circle(300, 300, 5, Color.BLACK);
         innerCircle.toFront();
+
+
 
         // Drawing a Circle1 and registering the event handler
         Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
@@ -125,15 +120,29 @@ public class ClockSkin {
         minuten.setStroke(Color.RED);
         minuten.setStrokeWidth(5);
 
-        // Kreiert Uhr Grafik Gruppierungen
-        Group circleGroup = new Group(outerCircle, circle1, circle2, circle3, circle4, circle5, circle6, circle7, circle8, circle9, circle10, circle11, circle12, innerCircle);
-        Group nummerGroup = new Group(nummer1, nummer2, nummer3, nummer4, nummer5, nummer6, nummer7, nummer8, nummer9, nummer10, nummer11, nummer12);
-        Group uhrZeiger = new Group(stunde, minuten, innerCircle);
+        // Gruppe Grundgerüst Uhr
+        Group grundgeruest_Uhr = new Group (outerCircle, stunde, minuten, innerCircle);
 
+        // Gruppe Uhrzeiten
+        Group zeit_1 = new Group(circle1, nummer1);
+        Group zeit_2 = new Group (circle2, nummer2);
+        Group zeit_3 = new Group (circle3, nummer3);
+        Group zeit_4 = new Group (circle4, nummer4);
+        Group zeit_5 = new Group (circle5, nummer5);
+        Group zeit_6 = new Group (circle6, nummer6);
+        Group zeit_7 = new Group (circle7, nummer7);
+        Group zeit_8 = new Group (circle8, nummer8);
+        Group zeit_9 = new Group (circle9, nummer9);
+        Group zeit_10 = new Group (circle10, nummer10);
+        Group zeit_11 = new Group (circle11, nummer11);
+        Group zeit_12 = new Group (circle12, nummer12);
+
+        // Gruppe Uhrzeiten komplett
+        Group zeit = new Group (zeit_1,zeit_2,zeit_3,zeit_4,zeit_5,zeit_6,zeit_7,zeit_8,zeit_9,zeit_10,zeit_11,zeit_12);
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
-        Group root = new Group(circleGroup, nummerGroup, uhrZeiger);
+        Group root = new Group (grundgeruest_Uhr, zeit);
+        // Group root = new Group(circleGroup, nummerGroup, uhrZeiger);
         Node clockSkin = root;
-
         //Displaying the contents of the stage
         return clockSkin;
     }
