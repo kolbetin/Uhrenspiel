@@ -1,9 +1,13 @@
 package Test.Presentation;
 
+import Test.Domain.ProgressData;
 import Test.Test;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -14,12 +18,16 @@ public class SummaryScreen extends GUI {
 
      private Label willkommensText;
 
-     public Button leadedGame;
-     private Text text1;
-     private Text text2;
+
+     public Label labelLevel;
+     public Text text1;
+     public Text text2;
      private Text text3;
      private Text text4;
      public Button backButton;
+     public Button nextGame;
+     public Button repeatLevel;
+
 
 
     @Override
@@ -30,21 +38,21 @@ public class SummaryScreen extends GUI {
         willkommensText.setText("Level wurde abgeschlossen");
 
 
-        leadedGame = new Button("Geführtes Spiel");
+        nextGame = new Button("Nächstes Level");
+        repeatLevel = new Button("Nochmal");
         backButton = new Button("zurück");
-        text1 = new Text("Volle Stunde, zum Beispiel 01:00Uhr?");
-        text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30Uhr?");
-
+        labelLevel = new Label("Level: " );
+        text1 = new Text("Aufgabe");
+        text2 = new Text("Ergebnis");
 
         VBox middle = new VBox(30);
         VBox right = new VBox(20);
         VBox bottom = new VBox(10);
 
-        middle.setId("choiceMiddleArea");
 
-        middle.getChildren().addAll( text4, text1, text2,text3);
-       // right.getChildren().addAll(leadedGame,level1, level2, level3);
-        bottom.getChildren().add(backButton);
+        middle.getChildren().addAll(labelLevel,text1);
+        right.getChildren().addAll(text2);
+        bottom.getChildren().addAll(backButton, nextGame, repeatLevel);
 
         BorderPane root = new BorderPane();
 
@@ -68,10 +76,7 @@ public class SummaryScreen extends GUI {
     public Pane leftArea() {
         VBox vBox = new VBox(5);
 
-      //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: blue");
         vBox.setPadding(new Insets(7, 150, 7, 70));
-        //vBox.getChildren().addAll(new Text("Fortschrittsleiste"));
-
 
         return vBox;
     }

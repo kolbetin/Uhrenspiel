@@ -81,7 +81,7 @@ public class GUI extends Application {
         //borderPane.setRight(vBox2);
         middleArea.setTop(vBox);
         middleArea.setBottom(borderPane);
-        middleArea.setLeft(clockArea(zeit ));
+        middleArea.setLeft(clockArea(zeit));
 
         return middleArea;
 

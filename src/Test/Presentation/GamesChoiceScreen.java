@@ -16,11 +16,13 @@ public class GamesChoiceScreen extends GUI {
      public Button level1;
      public Button level2;
      public Button level3;
+     public Button level4;
      public Button leadedGame;
      private Text text1;
      private Text text2;
      private Text text3;
      private Text text4;
+     private Text text5;
      public Button backButton;
 
 
@@ -34,12 +36,14 @@ public class GamesChoiceScreen extends GUI {
         level1 = new Button("Starte Level 1");
         level2 = new Button("Starte Level 2");
         level3 = new Button("Starte Level 3");
+        level4 = new Button("Starte Level 4");
         leadedGame = new Button("Geführtes Spiel");
         backButton = new Button("zurück");
         text1 = new Text("Volle Stunde, zum Beispiel 01:00Uhr?");
         text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30Uhr?");
         text3 = new Text("Viertel Stunde lernen, zum Beispiel 01:15Uhr?");
         text4 = new Text("Alles");
+        text5 = new Text("Alle Level gemischt");
 
         VBox middle = new VBox(30);
         VBox right = new VBox(20);
@@ -47,8 +51,8 @@ public class GamesChoiceScreen extends GUI {
 
         middle.setId("choiceMiddleArea");
 
-        middle.getChildren().addAll( text4, text1, text2,text3);
-        right.getChildren().addAll(leadedGame,level1, level2, level3);
+        middle.getChildren().addAll( text4, text1, text2,text3, text5);
+        right.getChildren().addAll(leadedGame,level1, level2, level3, level4);
         bottom.getChildren().add(backButton);
 
         BorderPane root = new BorderPane();

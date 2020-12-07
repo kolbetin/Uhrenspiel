@@ -27,6 +27,7 @@ public class Uhrenspiel extends Application  {
     private GUI guiMC;
     private QuestionFreeAnswer guiFA;
     private MainScreen mainScreen;
+    private SummaryScreen summaryScreen;
     private Verabschiedungsbildschirm verAbschieden;
     private GamesChoiceScreen choiceScreen;
     private Stage stage1;
@@ -151,11 +152,14 @@ public class Uhrenspiel extends Application  {
           }
           guiFA.goOn.setOnAction(event -> {
           System.out.println(game.aufgabennummer);
-              if(game.aufgabennummer<10) {
+              if(game.aufgabennummer<3) {
                 newGameFreeAnswer();
                 } else {
-                  stage1.close();
-                  start(stage1);
+                  summaryScreen.start(stage1);
+                  summaryScreen.text1.setText(String.valueOf(progressData.getProgressKeys()));
+                  summaryScreen.text2.setText(progressData.getProgressValues());
+                 // stage1.close();
+                 // start(stage1);
                    }
           });
           guiFA.submitButton.setOnAction(event -> correctAnswerFA());
@@ -326,7 +330,7 @@ public class Uhrenspiel extends Application  {
         progressData = new ProgressData();
         game = new Game();
         choiceScreen = new GamesChoiceScreen();
-
+        summaryScreen = new SummaryScreen();
 
 
 

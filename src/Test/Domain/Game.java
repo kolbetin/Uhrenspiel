@@ -81,11 +81,11 @@ public class Game extends Application  {
         if
         (level == 3) {
             questionsAnswermap.antwortenMapLevel3();
-        } /*else {
+        } if(level== 4) {
             questionsAnswermap.antwortenMapLevel1();
             questionsAnswermap.antwortenMapLevel2();
             questionsAnswermap.antwortenMapLevel3();
-        }*/
+        }
         System.out.println(questionsAnswermap.antwortenMap.keySet());
         System.out.println(level);
     }
