@@ -1,5 +1,6 @@
 package Test.Presentation;
 
+import Test.Presentation.image.ClockElements;
 import Test.Test;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -16,16 +17,16 @@ import java.util.Random;
 
 public class ClockSkin {
 
-    // Variablen für Stunden- & Minutenzeiger
+    /// Variablen für Stunden- & Minutenzeiger
     Line stunde;
-    Line minuten;
+    Line minute;
 
 
-    // Hashmaps mit Uhrzeit (Key) und Stunden- & Minutenzeiger Position (Value)
+/// Hashmaps mit Uhrzeit (Key) und Stunden- & Minutenzeiger Position (Value)
     private final HashMap<String, Line> minutenMap = new HashMap<>();
     private final HashMap<String, Line> stundenMap = new HashMap<>();
 
-    // Hashmap für Zifferblätter
+    /// Hashmap für Zifferblätter
     private final HashMap<Integer, Group> ziffernMap = new HashMap<>();
 
     // Konstruktor nimmt Parameter anzuzeigende Zeit entgegen zur kompletten Erstellung der Uhr
@@ -40,13 +41,11 @@ public class ClockSkin {
 
     public Node clock(String anzuzeigendeZeit) {
 
-        createMinuteMap();
+        createMinutenMap();
         createStundenMap();
 
-        String substringMinuten = anzuzeigendeZeit.substring(3);
-
         this.stunde = parserStunde(anzuzeigendeZeit);
-        this.minuten = parserMinuten(substringMinuten);
+        this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
         return createClock();
     }
 
@@ -58,7 +57,7 @@ public class ClockSkin {
 
     public Node createClock() {
 
-         EventHandler<MouseEvent> eventHandler = getEventHandler();
+        EventHandler<MouseEvent> eventHandler = getEventHandler();
 
         // Layout to transfer in CSS File
         Font nummerFont = new Font("Comic Sans MS", 30);
@@ -130,11 +129,11 @@ public class ClockSkin {
 
         // Setting Stroke Formats
         stunde.setStrokeWidth(5);
-        minuten.setStroke(Color.RED);
-        minuten.setStrokeWidth(5);
+        minute.setStroke(Color.RED);
+        minute.setStrokeWidth(5);
 
         // Gruppe Grundgerüst Uhr
-        Group grundgeruest_Uhr = new Group (outerCircle, stunde, minuten, innerCircle);
+        Group grundgeruest_Uhr = new Group (outerCircle, stunde, minute, innerCircle);
 
         // Gruppe Uhrzeiten
         Group ziffer_1 = new Group(circle1, nummer1);
@@ -163,6 +162,7 @@ public class ClockSkin {
         ziffernMap.put(10, ziffer_10);
         ziffernMap.put(11, ziffer_11);
         ziffernMap.put(12, ziffer_12);
+
 
         // Gruppe Uhrzeiten komplett
         Group ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
@@ -200,7 +200,7 @@ public class ClockSkin {
         return stundenMap.get(stunde);
     }
 
-    public void createMinuteMap() {
+    public void createMinutenMap() {
 
         // Koordinaten für Minutenzeiger
         Line minuten_30 = new Line(300, 300, 300, 400);

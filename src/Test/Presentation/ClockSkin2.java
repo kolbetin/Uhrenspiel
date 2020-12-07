@@ -1,7 +1,10 @@
-package Test.Presentation.image;
+package Test.Presentation;
 
+import Test.Presentation.image.ClockElements;
+import Test.Test;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -12,59 +15,62 @@ import javafx.scene.text.Text;
 import java.util.HashMap;
 import java.util.Random;
 
-public class ClockElements {
+/*public class ClockSkin2 {
 
-    // Variablen für Stunden- & Minutenzeiger
+    /// Variablen für Stunden- & Minutenzeiger
     Line stunde;
-    Line minuten;
+    Line minute;
 
-    // Hashmaps mit Uhrzeit (Key) und Stunden- & Minutenzeiger Position (Value)
-    private final HashMap<String, Line> minutenMap = new HashMap<>();
-    private final HashMap<String, Line> stundenMap = new HashMap<>();
-
-    // Hashmap für Zifferblätter
-    private final HashMap<Integer, Group> ziffernMap = new HashMap<>();
+    private HashMap minuten;
+    private HashMap stundenMap;
+    private HashMap ziffernMap;
 
 
+/// Hashmaps mit Uhrzeit (Key) und Stunden- & Minutenzeiger Position (Value)
+    //private final HashMap<String, Line> minutenMap = new HashMap<>();
+    //private final HashMap<String, Line> stundenMap = new HashMap<>();
 
-    EventHandler<MouseEvent> eventHandler = getEventHandler();
+    /// Hashmap für Zifferblätter
+    //private final HashMap<Integer, Group> ziffernMap = new HashMap<>();
 
-    EventHandler<MouseEvent> getEventHandler() {
-        //Creating the mouse event handler
-        return event -> {
-            Random rand = new Random();
-            double r = rand.nextDouble();
-            double g = rand.nextDouble();
-            double b = rand.nextDouble();
-            Color randomColor = new Color(r, g, b, 1);
-            System.out.println("The color is: " +
-                    randomColor.toString());
-            if (event.getSource() instanceof Circle) {
-                Circle c = (Circle) event.getSource();
-                c.setFill(randomColor);
-            }
-        };
+    // Konstruktor nimmt Parameter anzuzeigende Zeit entgegen zur kompletten Erstellung der Uhr
+    public ClockSkin(String anzuzeigendeZeit) {
+        clock(anzuzeigendeZeit);
     }
 
-    public void createGrundgeruest(){
+    // Konstruktor nimmt Parameter anzuzeigende Zeit sowie ziffernblatt entgegen für einzelnen Aufbau der Ziffern
+    public ClockSkin(String anzuzeigendeZeit, int zifferblatt) {
+        clockLerningMode(anzuzeigendeZeit, zifferblatt);
+    }
 
-        // Hauptkreise Uhr
+    public Node clock(String anzuzeigendeZeit) {
+
+        // createMinutenMap();
+        // createStundenMap();
+        minutenMap.createMinutenMap();
+        stundenMap.createStundenMap();
+
+        this.stunde = parserStunde(anzuzeigendeZeit);
+        this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
+        return createClock();
+    }
+
+
+    public Node clockLerningMode (String anzuzeigendeZeit, int ziffernblatt){
+
+        return createClock(); // ersetzen mit LearningMode Clock Skin
+    }
+
+    public Node createClock() {
+
+         /*EventHandler<MouseEvent> eventHandler = getEventHandler();
+
+        // Layout to transfer in CSS File
+        Font nummerFont = new Font("Comic Sans MS", 30);
         Circle outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
         outerCircle.toBack();
         Circle innerCircle = new Circle(300, 300, 5, Color.BLACK);
         innerCircle.toFront();
-
-        // Zeiger Formatierung
-        stunde.setStrokeWidth(5);
-        minuten.setStroke(Color.RED);
-        minuten.setStrokeWidth(5);
-
-    }
-
-    public HashMap<Integer, Group> createZiffernMap() {
-
-        // Layout to transfer in CSS File
-        Font nummerFont = new Font("Comic Sans MS", 30);
 
         // Drawing a Circle1 and registering the event handler
         Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
@@ -127,6 +133,13 @@ public class ClockElements {
         nummer12.setFont(nummerFont);
         circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
+        // Setting Stroke Formats
+        stunde.setStrokeWidth(5);
+        minuten.setStroke(Color.RED);
+        minuten.setStrokeWidth(5);
+
+        // Gruppe Grundgerüst Uhr
+        Group grundgeruest_Uhr = new Group (outerCircle, stunde, minuten, innerCircle);
 
         // Gruppe Uhrzeiten
         Group ziffer_1 = new Group(circle1, nummer1);
@@ -142,7 +155,7 @@ public class ClockElements {
         Group ziffer_11 = new Group (circle11, nummer11);
         Group ziffer_12 = new Group (circle12, nummer12);
 
-        // HashMap Ziffernblätter
+        // HashMap für einzelne Ziffernblätter
         ziffernMap.put(1, ziffer_1);
         ziffernMap.put(2, ziffer_2);
         ziffernMap.put(3, ziffer_3);
@@ -156,10 +169,44 @@ public class ClockElements {
         ziffernMap.put(11, ziffer_11);
         ziffernMap.put(12, ziffer_12);
 
-        return ziffernMap;
+
+        // Gruppe Uhrzeiten komplett
+        Group ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
+        //Group alleZiffern = new Group(getAlleZiffern);
+        // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
+        Group root = new Group (grundgeruest_Uhr, ziffern);
+        // Group root = new Group(circleGroup, nummerGroup, uhrZeiger);
+        Node clockSkin = root;
+        //Displaying the contents of the stage
+        return clockSkin;
     }
 
-    public HashMap<String, Line> createMinutenMap() {
+    EventHandler<MouseEvent> getEventHandler() {
+        //Creating the mouse event handler
+        return event -> {
+            Random rand = new Random();
+            double r = rand.nextDouble();
+            double g = rand.nextDouble();
+            double b = rand.nextDouble();
+            Color randomColor = new Color(r, g, b, 1);
+            System.out.println("The color is: " +
+                    randomColor.toString());
+            if (event.getSource() instanceof Circle) {
+                Circle c = (Circle) event.getSource();
+                c.setFill(randomColor);
+            }
+        };
+    }
+
+    public Line parserMinuten(String minuten) {
+        return minutenMap.get(minuten);
+    }
+
+    public Line parserStunde(String stunde) {
+        return stundenMap.get(stunde);
+    }
+
+    /*public void createMinutenMap() {
 
         // Koordinaten für Minutenzeiger
         Line minuten_30 = new Line(300, 300, 300, 400);
@@ -171,11 +218,9 @@ public class ClockElements {
         minutenMap.put("45", minuten_45);
         minutenMap.put("00", minuten_00);
         minutenMap.put("15", minuten_15);
-
-        return minutenMap;
     }
 
-    public HashMap<String, Line> createStundenMap() {
+    public void createStundenMap() {
 
         // Linien Koordinaten für Stunde 1 Uhr
         Line stunde_12_30 = new Line(300, 300, 325, 210);
@@ -308,8 +353,6 @@ public class ClockElements {
         stundenMap.put("11:45", stunde_11_45);
         stundenMap.put("12:00", stunde_12_00);
         stundenMap.put("12:15", stunde_12_15);
-
-        return stundenMap;
     }
 
-} // Ende Klasse
+} */ // Ende Klasse
