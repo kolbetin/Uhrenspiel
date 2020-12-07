@@ -18,7 +18,7 @@ public class QuestionFreeAnswer extends GUI {
 
         final HBox hBox = new HBox(10);
         hBox.setId("entryTextfield");
-        hBox.setPadding(new Insets(15, 10, 10, 50));
+        hBox.setPadding(new Insets(15, 10, 10, 7));
         submitButton = new Button("abschicken");
         givenHour = new TextField();
         givenMinutes = new TextField();
@@ -28,7 +28,7 @@ public class QuestionFreeAnswer extends GUI {
         goOn = new Button ("weiter");
 
         hBox.getChildren().addAll(
-                new Text("Antwort"), givenHour,new Text(":"),givenMinutes,submitButton, goOn);
+                new Label("Antwort"), givenHour,new Text(":"),givenMinutes,submitButton, goOn);
         return hBox;
     }
 

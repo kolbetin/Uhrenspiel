@@ -112,8 +112,10 @@ public class Uhrenspiel extends Application  {
         guiMC.antwort4.setText((String) game.answers.get(3));
         guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
         guiMC.level.setText("Level: " + level);
+        guiMC.richtigeAntwort.setText("Richtige Antworten: " + richtigeAntwort);
+        guiMC.falscheAntwort.setText("Falsche Antworten: " + falscheAntwort);
         if(level > 1){
-            guiMC.questionLabel.setText("Frage: Es ist __:__ Uhr?");
+            //guiMC.questionLabel.setText("Frage: Es ist __:__ Uhr?");
         }
         guiMC.goOn.setOnAction(event -> {
             if(game.aufgabennummer<1) {
@@ -141,8 +143,10 @@ public class Uhrenspiel extends Application  {
           guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
           guiFA.level.setText("Level: " + level);
           guiFA.givenMinutes.setText("00");
+          guiFA.richtigeAntwort.setText("Richtige Antworten: " + richtigeAntwort );
+          guiFA.falscheAntwort.setText("Falsche Antworten: " + falscheAntwort);
           if(level > 1){
-              guiFA.questionLabel.setText("Frage: Es ist __:__ Uhr?");
+             // guiFA.questionLabel.setText("Frage: Es ist __:__ Uhr?");
               guiFA.givenMinutes.setText("");
           }
           guiFA.goOn.setOnAction(event -> {
@@ -162,6 +166,7 @@ public class Uhrenspiel extends Application  {
           System.out.println(game.aufgabennummer);
           System.out.println("Richtige Antwort: " + richtigeAntwort);
           System.out.println("Falsche Antwort: " + falscheAntwort);
+          System.out.println(progressData.progress);
 
       }
 
@@ -170,7 +175,11 @@ public class Uhrenspiel extends Application  {
                   & guiFA.givenHour.getText() != null
                   & guiFA.givenHour.getText().matches("[0-9]*")
            ){ String answer = guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
-              if (answer.equals(game.getAnswerFA(game.key))|answer.equals("0"+game.getAnswerFA(game.key))) {
+              if (answer.equals(game.getAnswerFA(game.key))
+                      |answer.equals("0"+game.getAnswerFA(game.key))
+                      |(guiFA.givenHour.getText().equals("0"+game.getAnswerFA(game.key))
+                        |(guiFA.givenHour.getText().equals(game.getAnswerFA(game.key))))
+                ) {
                   guiFA.submitButton.setStyle("-fx-background-color: #1cf61c");
                   guiFA.submitButton.setText("Super!!");
                   guiFA.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.key + " Uhr.");
@@ -178,6 +187,7 @@ public class Uhrenspiel extends Application  {
                   guiFA.givenMinutes.setDisable(true);
                   guiFA.submitButton.setDisable(true);
                   richtigeAntwort++;
+                  progressData.progress.put(game.aufgabennummer,"Korrekt");
               } else {
                   guiFA.submitButton.setStyle("-fx-background-color: #dd2323");
                   guiFA.submitButton.setText("Leider, falsch!");
@@ -185,12 +195,12 @@ public class Uhrenspiel extends Application  {
                           + "Deine Antwort: " + answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.key + " Uhr.");
                   falscheAntwort++;
+                  progressData.progress.put(game.aufgabennummer,"Falsch");
                   guiFA.givenHour.setDisable(true);
                   guiFA.givenMinutes.setDisable(true);
                   guiFA.submitButton.setDisable(true);
               }
           } else {
-              //guiFA.submitButton.setDisable(true);
               alertHelper.showAlert(Alert.AlertType.ERROR,"Fehler" ,"Bitte eine Zahl eingeben, z.B. 8 oder 12.");
               guiFA.givenHour.clear();
 
@@ -232,6 +242,7 @@ public class Uhrenspiel extends Application  {
                               richtigeAntwort++;
                               disableButtons();
                               guiMC.goOn.setDisable(false);
+                              progressData.progress.put(game.aufgabennummer,"Korrekt");
 
                               } else {
                               button.setStyle("-fx-background-color: red");
@@ -240,6 +251,7 @@ public class Uhrenspiel extends Application  {
                               falscheAntwort++;
                               disableButtons();
                               guiMC.goOn.setDisable(false);
+                              progressData.progress.put(game.aufgabennummer,"Falsch");
                           }
 
                       }
@@ -311,7 +323,7 @@ public class Uhrenspiel extends Application  {
         mainScreen = new MainScreen();
         choiceScreen = new GamesChoiceScreen();
         verAbschieden = new Verabschiedungsbildschirm();
-        //progressData = new ProgressData();
+        progressData = new ProgressData();
         game = new Game();
         choiceScreen = new GamesChoiceScreen();
 

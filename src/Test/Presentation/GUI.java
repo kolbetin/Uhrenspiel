@@ -35,10 +35,12 @@ public class GUI extends Application {
         public String zeit = "01:00";
         public Node node;
         public Label level;
+        public Label richtigeAntwort;
+        public Label falscheAntwort;
 
 
 
-        public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) {
 
             final BorderPane borderPane = new BorderPane();
 
@@ -49,7 +51,7 @@ public class GUI extends Application {
 
 
             // rootTop.setTop(menuBar);
-            Scene scene = new Scene(borderPane, 1400, 800);
+            Scene scene = new Scene(borderPane, 1500, 800);
             scene.getStylesheets().add
                     (Test.class.getResource("clock.css").toExternalForm());
             primaryStage.setScene(scene);
@@ -88,10 +90,10 @@ public class GUI extends Application {
         public Pane questionArea() {
             final BorderPane borderPane = new BorderPane();
             borderPane.setId("questionArea");
-            borderPane.setPadding(new Insets(7, 750, 10, 50));
+            borderPane.setPadding(new Insets(7, 750, 10, 7));
 
            // Text frage = new Text("Wie spät is es?");
-            questionLabel = new Label("Frage: " + "Es ist __:00 Uhr?" );
+            questionLabel = new Label("Frage: " + "Wie spät ist es?" );
 
             borderPane.setTop(questionLabel);
 
@@ -171,17 +173,19 @@ public class GUI extends Application {
           //   final HBox hbs  = new HBox ();
 
 
-            Text text = new Text("Richtige Antworten:");
-            Text text2 = new Text("Falsche Antworten:");
+            richtigeAntwort = new Label("Richtige Antworten:");
+            falscheAntwort = new Label("Falsche Antworten:");
 
-             final VBox vb = new VBox();
-             vb.setSpacing(5);
-             vb.getChildren().addAll( text,text2);
+             final VBox vb = new VBox(30);
+             vb.setSpacing(50);
+             vb.getChildren().addAll( richtigeAntwort,falscheAntwort);
 
            // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(7, 50, 7, 25));
+            vb.setPadding(new Insets(70, 7, 7, 7));
+            vbox.setPadding(new Insets(70, 7, 7, 7));
 
-            borderPane.setTop(new Text("Fortschrittsleiste"));
+            borderPane.setTop(new Label("Ergbnis"));
             borderPane.setCenter(vb);
             borderPane.setBottom(vbox);
 
@@ -194,7 +198,7 @@ public class GUI extends Application {
             final HBox hBox = new HBox(25);
             hBox.setId("answerArea");
 
-            hBox.setPadding(new Insets(15, 10, 10, 50));
+           hBox.setPadding(new Insets(15, 7, 10, 7));
 
             antwort1 = new Button("Antwort A");
             antwort2 = new Button("Antwort B");

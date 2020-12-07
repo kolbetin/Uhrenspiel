@@ -16,7 +16,7 @@ public class ProgressData extends Application {
     private IOInterface ioInterface;
     private QuestionsAnswer qa;
     private Random random;
-    private HashMap<Integer,String> progress;
+    public HashMap<Integer,String> progress;
 
     public void start(Stage p){
 
@@ -25,6 +25,7 @@ public class ProgressData extends Application {
 
     public ProgressData() {
         qa = new QuestionsAnswer();
+        progress = new HashMap<>();
         random = new Random();
         ioInterface = new IOSerialisierung();
         System.out.println(qa.antwortenMap);
@@ -32,13 +33,13 @@ public class ProgressData extends Application {
 
     }
 
-    public void setProgress(HashMap<String, String> key) {
-        this.qa.antwortenMap.clear();
-        this.qa.antwortenMap.putAll(key);
+    public void setProgress(HashMap<Integer, String> key) {
+        this.progress.clear();
+        this.progress.putAll(key);
     }
 
     public void saveProgress(File file) throws IOException {
-        ioInterface.save(file,qa.antwortenMap);
+        ioInterface.save(file,progress);
     }
 
     public void loadProgress( File file) throws ClassNotFoundException, IOException {
