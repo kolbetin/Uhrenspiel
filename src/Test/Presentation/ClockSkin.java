@@ -34,7 +34,7 @@ public class ClockSkin {
     }
 
     // Konstruktor nimmt Parameter anzuzeigende Zeit sowie ziffernblatt entgegen für einzelnen Aufbau der Ziffern
-    public ClockSkin(String anzuzeigendeZeit, String zifferblatt) {
+    public ClockSkin(String anzuzeigendeZeit, int zifferblatt) {
         clockLerningMode(anzuzeigendeZeit, zifferblatt);
     }
 
@@ -51,7 +51,7 @@ public class ClockSkin {
     }
 
 
-    public Node clockLerningMode (String anzuzeigendeZeit, String ziffernblatt){
+    public Node clockLerningMode (String anzuzeigendeZeit, int ziffernblatt){
 
         return createClock(); // ersetzen mit LearningMode Clock Skin
     }
