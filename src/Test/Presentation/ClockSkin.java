@@ -58,7 +58,7 @@ public class ClockSkin {
 
     public Node createClock() {
 
-        EventHandler<MouseEvent> eventHandler = getEventHandler();
+         EventHandler<MouseEvent> eventHandler = getEventHandler();
 
         // Layout to transfer in CSS File
         Font nummerFont = new Font("Comic Sans MS", 30);
