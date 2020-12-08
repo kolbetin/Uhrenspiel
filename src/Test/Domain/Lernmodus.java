@@ -6,7 +6,7 @@ public class Lernmodus {
 
     // Klasse Lernmodus
 
-    public Lernmodus(){
+    /*public Lernmodus(){
         createClockLernmodus();
     }
 
@@ -20,7 +20,7 @@ public class Lernmodus {
 
         // createClockLernmodus übergibt Parameter (String anzuzeigendeZeit, int zifferblatt) dem ClockSkin Konstruktor für Lernmodus
         ClockSkin learningClock = new ClockSkin(anzuzeigendeZeit, ziffernblatt);
-    }
+    }*/
 
 
 

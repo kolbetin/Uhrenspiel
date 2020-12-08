@@ -14,21 +14,23 @@ import java.util.Random;
 
 public class ClockElements {
 
-    // Variablen für Stunden- & Minutenzeiger
-    Line stunde;
-    Line minuten;
-
-    // Hashmaps mit Uhrzeit (Key) und Stunden- & Minutenzeiger Position (Value)
-    public final HashMap<String, Line> minutenMap = new HashMap<>();
-    public final HashMap<String, Line> stundenMap = new HashMap<>();
-    // Hashmap für Zifferblätter
     public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
 
+    public Group grundgeruest;
     public Group ziffern;
+    public HashMap<String, Line> minutenMap;
+    public HashMap<String, Line> stundenMap;
 
 
-
+    public ClockElements (){
+        grundgeruest = createGrundgeruest();
+        ziffern = createZiffern();
+        minutenMap = createMinutenMap();
+        stundenMap = createStundenMap();
+    }
+    
     EventHandler<MouseEvent> eventHandler = getEventHandler();
+
 
     EventHandler<MouseEvent> getEventHandler() {
         //Creating the mouse event handler
@@ -55,12 +57,10 @@ public class ClockElements {
         Circle innerCircle = new Circle(300, 300, 6, Color.BLACK);
         innerCircle.toFront();
 
-        Group grundgeruest = new Group (outerCircle,innerCircle);
-
-        return grundgeruest;
+        return new Group (outerCircle,innerCircle);
     }
 
-    public HashMap<Integer, Group> createZiffernMap() {
+    public Group createZiffern() {
 
         // Layout to transfer in CSS File
         Font nummerFont = new Font("Comic Sans MS", 30);
@@ -126,7 +126,6 @@ public class ClockElements {
         nummer12.setFont(nummerFont);
         circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
-
         // Gruppe Uhrzeiten
         Group ziffer_1 = new Group(circle1, nummer1);
         Group ziffer_2 = new Group (circle2, nummer2);
@@ -157,7 +156,7 @@ public class ClockElements {
         ziffernMap.put(11, ziffer_11);
         ziffernMap.put(12, ziffer_12);
 
-        return ziffernMap;
+        return ziffern;
     }
 
     public HashMap<String, Line> createMinutenMap() {
