@@ -19,11 +19,12 @@ public class ClockElements {
     Line minuten;
 
     // Hashmaps mit Uhrzeit (Key) und Stunden- & Minutenzeiger Position (Value)
-    private final HashMap<String, Line> minutenMap = new HashMap<>();
-    private final HashMap<String, Line> stundenMap = new HashMap<>();
-
+    public final HashMap<String, Line> minutenMap = new HashMap<>();
+    public final HashMap<String, Line> stundenMap = new HashMap<>();
     // Hashmap für Zifferblätter
-    private final HashMap<Integer, Group> ziffernMap = new HashMap<>();
+    public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
+
+    public Group ziffern;
 
 
 
@@ -46,19 +47,17 @@ public class ClockElements {
         };
     }
 
-    public void createGrundgeruest(){
+    public Group createGrundgeruest(){
 
         // Hauptkreise Uhr
         Circle outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
         outerCircle.toBack();
-        Circle innerCircle = new Circle(300, 300, 5, Color.BLACK);
+        Circle innerCircle = new Circle(300, 300, 6, Color.BLACK);
         innerCircle.toFront();
 
-        // Zeiger Formatierung
-        stunde.setStrokeWidth(5);
-        minuten.setStroke(Color.RED);
-        minuten.setStrokeWidth(5);
+        Group grundgeruest = new Group (outerCircle,innerCircle);
 
+        return grundgeruest;
     }
 
     public HashMap<Integer, Group> createZiffernMap() {
@@ -141,6 +140,8 @@ public class ClockElements {
         Group ziffer_10 = new Group (circle10, nummer10);
         Group ziffer_11 = new Group (circle11, nummer11);
         Group ziffer_12 = new Group (circle12, nummer12);
+
+        ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
 
         // HashMap Ziffernblätter
         ziffernMap.put(1, ziffer_1);
