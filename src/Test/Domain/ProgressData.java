@@ -40,14 +40,14 @@ public class ProgressData extends Application  {
 
     }
 
-    public void setProgress(HashMap<Integer, String> key) {
+    public void setProgress(Map<Integer, String> key) {
         this.progress.clear();
         this.progress.putAll(key);
     }
 
-    public void saveProgress(File file) throws IOException {
+   /* public void saveProgress(File file) throws IOException {
         ioInterface.save(file,progress);
-    }
+    }*/
 
     public void loadProgress( File file) throws ClassNotFoundException, IOException {
         setProgress(ioInterface.load(file));

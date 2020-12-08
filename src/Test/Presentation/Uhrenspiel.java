@@ -38,8 +38,8 @@ public class Uhrenspiel extends Application  {
     public Game game;
     private ProgressData progressData;
     private File file;
-    private int richtigeAntwort;
-    private int falscheAntwort;
+    public int richtigeAntwort;
+    public int falscheAntwort;
     private ClockSkin clockSkin;
     public Node node;
     private int level;
@@ -127,7 +127,7 @@ public class Uhrenspiel extends Application  {
             }
         });
         guiMC.endButton.setOnAction(event -> endGame());
-        guiMC.saveButton.setOnAction(event -> saveProgress());
+      //  guiMC.saveButton.setOnAction(event -> saveProgress());
         correctAnswerMC();
         System.out.println(game.key);
         System.out.println(game.liste);
@@ -164,7 +164,7 @@ public class Uhrenspiel extends Application  {
           });
           guiFA.submitButton.setOnAction(event -> correctAnswerFA());
           guiFA.endButton.setOnAction(event -> endGame());
-          guiFA.saveButton.setOnAction(event -> saveProgress());
+      //    guiFA.saveButton.setOnAction(event -> saveProgress());
           System.out.println(game.key);
           System.out.println(game.getAnswerFA(game.key));
           System.out.println(game.aufgabennummer);
@@ -279,7 +279,7 @@ public class Uhrenspiel extends Application  {
 
     }
 
-      public void saveProgress() {
+   /*   public void saveProgress() {
           try {
               file = new File(createFileName());
               progressData.saveProgress(file);
@@ -289,7 +289,7 @@ public class Uhrenspiel extends Application  {
               alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
           }
       }
-
+*/
       private String createFileName () {
           return  System.getProperty("user.home") + System.getProperty("file.separator") +
                   (progressData.getIOInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
