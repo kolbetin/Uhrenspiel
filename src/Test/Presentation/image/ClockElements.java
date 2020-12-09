@@ -16,6 +16,7 @@ public class ClockElements {
 
     public Group grundgeruest;
     public Group ziffern;
+    public Group ziffer12;
     public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
     public final HashMap<String, Line> minutenMap = new HashMap<>();
     public final HashMap<String, Line> stundenMap = new HashMap<>();
@@ -140,8 +141,9 @@ public class ClockElements {
         Group ziffer_12 = new Group (circle12, nummer12);
 
         ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
+        ziffer12 = ziffer_12;
 
-        // HashMap Ziffernblätter
+        // Kreiert HashMap mit Ziffernblätter
         ziffernMap.put(1, ziffer_1);
         ziffernMap.put(2, ziffer_2);
         ziffernMap.put(3, ziffer_3);

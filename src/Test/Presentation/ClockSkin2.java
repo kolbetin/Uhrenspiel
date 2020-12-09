@@ -21,25 +21,24 @@ public class ClockSkin2 {
     }
 
     // Konstruktor nimmt Parameter anzuzeigende Zeit sowie ziffernblatt entgegen für einzelnen Aufbau der Ziffern
-    /*public ClockSkin2(String anzuzeigendeZeit, int zifferblatt) {
+    public ClockSkin2(String anzuzeigendeZeit, int zifferblatt) {
         clockElements = new ClockElements();
         clockLerningMode(anzuzeigendeZeit, zifferblatt);
-    }*/
+    }
 
     public Node createClock(String anzuzeigendeZeit) {
 
         clockElements = new ClockElements();
 
         this.stunde = parserStunde(anzuzeigendeZeit);
-        stunde.setStrokeWidth(5);
+        stunde.setStrokeWidth(5); // move to CSS File
 
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
-        minute.setStroke(Color.RED);
-        minute.setStrokeWidth(5);
+        minute.setStroke(Color.RED); // move to CSS File
+        minute.setStrokeWidth(5); // move to CSS File
 
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
         Group root = new Group (clockElements.grundgeruest, clockElements.ziffern, stunde, minute);
-        // Group root = new Group(circleGroup, nummerGroup, uhrZeiger);
         Node clockSkin = root;
         //Displaying the contents of the stage
         return clockSkin;
@@ -47,10 +46,25 @@ public class ClockSkin2 {
         //return createClock();
     }
 
-    /*public Node clockLerningMode (String anzuzeigendeZeit, int ziffernblatt){
+    public Node clockLerningMode (String anzuzeigendeZeit, int anzuzeigendeZiffer){
 
-        return createClock(); // ersetzen mit LearningMode Clock Skin
-    }*/
+        clockElements = new ClockElements();
+
+        this.stunde = parserStunde(anzuzeigendeZeit);
+        stunde.setStrokeWidth(5);
+
+        this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
+        minute.setStroke(Color.RED); // move to CSS File
+        minute.setStrokeWidth(5); // move to CSS File
+
+        Group ziffer = parserZiffern(anzuzeigendeZiffer);
+
+        // Kreiert Hauptgruppe und fügt diese der Node learningClock hinzu
+        Group root = new Group (clockElements.grundgeruest, clockElements.ziffer12, ziffer, stunde, minute);
+        Node learningClock = root;
+
+        return learningClock;
+    }
 
     /*public Node createClock() {
 
@@ -68,6 +82,10 @@ public class ClockSkin2 {
 
     public Line parserStunde(String stunde) {
         return clockElements.stundenMap.get(stunde);
+    }
+
+    public Group parserZiffern(int ziffer){
+        return clockElements.ziffernMap.get(ziffer);
     }
 
 }  // Ende Klasse

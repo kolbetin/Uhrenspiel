@@ -141,7 +141,6 @@ public class GUI extends Application {
             borderPane.setId("clockArea");
 
 
-
            // Circle circle = new Circle(200);
             clock = new ClockSkin2(zit);
             node = clock.createClock(zit);
