@@ -14,19 +14,18 @@ import java.util.Random;
 
 public class ClockElements {
 
-    public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
-
     public Group grundgeruest;
     public Group ziffern;
-    public HashMap<String, Line> minutenMap;
-    public HashMap<String, Line> stundenMap;
-
+    public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
+    public final HashMap<String, Line> minutenMap = new HashMap<>();
+    public final HashMap<String, Line> stundenMap = new HashMap<>();
 
     public ClockElements (){
-        grundgeruest = createGrundgeruest();
-        ziffern = createZiffern();
-        minutenMap = createMinutenMap();
-        stundenMap = createStundenMap();
+
+        createGrundgeruest();
+        createZiffern();
+        createMinutenMap();
+        createStundenMap();
     }
     
     EventHandler<MouseEvent> eventHandler = getEventHandler();
@@ -49,7 +48,7 @@ public class ClockElements {
         };
     }
 
-    public Group createGrundgeruest(){
+    public void createGrundgeruest(){
 
         // Hauptkreise Uhr
         Circle outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
@@ -57,10 +56,10 @@ public class ClockElements {
         Circle innerCircle = new Circle(300, 300, 6, Color.BLACK);
         innerCircle.toFront();
 
-        return new Group (outerCircle,innerCircle);
+        grundgeruest = new Group (outerCircle,innerCircle);
     }
 
-    public Group createZiffern() {
+    public void createZiffern() {
 
         // Layout to transfer in CSS File
         Font nummerFont = new Font("Comic Sans MS", 30);
@@ -155,11 +154,9 @@ public class ClockElements {
         ziffernMap.put(10, ziffer_10);
         ziffernMap.put(11, ziffer_11);
         ziffernMap.put(12, ziffer_12);
-
-        return ziffern;
     }
 
-    public HashMap<String, Line> createMinutenMap() {
+    public void createMinutenMap() {
 
         // Koordinaten für Minutenzeiger
         Line minuten_30 = new Line(300, 300, 300, 400);
@@ -171,11 +168,9 @@ public class ClockElements {
         minutenMap.put("45", minuten_45);
         minutenMap.put("00", minuten_00);
         minutenMap.put("15", minuten_15);
-
-        return minutenMap;
     }
 
-    public HashMap<String, Line> createStundenMap() {
+    public void createStundenMap() {
 
         // Linien Koordinaten für Stunde 1 Uhr
         Line stunde_12_30 = new Line(300, 300, 325, 210);
@@ -308,8 +303,6 @@ public class ClockElements {
         stundenMap.put("11:45", stunde_11_45);
         stundenMap.put("12:00", stunde_12_00);
         stundenMap.put("12:15", stunde_12_15);
-
-        return stundenMap;
     }
 
 } // Ende Klasse

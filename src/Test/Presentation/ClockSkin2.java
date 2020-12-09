@@ -17,8 +17,7 @@ public class ClockSkin2 {
 
     // Konstruktor nimmt Parameter anzuzeigende Zeit entgegen zur kompletten Erstellung der Uhr
     public ClockSkin2(String anzuzeigendeZeit) {
-        clockElements = new ClockElements();
-        clock(anzuzeigendeZeit);
+        createClock(anzuzeigendeZeit);
     }
 
     // Konstruktor nimmt Parameter anzuzeigende Zeit sowie ziffernblatt entgegen für einzelnen Aufbau der Ziffern
@@ -27,7 +26,9 @@ public class ClockSkin2 {
         clockLerningMode(anzuzeigendeZeit, zifferblatt);
     }*/
 
-    public Node clock(String anzuzeigendeZeit) {
+    public Node createClock(String anzuzeigendeZeit) {
+
+        clockElements = new ClockElements();
 
         this.stunde = parserStunde(anzuzeigendeZeit);
         stunde.setStrokeWidth(5);
@@ -36,7 +37,14 @@ public class ClockSkin2 {
         minute.setStroke(Color.RED);
         minute.setStrokeWidth(5);
 
-        return createClock();
+        // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
+        Group root = new Group (clockElements.grundgeruest, clockElements.ziffern, stunde, minute);
+        // Group root = new Group(circleGroup, nummerGroup, uhrZeiger);
+        Node clockSkin = root;
+        //Displaying the contents of the stage
+        return clockSkin;
+
+        //return createClock();
     }
 
     /*public Node clockLerningMode (String anzuzeigendeZeit, int ziffernblatt){
@@ -44,7 +52,7 @@ public class ClockSkin2 {
         return createClock(); // ersetzen mit LearningMode Clock Skin
     }*/
 
-    public Node createClock() {
+    /*public Node createClock() {
 
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
         Group root = new Group (clockElements.grundgeruest, clockElements.ziffern, stunde, minute);
@@ -52,7 +60,7 @@ public class ClockSkin2 {
         Node clockSkin = root;
         //Displaying the contents of the stage
         return clockSkin;
-    }
+    }*/
 
     public Line parserMinuten(String minuten) {
         return clockElements.minutenMap.get(minuten);

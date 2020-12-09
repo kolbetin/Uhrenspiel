@@ -29,7 +29,7 @@ public class GUI extends Application {
         public Button saveButton;
         public Label antwortzähler;
         public Button goOn;
-        public ClockSkin clock;
+        public ClockSkin2 clock;
         public Label questionLabel;
         public Label uberschrift;
         public String zeit = "01:00";
@@ -143,8 +143,8 @@ public class GUI extends Application {
 
 
            // Circle circle = new Circle(200);
-            clock = new ClockSkin(zit);
-            node = clock.createClock();
+            clock = new ClockSkin2(zit);
+            node = clock.createClock(zit);
 
            //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(70,170,7,250));
