@@ -32,7 +32,7 @@ public class GUI extends Application {
         public ClockSkin2 clock;
         public Label questionLabel;
         public Label uberschrift;
-        public String zeit = "01:00";
+        public String zeit = "02:00";
         public Node node;
         public Label level;
         public Label richtigeAntwort;
@@ -141,7 +141,9 @@ public class GUI extends Application {
             borderPane.setId("clockArea");
 
 
-           // Circle circle = new Circle(200);
+            //clock = new ClockSkin2(zit);
+            //node = clock.createClock(zit);
+
             clock = new ClockSkin2(zit);
             node = clock.createClock(zit);
 

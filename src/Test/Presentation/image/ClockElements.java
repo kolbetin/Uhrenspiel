@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class ClockElements {
 
-    public Group grundgeruest;
+    public Group uhrKreise;
     public Group ziffern;
     public Group ziffer12;
     public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
@@ -57,7 +57,7 @@ public class ClockElements {
         Circle innerCircle = new Circle(300, 300, 6, Color.BLACK);
         innerCircle.toFront();
 
-        grundgeruest = new Group (outerCircle,innerCircle);
+        uhrKreise = new Group (outerCircle,innerCircle);
     }
 
     public void createZiffern() {

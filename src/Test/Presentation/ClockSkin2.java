@@ -38,7 +38,7 @@ public class ClockSkin2 {
         minute.setStrokeWidth(5); // move to CSS File
 
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
-        Group root = new Group (clockElements.grundgeruest, clockElements.ziffern, stunde, minute);
+        Group root = new Group (clockElements.uhrKreise, clockElements.ziffern, stunde, minute);
         Node clockSkin = root;
         //Displaying the contents of the stage
         return clockSkin;
@@ -60,7 +60,7 @@ public class ClockSkin2 {
         Group ziffer = parserZiffern(anzuzeigendeZiffer);
 
         // Kreiert Hauptgruppe und fügt diese der Node learningClock hinzu
-        Group root = new Group (clockElements.grundgeruest, clockElements.ziffer12, ziffer, stunde, minute);
+        Group root = new Group (clockElements.uhrKreise,clockElements.ziffer12, stunde, minute, ziffer);
         Node learningClock = root;
 
         return learningClock;
