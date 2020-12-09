@@ -15,15 +15,9 @@ public class ClockSkin2 {
     Line stunde;
     Line minute;
 
-    // Konstruktor nimmt Parameter anzuzeigende Zeit entgegen zur kompletten Erstellung der Uhr
-    public ClockSkin2(String anzuzeigendeZeit) {
-        createClock(anzuzeigendeZeit);
-    }
+    // Konstruktor
+    public ClockSkin2() {
 
-    // Konstruktor nimmt Parameter anzuzeigende Zeit sowie ziffernblatt entgegen für einzelnen Aufbau der Ziffern
-    public ClockSkin2(String anzuzeigendeZeit, int zifferblatt) {
-        clockElements = new ClockElements();
-        clockLerningMode(anzuzeigendeZeit, zifferblatt);
     }
 
     public Node createClock(String anzuzeigendeZeit) {
@@ -46,12 +40,12 @@ public class ClockSkin2 {
         //return createClock();
     }
 
-    public Node clockLerningMode (String anzuzeigendeZeit, int anzuzeigendeZiffer){
+    public Node clockLerningClock (String anzuzeigendeZeit, int anzuzeigendeZiffer){
 
         clockElements = new ClockElements();
 
         this.stunde = parserStunde(anzuzeigendeZeit);
-        stunde.setStrokeWidth(5);
+        stunde.setStrokeWidth(5); // move to CSS File
 
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
         minute.setStroke(Color.RED); // move to CSS File

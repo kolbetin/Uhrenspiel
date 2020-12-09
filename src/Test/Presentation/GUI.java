@@ -81,7 +81,7 @@ public class GUI extends Application {
         //borderPane.setRight(vBox2);
         middleArea.setTop(vBox);
         middleArea.setBottom(borderPane);
-        middleArea.setLeft(clockArea(zeit));
+        middleArea.setLeft(clockArea());
 
         return middleArea;
 
@@ -136,7 +136,7 @@ public class GUI extends Application {
             return vBox;
         }
 
-        public Pane clockArea(String zit){
+        public Pane clockArea(){
             BorderPane borderPane= new BorderPane();
             borderPane.setId("clockArea");
 
@@ -144,8 +144,8 @@ public class GUI extends Application {
             //clock = new ClockSkin2(zit);
             //node = clock.createClock(zit);
 
-            clock = new ClockSkin2(zit);
-            node = clock.createClock(zit);
+            clock = new ClockSkin2();
+            node = clock.createClock(zeit);
 
            //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(70,170,7,250));
