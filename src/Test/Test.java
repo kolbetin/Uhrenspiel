@@ -44,7 +44,7 @@ public class Test extends Application {
   public Label labelLevel;
   public Text text1;
   public Text text2;
-
+  private Uhrenspiel  uhrenspiel;
   public Button backButton;
   public Button nextGame;
   public Button repeatLevel;
@@ -56,13 +56,12 @@ public class Test extends Application {
 
   public Test(){
     progressData = new ProgressData();
-    uhr = new Uhrenspiel();
-    uhr.richtigeAntwort= 3;
-    progressData.progress.put(5,"korrekt");
-    progressData.progress.put(6,"falsch");
-    progressData.progress.put(7,"korrekt");
-    progressData.progress.put(8,"korrekt");
-    progressData.progress.put(9,"korrekt");
+
+    nextGame = new Button("Nächstes Level");
+    repeatLevel = new Button("Nochmal");
+    backButton = new Button("zurück");
+    labelLevel = new Label("Level: ");
+
     System.out.println(progressData.progress.size());
     System.out.println(progressData.progress.get(1));
 
@@ -74,41 +73,6 @@ public class Test extends Application {
 
   @Override
   public void start(Stage primaryStage) {
-/*
-    Group root = new Group();
-    Scene scene = new Scene(root, 400, 450);
-
-    primaryStage.setScene(scene);
-
-
-
-
-    for (int i = 0; i < values.length; i++) {
-      final Label label = labels[i] = new Label();
-      label.setText("Aufgabe: " + values[i]);
-
-      final Label label2 = labels[i] = new Label();
-      label2.setText( progressData.progress.get(values[i]));
-
-
-
-      HBox hb = hbs[i] = new HBox();
-      hb.setSpacing(25);
-      hb.setAlignment(Pos.CENTER_LEFT);
-      hb.getChildren().addAll(label, label2);
-
-     }
-
-    final VBox vb = new VBox();
-    vb.setSpacing(5);
-    vb.getChildren().addAll(hbs);
-    scene.setRoot(vb);
-    primaryStage.show();
-
-  }*/
-
-
-
 
 
     willkommensText = new Label();
@@ -125,7 +89,7 @@ public class Test extends Application {
       label.setText("Aufgabe: " + values[i]);
 
       final Label label2 = labels[i] = new Label();
-      label2.setText( progressData.progress.get(values[i]));
+      label2.setText( progressData.getProgressData(values[i]));
 
 
 
@@ -136,17 +100,18 @@ public class Test extends Application {
 
     }
 
+
     final VBox vb = new VBox();
     vb.setSpacing(5);
     vb.getChildren().addAll(hbs);
 
-    VBox middle = new VBox(30);
+    HBox middle = new HBox(50);
     VBox right = new VBox(20);
-    VBox bottom = new VBox(10);
+    HBox bottom = new HBox(10);
 
 
-    middle.getChildren().addAll(labelLevel,text1);
-    right.getChildren().addAll(vb);
+    middle.getChildren().addAll(labelLevel,vb);
+   // right.getChildren().addAll(vb);
     bottom.getChildren().addAll(backButton, nextGame, repeatLevel);
 
     BorderPane root = new BorderPane();
@@ -154,11 +119,11 @@ public class Test extends Application {
     root.setTop(willkommensText);
     root.setPadding(new Insets(150,370,7,20));
 
-    middle.setPadding(new Insets(50,7,10,7));
+    middle.setPadding(new Insets(150,7,10,370));
     right.setPadding(new Insets(50,7,10,70));
-    bottom.setPadding(new Insets(0,7,200,7));
-    root.setLeft(middle);
-    root.setRight(right);
+    bottom.setPadding(new Insets(100,7,200,500));
+   // root.setLeft(middle);
+    root.setCenter(middle);
     root.setBottom(bottom);
 
     root.getStylesheets().add
@@ -166,13 +131,12 @@ public class Test extends Application {
     //return  root;
 
 
-    Scene scene = new Scene(root, 400, 450);
+    Scene scene = new Scene(root, 1400, 850);
 
     primaryStage.setScene(scene);
     scene.setRoot(root);
     primaryStage.show();
   }
-
 
 
 

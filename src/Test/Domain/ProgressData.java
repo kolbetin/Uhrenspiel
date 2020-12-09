@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -38,16 +39,24 @@ public class ProgressData extends Application  {
         random = new Random();
         ioInterface = new IOSerialisierung();
 
+
+        System.out.println(progress.size());
+
     }
 
-    public void setProgress(Map<Integer, String> key) {
-        this.progress.clear();
+    public void setProgress(HashMap key) {
+       // this.progress.clear();
         this.progress.putAll(key);
     }
 
-   /* public void saveProgress(File file) throws IOException {
+    public void setProgressData(Integer aufgabe, String key) {
+        // this.progress.clear();
+        this.progress.put(aufgabe, key);
+    }
+
+    public void saveProgress(File file) throws IOException {
         ioInterface.save(file,progress);
-    }*/
+    }
 
     public void loadProgress( File file) throws ClassNotFoundException, IOException {
         setProgress(ioInterface.load(file));
@@ -85,6 +94,9 @@ public class ProgressData extends Application  {
         return null;
     }
 
+    public String getProgressData(int i){
+               return progress.get(i);
+           }
 
 
 

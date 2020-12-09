@@ -6,16 +6,20 @@ import Test.Persistenz.IOSerialisierung;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -40,9 +44,11 @@ public class Uhrenspiel extends Application  {
     private File file;
     public int richtigeAntwort;
     public int falscheAntwort;
-    private ClockSkin clockSkin;
-    public Node node;
     private int level;
+    final Integer[] values = new Integer[] {1,2,3,4,5,6,7,8,9,10};
+    final Label [] labels = new Label[values.length];
+
+    final HBox hbs [] = new HBox [values.length];
 
 
 
@@ -156,10 +162,15 @@ public class Uhrenspiel extends Application  {
                 newGameFreeAnswer();
                 } else {
                   summaryScreen.start(stage1);
-                  summaryScreen.text1.setText(String.valueOf(progressData.getProgressKeys()));
-                  summaryScreen.text2.setText(progressData.getProgressValues());
+                  summaryScreen.labelLevel.setText("Level: " + level);
+                  summaryScreen.label2.setText("progressData.getProgressData(1)");
                  // stage1.close();
                  // start(stage1);
+                  System.out.println(progressData.progress.size());
+
+                  System.out.println(progressData.getProgressData(1));
+                  System.out.println(progressData.getProgressData(2));
+                  System.out.println(progressData.getProgressData(3));
                    }
           });
           guiFA.submitButton.setOnAction(event -> correctAnswerFA());
@@ -191,7 +202,7 @@ public class Uhrenspiel extends Application  {
                   guiFA.givenMinutes.setDisable(true);
                   guiFA.submitButton.setDisable(true);
                   richtigeAntwort++;
-                  progressData.progress.put(game.aufgabennummer,"Korrekt");
+                  progressData.setProgressData(game.aufgabennummer,"Korrekt");
               } else {
                   guiFA.submitButton.setStyle("-fx-background-color: #dd2323");
                   guiFA.submitButton.setText("Leider, falsch!");
@@ -199,7 +210,7 @@ public class Uhrenspiel extends Application  {
                           + "Deine Antwort: " + answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.key + " Uhr.");
                   falscheAntwort++;
-                  progressData.progress.put(game.aufgabennummer,"Falsch");
+                  progressData.setProgressData(game.aufgabennummer,"Falsch");
                   guiFA.givenHour.setDisable(true);
                   guiFA.givenMinutes.setDisable(true);
                   guiFA.submitButton.setDisable(true);
@@ -246,7 +257,7 @@ public class Uhrenspiel extends Application  {
                               richtigeAntwort++;
                               disableButtons();
                               guiMC.goOn.setDisable(false);
-                              progressData.progress.put(game.aufgabennummer,"Korrekt");
+                              progressData.setProgressData(game.aufgabennummer,"Korrekt");
 
                               } else {
                               button.setStyle("-fx-background-color: red");
@@ -255,7 +266,7 @@ public class Uhrenspiel extends Application  {
                               falscheAntwort++;
                               disableButtons();
                               guiMC.goOn.setDisable(false);
-                              progressData.progress.put(game.aufgabennummer,"Falsch");
+                              progressData.setProgressData(game.aufgabennummer,"Falsch");
                           }
 
                       }
@@ -279,7 +290,7 @@ public class Uhrenspiel extends Application  {
 
     }
 
-   /*   public void saveProgress() {
+      public void saveProgress() {
           try {
               file = new File(createFileName());
               progressData.saveProgress(file);
@@ -289,7 +300,7 @@ public class Uhrenspiel extends Application  {
               alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
           }
       }
-*/
+
       private String createFileName () {
           return  System.getProperty("user.home") + System.getProperty("file.separator") +
                   (progressData.getIOInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
