@@ -1,15 +1,11 @@
 package Test.Presentation;
 
-import Test.Presentation.ClockSkin;
 import Test.Domain.Game;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class Question extends GUI {
     private Game game;

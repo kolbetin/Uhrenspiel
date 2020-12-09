@@ -1,22 +1,13 @@
 package Test.Presentation;
 
-import Test.Domain.Game;
 import Test.Test;
 import javafx.application.Application;
-import javafx.concurrent.Task;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-
-import java.io.FileInputStream;
-import java.util.Collection;
 
 
 public class GUI extends Application {
@@ -29,7 +20,7 @@ public class GUI extends Application {
         public Button saveButton;
         public Label antwortzähler;
         public Button goOn;
-        public ClockSkin2 clock;
+        public ClockSkin clock;
         public Label questionLabel;
         public Label uberschrift;
         public String zeit = "02:00";
@@ -144,7 +135,7 @@ public class GUI extends Application {
             //clock = new ClockSkin2(zit);
             //node = clock.createClock(zit);
 
-            clock = new ClockSkin2();
+            clock = new ClockSkin();
             node = clock.createClock(zeit);
 
            //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");

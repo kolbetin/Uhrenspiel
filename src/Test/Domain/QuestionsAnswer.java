@@ -1,13 +1,5 @@
 package Test.Domain;
 
-import Test.Domain.ProgressData;
-import Test.Presentation.ClockSkin;
-import Test.Test;
-import javafx.application.Application;
-import javafx.stage.Stage;
-
-import javafx.scene.shape.Line;
-
 import java.util.*;
 
 import static javafx.application.Application.launch;

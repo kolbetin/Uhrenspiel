@@ -1,7 +1,5 @@
 package Test.Domain;
 
-import Test.Presentation.ClockSkin;
-
 public class Lernmodus {
 
     // Klasse Lernmodus
