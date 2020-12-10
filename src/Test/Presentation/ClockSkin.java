@@ -1,6 +1,5 @@
 package Test.Presentation;
 
-import Test.Presentation.image.ClockElements;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;

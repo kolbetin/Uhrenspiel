@@ -1,7 +1,5 @@
 package Test.Presentation;
 
-import Test.Presentation.image.ClockElements;
-import Test.Test;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Node;

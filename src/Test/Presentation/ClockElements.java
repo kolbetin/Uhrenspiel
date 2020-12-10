@@ -1,4 +1,4 @@
-package Test.Presentation.image;
+package Test.Presentation;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
