@@ -20,19 +20,17 @@ import Test.Domain.ProgressData;
 
 public class Test extends Application {
   private ProgressData progressData;
-  private Uhrenspiel uhr;
-  private Label willkommensText;
+  public Label willkommensText;
   public Label labelLevel;
-  public Text text1;
-  public Text text2;
-  private Uhrenspiel  uhrenspiel;
+  public Label labelRA;
+  public Label labelFA;
   public Button backButton;
   public Button nextGame;
   public Button repeatLevel;
   final Integer[] values = new Integer[] {1,2,3,4,5,6,7,8,9,10};
-  final Label [] labels = new Label[values.length];
+  Label [] labels = new Label[values.length];
 
-  final HBox hbs [] = new HBox [values.length];
+  HBox hbs [] = new HBox [values.length];
 
 
   public Test(){
@@ -51,7 +49,7 @@ public class Test extends Application {
   public static void main(String[] args) {
     launch(args);
   }
-
+/*
   @Override
   public void start(Stage primaryStage) {
 
@@ -66,10 +64,10 @@ public class Test extends Application {
     labelLevel = new Label("Level: " );
 
     for (int i = 0; i < values.length; i++) {
-      final Label label = labels[i] = new Label();
+      Label label = labels[i] = new Label();
       label.setText("Aufgabe: " + values[i]);
 
-      final Label label2 = labels[i] = new Label();
+      Label label2 = labels[i] = new Label();
       label2.setText( progressData.getProgressData(values[i]));
 
 
@@ -82,7 +80,7 @@ public class Test extends Application {
     }
 
 
-    final VBox vb = new VBox();
+    VBox vb = new VBox();
     vb.setSpacing(5);
     vb.getChildren().addAll(hbs);
 
@@ -117,9 +115,53 @@ public class Test extends Application {
     primaryStage.setScene(scene);
     scene.setRoot(root);
     primaryStage.show();
-  }
+  }*/
+    @Override
+    public void start(Stage primaryStage) {
+
+      willkommensText = new Label();
+      willkommensText.setText("Level wurde abgeschlossen");
+      labelRA = new Label("Test");
+      labelFA = new Label("Test");
 
 
+      nextGame = new Button("Nächstes Level");
+      repeatLevel = new Button("Nochmal");
+      backButton = new Button("zurück");
+      labelLevel = new Label("Level: ");
+
+
+       HBox middle = new HBox(20);
+       VBox right = new VBox(50);
+       HBox bottom = new HBox(10);
+
+
+       // middle.getChildren().addAll(willkommensText);
+        right.getChildren().addAll(willkommensText,labelRA, labelFA);
+        bottom.getChildren().addAll(backButton, nextGame, repeatLevel);
+
+  BorderPane root = new BorderPane();
+
+       // root.setTop(willkommensText);
+       // root.setPadding(new Insets(150, 370, 7, 20));
+
+        middle.setPadding(new Insets(50, 7, 10, 370));
+        right.setPadding(new Insets(150, 7, 10, 500));
+        bottom.setPadding(new Insets(100, 7, 200, 500));
+       // root.setLeft(middle);
+        root.setCenter(right);
+        root.setBottom(bottom);
+
+        root.getStylesheets().add
+          (Test.class.getResource("clock.css").toExternalForm());
+        //return root;
+
+  Scene scene = new Scene(root, 1400, 850);
+
+    primaryStage.setScene(scene);
+    scene.setRoot(root);
+    primaryStage.show();
+}
 
 
 }

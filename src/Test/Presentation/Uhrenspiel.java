@@ -45,10 +45,8 @@ public class Uhrenspiel extends Application  {
     public int richtigeAntwort;
     public int falscheAntwort;
     private int level;
-    final Integer[] values = new Integer[] {1,2,3,4,5,6,7,8,9,10};
-    final Label [] labels = new Label[values.length];
+    final Integer[] values = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-    final HBox hbs [] = new HBox [values.length];
 
 
 
@@ -158,21 +156,12 @@ public class Uhrenspiel extends Application  {
           }
           guiFA.goOn.setOnAction(event -> {
           System.out.println(game.aufgabennummer);
-              if(game.aufgabennummer<3) {
+              if(game.aufgabennummer<2) {
                 newGameFreeAnswer();
                 } else {
-                  summaryScreen.start(stage1);
-                  summaryScreen.labelLevel.setText("Level: " + level);
-                  summaryScreen.label2.setText("progressData.getProgressData(1)");
-                 // stage1.close();
-                 // start(stage1);
-                  System.out.println(progressData.progress.size());
-
-                  System.out.println(progressData.getProgressData(1));
-                  System.out.println(progressData.getProgressData(2));
-                  System.out.println(progressData.getProgressData(3));
-                   }
-          });
+                  gameEnd();
+              }
+                });
           guiFA.submitButton.setOnAction(event -> correctAnswerFA());
           guiFA.endButton.setOnAction(event -> endGame());
       //    guiFA.saveButton.setOnAction(event -> saveProgress());
@@ -221,6 +210,20 @@ public class Uhrenspiel extends Application  {
 
           }
       }
+
+     public void gameEnd(){
+              summaryScreen.start(stage1);
+              summaryScreen.willkommensText.setText("Level: " + level + " wurde abgeschlossen!");
+              summaryScreen.labelRA.setText("Richtige Antworten: " + richtigeAntwort);
+              summaryScreen.labelFA.setText("Richtige Antworten: " + falscheAntwort);
+
+              System.out.println(progressData.progress.size());
+
+              summaryScreen.backButton.setOnAction(event -> start(stage1));
+
+
+
+          }
 
 
       public void correctAnswerMC() {
@@ -328,8 +331,6 @@ public class Uhrenspiel extends Application  {
         int index = random.nextInt(guiList.size());
         return guiList.get(index);
     }
-
-
 
 
     public Uhrenspiel() {

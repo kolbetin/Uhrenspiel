@@ -34,11 +34,11 @@ public class MainScreen extends GUI {
 
         VBox middle = new VBox(10);
         middle.getChildren().addAll(newGameButton,loadGameButton,lernmodusButton,spielanleitungButton,endGameButton);
-        middle.setPadding(new Insets(70,170,7,70));
+        middle.setPadding(new Insets(70,500,7,70));
         BorderPane root = new BorderPane();
         root.setTop(willkommensText);
-        root.setPadding(new Insets(150,370,7,20));
-        root.setCenter(middle);
+        root.setPadding(new Insets(150,100,7,70));
+        root.setLeft(middle);
       //  root.getChildren().add(label);
         root.getStylesheets().add
                 (Test.class.getResource("clock.css").toExternalForm());
