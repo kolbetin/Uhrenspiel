@@ -1,12 +1,14 @@
 package Test.Presentation;
 
+import javafx.animation.PauseTransition;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
-public class LernmodusScreen extends GUI {
+public class Lernmodus extends GUI {
 
     private Lernmodus lernmodus;
     private ClockSkin clock;
@@ -45,7 +47,7 @@ public class LernmodusScreen extends GUI {
         BorderPane borderPane= new BorderPane();
         borderPane.setId("clockArea");
 
-        int stunde = 0;
+
         int anzuzeigendeZiffer = 0;
         String anzuzeigendeZeit = null;
 
@@ -53,21 +55,24 @@ public class LernmodusScreen extends GUI {
 
         for (int i = 0; i < 12; i++) {
 
-            stunde += 1;
             anzuzeigendeZiffer += 1;
 
-            if (stunde<10) {
-                anzuzeigendeZeit = "0" + stunde + ":00";
+            if (anzuzeigendeZiffer<10) {
+                anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":00";
             }
             else {
-                anzuzeigendeZeit = stunde + ":00";
+                anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
             }
 
-            System.out.println(stunde);
             System.out.println(anzuzeigendeZeit);
             System.out.println(anzuzeigendeZiffer);
 
             borderPane.setTop( clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer));
+
+            // Pause zwischen den einzelnen angezeigten Uhrzeiten
+            PauseTransition wait = new PauseTransition(Duration.seconds(5));
+            wait.setOnFinished(event -> clockArea());
+            wait.play();
         }
 
 

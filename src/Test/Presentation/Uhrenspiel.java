@@ -34,7 +34,7 @@ public class Uhrenspiel extends Application  {
     private SummaryScreen summaryScreen;
     private Verabschiedungsbildschirm verAbschieden;
     private GamesChoiceScreen choiceScreen;
-    private LernmodusScreen lernmodusScreen;
+    private Lernmodus lernmodus;
     private Stage stage1;
     private Stage stage2;
     private Stage stage3;
@@ -56,7 +56,7 @@ public class Uhrenspiel extends Application  {
           stage2 = new Stage();
 
           mainScreen.start(stage1);
-          lernmodusScreen.start(stage1);
+          lernmodus.start(stage1);
           mainScreen.newGameButton.setOnAction(event -> {
                  setChoiceScreen();
            });
@@ -398,7 +398,7 @@ public class Uhrenspiel extends Application  {
         choiceScreen = new GamesChoiceScreen();
         summaryScreen = new SummaryScreen();
 
-       lernmodusScreen = new LernmodusScreen();
+       lernmodus = new Lernmodus();
 
 
 

@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 import java.util.HashMap;
 import java.util.Random;
 
-public class OLDClockSkin {
+/*public class OLDClockSkin {
 
     /// Variablen für Stunden- & Minutenzeiger
     Line stunde;
@@ -347,4 +347,4 @@ public class OLDClockSkin {
         stundenMap.put("12:15", stunde_12_15);
     }
 
-} // Ende Klasse
+}*/ // Ende Klasse

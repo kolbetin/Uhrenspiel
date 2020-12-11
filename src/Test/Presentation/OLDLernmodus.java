@@ -1,6 +1,6 @@
 package Test.Presentation;
 
-public class Lernmodus {
+/*public class Lernmodus {
 
     private ClockSkin clock;
     private ClockElements clockElements;
@@ -43,9 +43,9 @@ public class Lernmodus {
 
 
             // Pause zwischen den einzelnen angezeigten Uhrzeiten
-            /*PauseTransition wait = new PauseTransition(Duration.seconds(5));
+            PauseTransition wait = new PauseTransition(Duration.seconds(5));
             wait.setOnFinished(event -> startLernmodus());
-            wait.play();*/
+            wait.play();
 
 
             System.out.println(stunde);
@@ -56,4 +56,4 @@ public class Lernmodus {
 
 
     }
-}
+}*/
