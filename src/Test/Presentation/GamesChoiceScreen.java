@@ -18,11 +18,11 @@ public class GamesChoiceScreen extends GUI {
      public Button level3;
      public Button level4;
      public Button leadedGame;
-     private Text text1;
-     private Text text2;
-     private Text text3;
-     private Text text4;
-     private Text text5;
+     public Text text1;
+     public Text text2;
+     public Text text3;
+     public Text text4;
+     public Text text5;
      public Button backButton;
 
 

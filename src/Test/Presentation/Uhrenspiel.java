@@ -44,12 +44,7 @@ public class Uhrenspiel extends Application  {
     private File file;
     public int richtigeAntwort;
     public int falscheAntwort;
-    private int level;
-    final Integer[] values = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-
-
-
+    private int level = 1;
 
 
       public void start(Stage primarystage) {
@@ -60,9 +55,8 @@ public class Uhrenspiel extends Application  {
           mainScreen.start(stage1);
 
           mainScreen.newGameButton.setOnAction(event -> {
-                  newGame();
-
-          });
+                 setChoiceScreen();
+           });
           mainScreen.loadGameButton.setOnAction(event ->
                   loadProgress()
           );
@@ -76,35 +70,49 @@ public class Uhrenspiel extends Application  {
           );
       }
 
+    private void setChoiceScreen(){
+        choiceScreen.start(stage1);
 
+        choiceScreen.level1.setOnAction(e -> {
+            level = 1;
+            newGame();
+        });
+        choiceScreen.level2.setOnAction(e -> {
+            level = 2;
+            newGame();
+        });
+        choiceScreen.level3.setOnAction(e -> {
+            level = 3;
+            newGame();
+        });
+        choiceScreen.level4.setOnAction(e -> {
+            level = 4;
+            newGame();
+        });
+        choiceScreen.backButton.setOnAction(event -> {
+            start(stage1);
+        });
+
+
+    }
 
 
     public void newGame(){
-
         game.aufgabennummer = 0;
         richtigeAntwort =0;
         falscheAntwort= 0;
-        choiceScreen.start(stage1);
-        choiceScreen.level1.setOnAction(e -> {
-            level = 1;
-            game.getLevel(1);
+        game.getLevel(level);
+        if(level<4){
             newGameMultipleChoice();
-        });
-        choiceScreen.level2.setOnAction(e -> {
-            game.getLevel(2);
-            level = 2;
-            newGameMultipleChoice();
-        });
-        choiceScreen.level3.setOnAction(e -> {
-            game.getLevel(3);
-            level = 3;
-            newGameMultipleChoice();
-        });
-        choiceScreen.backButton.setOnAction(event -> {
-                 start(stage1);
-        });
-
-
+        }
+        else {
+            if (getGUI()== guiFA){
+                newGameFreeAnswer();
+            }
+            else {
+                newGameMultipleChoice();
+            }
+        }
     }
 
     public void newGameMultipleChoice() {
@@ -116,22 +124,30 @@ public class Uhrenspiel extends Application  {
         guiMC.antwort3.setText((String) game.answers.get(2));
         guiMC.antwort4.setText((String) game.answers.get(3));
         guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-        guiMC.level.setText("Level: " + level);
+        guiMC.level.setText("Level: " + level + choiceScreen.text2);
         guiMC.richtigeAntwort.setText("Richtige Antworten: " + richtigeAntwort);
         guiMC.falscheAntwort.setText("Falsche Antworten: " + falscheAntwort);
         if(level > 1){
             //guiMC.questionLabel.setText("Frage: Es ist __:__ Uhr?");
         }
         guiMC.goOn.setOnAction(event -> {
-            if(game.aufgabennummer<1) {
-                newGameMultipleChoice();
+            if (level < 4) {
+                if (game.aufgabennummer < 3) {
+                    newGameMultipleChoice();
+                } else {
+                    newGameFreeAnswer();
+                }
             }
-            else {
+            else {if (getGUI()== guiFA){
                 newGameFreeAnswer();
             }
+            else {
+                newGameMultipleChoice();
+            }
+           }
         });
         guiMC.endButton.setOnAction(event -> endGame());
-      //  guiMC.saveButton.setOnAction(event -> saveProgress());
+        guiMC.saveButton.setOnAction(event -> saveProgress());
         correctAnswerMC();
         System.out.println(game.key);
         System.out.println(game.liste);
@@ -139,6 +155,7 @@ public class Uhrenspiel extends Application  {
         System.out.println(game.aufgabennummer);
         System.out.println("Richtige Antwort; " + richtigeAntwort);
         System.out.println("Falsche Antwort; " + falscheAntwort);
+        System.out.println(progressData.progress);
 
   }
       public void newGameFreeAnswer(){
@@ -156,7 +173,7 @@ public class Uhrenspiel extends Application  {
           }
           guiFA.goOn.setOnAction(event -> {
           System.out.println(game.aufgabennummer);
-              if(game.aufgabennummer<2) {
+              if(game.aufgabennummer<4) {
                 newGameFreeAnswer();
                 } else {
                   gameEnd();
@@ -215,12 +232,19 @@ public class Uhrenspiel extends Application  {
               summaryScreen.start(stage1);
               summaryScreen.willkommensText.setText("Level: " + level + " wurde abgeschlossen!");
               summaryScreen.labelRA.setText("Richtige Antworten: " + richtigeAntwort);
-              summaryScreen.labelFA.setText("Richtige Antworten: " + falscheAntwort);
-
-              System.out.println(progressData.progress.size());
+              summaryScreen.labelFA.setText("Falsche Antworten: " + falscheAntwort);
 
               summaryScreen.backButton.setOnAction(event -> start(stage1));
+              summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
+              if(level< 4){
+                    summaryScreen.nextGame.setOnAction(event -> {
+                      level = level + 1;
+                      newGame();
+                      });
+                  } else {
+                      summaryScreen.nextGame.setDisable(true);
+              }
 
 
           }
