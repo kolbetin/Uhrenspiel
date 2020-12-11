@@ -20,7 +20,7 @@ public class GUI extends Application {
         public Button saveButton;
         public Label antwortzähler;
         public Button goOn;
-        public ClockSkin clock;
+        private ClockSkin clock;
         public Label questionLabel;
         public Label uberschrift;
         public String zeit = "02:00";
@@ -28,6 +28,7 @@ public class GUI extends Application {
         public Label level;
         public Label richtigeAntwort;
         public Label falscheAntwort;
+        public Label textlevel;
 
 
 
@@ -57,13 +58,14 @@ public class GUI extends Application {
 
         antwortzähler = new Label("Antwort 1 von 10");
         level = new Label ("Level");
+        textlevel = new Label("");
         //Image image1 = new Image( System.getProperty("user.home"));
 
 
        // VBox vBox2= new VBox(2);
        // vBox2.getChildren().addAll(level);
         VBox vBox= new VBox(2);
-        vBox.getChildren().addAll(antwortzähler, level);
+        vBox.getChildren().addAll(antwortzähler, level, textlevel);
         vBox.setPadding(new Insets(7,7,7,7));
        // vBox2.setPadding(new Insets(7,170,370,7));
         BorderPane borderPane = new BorderPane();

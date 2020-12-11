@@ -47,13 +47,14 @@ public class SummaryScreen extends GUI {
 
 
         VBox middle = new VBox(50);
-        HBox bottom = new HBox(10);
+        HBox bottom = new HBox(30);
 
-        bottom.getChildren().addAll(backButton, nextGame, repeatLevel);
-        bottom.setPadding(new Insets(100, 7, 200, 270));
 
         middle.getChildren().addAll(willkommensText,labelRA, labelFA);
         middle.setPadding(new Insets(70,270,7,270));
+
+        bottom.getChildren().addAll(backButton, repeatLevel, nextGame);
+        bottom.setPadding(new Insets(100, 7, 200, 270));
 
         BorderPane root = new BorderPane();
 

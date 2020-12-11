@@ -38,11 +38,13 @@ public class Lernmodus {
                 e.printStackTrace();
             }*/
 
+
             System.out.println(stunde);
             System.out.println(anzuzeigendeZeit);
             System.out.println(anzuzeigendeZiffer);
 
         }
+
 
     }
 
