@@ -1,6 +1,5 @@
 package Test.Presentation;
 
-import Test.Domain.Lernmodus;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -46,30 +45,28 @@ public class LernmodusScreen extends GUI {
         BorderPane borderPane= new BorderPane();
         borderPane.setId("clockArea");
 
-        double stunde = 01;
-        int anzuzeigendeZiffer = 1;
-        String anzuzeigendeZeit = stunde + ":00";
+        int stunde = 0;
+        int anzuzeigendeZiffer = 0;
+        String anzuzeigendeZeit = null;
 
         // Schleife welche die ClockSkin mit 12 Stunden Uhrzeiten einzeln aufbaut
 
-        for(int i = 1; i < 13; i++){
-            clock = new ClockSkin();
-            clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
+        for (int i = 0; i < 12; i++) {
 
-            stunde+=01;
-            anzuzeigendeZiffer+=1;
+            stunde += 1;
+            anzuzeigendeZiffer += 1;
 
-            // Pause zwischen den einzelnen angezeigten Uhrzeiten
-            /*try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
-
+            if (stunde<10) {
+                anzuzeigendeZeit = "0" + stunde + ":00";
+            }
+            else {
+                anzuzeigendeZeit = stunde + ":00";
+            }
 
             System.out.println(stunde);
             System.out.println(anzuzeigendeZeit);
             System.out.println(anzuzeigendeZiffer);
+
             borderPane.setTop( clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer));
         }
 
