@@ -43,9 +43,9 @@ public class GUI extends Application {
 
 
             // rootTop.setTop(menuBar);
-            Scene scene = new Scene(borderPane, 1500, 800);
+            Scene scene = new Scene(borderPane, 1600, 700);
             scene.getStylesheets().add
-                    (Test.class.getResource("clock.css").toExternalForm());
+                    (GUI.class.getResource("clock.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.setTitle("Uhrenspiel");
             primaryStage.show();
@@ -58,7 +58,7 @@ public class GUI extends Application {
 
         antwortzähler = new Label("Antwort 1 von 10");
         level = new Label ("Level");
-        textlevel = new Label("Erklärung");
+       // textlevel = new Label("Erklärung");
         //Image image1 = new Image( System.getProperty("user.home"));
 
 

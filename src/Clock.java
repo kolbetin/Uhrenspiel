@@ -182,7 +182,7 @@ public class Clock extends Application {
         layout.getChildren().addAll(analogueClock, digitalClock);
         layout.setAlignment(Pos.CENTER);
         final Scene scene = new Scene(layout, Color.TRANSPARENT);
-        scene.getStylesheets().add(getResource("Test/clock.css"));
+        scene.getStylesheets().add(getResource("Test/Presentation/clock.css"));
         stage.setScene(scene);
 
         // allow the clock background to be used to drag the clock around.

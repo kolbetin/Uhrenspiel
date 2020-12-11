@@ -68,7 +68,7 @@ public class GamesChoiceScreen extends GUI {
         root.setBottom(bottom);
 
         root.getStylesheets().add
-                (Test.class.getResource("clock.css").toExternalForm());
+                (GUI.class.getResource("clock.css").toExternalForm());
         return  root;
 
     }

@@ -18,8 +18,8 @@ public class LernmodusScreen extends GUI {
         BorderPane middleArea = new BorderPane();
         middleArea.setId("middleArea");
 
-      //  antwortzähler = new Label("Antwort 1 von 10");
-      //  level = new Label ("Level");
+        antwortzähler = new Label("Antwort 1 von 10");
+        level = new Label ("Level");
         //Image image1 = new Image( System.getProperty("user.home"));
 
 

@@ -35,7 +35,7 @@ public class Verabschiedungsbildschirm extends GUI {
         root.getChildren().add(close);
         String path = "src/Test";
         root.getStylesheets().add
-                (Test.class.getResource("clock.css").toExternalForm());
+                (GUI.class.getResource("clock.css").toExternalForm());
         primaryStage.setScene(new Scene(root, 1100, 800));
         primaryStage.show();
     }

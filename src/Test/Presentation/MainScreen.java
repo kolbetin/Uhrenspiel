@@ -41,7 +41,7 @@ public class MainScreen extends GUI {
         root.setLeft(middle);
       //  root.getChildren().add(label);
         root.getStylesheets().add
-                (Test.class.getResource("clock.css").toExternalForm());
+                (GUI.class.getResource("clock.css").toExternalForm());
         return  root;
 
     }

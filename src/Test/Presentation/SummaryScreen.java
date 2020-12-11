@@ -63,7 +63,7 @@ public class SummaryScreen extends GUI {
         root.setCenter(middle);
 
         root.getStylesheets().add
-                (Test.class.getResource("clock.css").toExternalForm());
+                (GUI.class.getResource("clock.css").toExternalForm());
         return root;
 
     }
