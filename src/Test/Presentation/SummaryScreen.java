@@ -47,7 +47,7 @@ public class SummaryScreen extends GUI {
 
 
         VBox middle = new VBox(50);
-        HBox bottom = new HBox(30);
+        HBox bottom = new HBox(40);
 
 
         middle.getChildren().addAll(willkommensText,labelRA, labelFA);

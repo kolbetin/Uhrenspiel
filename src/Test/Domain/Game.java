@@ -19,6 +19,7 @@ public class Game {
         questionsAnswermap = new QuestionsAnswer();
         answers = new ArrayList<String>();
         liste = new ArrayList<String>();
+        playedGames = new ArrayList<String>();
     }
 
     public void nextQuestion() {
@@ -56,6 +57,7 @@ public class Game {
         Object[] objects = questionsAnswermap.antwortenMap.keySet().toArray();
         Object randomkey = objects[new Random().nextInt(objects.length)];
         liste.add((String) randomkey);
+        playedGames.add((String) randomkey);
         key = (String) randomkey;
         return key;
     }
@@ -67,7 +69,7 @@ public class Game {
 
         for (int i = 0; liste.size() < 4; i++) {
             Object keys = objects[new Random().nextInt(objects.length)];
-            if (!liste.contains(keys) & keys != key) {
+            if (!liste.contains(keys) & keys != key & !playedGames.contains(keys)) {
                 liste.add((String) keys);
             }
         }

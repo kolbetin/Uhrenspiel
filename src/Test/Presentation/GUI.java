@@ -58,21 +58,22 @@ public class GUI extends Application {
 
         antwortzähler = new Label("Antwort 1 von 10");
         level = new Label ("Level");
-        textlevel = new Label("");
+        textlevel = new Label("Erklärung");
         //Image image1 = new Image( System.getProperty("user.home"));
 
 
-       // VBox vBox2= new VBox(2);
-       // vBox2.getChildren().addAll(level);
-        VBox vBox= new VBox(2);
-        vBox.getChildren().addAll(antwortzähler, level, textlevel);
-        vBox.setPadding(new Insets(7,7,7,7));
-       // vBox2.setPadding(new Insets(7,170,370,7));
+        BorderPane hBox= new BorderPane();
+        hBox.setLeft(level);
+        hBox.setCenter(textlevel);
+
+        VBox upper = new VBox(20);
+        upper.getChildren().addAll(antwortzähler,hBox);
+
         BorderPane borderPane = new BorderPane();
         borderPane.setTop(questionArea());
         borderPane.setBottom(answerArea());
         //borderPane.setRight(vBox2);
-        middleArea.setTop(vBox);
+        middleArea.setTop(upper);
         middleArea.setBottom(borderPane);
         middleArea.setLeft(clockArea());
 

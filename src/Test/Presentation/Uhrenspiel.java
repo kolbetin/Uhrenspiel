@@ -107,6 +107,7 @@ public class Uhrenspiel extends Application  {
         game.aufgabennummer = 0;
         richtigeAntwort =0;
         falscheAntwort= 0;
+        game.playedGames.clear();
         game.getLevel(level);
         if(level<4){
             newGameMultipleChoice();
@@ -145,26 +146,29 @@ public class Uhrenspiel extends Application  {
 
     private void setTextlevel(){
 
-          switch(level){
+         switch(level){
               case 1:  guiMC.textlevel.setText("Volle Stunde, z.B. 1:00 Uhr");
-           /*   case 2:  getGUI().textlevel.setText("Halbe Stunde, z.B. 1:30 Uhr");
-              case 3:  getGUI().textlevel.setText("Viertel Stunde, z.B. 1:45 Uhr oder 1:15 Uhr");
-              case 4:  getGUI().textlevel.setText("Alle Levels, z.b. 2:00 Uhr oder 2:30 Uhr oder 2:45 Uhr");*/
-        }
+              case 2:  guiMC.textlevel.setText("Halbe Stunde, z.B. 1:30 Uhr");
+              case 3:  guiMC.textlevel.setText("Viertel Stunde, z.B. 1:45 Uhr oder 1:15 Uhr");
+              case 4:  guiMC.textlevel.setText("Alle Levels, z.b. 2:00 Uhr oder 2:30 Uhr oder 2:45 Uhr");
+
+              default:  System.out.println("jetzt gehts aber los");
+        };
     }
 
     public void newGameMultipleChoice() {
         game.nextQuestion();
         guiMC.zeit = game.key;
         guiMC.start(stage1);
+        setTextlevel();
         guiMC.antwort1.setText((String) game.answers.get(0));
         guiMC.antwort2.setText((String) game.answers.get(1));
         guiMC.antwort3.setText((String) game.answers.get(2));
         guiMC.antwort4.setText((String) game.answers.get(3));
         guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-        guiMC.level.setText("Level: " + level);
+        guiMC.level.setText("Level: " + level );
         guiMC.richtigeAntwort.setText("Richtige Antworten: " + richtigeAntwort);
-        guiMC.falscheAntwort.setText("Falsche Antworten: " + falscheAntwort);
+        guiMC.falscheAntwort.setText("Falsche Antworten: " + falscheAntwort );
         guiMC.goOn.setOnAction(event -> setgoOnButton());
         guiMC.endButton.setOnAction(event -> endGame());
         guiMC.saveButton.setOnAction(event -> saveProgress());
@@ -173,9 +177,11 @@ public class Uhrenspiel extends Application  {
         System.out.println(game.liste);
         System.out.println(game.answers);
         System.out.println(game.aufgabennummer);
-        System.out.println("Richtige Antwort; " + richtigeAntwort);
-        System.out.println("Falsche Antwort; " + falscheAntwort);
+        System.out.println("Richtige Antwort: " + richtigeAntwort);
+        System.out.println("Falsche Antwort: " + falscheAntwort);
         System.out.println(progressData.progress);
+        System.out.println(game.playedGames);
+
 
   }
       public void newGameFreeAnswer(){
@@ -201,7 +207,7 @@ public class Uhrenspiel extends Application  {
           System.out.println("Richtige Antwort: " + richtigeAntwort);
           System.out.println("Falsche Antwort: " + falscheAntwort);
           System.out.println(progressData.progress);
-
+          System.out.println(game.playedGames);
       }
 
       public void correctAnswerFA() {
