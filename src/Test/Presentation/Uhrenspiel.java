@@ -56,7 +56,7 @@ public class Uhrenspiel extends Application  {
           stage2 = new Stage();
 
           mainScreen.start(stage1);
-          lernmodus.start(stage1);
+          //lernmodus.start(stage1);
           mainScreen.newGameButton.setOnAction(event -> {
                  stage1.close();
                  setChoiceScreen();
@@ -106,8 +106,11 @@ public class Uhrenspiel extends Application  {
 
     public void newGame(){
         game.aufgabennummer = 0;
+        if(!strictGame){
         richtigeAntwort =0;
         falscheAntwort= 0;
+        }
+
         game.playedGames.clear();
         game.getLevel(level);
         if(level<4){
@@ -186,7 +189,6 @@ public class Uhrenspiel extends Application  {
           if(level > 1){
                   guiFA.givenMinutes.setText("");
           }
-
           guiFA.goOn.setVisible(false);
           guiFA.submitButton.setOnAction(event -> correctAnswerFA());
           guiFA.endButton.setOnAction(event -> endGame());
@@ -265,7 +267,7 @@ public class Uhrenspiel extends Application  {
                       newGame();
                       });
                   } else {
-                      summaryScreen.nextGame.setVisible(false);
+                      summaryScreen.nextGame.setDisable(true);
               }
              }
              else {

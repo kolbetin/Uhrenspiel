@@ -1,11 +1,13 @@
 package Test.Domain;
 
 import Test.Persistenz.QuestionsAnswer;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 import java.util.*;
 
 
-public class Game {
+public class Game extends Application {
 
     private QuestionsAnswer questionsAnswermap;
     public List playedGames;
@@ -20,6 +22,10 @@ public class Game {
         answers = new ArrayList<String>();
         liste = new ArrayList<String>();
         playedGames = new ArrayList<String>();
+    //    getLevel(1);
+    //    nextQuestion();
+        System.out.println(playedGames);
+        System.out.println(liste);
     }
 
     public void nextQuestion() {
@@ -54,11 +60,21 @@ public class Game {
 
 
     public Object getTaskkey() {
-        Object[] objects = questionsAnswermap.antwortenMap.keySet().toArray();
-        Object randomkey = objects[new Random().nextInt(objects.length)];
-        liste.add((String) randomkey);
-        playedGames.add((String) randomkey);
-        key = (String) randomkey;
+        boolean played = false;
+
+
+        while ( !played ){
+            Object[] objects = questionsAnswermap.antwortenMap.keySet().toArray();
+            Object randomkey = objects[new Random().nextInt(objects.length)];
+            if (!playedGames.contains(randomkey)) {
+                liste.add((String) randomkey);
+                key = (String) randomkey;
+                played = true;
+                playedGames.add(randomkey);
+            }
+
+        }
+
         return key;
     }
 
@@ -69,7 +85,7 @@ public class Game {
 
         for (int i = 0; liste.size() < 4; i++) {
             Object keys = objects[new Random().nextInt(objects.length)];
-            if (!liste.contains(keys) & keys != key & !playedGames.contains(keys)) {
+            if (!liste.contains(keys) & keys != key  ) {
                 liste.add((String) keys);
             }
         }
@@ -89,4 +105,8 @@ public class Game {
         return value;
     }
 
+    public void start(Stage primaryStage) {}
+      public static void main(String[] args) {
+        launch(args);
+    }
 }
