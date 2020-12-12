@@ -106,11 +106,11 @@ public class Uhrenspiel extends Application  {
 
     public void newGame(){
         game.aufgabennummer = 0;
+
         if(!strictGame){
         richtigeAntwort =0;
         falscheAntwort= 0;
         }
-
         game.playedGames.clear();
         game.getLevel(level);
         if(level<4){
@@ -128,9 +128,9 @@ public class Uhrenspiel extends Application  {
 
     private void setgoOnButton(){
 
-          if( game.aufgabennummer<10) {
+          if( game.aufgabennummer<5) {
               if (level < 4) {
-                  if (game.aufgabennummer < 5) {
+                  if (game.aufgabennummer < 4) {
                       newGameMultipleChoice();
                   } else {
                       newGameFreeAnswer();
@@ -271,13 +271,20 @@ public class Uhrenspiel extends Application  {
               }
              }
              else {
-                 if(richtigeAntwort> 2) {
-                     summaryScreen.willkommensText.setText("Level: " + level + " wurde erfolgreich abgeschlossen!");
+                 int sum = 0;
+                 sum    = sum + richtigeAntwort + falscheAntwort;
+                 int pct =  richtigeAntwort/sum;
+
+
+                 if (pct >= 0.6) {
+                     summaryScreen.willkommensText.setText("Level: " + level + pct + " wurde erfolgreich abgeschlossen!");
+                     System.out.println(sum + pct);
                  }
                  else {
-                     summaryScreen.willkommensText.setText("Level: " + level + " wurde nicht erfolgreich abgeschlossen!");
+                     summaryScreen.willkommensText.setText("Level: " + level +   pct+" wurde nicht erfolgreich abgeschlossen!");
+                     System.out.println(sum + pct);
                  }
-                 if (richtigeAntwort > 2 & level< 4){
+                 if (pct >= 0.6 & level< 4){
                      summaryScreen.nextGame.setOnAction(event -> {
                          level = level + 1;
                          newGame();
