@@ -58,6 +58,7 @@ public class Uhrenspiel extends Application  {
           mainScreen.start(stage1);
           lernmodus.start(stage1);
           mainScreen.newGameButton.setOnAction(event -> {
+                 stage1.close();
                  setChoiceScreen();
            });
           mainScreen.loadGameButton.setOnAction(event ->
@@ -124,9 +125,9 @@ public class Uhrenspiel extends Application  {
 
     private void setgoOnButton(){
 
-          if( game.aufgabennummer<3) {
+          if( game.aufgabennummer<10) {
               if (level < 4) {
-                  if (game.aufgabennummer < 1) {
+                  if (game.aufgabennummer < 5) {
                       newGameMultipleChoice();
                   } else {
                       newGameFreeAnswer();
@@ -249,7 +250,11 @@ public class Uhrenspiel extends Application  {
               summaryScreen.labelRA.setText("Richtige Antworten: " + richtigeAntwort);
               summaryScreen.labelFA.setText("Falsche Antworten: " + falscheAntwort);
 
-              summaryScreen.backButton.setOnAction(event -> start(stage1));
+              summaryScreen.backButton.setOnAction(event -> {
+                  stage1.close();
+                  start(stage1);
+
+              });
               summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
               if(!strictGame){

@@ -22,13 +22,11 @@ public class QuestionFreeAnswer extends GUI {
         submitButton = new Button("abschicken");
         givenHour = new TextField();
         givenMinutes = new TextField();
-        submitButton.setOnAction(event -> {
-            submitButton.setText("ich überlege");
-        });
+
         goOn = new Button ("weiter");
 
         hBox.getChildren().addAll(
-                new Label("Antwort"), givenHour,new Text(":"),givenMinutes,submitButton, goOn);
+                 new Label("Antwort: "), givenHour,new Text(":"),givenMinutes,new Label(" Uhr  "), submitButton, goOn);
         return hBox;
     }
 
