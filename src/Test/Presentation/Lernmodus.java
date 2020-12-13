@@ -47,7 +47,6 @@ public class Lernmodus extends GUI {
         BorderPane borderPane= new BorderPane();
         borderPane.setId("clockArea");
 
-
         int anzuzeigendeZiffer = 0;
         String anzuzeigendeZeit = null;
 
