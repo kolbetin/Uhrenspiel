@@ -14,16 +14,17 @@ import java.util.Random;
 
 public class ClockElements {
 
-    public Group uhrKreise;
+    //public Group uhrKreise;
     public Group ziffern;
     public Group ziffer12;
     public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
     public final HashMap<String, Line> minutenMap = new HashMap<>();
     public final HashMap<String, Line> stundenMap = new HashMap<>();
+    public Circle outerCircle;
+    public Circle innerCircle;
 
     public ClockElements (){
-
-        createGrundgeruest();
+        createUhrKreise();
         createZiffern();
         createMinutenMap();
         createStundenMap();
@@ -49,15 +50,11 @@ public class ClockElements {
         };
     }
 
-    public void createGrundgeruest(){
+    public void createUhrKreise(){
 
         // Hauptkreise Uhr
-        Circle outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
-        outerCircle.toBack();
-        Circle innerCircle = new Circle(300, 300, 6, Color.BLACK);
-        innerCircle.toFront();
-
-        uhrKreise = new Group (outerCircle,innerCircle);
+        outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
+        innerCircle = new Circle(300, 300, 6, Color.BLACK);
     }
 
     public void createZiffern() {

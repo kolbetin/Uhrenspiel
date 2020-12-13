@@ -31,12 +31,11 @@ public class ClockSkin {
         minute.setStrokeWidth(5); // move to CSS File
 
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
-        Group root = new Group (clockElements.uhrKreise, clockElements.ziffern, stunde, minute);
+        Group root = new Group (clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
+        clockElements.outerCircle.toBack();
+        clockElements.innerCircle.toFront();
         Node clockSkin = root;
-        //Displaying the contents of the stage
         return clockSkin;
-
-        //return createClock();
     }
 
     public Node clockLerningClock (String anzuzeigendeZeit, int anzuzeigendeZiffer){
@@ -53,9 +52,10 @@ public class ClockSkin {
         Group ziffer = parserZiffern(anzuzeigendeZiffer);
 
         // Kreiert Hauptgruppe und fügt diese der Node learningClock hinzu
-        Group root = new Group (clockElements.uhrKreise,clockElements.ziffer12, stunde, minute, ziffer);
+        Group root = new Group (clockElements.outerCircle,clockElements.ziffer12, stunde, minute,clockElements.innerCircle, ziffer);
+        clockElements.outerCircle.toBack();
+        clockElements.innerCircle.toFront();
         Node learningClock = root;
-
         return learningClock;
     }
 

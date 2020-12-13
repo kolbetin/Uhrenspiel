@@ -67,23 +67,22 @@ public class Lernmodus extends GUI {
             System.out.println(anzuzeigendeZeit);
             System.out.println(anzuzeigendeZiffer);
 
-            borderPane.setTop( clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer));
+            borderPane.setTop(clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer));
 
             // Pause zwischen den einzelnen angezeigten Uhrzeiten
             PauseTransition wait = new PauseTransition(Duration.seconds(5));
             wait.setOnFinished(event -> clockArea());
             wait.play();
-        }
 
+        }
 
         //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
         borderPane.setPadding(new Insets(70,170,7,250));
 
-
+        return borderPane;
 
       //  borderPane.setTop(node);
         // borderPane.setCenter(circle);
-
-        return borderPane;
+        //return borderPane;
     }
 }

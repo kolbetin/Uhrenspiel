@@ -21,6 +21,7 @@ public class GUI extends Application {
         public Label antwortzähler;
         public Button goOn;
         private ClockSkin clock;
+        private Lernmodus lernmodus;
         public Label questionLabel;
         public Label uberschrift;
         public String zeit = "02:00";
@@ -135,11 +136,9 @@ public class GUI extends Application {
             borderPane.setId("clockArea");
 
 
-            //clock = new ClockSkin2(zit);
-            //node = clock.createClock(zit);
-
             clock = new ClockSkin();
             node = clock.createClock(zeit);
+            //node = clock.clockLerningClock(zeit, 2);
 
            //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(70,170,7,250));
