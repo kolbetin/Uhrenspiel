@@ -69,9 +69,11 @@ public class Lernmodus extends GUI {
             borderPane.setTop(clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer));
 
             // Pause zwischen den einzelnen angezeigten Uhrzeiten
-            PauseTransition wait = new PauseTransition(Duration.seconds(5));
-            wait.setOnFinished(event -> clockArea());
-            wait.play();
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
         }
 
