@@ -5,14 +5,17 @@ import Test.Domain.ProgressData;
 import Test.Persistenz.IOSerialisierung;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -55,8 +58,9 @@ public class Uhrenspiel extends Application  {
           stage1 = new Stage();
           stage2 = new Stage();
 
-          mainScreen.start(stage1);
-          //lernmodus.start(stage1);
+           mainScreen.start(stage1);
+
+
           mainScreen.newGameButton.setOnAction(event -> {
                  stage1.close();
                  setChoiceScreen();
@@ -72,6 +76,10 @@ public class Uhrenspiel extends Application  {
                       }
                   }
           );
+          mainScreen.lernmodusButton.setOnAction(event -> {
+              //stage1.close();
+              startLernmodus();
+          });
       }
 
     private void setChoiceScreen(){
@@ -101,6 +109,47 @@ public class Uhrenspiel extends Application  {
         choiceScreen.backButton.setOnAction(e -> {
             start(stage1);
         });
+    }
+
+
+        public void startLernmodus(){
+
+        // longrunning operation runs on different thread
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                Runnable updater = new Runnable() {
+
+                    @Override
+                    public void run() {
+                        lernmodus.startLernmodus();
+                        lernmodus.start(stage1);
+                    }
+                };
+                boolean ende = false;
+                while (!ende) {
+                    if (lernmodus.anzuzeigendeZiffer < 13) {
+                        try {
+                            Thread.sleep(3000);
+                        } catch (InterruptedException ex) {
+                        }
+                    }
+                        else { ende = true;
+                        start(stage1);
+
+                        }
+
+                        // UI update is run on the Application thread
+                        Platform.runLater(updater);
+                    }
+
+            }
+
+        });
+        // don't let thread prevent JVM shutdown
+        thread.setDaemon(true);
+        thread.start();
     }
 
 
@@ -247,7 +296,13 @@ public class Uhrenspiel extends Application  {
       }
 
      public void gameEnd(){
+              stage1.close();
               summaryScreen.start(stage1);
+               int sum = 0;
+               sum    = sum + richtigeAntwort + falscheAntwort;
+               int pct = 0;
+               pct =  pct + (richtigeAntwort/sum);
+                System.out.println("Summe: " + sum+ "PCT: " + pct);
 
               summaryScreen.labelRA.setText("Richtige Antworten: " + richtigeAntwort);
               summaryScreen.labelFA.setText("Falsche Antworten: " + falscheAntwort);
@@ -271,10 +326,10 @@ public class Uhrenspiel extends Application  {
               }
              }
              else {
-                 int sum = 0;
+                /* int sum = 0;
                  sum    = sum + richtigeAntwort + falscheAntwort;
                  int pct =  richtigeAntwort/sum;
-
+                 System.out.println(sum + pct);*/
 
                  if (pct >= 0.6) {
                      summaryScreen.willkommensText.setText("Level: " + level + pct + " wurde erfolgreich abgeschlossen!");
@@ -411,8 +466,7 @@ public class Uhrenspiel extends Application  {
         game = new Game();
         choiceScreen = new GamesChoiceScreen();
         summaryScreen = new SummaryScreen();
-
-       lernmodus = new Lernmodus();
+        lernmodus = new Lernmodus();
 
 
 

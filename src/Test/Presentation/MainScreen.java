@@ -18,6 +18,7 @@ public class MainScreen extends GUI {
      public Button newGameButton;
      public Button loadGameButton;
      public Button endGameButton;
+     public Button lernmodusButton;
 
 
     @Override
@@ -29,7 +30,7 @@ public class MainScreen extends GUI {
         newGameButton = new Button("Neues Spiel");
         loadGameButton = new Button("Laden des letzten Spiels");
         endGameButton = new Button("Beenden");
-        Button lernmodusButton = new Button("Lernmodus");
+        lernmodusButton = new Button("Lernmodus");
         Button spielanleitungButton = new Button("Spielanleitung");
 
         VBox middle = new VBox(10);

@@ -21,7 +21,7 @@ public class GUI extends Application {
         public Label antwortzähler;
         public Button goOn;
         private ClockSkin clock;
-        private Lernmodus lernmodus;
+       // private Lernmodus lernmodus;
         public Label questionLabel;
         public Label uberschrift;
         public String zeit = "10:15";
