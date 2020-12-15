@@ -4,6 +4,7 @@ import Test.Domain.Game;
 import Test.Domain.ProgressData;
 import Test.Persistenz.IOSerialisierung;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -18,6 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -116,9 +118,18 @@ public class Uhrenspiel extends Application  {
 
         public void startLernmodus(){
             lernmodus.start(stage1);
+
+
+          /*  PauseTransition wait = new PauseTransition(Duration.seconds(5));
+            wait.setOnFinished(event ->  lernmodus.text.setText("Es ist jetzt: " + lernmodus.anzuzeigendeZeit + " Uhr"));
+            wait.play();*/
+
             lernmodus.text.setText("Es ist jetzt: " + lernmodus.anzuzeigendeZeit + " Uhr");
 
-
+            lernmodus.repeatButton.setOnAction(event -> {
+                thread.start();
+                // start(stage1);
+            });
         // longrunning operation runs on different thread
          thread = new Thread(new Runnable() {
 
@@ -135,6 +146,8 @@ public class Uhrenspiel extends Application  {
                             thread.stop();
                             start(stage1);
                         });
+
+
                     }
 
                 };
@@ -142,7 +155,7 @@ public class Uhrenspiel extends Application  {
                 while (!ende) {
                     if (lernmodus.anzuzeigendeZiffer < 12) {
                         try {
-                            Thread.sleep(3000);
+                            Thread.sleep(1000);
                         } catch (InterruptedException ex) {
                         }
                     }
@@ -153,8 +166,11 @@ public class Uhrenspiel extends Application  {
                         // UI update is run on the Application thread
                         Platform.runLater(updater);
                     }
-                stage1.close();
-                start(stage1);
+               // stage1.close();
+               // start(stage1);
+                lernmodus.repeatButton.setOnAction(event -> {
+                  startLernmodus();
+                });
             }
 
         });

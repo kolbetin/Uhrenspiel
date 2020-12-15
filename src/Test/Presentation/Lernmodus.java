@@ -18,6 +18,7 @@ public class Lernmodus extends GUI {
     public String anzuzeigendeZeit = "01:00";
     private Label uberschrift = new Label();
     public Button endGameButton;
+    public Button repeatButton;
 
   //  public void start(Stage primaryStage) {}
     public static void main(String[] args) {
@@ -64,9 +65,8 @@ public class Lernmodus extends GUI {
 
         uberschrift.setText("Lernmodus - Wo stehen die Ziffern auf der Uhr?");
 
-        endGameButton = new Button("Beenden");
 
-        Button spielanleitungButton = new Button("Spielanleitung");
+
 
         VBox middle = new VBox(10);
         middle.getChildren().addAll(clockArea());
@@ -107,8 +107,9 @@ public class Lernmodus extends GUI {
 
             VBox vbox = new VBox(20);
 
-            endButton = new Button("Spiel beenden");
-            vbox.getChildren().addAll(endButton);
+            endButton = new Button("Lernmodus beenden");
+            repeatButton = new Button ("Nochmal");
+            vbox.getChildren().addAll(repeatButton,endButton);
 
 
             borderPane.setPadding(new Insets(7, 50, 7, 25));
