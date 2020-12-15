@@ -3,6 +3,7 @@ package Test.Presentation;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -10,14 +11,13 @@ import javafx.util.Duration;
 
 public class Lernmodus extends GUI {
 
-   // private Lernmodus lernmodus;
+
     private ClockSkin clock;
     public Label text = new Label();
-
-
-
-    public int anzuzeigendeZiffer = 0;
-    public String anzuzeigendeZeit = null;
+    public int anzuzeigendeZiffer = 1;
+    public String anzuzeigendeZeit = "01:00";
+    private Label uberschrift = new Label();
+    public Button endGameButton;
 
   //  public void start(Stage primaryStage) {}
     public static void main(String[] args) {
@@ -59,39 +59,32 @@ public class Lernmodus extends GUI {
 
     }
     @Override
-    public BorderPane middleArea() {
-
-        BorderPane middleArea = new BorderPane();
-        middleArea.setId("middleArea");
-
-        uberschrift = new Label("Lernmodus");
-        level = new Label ("Level 1");
-        //Image image1 = new Image( System.getProperty("user.home"));
+    public BorderPane middleArea(){
 
 
-        // VBox vBox2= new VBox(2);
-        // vBox2.getChildren().addAll(level);
-         VBox vBox= new VBox(2);
-         vBox.getChildren().addAll(uberschrift, text);
-      //  vBox.setPadding(new Insets(7,7,7,7));
-        // vBox2.setPadding(new Insets(7,170,370,7));
-     //   BorderPane borderPane = new BorderPane();
-      //  borderPane.setTop(questionArea());
-       // borderPane.setBottom(answerArea());
-        //borderPane.setRight(vBox2);
-         middleArea.setTop(vBox);
-       // middleArea.setBottom(borderPane);
-        middleArea.setPadding(new Insets(7,370,370,7));
-        middleArea.setCenter(clockArea());
+        uberschrift.setText("Lernmodus - Wo stehen die Ziffern auf der Uhr?");
 
-        return middleArea;
+        endGameButton = new Button("Beenden");
+
+        Button spielanleitungButton = new Button("Spielanleitung");
+
+        VBox middle = new VBox(10);
+        middle.getChildren().addAll(clockArea());
+        middle.setPadding(new Insets(70,500,7,70));
+        BorderPane root = new BorderPane();
+        root.setTop(uberschrift);
+        root.setPadding(new Insets(7,100,7,70));
+        root.setCenter(middle);
+        root.setBottom(text);
+        //  root.getChildren().add(label);
+        root.getStylesheets().add
+                (GUI.class.getResource("clock.css").toExternalForm());
+        return  root;
 
     }
     public Pane clockArea(){
         BorderPane borderPane= new BorderPane();
         borderPane.setId("clockArea");
-      //  anzuzeigendeZeit = "01:00";
-      //  anzuzeigendeZiffer = 1;
 
         clock = new ClockSkin();
         node =clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
@@ -102,23 +95,31 @@ public class Lernmodus extends GUI {
 
 
 
-        borderPane.setTop(node);
-        // borderPane.setCenter(circle);
+        borderPane.setCenter(node);
 
         return borderPane;
     }
 
     @Override
-    public Pane leftArea() {
-        VBox vBox = new VBox(5);
+  public Pane leftArea() {
+            BorderPane borderPane = new BorderPane();
+            borderPane.setId("leftArea");
 
-        //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        vBox.setPadding(new Insets(7, 150, 7, 70));
-        //vBox.getChildren().addAll(new Text("Fortschrittsleiste"));
+            VBox vbox = new VBox(20);
+
+            endButton = new Button("Spiel beenden");
+            vbox.getChildren().addAll(endButton);
 
 
-        return vBox;
-    }
+            borderPane.setPadding(new Insets(7, 50, 7, 25));
+
+            vbox.setPadding(new Insets(70, 7, 7, 7));
+
+            borderPane.setBottom(vbox);
+
+            return borderPane;
+        }
+
 
 
 

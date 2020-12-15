@@ -50,6 +50,7 @@ public class Uhrenspiel extends Application  {
     public int falscheAntwort;
     private int level = 1;
     private boolean strictGame = false;
+    private Thread thread;
 
 
 
@@ -79,6 +80,7 @@ public class Uhrenspiel extends Application  {
           mainScreen.lernmodusButton.setOnAction(event -> {
               //stage1.close();
               startLernmodus();
+
           });
       }
 
@@ -113,9 +115,13 @@ public class Uhrenspiel extends Application  {
 
 
         public void startLernmodus(){
+            lernmodus.start(stage1);
+            lernmodus.text.setText("Es ist jetzt: " + lernmodus.anzuzeigendeZeit + " Uhr");
+
 
         // longrunning operation runs on different thread
-        Thread thread = new Thread(new Runnable() {
+         thread = new Thread(new Runnable() {
+
 
             @Override
             public void run() {
@@ -125,32 +131,41 @@ public class Uhrenspiel extends Application  {
                     public void run() {
                         lernmodus.startLernmodus();
                         lernmodus.start(stage1);
+                        lernmodus.endButton.setOnAction(event -> {
+                            thread.stop();
+                            start(stage1);
+                        });
                     }
+
                 };
                 boolean ende = false;
                 while (!ende) {
-                    if (lernmodus.anzuzeigendeZiffer < 13) {
+                    if (lernmodus.anzuzeigendeZiffer < 12) {
                         try {
                             Thread.sleep(3000);
                         } catch (InterruptedException ex) {
                         }
                     }
-                        else { ende = true;
-                        start(stage1);
-
-                        }
+                     else {
+                       ende = true;
+                                        }
 
                         // UI update is run on the Application thread
                         Platform.runLater(updater);
                     }
-
+                stage1.close();
+                start(stage1);
             }
 
         });
         // don't let thread prevent JVM shutdown
-        thread.setDaemon(true);
+      //  thread.setDaemon(true);
         thread.start();
+
+
     }
+
+
 
 
     public void newGame(){
