@@ -66,17 +66,21 @@ public class Lernmodus extends GUI {
         uberschrift.setText("Lernmodus - Wo stehen die Ziffern auf der Uhr?");
 
 
-
+        VBox right = new VBox(20);
+        right.getChildren().add(text);
+        right.setPadding(new Insets(200,550,7,7));
 
         VBox middle = new VBox(10);
         middle.getChildren().addAll(clockArea());
-        middle.setPadding(new Insets(70,500,7,70));
+     //   middle.setPadding(new Insets(70,100,7,70));
+      //  middle.setStyle("-fx-border-width:  1; -fx-border-color: blue");
         BorderPane root = new BorderPane();
         root.setTop(uberschrift);
-        root.setPadding(new Insets(7,100,7,70));
-        root.setCenter(middle);
-        root.setBottom(text);
-        //  root.getChildren().add(label);
+        root.setPadding(new Insets(7,450,7,70));
+       // root.setStyle("-fx-border-width:  1; -fx-border-color: green");
+        root.setLeft(middle);
+        root.setRight(right);
+
         root.getStylesheets().add
                 (GUI.class.getResource("clock.css").toExternalForm());
         return  root;
