@@ -140,6 +140,7 @@ public class Uhrenspiel extends Application  {
                         lernmodus.start(stage1);
                         lernmodus.endButton.setOnAction(event -> {
                             thread.stop();
+                            stage1.close();
                             start(stage1);
                         });
                         lernmodus.repeatButton.setOnAction(event -> {
