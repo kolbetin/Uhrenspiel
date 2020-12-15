@@ -117,13 +117,9 @@ public class Uhrenspiel extends Application  {
 
 
         public void startLernmodus(){
+            lernmodus.anzuzeigendeZiffer = 1;
+            lernmodus.anzuzeigendeZeit = "01:00";
             lernmodus.start(stage1);
-
-
-          /*  PauseTransition wait = new PauseTransition(Duration.seconds(5));
-            wait.setOnFinished(event ->  lernmodus.text.setText("Es ist jetzt: " + lernmodus.anzuzeigendeZeit + " Uhr"));
-            wait.play();*/
-
             lernmodus.text.setText("Es ist jetzt: " + lernmodus.anzuzeigendeZeit + " Uhr");
 
             lernmodus.repeatButton.setOnAction(event -> {
@@ -146,14 +142,16 @@ public class Uhrenspiel extends Application  {
                             thread.stop();
                             start(stage1);
                         });
-
+                        lernmodus.repeatButton.setOnAction(event -> {
+                         startLernmodus();
+                        });
 
                     }
 
                 };
                 boolean ende = false;
                 while (!ende) {
-                    if (lernmodus.anzuzeigendeZiffer < 12) {
+                    if (lernmodus.anzuzeigendeZiffer < 11) {
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException ex) {
@@ -161,6 +159,7 @@ public class Uhrenspiel extends Application  {
                     }
                      else {
                        ende = true;
+                       start(stage1);
                                         }
 
                         // UI update is run on the Application thread
@@ -168,9 +167,7 @@ public class Uhrenspiel extends Application  {
                     }
                // stage1.close();
                // start(stage1);
-                lernmodus.repeatButton.setOnAction(event -> {
-                  startLernmodus();
-                });
+
             }
 
         });
