@@ -30,10 +30,10 @@ public class Game extends Application {
 
     public void nextQuestion() {
         liste.clear();
-        answers.clear();
+       // answers.clear();
         getTaskkey();
         randomAnswer();
-        answerSet();
+       // answerSet();
         aufgabennummer++;
     }
 
@@ -45,7 +45,7 @@ public class Game extends Application {
         if (level == 2) {
             questionsAnswermap.antwortenMapLevel2();
         }
-        if (level == 3) {
+        if  (level == 3) {
             questionsAnswermap.antwortenMapLevel3();
         }
         if (level == 4) {
@@ -61,6 +61,7 @@ public class Game extends Application {
     public Object getTaskkey() {
         boolean played = false;
 
+
         while ( !played ){
             Object[] objects = questionsAnswermap.antwortenMap.keySet().toArray();
             Object randomkey = objects[new Random().nextInt(objects.length)];
@@ -72,6 +73,7 @@ public class Game extends Application {
             }
 
         }
+
         return key;
     }
 
@@ -89,13 +91,13 @@ public class Game extends Application {
         return liste;
     }
 
-    public void answerSet() {
+  /*  public void answerSet() {
         for (int i = 0; i < 4; i++) {
             String value = questionsAnswermap.antwortenMap.get(liste.get(i));
             answers.add(value);
             Collections.shuffle(answers);
         }
-    }
+    }*/
 
     public String getAnswerFA(String keys) {
         String value = questionsAnswermap.antwortenMap.get(keys);

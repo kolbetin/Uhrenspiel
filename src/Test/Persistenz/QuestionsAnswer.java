@@ -10,9 +10,6 @@ public class QuestionsAnswer {
     public HashMap<String, String> antwortenMap;
     private ProgressData progressData;
 
-
-
-
     public QuestionsAnswer() {
         antwortenMap = new HashMap<>();
 
@@ -34,6 +31,8 @@ public class QuestionsAnswer {
         antwortenMap.put("11:00","11:00");
         antwortenMap.put("12:00","12:00");
     }
+
+
 
     public void antwortenMapLevel2() {
         antwortenMap.put("01:30","01:30");

@@ -2,6 +2,7 @@ package Test.Presentation;
 
 import Test.Domain.Game;
 import Test.Domain.ProgressData;
+import Test.Domain.SavedData;
 import Test.Persistenz.IOSerialisierung;
 
 import javafx.animation.PauseTransition;
@@ -47,6 +48,7 @@ public class Uhrenspiel extends Application  {
     private AlertHelper alertHelper;
     public Game game;
     private ProgressData progressData;
+    private SavedData data;
     private File file;
     public int richtigeAntwort;
     public int falscheAntwort;
@@ -217,10 +219,10 @@ public class Uhrenspiel extends Application  {
        // guiMC.zeit = "12:00";
         guiMC.start(stage1);
 
-        guiMC.antwort1.setText((String) game.answers.get(0));
-        guiMC.antwort2.setText((String) game.answers.get(1));
-        guiMC.antwort3.setText((String) game.answers.get(2));
-        guiMC.antwort4.setText((String) game.answers.get(3));
+        guiMC.antwort1.setText((String) game.liste.get(0));
+        guiMC.antwort2.setText((String) game.liste.get(1));
+        guiMC.antwort3.setText((String) game.liste.get(2));
+        guiMC.antwort4.setText((String) game.liste.get(3));
 
         guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
         guiMC.level.setText("Level: " + level );
@@ -233,8 +235,7 @@ public class Uhrenspiel extends Application  {
         correctAnswerMC();
         System.out.println(game.key);
         System.out.println(game.liste);
-        System.out.println(game.answers);
-        System.out.println(game.aufgabennummer);
+         System.out.println(game.aufgabennummer);
         System.out.println("Richtige Antwort: " + richtigeAntwort);
         System.out.println("Falsche Antwort: " + falscheAntwort);
         System.out.println(progressData.progress);
@@ -425,7 +426,7 @@ public class Uhrenspiel extends Application  {
             }
     }
 
-      public void saveProgress() {
+      public void saveProgressdata() {
           try {
               file = new File(createFileName());
               progressData.saveProgress(file);
@@ -441,7 +442,7 @@ public class Uhrenspiel extends Application  {
                   (progressData.getIOInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
       }
 
-      private void loadProgress() {
+      private void loadProgressdata() {
           try {
               progressData.loadProgress(file);
 
@@ -450,6 +451,35 @@ public class Uhrenspiel extends Application  {
               alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
           }
       }
+
+    public void saveProgress() {
+        try {
+            data.progress.add(game.aufgabennummer);
+            data.progress.add(level);
+            data.progress.add(game.playedGames);
+            data.progress.add(strictGame);
+            System.out.println(data);
+            file = new File(createFileName());
+            data.saveProgress(file);
+
+            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Liste gespeichert in Datei " + file + ".");
+        } catch (IOException e) {
+            alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
+        }
+    }
+
+
+    private void loadProgress() {
+        try {
+            data.loadProgress(file);
+
+
+            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + file + " geladen.");
+        } catch (IOException | ClassNotFoundException e) {
+            alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
+        }
+    }
+
 
  /*   public void fillGuiList() {
         guiList = new ArrayList<>();
@@ -478,6 +508,7 @@ public class Uhrenspiel extends Application  {
         choiceScreen = new GamesChoiceScreen();
         summaryScreen = new SummaryScreen();
         lernmodus = new Lernmodus();
+        data = new SavedData();
 
        // fillGuiList();
 

@@ -11,13 +11,11 @@ import javafx.util.Duration;
 
 public class Lernmodus extends GUI {
 
-
     private ClockSkin clock;
     public Label text = new Label();
     public int anzuzeigendeZiffer = 1;
     public String anzuzeigendeZeit = "01:00";
     private Label uberschrift = new Label();
-    public Button endGameButton;
     public Button repeatButton;
 
     //  public void start(Stage primaryStage) {}
@@ -27,7 +25,6 @@ public class Lernmodus extends GUI {
 
 
     public void startLernmodus() {
-
 
         if( anzuzeigendeZiffer < 12) {
             anzuzeigendeZiffer += 1;
@@ -52,19 +49,17 @@ public class Lernmodus extends GUI {
     @Override
     public BorderPane middleArea() {
 
-
         uberschrift.setText("Lernmodus - Wo stehen die Ziffern auf der Uhr?");
 
-
-        VBox right = new VBox(20);
+        final VBox right = new VBox(20);
         right.getChildren().add(text);
         right.setPadding(new Insets(200, 550, 7, 7));
 
-        VBox middle = new VBox(10);
+        final VBox middle = new VBox(10);
         middle.getChildren().addAll(clockArea());
         //   middle.setPadding(new Insets(70,100,7,70));
         //  middle.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        BorderPane root = new BorderPane();
+        final BorderPane root = new BorderPane();
         root.setTop(uberschrift);
         root.setPadding(new Insets(7, 450, 7, 70));
         // root.setStyle("-fx-border-width:  1; -fx-border-color: green");
@@ -102,7 +97,6 @@ public class Lernmodus extends GUI {
         endButton = new Button("Lernmodus beenden");
         repeatButton = new Button("Nochmal");
         vbox.getChildren().addAll(repeatButton, endButton);
-
 
         borderPane.setPadding(new Insets(7, 50, 7, 25));
 
