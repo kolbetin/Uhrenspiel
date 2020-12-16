@@ -54,7 +54,7 @@ public class GUI extends Application {
 
     public BorderPane middleArea() {
 
-        BorderPane middleArea = new BorderPane();
+        final BorderPane middleArea = new BorderPane();
         middleArea.setId("middleArea");
 
         antwortzähler = new Label("Antwort 1 von 10");
@@ -63,14 +63,14 @@ public class GUI extends Application {
         //Image image1 = new Image( System.getProperty("user.home"));
 
 
-        BorderPane hBox= new BorderPane();
+        final BorderPane hBox= new BorderPane();
         hBox.setLeft(level);
         hBox.setCenter(textlevel);
 
-        VBox upper = new VBox(20);
+        final VBox upper = new VBox(20);
         upper.getChildren().addAll(antwortzähler,hBox);
 
-        BorderPane borderPane = new BorderPane();
+        final BorderPane borderPane = new BorderPane();
         borderPane.setTop(questionArea());
         borderPane.setBottom(answerArea());
         //borderPane.setRight(vBox2);
@@ -132,7 +132,7 @@ public class GUI extends Application {
         }
 
         public Pane clockArea(){
-            BorderPane borderPane= new BorderPane();
+            final  BorderPane borderPane= new BorderPane();
             borderPane.setId("clockArea");
 
 
@@ -152,10 +152,10 @@ public class GUI extends Application {
         }
 
          public Pane leftArea() {
-            BorderPane borderPane = new BorderPane();
+            final BorderPane borderPane = new BorderPane();
             borderPane.setId("leftArea");
 
-            VBox vbox = new VBox(20);
+            final VBox vbox = new VBox(20);
 
             endButton = new Button("Spiel beenden");
             saveButton = new Button ("Speichern");
@@ -192,7 +192,7 @@ public class GUI extends Application {
             final HBox hBox = new HBox(25);
             hBox.setId("answerArea");
 
-           hBox.setPadding(new Insets(15, 7, 10, 7));
+            hBox.setPadding(new Insets(15, 7, 10, 7));
 
             antwort1 = new Button("Antwort A");
             antwort2 = new Button("Antwort B");
@@ -202,9 +202,9 @@ public class GUI extends Application {
              goOn = new Button ("weiter");
 
 
-             Label antwort = new Label("Antwort");
-             hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);
-             hBox.getChildren().add(goOn);
+            Label antwort = new Label("Antwort");
+            hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);
+            hBox.getChildren().add(goOn);
 
 
             return hBox;

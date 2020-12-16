@@ -122,13 +122,8 @@ public class Uhrenspiel extends Application  {
             lernmodus.start(stage1);
             lernmodus.text.setText("Es ist jetzt: " + lernmodus.anzuzeigendeZeit + " Uhr");
 
-            lernmodus.repeatButton.setOnAction(event -> {
-                thread.start();
-                // start(stage1);
-            });
         // longrunning operation runs on different thread
          thread = new Thread(new Runnable() {
-
 
             @Override
             public void run() {
@@ -160,20 +155,16 @@ public class Uhrenspiel extends Application  {
                     }
                      else {
                        ende = true;
-                       start(stage1);
+                   //    start(stage1);
                                         }
 
                         // UI update is run on the Application thread
                         Platform.runLater(updater);
                     }
-               // stage1.close();
-               // start(stage1);
-
             }
 
         });
-        // don't let thread prevent JVM shutdown
-      //  thread.setDaemon(true);
+
         thread.start();
 
 
@@ -206,9 +197,9 @@ public class Uhrenspiel extends Application  {
 
     private void setgoOnButton(){
 
-          if( game.aufgabennummer<5) {
+          if( game.aufgabennummer<3) {
               if (level < 4) {
-                  if (game.aufgabennummer < 4) {
+                  if (game.aufgabennummer < 2) {
                       newGameMultipleChoice();
                   } else {
                       newGameFreeAnswer();
@@ -236,6 +227,7 @@ public class Uhrenspiel extends Application  {
         guiMC.antwort2.setText((String) game.answers.get(1));
         guiMC.antwort3.setText((String) game.answers.get(2));
         guiMC.antwort4.setText((String) game.answers.get(3));
+
         guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
         guiMC.level.setText("Level: " + level );
         guiMC.richtigeAntwort.setText("Richtige Antworten: " + richtigeAntwort);
@@ -243,6 +235,7 @@ public class Uhrenspiel extends Application  {
         guiMC.goOn.setOnAction(event -> setgoOnButton());
         guiMC.endButton.setOnAction(event -> endGame());
         guiMC.saveButton.setOnAction(event -> saveProgress());
+
         correctAnswerMC();
         System.out.println(game.key);
         System.out.println(game.liste);
@@ -327,11 +320,7 @@ public class Uhrenspiel extends Application  {
      public void gameEnd(){
               stage1.close();
               summaryScreen.start(stage1);
-               int sum = 0;
-               sum    = sum + richtigeAntwort + falscheAntwort;
-               int pct = 0;
-               pct =  pct + (richtigeAntwort/sum);
-                System.out.println("Summe: " + sum+ "PCT: " + pct);
+
 
               summaryScreen.labelRA.setText("Richtige Antworten: " + richtigeAntwort);
               summaryScreen.labelFA.setText("Falsche Antworten: " + falscheAntwort);
@@ -355,17 +344,19 @@ public class Uhrenspiel extends Application  {
               }
              }
              else {
-                /* int sum = 0;
-                 sum    = sum + richtigeAntwort + falscheAntwort;
-                 int pct =  richtigeAntwort/sum;
-                 System.out.println(sum + pct);*/
+                  double sum = 0;
+                  sum    = sum + richtigeAntwort + falscheAntwort;
+
+                  float pct = 0;
+                  pct =  (float) (richtigeAntwort/sum);
+                  System.out.println("Summe: " + sum+ " PCT: " + pct);
 
                  if (pct >= 0.6) {
-                     summaryScreen.willkommensText.setText("Level: " + level + pct + " wurde erfolgreich abgeschlossen!");
+                     summaryScreen.willkommensText.setText("Level: " + level +  " wurde erfolgreich abgeschlossen!");
                      System.out.println(sum + pct);
                  }
                  else {
-                     summaryScreen.willkommensText.setText("Level: " + level +   pct+" wurde nicht erfolgreich abgeschlossen!");
+                     summaryScreen.willkommensText.setText("Level: " + level + " wurde nicht erfolgreich abgeschlossen!");
                      System.out.println(sum + pct);
                  }
                  if (pct >= 0.6 & level< 4){
