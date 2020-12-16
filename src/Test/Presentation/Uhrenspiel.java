@@ -146,7 +146,7 @@ public class Uhrenspiel extends Application  {
                 };
                 boolean ende = false;
                 while (!ende) {
-                    if (lernmodus.anzuzeigendeZiffer < 10) {
+                    if (lernmodus.anzuzeigendeZiffer < 11) {
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException ex) {
@@ -154,7 +154,7 @@ public class Uhrenspiel extends Application  {
                     }
                      else {
                        ende = true;
-                   //    start(stage1);
+
                        }
 
                         // UI update is run on the Application thread
@@ -170,11 +170,9 @@ public class Uhrenspiel extends Application  {
 
     public void newGame(){
         game.aufgabennummer = 0;
-
-        if(!strictGame){
         richtigeAntwort =0;
         falscheAntwort= 0;
-        }
+
         game.playedGames.clear();
         game.getLevel(level);
         if(level<4){

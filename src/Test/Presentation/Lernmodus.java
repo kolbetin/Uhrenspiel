@@ -29,34 +29,23 @@ public class Lernmodus extends GUI {
     public void startLernmodus() {
 
 
-        // for (int i = 0; i < 12; i++) {
+        if( anzuzeigendeZiffer < 12) {
+            anzuzeigendeZiffer += 1;
 
-        //   int anzuzeigendeZiffer =0 ;
-        //  String anzuzeigendeZeit = null;
-        //lernmodus.start(stage1);
+            if (anzuzeigendeZiffer < 10) {
+                anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":00";
+            } else {
+                anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
+            }
 
-        anzuzeigendeZiffer += 1;
+            System.out.println(anzuzeigendeZeit);
+            System.out.println(anzuzeigendeZiffer);
 
-        if (anzuzeigendeZiffer < 10) {
-            anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":00";
-        } else {
-            anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
+            text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
         }
-
-        System.out.println(anzuzeigendeZeit);
-        System.out.println(anzuzeigendeZiffer);
-
-        text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-
-      /*      // Pause zwischen den einzelnen angezeigten Uhrzeiten
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
-
-
-        //   }
+        else {
+            System.out.println("Bin fertig!");
+        }
 
     }
 
@@ -124,59 +113,6 @@ public class Lernmodus extends GUI {
         return borderPane;
     }
 
-
-
-
-    /*
-    @Override
-    public Pane clockArea(){
-        BorderPane borderPane= new BorderPane();
-        borderPane.setId("clockArea");
-
-        int anzuzeigendeZiffer =0 ;
-        String anzuzeigendeZeit = null;
-
-        // Schleife welche die ClockSkin mit 12 Stunden Uhrzeiten einzeln aufbaut
-
-        for (int i = 0; i < 12; i++) {
-
-            anzuzeigendeZiffer  += 1;
-
-            if (anzuzeigendeZiffer<10) {
-                anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":00";
-            }
-            else {
-                anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
-            }
-
-            System.out.println(anzuzeigendeZeit);
-            System.out.println(anzuzeigendeZiffer);
-
-
-
-            // Pause zwischen den einzelnen angezeigten Uhrzeiten
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            BorderPane hb = hbs[i] = new BorderPane();
-            hb.getChildren().add(clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer));
-
-           // borderPane.setTop(clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer));
-        }
-
-        //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        borderPane.setPadding(new Insets(70,170,7,250));
-        BorderPane frame = new BorderPane();
-        frame.getChildren().addAll(hbs);
-        return frame;
-
-      //  borderPane.setTop(node);
-        // borderPane.setCenter(circle);
-        //return borderPane;
-    }*/
 
 
 }
