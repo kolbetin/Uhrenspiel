@@ -138,8 +138,11 @@ public class ClockElements {
         Group ziffer_12 = new Group (circle12, nummer12);
 
         ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
+
+        // --> ziffer12 als dedizierte Variable
         ziffer12 = ziffer_12;
 
+        // --> ziffernMapStunde / + ziffernMapViertel-vor / +ziffernMapViertel-nach / + ziffernMapHalbeStunde
         // Kreiert HashMap mit Ziffernblätter
         ziffernMap.put(1, ziffer_1);
         ziffernMap.put(2, ziffer_2);
@@ -295,7 +298,7 @@ public class ClockElements {
         // Koordinaten Stunde 12 Uhr
         Line stunde_11_30 = new Line(300, 300, 275, 200);
         Line stunde_11_45 = new Line(300, 300, 285, 210);
-        Line stunde_12_00 = new Line(300, 300, 300, 210);
+        Line stunde_12_00 = new Line(300, 300, 300, 225);
         Line stunde_12_15 = new Line(300, 300, 315, 200);
         // HashMap Erstellung für Stunde 12 Uhr
         stundenMap.put("11:30", stunde_11_30);

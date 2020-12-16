@@ -34,6 +34,7 @@ public class ClockSkin {
         Group root = new Group (clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
         clockElements.outerCircle.toBack();
         clockElements.innerCircle.toFront();
+        stunde.toFront();
         Node clockSkin = root;
         return clockSkin;
     }
@@ -53,15 +54,25 @@ public class ClockSkin {
 
         // Kreiert Hauptgruppe und fügt diese der Node learningClock hinzu
 
-        Group root = new Group (clockElements.outerCircle,clockElements.ziffer12, stunde, minute,clockElements.innerCircle, ziffer);
+        if (anzuzeigendeZiffer==12) {
+            Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer);
+            Node learningClock = root;
+            finalFormatSettings();
+            return learningClock;
+        }
+        else{
+            Group root = new Group(clockElements.outerCircle,clockElements.ziffer12, stunde, minute, clockElements.innerCircle, ziffer);
+            Node learningClock = root;
+            finalFormatSettings();
+            return learningClock;
+        }
+     }
 
-
-        clockElements.outerCircle.toBack();
-        clockElements.innerCircle.toFront();
-        Node learningClock = root;
-        return learningClock;
-    }
-
+     public void finalFormatSettings(){
+         clockElements.outerCircle.toBack();
+         clockElements.innerCircle.toFront();
+         stunde.toFront();
+     }
 
     public Line parserMinuten(String minuten) {
         return clockElements.minutenMap.get(minuten);

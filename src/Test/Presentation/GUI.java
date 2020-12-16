@@ -24,7 +24,7 @@ public class GUI extends Application {
        // private Lernmodus lernmodus;
         public Label questionLabel;
         public Label uberschrift;
-        public String zeit = "10:15";
+        public String zeit = "12:00";
         public Node node;
         public Label level;
         public Label richtigeAntwort;
