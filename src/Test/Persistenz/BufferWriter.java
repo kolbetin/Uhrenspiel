@@ -1,29 +1,44 @@
 package Test.Persistenz;
 
+import Test.Domain.SavedData;
+
 import java.io.*;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
+
 public class BufferWriter implements BufferInterface{
+    private SavedData data;
 
-    public void save(File file, List progress) throws IOException {
-        try (OutputStream outStream = new FileOutputStream(file);
-             ObjectOutputStream outObject = new ObjectOutputStream(outStream)) {
+    @Override
+    public void save(String file, List<String> progress) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
 
-            outObject.writeObject(progress);
+            for (String string : progress) {
+                writer.write(string);
+                writer.newLine();
+            }
             System.out.println("Daten in der Datei " + file + " gespeichert!");
+            System.out.println(progress);
         } catch (IOException e) {
             throw new IOException("Daten können nicht in der Datei " + file + " gespeichert werden!");
         }
     }
+    @Override
+    public List<String> load(String file) throws IOException,
+            ClassNotFoundException {
+             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                List<String> spielstand = new ArrayList<>();
+                data = new SavedData();
+                String progress = reader.readLine();
+                while (progress != null) {
+                    spielstand.add(progress);
+                    progress = reader.readLine();
 
-    public List  load(File file) throws IOException, ClassNotFoundException    {
-        try (InputStream inStream = new FileInputStream(file);
-             ObjectInputStream inObject = new ObjectInputStream(inStream)) {
-            return (List) inObject.readObject();
-
-        } catch (ClassNotFoundException | IOException e) {
-            throw new IOException("Die Daten können nicht von der Datei " + file + " gelesen werden");
+                }
+                 System.out.println(spielstand);
+                return spielstand;
+            }
         }
-    }
+
 }

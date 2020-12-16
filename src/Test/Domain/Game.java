@@ -15,6 +15,8 @@ public class Game extends Application {
     public List answers;
     public String key;
     public int aufgabennummer;
+    public int level = 1;
+    public boolean strictGame = false;
 
 
     public Game() {
@@ -88,6 +90,7 @@ public class Game extends Application {
                 liste.add((String) keys);
             }
         }
+        Collections.shuffle(liste);
         return liste;
     }
 

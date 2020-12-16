@@ -6,20 +6,18 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class SavedData extends Application  {
 
     private BufferInterface bufferInterface;
     private QuestionsAnswer qa;
     private Random random;
-    public List progress;
+    public List<String> progress;
     public int level;
-    public int aufgabennummer;
+    public Game game;
     public boolean strictGame;
+
 
 
 
@@ -30,32 +28,51 @@ public class SavedData extends Application  {
         progress = new ArrayList();
         random = new Random();
         bufferInterface = new BufferWriter();
+        game = new Game();
         System.out.println(progress.size());
+        System.out.println("Aufgabennummer: " + game.aufgabennummer);
+        System.out.println("Level " + game.level);
 
     }
 
-    public void setPlayedGames(List playedgames) {
+    public void setProgress(List<String> newprogress) {
         this.progress.clear();
-        this.progress.add(playedgames);
+        this.progress.addAll(newprogress);
     }
 
-    public void setLevel(int level) {
-           this.level = level;
-    }
-    public void setAufgabennummer(int aufgabennummer) {
-        this.aufgabennummer = aufgabennummer;
-    }
-    public void setStrictGame(boolean strictGame) {
-        this.strictGame = strictGame;
+    public void setPlayedGames() {
+        game.playedGames.clear();
+        game.playedGames.addAll(Arrays.asList(progress.get(3)));
     }
 
-    public void saveProgress(File file) throws IOException {
+    public void setLevel() {
+        int i = Integer.parseInt(progress.get(1));
+        game.level = i;
+    }
+    public void setAufgabennummer() {
+        int i = Integer.parseInt(progress.get(0));
+        game.aufgabennummer = i;
+    }
+    public void setStrictGame() {
+        boolean b = Boolean.valueOf(progress.get(2));
+        game.strictGame = strictGame;
+    }
+
+    public void saveProgress(String file) throws IOException {
         bufferInterface.save(file,progress);
     }
 
-    public void loadProgress( File file) throws ClassNotFoundException, IOException {
-          setPlayedGames(bufferInterface.load(file));
-
+    public void loadProgress(String file) throws ClassNotFoundException, IOException {
+          setProgress(bufferInterface.load(file));
+        System.out.println("Datei wurde geladen: " + progress.toString());
+        setLevel();
+        setAufgabennummer();
+        setStrictGame();
+        setPlayedGames();
+        System.out.println(game.aufgabennummer);
+        System.out.println("Level: " + game.level);
+        System.out.println("Strict Game: " + game.strictGame);
+        System.out.println("Played Game: " + game.playedGames);
 
     }
 
@@ -70,9 +87,7 @@ public class SavedData extends Application  {
         return this.progress.size();
     }
 
-    public void add(Integer aufgabennummer) {
-        progress.add(aufgabennummer);
-    }
+  //  public void add(Integer aufgabennummer) { progress.add(aufgabennummer);   }
 
 
 

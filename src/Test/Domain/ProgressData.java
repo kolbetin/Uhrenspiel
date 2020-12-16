@@ -24,7 +24,7 @@ public class ProgressData extends Application  {
         qa = new QuestionsAnswer();
         progress = new HashMap<>();
         random = new Random();
-        ioInterface = new IOSerialisierung();
+      //  ioInterface = new IOSerialisierung();
 
 
         System.out.println(progress.size());

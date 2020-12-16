@@ -3,6 +3,7 @@ package Test.Presentation;
 import Test.Domain.Game;
 import Test.Domain.ProgressData;
 import Test.Domain.SavedData;
+import Test.Persistenz.BufferWriter;
 import Test.Persistenz.IOSerialisierung;
 
 import javafx.animation.PauseTransition;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 
@@ -52,8 +54,6 @@ public class Uhrenspiel extends Application  {
     private File file;
     public int richtigeAntwort;
     public int falscheAntwort;
-    private int level = 1;
-    private boolean strictGame = false;
     private Thread thread;
 
 
@@ -91,24 +91,24 @@ public class Uhrenspiel extends Application  {
         choiceScreen.start(stage1);
 
         choiceScreen.leadedGame.setOnAction(e ->{
-            strictGame=true;
-            level = 1;
+            game.strictGame=true;
+            game.level = 1;
             newGame();
         });
         choiceScreen.level1.setOnAction(e -> {
-            level = 1;
+            game.level = 1;
             newGame();
         });
         choiceScreen.level2.setOnAction(e -> {
-            level = 2;
+            game.level = 2;
             newGame();
         });
         choiceScreen.level3.setOnAction(e -> {
-            level = 3;
+            game.level = 3;
             newGame();
         });
         choiceScreen.level4.setOnAction(e -> {
-            level = 4;
+            game.level = 4;
             newGame();
         });
         choiceScreen.backButton.setOnAction(e -> {
@@ -176,8 +176,8 @@ public class Uhrenspiel extends Application  {
         falscheAntwort= 0;
 
         game.playedGames.clear();
-        game.getLevel(level);
-        if(level<4){
+        game.getLevel(game.level);
+        if(game.level<4){
             newGameMultipleChoice();
         }
         else {
@@ -193,7 +193,7 @@ public class Uhrenspiel extends Application  {
     private void setgoOnButton(){
 
           if( game.aufgabennummer<3) {
-              if (level < 4) {
+              if (game.level < 4) {
                   if (game.aufgabennummer < 2) {
                       newGameMultipleChoice();
                   } else {
@@ -225,7 +225,7 @@ public class Uhrenspiel extends Application  {
         guiMC.antwort4.setText((String) game.liste.get(3));
 
         guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-        guiMC.level.setText("Level: " + level );
+        guiMC.level.setText("Level: " + game.level );
         guiMC.richtigeAntwort.setText("Richtige Antworten: " + richtigeAntwort);
         guiMC.falscheAntwort.setText("Falsche Antworten: " + falscheAntwort );
         guiMC.goOn.setOnAction(event -> setgoOnButton());
@@ -247,11 +247,11 @@ public class Uhrenspiel extends Application  {
           guiFA.zeit = game.key;
           guiFA.start(stage1);
           guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-          guiFA.level.setText("Level: " + level);
+          guiFA.level.setText("Level: " + game.level);
           guiFA.givenMinutes.setText("00");
           guiFA.richtigeAntwort.setText("Richtige Antworten: " + richtigeAntwort );
           guiFA.falscheAntwort.setText("Falsche Antworten: " + falscheAntwort);
-          if(level > 1){
+          if(game.level > 1){
                   guiFA.givenMinutes.setText("");
           }
           guiFA.goOn.setVisible(false);
@@ -263,7 +263,7 @@ public class Uhrenspiel extends Application  {
           System.out.println(game.aufgabennummer);
           System.out.println("Richtige Antwort: " + richtigeAntwort);
           System.out.println("Falsche Antwort: " + falscheAntwort);
-          System.out.println(progressData.progress);
+        //  System.out.println(progressData.progress);
           System.out.println(game.playedGames);
       }
 
@@ -288,7 +288,7 @@ public class Uhrenspiel extends Application  {
                   guiFA.goOn.setVisible(true);
                   guiFA.goOn.setOnAction(event -> setgoOnButton());
                   richtigeAntwort++;
-                  progressData.setProgressData(game.aufgabennummer,"Korrekt");
+                //  progressData.setProgressData(game.aufgabennummer,"Korrekt");
                 } else {
                   guiFA.submitButton.setStyle("-fx-background-color: #dd2323");
                   guiFA.submitButton.setText("Leider, falsch!");
@@ -296,7 +296,7 @@ public class Uhrenspiel extends Application  {
                           + "Deine Antwort: " + answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.key + " Uhr.");
                   falscheAntwort++;
-                  progressData.setProgressData(game.aufgabennummer,"Falsch");
+                //  progressData.setProgressData(game.aufgabennummer,"Falsch");
                   guiFA.givenHour.setDisable(true);
                   guiFA.givenMinutes.setDisable(true);
                   guiFA.submitButton.setDisable(true);
@@ -325,11 +325,11 @@ public class Uhrenspiel extends Application  {
               });
               summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
-              if(!strictGame){
-              summaryScreen.willkommensText.setText("Level: " + level + " wurde abgeschlossen!");
-              if(level< 4){
+              if(! game.strictGame){
+              summaryScreen.willkommensText.setText("Level: " + game.level + " wurde abgeschlossen!");
+              if(game.level< 4){
                     summaryScreen.nextGame.setOnAction(event -> {
-                      level = level + 1;
+                        game.level = game.level + 1;
                       newGame();
                       });
                   } else {
@@ -345,16 +345,16 @@ public class Uhrenspiel extends Application  {
                   System.out.println("Summe: " + sum+ " PCT: " + pct);
 
                  if (pct >= 0.6) {
-                     summaryScreen.willkommensText.setText("Level: " + level +  " wurde erfolgreich abgeschlossen!");
+                     summaryScreen.willkommensText.setText("Level: " + game.level +  " wurde erfolgreich abgeschlossen!");
                      System.out.println(sum + pct);
                  }
                  else {
-                     summaryScreen.willkommensText.setText("Level: " + level + " wurde nicht erfolgreich abgeschlossen!");
+                     summaryScreen.willkommensText.setText("Level: " + game.level + " wurde nicht erfolgreich abgeschlossen!");
                      System.out.println(sum + pct);
                  }
-                 if (pct >= 0.6 & level< 4){
+                 if (pct >= 0.6 & game.level< 4){
                      summaryScreen.nextGame.setOnAction(event -> {
-                         level = level + 1;
+                         game.level = game.level + 1;
                          newGame();
                      });
                  } else {
@@ -398,7 +398,7 @@ public class Uhrenspiel extends Application  {
                               richtigeAntwort++;
                               disableButtons();
                               guiMC.goOn.setVisible(true);
-                              progressData.setProgressData(game.aufgabennummer,"Korrekt");
+                            //  progressData.setProgressData(game.aufgabennummer,"Korrekt");
 
                               } else {
                               button.setStyle("-fx-background-color: red");
@@ -407,7 +407,7 @@ public class Uhrenspiel extends Application  {
                               falscheAntwort++;
                               disableButtons();
                               guiMC.goOn.setVisible(true);
-                              progressData.setProgressData(game.aufgabennummer,"Falsch");
+                             // progressData.setProgressData(game.aufgabennummer,"Falsch");
                           }
 
                       }
@@ -439,7 +439,7 @@ public class Uhrenspiel extends Application  {
 
       private String createFileName () {
           return  System.getProperty("user.home") + System.getProperty("file.separator") +
-                  (progressData.getIOInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
+                  (data.getBufferInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
       }
 
       private void loadProgressdata() {
@@ -454,15 +454,16 @@ public class Uhrenspiel extends Application  {
 
     public void saveProgress() {
         try {
-            data.progress.add(game.aufgabennummer);
-            data.progress.add(level);
-            data.progress.add(game.playedGames);
-            data.progress.add(strictGame);
-            System.out.println(data);
-            file = new File(createFileName());
-            data.saveProgress(file);
+            data.progress.add(Integer.toString(game.aufgabennummer));
+            data.progress.add(Integer.toString(game.level));
+            data.progress.add(Boolean.toString( game.strictGame));
+            data.progress.add(game.playedGames.toString());
+            data.progress.add(Integer.toString(richtigeAntwort));
+            data.progress.add(Integer.toString(falscheAntwort));
+            String fileName = createFileName();
+            data.saveProgress(fileName);
 
-            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Liste gespeichert in Datei " + file + ".");
+            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Liste gespeichert in Datei " + fileName + ".");
         } catch (IOException e) {
             alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
         }
@@ -471,10 +472,10 @@ public class Uhrenspiel extends Application  {
 
     private void loadProgress() {
         try {
-            data.loadProgress(file);
+            String fileName = createFileName();
+            data.loadProgress(fileName);
 
-
-            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + file + " geladen.");
+            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + fileName + " geladen.");
         } catch (IOException | ClassNotFoundException e) {
             alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
         }
