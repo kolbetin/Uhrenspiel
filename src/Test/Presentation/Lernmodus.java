@@ -34,16 +34,28 @@ public class Lernmodus extends GUI {
             } else {
                 anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
             }
-
-            System.out.println(anzuzeigendeZeit);
-            System.out.println(anzuzeigendeZiffer);
-
             text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
         }
         else {
             System.out.println("Bin fertig!");
         }
+    }
 
+    public void startLernmodusViertelNach() {
+
+        if( anzuzeigendeZiffer < 12) {
+            anzuzeigendeZiffer += 1;
+
+            if (anzuzeigendeZiffer < 10) {
+                anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":15";
+            } else {
+                anzuzeigendeZeit = anzuzeigendeZiffer + ":15";
+            }
+            text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
+        }
+        else {
+            System.out.println("Bin fertig!");
+        }
     }
 
     @Override

@@ -8,30 +8,72 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
 import java.util.HashMap;
 import java.util.Random;
 
 public class ClockElements {
 
-    //public Group uhrKreise;
-    public Group ziffern;
-    public Group ziffer12;
     public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
+    //public final HashMap<String, Group> ziffernMap = new HashMap<>();
     public final HashMap<String, Line> minutenMap = new HashMap<>();
     public final HashMap<String, Line> stundenMap = new HashMap<>();
     public Circle outerCircle;
     public Circle innerCircle;
 
-    public ClockElements (){
-        createUhrKreise();
-        createZiffern();
-        createMinutenMap();
-        createStundenMap();
-    }
-    
-    EventHandler<MouseEvent> eventHandler = getEventHandler();
+    // Drawing a Circle1
+    Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
+    Text nummer1 = new Text(358, 192, "1");
+    // Drawing a Circle2
+    Circle circle2 = new Circle(418, 234, 25, Color.GREEN);
+    Text nummer2 = new Text(410, 244, "2");
+    // Drawing a Circle3
+    Circle circle3 = new Circle(435, 300, 25, Color.RED);
+    Text nummer3 = new Text(427, 310, "3");
+    // Drawing a Circle4
+    Circle circle4 = new Circle(418, 366, 25, Color.GREEN);
+    Text nummer4 = new Text(410, 376, "4");
+    // Drawing a Circle5
+    Circle circle5 = new Circle(366, 418, 25, Color.GREEN);
+    Text nummer5 = new Text(358, 428, "5");
+    // Drawing a Circle6
+    Circle circle6 = new Circle(300, 435, 25, Color.RED);
+    Text nummer6 = new Text(292, 445, "6");
+    // Drawing a Circle7
+    Circle circle7 = new Circle(234, 418, 25, Color.GREEN);
+    Text nummer7 = new Text(226, 428, "7");
+    // Drawing a Circle8
+    Circle circle8 = new Circle(182, 366, 25, Color.GREEN);
+    Text nummer8 = new Text(174, 376, "8");
+    // Drawing a Circle9
+    Circle circle9 = new Circle(165, 300, 25, Color.RED);
+    Text nummer9 = new Text(157, 310, "9");
+    // Drawing a Circle10
+    Circle circle10 = new Circle(182, 234, 25, Color.GREEN);
+    Text nummer10 = new Text(167, 244, "10");
+    // Drawing a Circle11
+    Circle circle11 = new Circle(234, 182, 25, Color.GREEN);
+    Text nummer11 = new Text(219, 192, "11");
+    // Drawing a Circle12
+    Circle circle12 = new Circle(300, 165, 25, Color.RED);
+    Text nummer12 = new Text(285, 175, "12");
 
+    // Gruppe Uhrzeiten
+    Group ziffer_1 = new Group(circle1, nummer1);
+    Group ziffer_2 = new Group (circle2, nummer2);
+    Group ziffer_3 = new Group (circle3, nummer3);
+    Group ziffer_4 = new Group (circle4, nummer4);
+    Group ziffer_5 = new Group (circle5, nummer5);
+    Group ziffer_6 = new Group (circle6, nummer6);
+    Group ziffer_7 = new Group (circle7, nummer7);
+    Group ziffer_8 = new Group (circle8, nummer8);
+    Group ziffer_9 = new Group (circle9, nummer9);
+    Group ziffer_10 = new Group (circle10, nummer10);
+    Group ziffer_11 = new Group (circle11, nummer11);
+    Group ziffer_12 = new Group (circle12, nummer12);
+
+    public Group ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
+
+    EventHandler<MouseEvent> eventHandler = getEventHandler();
 
     EventHandler<MouseEvent> getEventHandler() {
         //Creating the mouse event handler
@@ -50,100 +92,54 @@ public class ClockElements {
         };
     }
 
-    public void createUhrKreise(){
+    // Konstruktor Clock Elements
+    public ClockElements (){
+        createUhrKreise();
+        setupClockElements();
+        createZiffernMapStunde();
+        createMinutenMap();
+        createStundenMap();
+    }
 
+    public void createUhrKreise(){
         // Hauptkreise Uhr
         outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
         innerCircle = new Circle(300, 300, 6, Color.BLACK);
     }
 
-    public void createZiffern() {
-
-        // Layout to transfer in CSS File
+    public void setupClockElements(){
         Font nummerFont = new Font("Comic Sans MS", 30);
 
-        // Drawing a Circle1 and registering the event handler
-        Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
-        Text nummer1 = new Text(358, 192, "1");
         nummer1.setFont(nummerFont);
         circle1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle2 and registering the event handler
-        Circle circle2 = new Circle(418, 234, 25, Color.GREEN);
-        Text nummer2 = new Text(410, 244, "2");
         nummer2.setFont(nummerFont);
         circle2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle3 and registering the event handler
-        Circle circle3 = new Circle(435, 300, 25, Color.RED);
-        Text nummer3 = new Text(427, 310, "3");
         nummer3.setFont(nummerFont);
         circle3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle4 and registering the event handler
-        Circle circle4 = new Circle(418, 366, 25, Color.GREEN);
-        Text nummer4 = new Text(410, 376, "4");
         nummer4.setFont(nummerFont);
         circle4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle5 and registering the event handler
-        Circle circle5 = new Circle(366, 418, 25, Color.GREEN);
-        Text nummer5 = new Text(358, 428, "5");
         nummer5.setFont(nummerFont);
         circle5.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle6 and registering the event handler
-        Circle circle6 = new Circle(300, 435, 25, Color.RED);
-        Text nummer6 = new Text(292, 445, "6");
         nummer6.setFont(nummerFont);
         circle6.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle7 and registering the event handler
-        Circle circle7 = new Circle(234, 418, 25, Color.GREEN);
-        Text nummer7 = new Text(226, 428, "7");
         nummer7.setFont(nummerFont);
         circle7.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle8 and registering the event handler
-        Circle circle8 = new Circle(182, 366, 25, Color.GREEN);
-        Text nummer8 = new Text(174, 376, "8");
         nummer8.setFont(nummerFont);
         circle8.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle9 and registering the event handler
-        Circle circle9 = new Circle(165, 300, 25, Color.RED);
-        Text nummer9 = new Text(157, 310, "9");
         nummer9.setFont(nummerFont);
         circle9.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle10 and registering the event handler
-        Circle circle10 = new Circle(182, 234, 25, Color.GREEN);
-        Text nummer10 = new Text(167, 244, "10");
         nummer10.setFont(nummerFont);
         circle10.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle11 and registering the event handler
-        Circle circle11 = new Circle(234, 182, 25, Color.GREEN);
-        Text nummer11 = new Text(219, 192, "11");
         nummer11.setFont(nummerFont);
         circle11.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        // Drawing a Circle12 and registering the event handler
-        Circle circle12 = new Circle(300, 165, 25, Color.RED);
-        Text nummer12 = new Text(285, 175, "12");
         nummer12.setFont(nummerFont);
         circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+    }
 
-        // Gruppe Uhrzeiten
-        Group ziffer_1 = new Group(circle1, nummer1);
-        Group ziffer_2 = new Group (circle2, nummer2);
-        Group ziffer_3 = new Group (circle3, nummer3);
-        Group ziffer_4 = new Group (circle4, nummer4);
-        Group ziffer_5 = new Group (circle5, nummer5);
-        Group ziffer_6 = new Group (circle6, nummer6);
-        Group ziffer_7 = new Group (circle7, nummer7);
-        Group ziffer_8 = new Group (circle8, nummer8);
-        Group ziffer_9 = new Group (circle9, nummer9);
-        Group ziffer_10 = new Group (circle10, nummer10);
-        Group ziffer_11 = new Group (circle11, nummer11);
-        Group ziffer_12 = new Group (circle12, nummer12);
+    // --> ziffernMapStunde / + ziffernMapViertel-vor / +ziffernMapViertel-nach / + ziffernMapHalbeStunde
+    public void createZiffernMapStunde() {
 
-        ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
-
-        // --> ziffer12 als dedizierte Variable
-        ziffer12 = ziffer_12;
-
-        // --> ziffernMapStunde / + ziffernMapViertel-vor / +ziffernMapViertel-nach / + ziffernMapHalbeStunde
-        // Kreiert HashMap mit Ziffernblätter
+        // Kreiert ZiffernMap für mit Ziffernblätter
         ziffernMap.put(1, ziffer_1);
         ziffernMap.put(2, ziffer_2);
         ziffernMap.put(3, ziffer_3);
@@ -157,6 +153,22 @@ public class ClockElements {
         ziffernMap.put(11, ziffer_11);
         ziffernMap.put(12, ziffer_12);
     }
+
+    // Kreiert ZiffernMap für mit Ziffernblätter
+    /*public void createZiffernMapStunde() {
+        ziffernMap.put("01", ziffer_1);
+        ziffernMap.put("02", ziffer_2);
+        ziffernMap.put("03", ziffer_3);
+        ziffernMap.put("04", ziffer_4);
+        ziffernMap.put("05", ziffer_5);
+        ziffernMap.put("06", ziffer_6);
+        ziffernMap.put("07", ziffer_7);
+        ziffernMap.put("08", ziffer_8);
+        ziffernMap.put("09", ziffer_9);
+        ziffernMap.put("10", ziffer_10);
+        ziffernMap.put("11", ziffer_11);
+        ziffernMap.put("12", ziffer_12);
+    }*/
 
     public void createMinutenMap() {
 

@@ -42,6 +42,7 @@ public class ClockSkin {
     public Node clockLerningClock (String anzuzeigendeZeit, int anzuzeigendeZiffer){
 
         clockElements = new ClockElements();
+        //Node learningClock = null;
 
         this.stunde = parserStunde(anzuzeigendeZeit);
         stunde.setStrokeWidth(5); // move to CSS File
@@ -54,19 +55,38 @@ public class ClockSkin {
 
         // Kreiert Hauptgruppe und fügt diese der Node learningClock hinzu
 
-        if (anzuzeigendeZiffer<12) {
-            Group root = new Group(clockElements.outerCircle,clockElements.ziffer12, stunde, minute, clockElements.innerCircle, ziffer);
-            Node learningClock = root;
-            finalFormatSettings();
-            return learningClock;
+        //if (anzuzeigendeZeit.substring(3) == "00") {
+
+            if (anzuzeigendeZiffer < 12) {
+                Group root = new Group(clockElements.outerCircle, clockElements.ziffer_12, stunde, minute, clockElements.innerCircle, ziffer);
+                Node learningClock = root;
+                finalFormatSettings();
+                return learningClock;
+            } else {
+                Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer);
+                Node learningClock = root;
+                finalFormatSettings();
+                return learningClock;
+            }
+        //}
+
+        /* if (anzuzeigendeZeit.substring(3) == "15") {
+
+            if (anzuzeigendeZiffer != 3) {
+                Group root = new Group(clockElements.outerCircle, clockElements.ziffer_3, stunde, minute, clockElements.innerCircle, ziffer);
+                learningClock = root;
+                //finalFormatSettings();
+                //return learningClock;
+            } else {
+                Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer);
+                learningClock = root;
+                //finalFormatSettings();
+                //return learningClock;
+            }
         }
-        else{
-            Group root = new Group(clockElements.outerCircle,stunde, minute, clockElements.innerCircle, ziffer);
-            Node learningClock = root;
-            finalFormatSettings();
-            return learningClock;
-        }
-     }
+        finalFormatSettings();
+        return learningClock;*/
+    } // Ende Methode clockLearningClock
 
 
     public Line parserMinuten(String minuten) {
