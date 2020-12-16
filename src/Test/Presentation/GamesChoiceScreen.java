@@ -45,9 +45,9 @@ public class GamesChoiceScreen extends GUI {
         text4 = new Text("Alles");
         text5 = new Text("Alle Level gemischt");
 
-        VBox middle = new VBox(30);
-        VBox right = new VBox(20);
-        VBox bottom = new VBox(10);
+        final VBox middle = new VBox(30);
+        final VBox right = new VBox(20);
+        final VBox bottom = new VBox(10);
 
         middle.setId("choiceMiddleArea");
 

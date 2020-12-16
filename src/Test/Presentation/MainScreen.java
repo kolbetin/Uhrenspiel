@@ -33,10 +33,11 @@ public class MainScreen extends GUI {
         lernmodusButton = new Button("Lernmodus");
         Button spielanleitungButton = new Button("Spielanleitung");
 
-        VBox middle = new VBox(10);
+        final VBox middle = new VBox(10);
         middle.getChildren().addAll(newGameButton,loadGameButton,lernmodusButton,spielanleitungButton,endGameButton);
         middle.setPadding(new Insets(70,500,7,70));
-        BorderPane root = new BorderPane();
+
+        final BorderPane root = new BorderPane();
         root.setTop(willkommensText);
         root.setPadding(new Insets(150,100,7,70));
         root.setLeft(middle);
@@ -49,7 +50,7 @@ public class MainScreen extends GUI {
 
     @Override
     public Pane leftArea() {
-        VBox vBox = new VBox(5);
+        final VBox vBox = new VBox(5);
 
       //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: blue");
         vBox.setPadding(new Insets(7, 150, 7, 70));
@@ -58,9 +59,6 @@ public class MainScreen extends GUI {
 
         return vBox;
     }
-
-
-
 
 
     public static void main(String[] args) {

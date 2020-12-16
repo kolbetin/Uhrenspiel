@@ -61,8 +61,7 @@ public class Uhrenspiel extends Application  {
           stage1 = new Stage();
           stage2 = new Stage();
 
-           mainScreen.start(stage1);
-
+          mainScreen.start(stage1);
 
           mainScreen.newGameButton.setOnAction(event -> {
                  stage1.close();
@@ -147,7 +146,7 @@ public class Uhrenspiel extends Application  {
                 };
                 boolean ende = false;
                 while (!ende) {
-                    if (lernmodus.anzuzeigendeZiffer < 11) {
+                    if (lernmodus.anzuzeigendeZiffer < 10) {
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException ex) {
@@ -156,7 +155,7 @@ public class Uhrenspiel extends Application  {
                      else {
                        ende = true;
                    //    start(stage1);
-                                        }
+                       }
 
                         // UI update is run on the Application thread
                         Platform.runLater(updater);
@@ -166,11 +165,7 @@ public class Uhrenspiel extends Application  {
         });
 
         thread.start();
-
-
     }
-
-
 
 
     public void newGame(){
@@ -221,6 +216,7 @@ public class Uhrenspiel extends Application  {
     public void newGameMultipleChoice() {
         game.nextQuestion();
         guiMC.zeit = game.key ;
+       // guiMC.zeit = "12:00";
         guiMC.start(stage1);
 
         guiMC.antwort1.setText((String) game.answers.get(0));
@@ -245,9 +241,8 @@ public class Uhrenspiel extends Application  {
         System.out.println("Falsche Antwort: " + falscheAntwort);
         System.out.println(progressData.progress);
         System.out.println(game.playedGames);
-
-
   }
+
       public void newGameFreeAnswer(){
           game.nextQuestion();
           guiFA.zeit = game.key;
@@ -321,7 +316,6 @@ public class Uhrenspiel extends Application  {
               stage1.close();
               summaryScreen.start(stage1);
 
-
               summaryScreen.labelRA.setText("Richtige Antworten: " + richtigeAntwort);
               summaryScreen.labelFA.setText("Falsche Antworten: " + falscheAntwort);
 
@@ -387,7 +381,6 @@ public class Uhrenspiel extends Application  {
           guiMC.antwort3.setDisable(true);
           guiMC.antwort4.setDisable(true);
       }
-
 
 
           EventHandler<MouseEvent> getEventHandler() {
@@ -487,9 +480,6 @@ public class Uhrenspiel extends Application  {
         choiceScreen = new GamesChoiceScreen();
         summaryScreen = new SummaryScreen();
         lernmodus = new Lernmodus();
-
-
-
 
        // fillGuiList();
 

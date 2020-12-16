@@ -52,7 +52,10 @@ public class ClockSkin {
         Group ziffer = parserZiffern(anzuzeigendeZiffer);
 
         // Kreiert Hauptgruppe und fügt diese der Node learningClock hinzu
+
         Group root = new Group (clockElements.outerCircle,clockElements.ziffer12, stunde, minute,clockElements.innerCircle, ziffer);
+
+
         clockElements.outerCircle.toBack();
         clockElements.innerCircle.toFront();
         Node learningClock = root;

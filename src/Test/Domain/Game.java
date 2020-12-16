@@ -45,8 +45,7 @@ public class Game extends Application {
         if (level == 2) {
             questionsAnswermap.antwortenMapLevel2();
         }
-        if
-        (level == 3) {
+        if (level == 3) {
             questionsAnswermap.antwortenMapLevel3();
         }
         if (level == 4) {
@@ -62,7 +61,6 @@ public class Game extends Application {
     public Object getTaskkey() {
         boolean played = false;
 
-
         while ( !played ){
             Object[] objects = questionsAnswermap.antwortenMap.keySet().toArray();
             Object randomkey = objects[new Random().nextInt(objects.length)];
@@ -74,7 +72,6 @@ public class Game extends Application {
             }
 
         }
-
         return key;
     }
 

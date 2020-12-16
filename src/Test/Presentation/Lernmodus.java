@@ -20,13 +20,13 @@ public class Lernmodus extends GUI {
     public Button endGameButton;
     public Button repeatButton;
 
-  //  public void start(Stage primaryStage) {}
+    //  public void start(Stage primaryStage) {}
     public static void main(String[] args) {
         launch(args);
     }
 
 
-    public void startLernmodus(){
+    public void startLernmodus() {
 
 
         // for (int i = 0; i < 12; i++) {
@@ -59,8 +59,9 @@ public class Lernmodus extends GUI {
         //   }
 
     }
+
     @Override
-    public BorderPane middleArea(){
+    public BorderPane middleArea() {
 
 
         uberschrift.setText("Lernmodus - Wo stehen die Ziffern auf der Uhr?");
@@ -68,36 +69,34 @@ public class Lernmodus extends GUI {
 
         VBox right = new VBox(20);
         right.getChildren().add(text);
-        right.setPadding(new Insets(200,550,7,7));
+        right.setPadding(new Insets(200, 550, 7, 7));
 
         VBox middle = new VBox(10);
         middle.getChildren().addAll(clockArea());
-     //   middle.setPadding(new Insets(70,100,7,70));
-      //  middle.setStyle("-fx-border-width:  1; -fx-border-color: blue");
+        //   middle.setPadding(new Insets(70,100,7,70));
+        //  middle.setStyle("-fx-border-width:  1; -fx-border-color: blue");
         BorderPane root = new BorderPane();
         root.setTop(uberschrift);
-        root.setPadding(new Insets(7,450,7,70));
-       // root.setStyle("-fx-border-width:  1; -fx-border-color: green");
+        root.setPadding(new Insets(7, 450, 7, 70));
+        // root.setStyle("-fx-border-width:  1; -fx-border-color: green");
         root.setLeft(middle);
         root.setRight(right);
 
         root.getStylesheets().add
                 (GUI.class.getResource("clock.css").toExternalForm());
-        return  root;
+        return root;
 
     }
-    public Pane clockArea(){
-        BorderPane borderPane= new BorderPane();
+
+    public Pane clockArea() {
+        final BorderPane borderPane = new BorderPane();
         borderPane.setId("clockArea");
 
         clock = new ClockSkin();
-        node =clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
-
+        node = clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
 
         //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        borderPane.setPadding(new Insets(70,170,7,250));
-
-
+        borderPane.setPadding(new Insets(70, 170, 7, 250));
 
         borderPane.setCenter(node);
 
@@ -105,25 +104,25 @@ public class Lernmodus extends GUI {
     }
 
     @Override
-  public Pane leftArea() {
-            BorderPane borderPane = new BorderPane();
-            borderPane.setId("leftArea");
+    public Pane leftArea() {
+        final BorderPane borderPane = new BorderPane();
+        borderPane.setId("leftArea");
 
-            VBox vbox = new VBox(20);
+        final VBox vbox = new VBox(20);
 
-            endButton = new Button("Lernmodus beenden");
-            repeatButton = new Button ("Nochmal");
-            vbox.getChildren().addAll(repeatButton,endButton);
+        endButton = new Button("Lernmodus beenden");
+        repeatButton = new Button("Nochmal");
+        vbox.getChildren().addAll(repeatButton, endButton);
 
 
-            borderPane.setPadding(new Insets(7, 50, 7, 25));
+        borderPane.setPadding(new Insets(7, 50, 7, 25));
 
-            vbox.setPadding(new Insets(70, 7, 7, 7));
+        vbox.setPadding(new Insets(70, 7, 7, 7));
 
-            borderPane.setBottom(vbox);
+        borderPane.setBottom(vbox);
 
-            return borderPane;
-        }
+        return borderPane;
+    }
 
 
 
