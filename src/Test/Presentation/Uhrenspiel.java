@@ -64,8 +64,10 @@ public class Uhrenspiel extends Application  {
                  stage1.close();
                  setChoiceScreen();
            });
-          mainScreen.loadGameButton.setOnAction(event ->
-                  loadProgress()
+          mainScreen.loadGameButton.setOnAction(event -> {
+                 // stage1.close();
+                  loadProgress();
+                  }
           );
           mainScreen.endGameButton.setOnAction(event -> {
                       Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Spiel beenden!",
@@ -457,13 +459,16 @@ public class Uhrenspiel extends Application  {
         try {
             File file = data.chooseLoadFile(new File(createFileName()), stage1);
             if (file != null) {
+                stage1.close();
                 data.loadProgress(file);
                 updateDta();
                 game.getLevel(level);
                 setgoOnButton();
                 alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + file + " geladen.");
+
             }
             else {
+                stage1.close();
                 start(stage1);
             }
 
