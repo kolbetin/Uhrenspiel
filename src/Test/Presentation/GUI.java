@@ -104,28 +104,6 @@ public class GUI extends Application {
 
             uberschrift = new Label("Uhrenspiel");
 
-
-            // Create MenuBar
-            MenuBar menuBar = new MenuBar();
-
-            // Create menus
-            javafx.scene.control.Menu fileMenu = new javafx.scene.control.Menu("Datei");
-
-            // Create MenuItems
-            MenuItem loadItem = new MenuItem("Laden");
-            loadItem.setOnAction(event -> {
-            });
-
-            MenuItem saveItem = new MenuItem("Speichern");
-            saveItem.setOnAction(event -> {
-            });
-
-            fileMenu.getItems().addAll(loadItem, saveItem);
-
-            // Add Menus to the MenuBar
-            menuBar.getMenus().addAll(fileMenu);
-
-           // vBox.getChildren().add(menuBar);
             vBox.getChildren().add(uberschrift);
 
             return vBox;

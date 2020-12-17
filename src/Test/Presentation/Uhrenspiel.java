@@ -442,7 +442,7 @@ public class Uhrenspiel extends Application  {
             File file = data.chooseSaveFile(new File(createFileName()), stage1);
             if (file != null) {
                  data.saveProgress(file, data.progress);
-                alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "'Was tun?' Liste gespeichert in Datei " + file.getPath() + ".", "Datei wird gespeichert");
+                alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Liste gespeichert in Datei " + file.getPath() + ".", "Datei wird gespeichert");
             }
             //data.saveProgress(fileName);
             saved = true;
@@ -455,23 +455,24 @@ public class Uhrenspiel extends Application  {
 
     private void loadProgress() {
         try {
-
             File file = data.chooseLoadFile(new File(createFileName()), stage1);
             if (file != null) {
                 data.loadProgress(file);
+                updateDta();
+                game.getLevel(level);
+                setgoOnButton();
+                alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + file + " geladen.");
             }
-             updateDta();
-            game.getLevel(level);
-            setgoOnButton();
-            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + file + " geladen.");
+            else {
+                start(stage1);
+            }
+
+
+
         } catch (IOException | ClassNotFoundException e) {
             alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
         }
     }
-
-
-
-
 
 
     public void updateDta(){
