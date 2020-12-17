@@ -10,7 +10,9 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
+
+
 
 
 public class Uhrenspiel extends Application  {
@@ -420,14 +424,13 @@ public class Uhrenspiel extends Application  {
     }
 
       private String createFileName () {
-          return  System.getProperty("user.home") + System.getProperty("file.separator") +
-                  (data.getBufferInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
+          return  System.getProperty("user.home") + System.getProperty("file.separator") +"Spielstand.ser";
+                  //(data.getBufferInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
       }
 
 
     public void saveProgress() {
         try {
-            String fileName = createFileName();
 
             data.progress.add(Integer.toString(game.aufgabennummer));
             data.progress.add(Integer.toString(level));
@@ -435,9 +438,15 @@ public class Uhrenspiel extends Application  {
             data.progress.add(game.playedGames.toString());
             data.progress.add(Integer.toString(richtigeAntwort));
             data.progress.add(Integer.toString(falscheAntwort));
-            data.saveProgress(fileName);
+
+            File file = data.chooseSaveFile(new File(createFileName()), stage1);
+            if (file != null) {
+                 data.saveProgress(file, data.progress);
+                alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "'Was tun?' Liste gespeichert in Datei " + file.getPath() + ".", "Datei wird gespeichert");
+            }
+            //data.saveProgress(fileName);
             saved = true;
-            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Liste gespeichert in Datei " + fileName + ".");
+            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Liste gespeichert in Datei " + file + ".");
         } catch (IOException e) {
             alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
         }
@@ -446,16 +455,24 @@ public class Uhrenspiel extends Application  {
 
     private void loadProgress() {
         try {
-            String fileName = createFileName();
-            data.loadProgress(fileName);
-            updateDta();
+
+            File file = data.chooseLoadFile(new File(createFileName()), stage1);
+            if (file != null) {
+                data.loadProgress(file);
+            }
+             updateDta();
             game.getLevel(level);
             setgoOnButton();
-            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + fileName + " geladen.");
+            alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + file + " geladen.");
         } catch (IOException | ClassNotFoundException e) {
             alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
         }
     }
+
+
+
+
+
 
     public void updateDta(){
         int r = Integer.parseInt(data.progress.get(4));

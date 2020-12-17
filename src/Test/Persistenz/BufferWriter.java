@@ -10,8 +10,8 @@ import java.util.List;
 public class BufferWriter implements IOInterface {
 
 
-    @Override
-    public void save(String file, List<String> progress) throws IOException {
+
+    public void save(File file, List<String> progress) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
 
             for (String string : progress) {
@@ -24,8 +24,8 @@ public class BufferWriter implements IOInterface {
             throw new IOException("Daten können nicht in der Datei " + file + " gespeichert werden!");
         }
     }
-    @Override
-    public List<String> load(String file) throws IOException,
+
+    public List<String> load(File file) throws IOException,
             ClassNotFoundException {
              try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 List<String> spielstand = new ArrayList<>();
