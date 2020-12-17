@@ -1,12 +1,12 @@
 package Test.Persistenz;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.List;
 
 public interface IOInterface {
 
-    void save(File file, HashMap<Integer, String> antwortenmap) throws IOException;
 
-    HashMap<Integer, String> load(File file) throws IOException, ClassNotFoundException;
+    void save(String file, List<String> progress ) throws IOException;
+
+    List<String> load(String file) throws IOException, ClassNotFoundException;
 }

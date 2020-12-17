@@ -1,6 +1,6 @@
 package Test.Persistenz;
 
-import Test.Domain.ProgressData;
+
 
 import java.util.*;
 
@@ -8,7 +8,7 @@ import java.util.*;
 public class QuestionsAnswer {
 
     public HashMap<String, String> antwortenMap;
-    private ProgressData progressData;
+
 
     public QuestionsAnswer() {
         antwortenMap = new HashMap<>();

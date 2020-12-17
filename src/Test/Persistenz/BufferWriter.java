@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BufferWriter implements BufferInterface{
+public class BufferWriter implements IOInterface {
     private SavedData data;
 
     @Override

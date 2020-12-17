@@ -1,33 +1,21 @@
 package Test.Presentation;
 
 import Test.Domain.Game;
-import Test.Domain.ProgressData;
 import Test.Domain.SavedData;
-import Test.Persistenz.BufferWriter;
 import Test.Persistenz.IOSerialisierung;
 
-import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 
@@ -49,12 +37,13 @@ public class Uhrenspiel extends Application  {
     ArrayList<GUI> guiList;
     private AlertHelper alertHelper;
     public Game game;
-    private ProgressData progressData;
     private SavedData data;
     private File file;
     public int richtigeAntwort;
     public int falscheAntwort;
     private Thread thread;
+    public int level = 1;
+    public boolean strictGame = false;
 
 
 
@@ -91,24 +80,24 @@ public class Uhrenspiel extends Application  {
         choiceScreen.start(stage1);
 
         choiceScreen.leadedGame.setOnAction(e ->{
-            game.strictGame=true;
-            game.level = 1;
+            strictGame=true;
+            level = 1;
             newGame();
         });
         choiceScreen.level1.setOnAction(e -> {
-            game.level = 1;
+            level = 1;
             newGame();
         });
         choiceScreen.level2.setOnAction(e -> {
-            game.level = 2;
+            level = 2;
             newGame();
         });
         choiceScreen.level3.setOnAction(e -> {
-            game.level = 3;
+            level = 3;
             newGame();
         });
         choiceScreen.level4.setOnAction(e -> {
-            game.level = 4;
+            level = 4;
             newGame();
         });
         choiceScreen.backButton.setOnAction(e -> {
@@ -176,8 +165,8 @@ public class Uhrenspiel extends Application  {
         falscheAntwort= 0;
 
         game.playedGames.clear();
-        game.getLevel(game.level);
-        if(game.level<4){
+        game.getLevel(level);
+        if(level<4){
             newGameMultipleChoice();
         }
         else {
@@ -192,9 +181,9 @@ public class Uhrenspiel extends Application  {
 
     private void setgoOnButton(){
 
-          if( game.aufgabennummer<3) {
-              if (game.level < 4) {
-                  if (game.aufgabennummer < 2) {
+          if( game.aufgabennummer<10) {
+              if (level < 4) {
+                  if (game.aufgabennummer < 5) {
                       newGameMultipleChoice();
                   } else {
                       newGameFreeAnswer();
@@ -216,7 +205,6 @@ public class Uhrenspiel extends Application  {
     public void newGameMultipleChoice() {
         game.nextQuestion();
         guiMC.zeit = game.key ;
-       // guiMC.zeit = "12:00";
         guiMC.start(stage1);
 
         guiMC.antwort1.setText((String) game.liste.get(0));
@@ -225,7 +213,7 @@ public class Uhrenspiel extends Application  {
         guiMC.antwort4.setText((String) game.liste.get(3));
 
         guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-        guiMC.level.setText("Level: " + game.level );
+        guiMC.level.setText("Level: " + level );
         guiMC.richtigeAntwort.setText("Richtige Antworten: " + richtigeAntwort);
         guiMC.falscheAntwort.setText("Falsche Antworten: " + falscheAntwort );
         guiMC.goOn.setOnAction(event -> setgoOnButton());
@@ -235,10 +223,9 @@ public class Uhrenspiel extends Application  {
         correctAnswerMC();
         System.out.println(game.key);
         System.out.println(game.liste);
-         System.out.println(game.aufgabennummer);
+        System.out.println(game.aufgabennummer);
         System.out.println("Richtige Antwort: " + richtigeAntwort);
         System.out.println("Falsche Antwort: " + falscheAntwort);
-        System.out.println(progressData.progress);
         System.out.println(game.playedGames);
   }
 
@@ -247,11 +234,11 @@ public class Uhrenspiel extends Application  {
           guiFA.zeit = game.key;
           guiFA.start(stage1);
           guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-          guiFA.level.setText("Level: " + game.level);
+          guiFA.level.setText("Level: " + level);
           guiFA.givenMinutes.setText("00");
           guiFA.richtigeAntwort.setText("Richtige Antworten: " + richtigeAntwort );
           guiFA.falscheAntwort.setText("Falsche Antworten: " + falscheAntwort);
-          if(game.level > 1){
+          if(level > 1){
                   guiFA.givenMinutes.setText("");
           }
           guiFA.goOn.setVisible(false);
@@ -263,7 +250,6 @@ public class Uhrenspiel extends Application  {
           System.out.println(game.aufgabennummer);
           System.out.println("Richtige Antwort: " + richtigeAntwort);
           System.out.println("Falsche Antwort: " + falscheAntwort);
-        //  System.out.println(progressData.progress);
           System.out.println(game.playedGames);
       }
 
@@ -281,14 +267,13 @@ public class Uhrenspiel extends Application  {
                 ) {
                   guiFA.submitButton.setStyle("-fx-background-color: #1cf61c");
                   guiFA.submitButton.setText("Super!!");
-                  guiFA.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.key + " Uhr.");
+                  guiFA.questionLabel.setText("Toll gemacht!");
                   guiFA.givenHour.setDisable(true);
                   guiFA.givenMinutes.setDisable(true);
                   guiFA.submitButton.setDisable(true);
                   guiFA.goOn.setVisible(true);
                   guiFA.goOn.setOnAction(event -> setgoOnButton());
                   richtigeAntwort++;
-                //  progressData.setProgressData(game.aufgabennummer,"Korrekt");
                 } else {
                   guiFA.submitButton.setStyle("-fx-background-color: #dd2323");
                   guiFA.submitButton.setText("Leider, falsch!");
@@ -296,7 +281,6 @@ public class Uhrenspiel extends Application  {
                           + "Deine Antwort: " + answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.key + " Uhr.");
                   falscheAntwort++;
-                //  progressData.setProgressData(game.aufgabennummer,"Falsch");
                   guiFA.givenHour.setDisable(true);
                   guiFA.givenMinutes.setDisable(true);
                   guiFA.submitButton.setDisable(true);
@@ -325,11 +309,11 @@ public class Uhrenspiel extends Application  {
               });
               summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
-              if(! game.strictGame){
-              summaryScreen.willkommensText.setText("Level: " + game.level + " wurde abgeschlossen!");
-              if(game.level< 4){
+              if(! strictGame){
+              summaryScreen.willkommensText.setText("Level: " + level + " wurde abgeschlossen!");
+              if(level< 4){
                     summaryScreen.nextGame.setOnAction(event -> {
-                        game.level = game.level + 1;
+                        level = level + 1;
                       newGame();
                       });
                   } else {
@@ -345,16 +329,16 @@ public class Uhrenspiel extends Application  {
                   System.out.println("Summe: " + sum+ " PCT: " + pct);
 
                  if (pct >= 0.6) {
-                     summaryScreen.willkommensText.setText("Level: " + game.level +  " wurde erfolgreich abgeschlossen!");
+                     summaryScreen.willkommensText.setText("Level: " + level +  " wurde erfolgreich abgeschlossen!");
                      System.out.println(sum + pct);
                  }
                  else {
-                     summaryScreen.willkommensText.setText("Level: " + game.level + " wurde nicht erfolgreich abgeschlossen!");
+                     summaryScreen.willkommensText.setText("Level: " + level + " wurde nicht erfolgreich abgeschlossen!");
                      System.out.println(sum + pct);
                  }
-                 if (pct >= 0.6 & game.level< 4){
+                 if (pct >= 0.6 & level< 4){
                      summaryScreen.nextGame.setOnAction(event -> {
-                         game.level = game.level + 1;
+                         level = level + 1;
                          newGame();
                      });
                  } else {
@@ -426,37 +410,17 @@ public class Uhrenspiel extends Application  {
             }
     }
 
-      public void saveProgressdata() {
-          try {
-              file = new File(createFileName());
-              progressData.saveProgress(file);
-
-              alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Liste gespeichert in Datei " + file + ".");
-          } catch (IOException e) {
-              alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
-          }
-      }
-
       private String createFileName () {
           return  System.getProperty("user.home") + System.getProperty("file.separator") +
                   (data.getBufferInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
       }
 
-      private void loadProgressdata() {
-          try {
-              progressData.loadProgress(file);
-
-              alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + file + " geladen.");
-          } catch (IOException | ClassNotFoundException e) {
-              alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
-          }
-      }
 
     public void saveProgress() {
         try {
             data.progress.add(Integer.toString(game.aufgabennummer));
-            data.progress.add(Integer.toString(game.level));
-            data.progress.add(Boolean.toString( game.strictGame));
+            data.progress.add(Integer.toString(level));
+            data.progress.add(Boolean.toString( strictGame));
             data.progress.add(game.playedGames.toString());
             data.progress.add(Integer.toString(richtigeAntwort));
             data.progress.add(Integer.toString(falscheAntwort));
@@ -474,12 +438,37 @@ public class Uhrenspiel extends Application  {
         try {
             String fileName = createFileName();
             data.loadProgress(fileName);
-
+            updateDta();
+            game.getLevel(level);
+            setgoOnButton();
             alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + fileName + " geladen.");
         } catch (IOException | ClassNotFoundException e) {
             alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
         }
     }
+
+    public void updateDta(){
+        int r = Integer.parseInt(data.progress.get(4));
+        richtigeAntwort = r;
+        int f = Integer.parseInt(data.progress.get(5));
+        falscheAntwort = f;
+        int l = Integer.parseInt(data.progress.get(1));
+        level = l;
+        boolean b = Boolean.valueOf(data.progress.get(2));
+        strictGame = b;
+        game.playedGames.clear();
+        game.playedGames.addAll(Arrays.asList(data.progress.get(3)));
+        int a = Integer.parseInt(data.progress.get(0));
+        game.aufgabennummer = a;
+
+        System.out.println(game.aufgabennummer);
+        System.out.println(level);
+        System.out.println("Richtige Antwort: " + richtigeAntwort);
+        System.out.println("Falsche Antwort: " + falscheAntwort);
+        System.out.println(game.playedGames);
+        System.out.println(strictGame);
+    }
+
 
 
  /*   public void fillGuiList() {
@@ -504,7 +493,6 @@ public class Uhrenspiel extends Application  {
         mainScreen = new MainScreen();
         choiceScreen = new GamesChoiceScreen();
         verAbschieden = new Verabschiedungsbildschirm();
-        progressData = new ProgressData();
         game = new Game();
         choiceScreen = new GamesChoiceScreen();
         summaryScreen = new SummaryScreen();

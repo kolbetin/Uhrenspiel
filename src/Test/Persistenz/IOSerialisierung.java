@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.List;
 
 
-public class IOSerialisierung implements BufferInterface {
+public class IOSerialisierung implements IOInterface {
 
 
         public void save(String file, List<String> spielstand) throws IOException {

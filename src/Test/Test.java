@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import Test.Domain.ProgressData;
+
 
 /**
  * @author Crunchify.com
@@ -24,7 +24,7 @@ import Test.Domain.ProgressData;
  */
 
 public class Test extends Application {
-  private ProgressData progressData;
+
   public Label willkommensText;
   public Label labelLevel;
   public Label labelRA;
