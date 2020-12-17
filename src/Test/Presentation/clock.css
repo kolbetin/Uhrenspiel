@@ -9,10 +9,11 @@
 
  }
 #answerArea Button {
--fx-min-width: 180;
+-fx-min-width: 150;
+-fx-max-width: 150;
 
 }
-#entryTextfield Textfield {
+.Textfield {
     -fx-min-width: 25;
 }
 
@@ -33,15 +34,16 @@
     -fx-background-color: #e7e1e1;
 
 }
-#leftArea Button {
-    -fx-font-size: 15px;
-
+#leftArea Label  {
+    -fx-font-size: 20px;
 
 }
 #middleArea{
     -fx-font-size: 25px;
-    //-fx-font-weight: bold;
-    -fx-background-color: linear-gradient(to bottom, cornsilk, wheat);
+    -fx-min-width: 1400;
+    -fx-max-width: 1400;
+
+
 }
 #clockArea {
     -fx-font-size: 15px;

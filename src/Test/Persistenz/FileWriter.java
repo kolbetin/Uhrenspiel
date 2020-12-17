@@ -7,19 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BufferWriter implements IOInterface {
+public class FileWriter implements IOInterface {
 
 
 
     public void save(File file, List<String> progress) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+        try (BufferedWriter writer = new BufferedWriter(new java.io.FileWriter(file))) {
 
             for (String string : progress) {
                 writer.write(string);
                 writer.newLine();
             }
-            System.out.println("Daten in der Datei " + file + " gespeichert!");
-            System.out.println(progress);
+
         } catch (IOException e) {
             throw new IOException("Daten können nicht in der Datei " + file + " gespeichert werden!");
         }

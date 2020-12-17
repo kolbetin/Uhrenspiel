@@ -2,7 +2,6 @@ package Test.Domain;
 
 import Test.Persistenz.*;
 import javafx.application.Application;
-import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -22,7 +21,7 @@ public class SavedData extends Application  {
     public SavedData() {
         progress = new ArrayList();
         random = new Random();
-        bufferInterface = new BufferWriter();
+        bufferInterface = new FileWriter();
     }
 
     public void setProgress(List<String> newprogress) {

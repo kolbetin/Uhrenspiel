@@ -17,7 +17,7 @@ public class QuestionFreeAnswer extends GUI {
     public Pane answerArea() {
 
         final HBox hBox = new HBox(10);
-        hBox.setId("entryTextfield");
+        hBox.setId("answerArea");
         hBox.setPadding(new Insets(15, 10, 10, 7));
         submitButton = new Button("abschicken");
         givenHour = new TextField();

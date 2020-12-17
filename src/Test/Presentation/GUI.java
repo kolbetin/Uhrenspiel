@@ -21,7 +21,6 @@ public class GUI extends Application {
         public Label antwortzähler;
         public Button goOn;
         private ClockSkin clock;
-       // private Lernmodus lernmodus;
         public Label questionLabel;
         public Label uberschrift;
         public String zeit = "12:00";
@@ -30,6 +29,7 @@ public class GUI extends Application {
         public Label richtigeAntwort;
         public Label falscheAntwort;
         public Label textlevel;
+        public Label allAnswers;
 
 
 
@@ -41,10 +41,11 @@ public class GUI extends Application {
             borderPane.setTop(upperArea());
             borderPane.setRight(middleArea());
             borderPane.setLeft(leftArea());
+          //  borderPane.setStyle("-fx-border-image-width: 1; -fx-border-color: black");
 
 
             // rootTop.setTop(menuBar);
-            Scene scene = new Scene(borderPane, 1600, 700);
+            Scene scene = new Scene(borderPane, 1400, 700);
             scene.getStylesheets().add
                     (GUI.class.getResource("clock.css").toExternalForm());
             primaryStage.setScene(scene);
@@ -76,7 +77,8 @@ public class GUI extends Application {
         //borderPane.setRight(vBox2);
         middleArea.setTop(upper);
         middleArea.setBottom(borderPane);
-        middleArea.setLeft(clockArea());
+        middleArea.setCenter(clockArea());
+        //middleArea.setStyle("-fx-border-image-width: 1; -fx-border-color: blue");
 
         return middleArea;
 
@@ -85,7 +87,7 @@ public class GUI extends Application {
         public Pane questionArea() {
             final BorderPane borderPane = new BorderPane();
             borderPane.setId("questionArea");
-            borderPane.setPadding(new Insets(7, 750, 10, 7));
+           // borderPane.setPadding(new Insets(7, 7, 10, 7));
 
            // Text frage = new Text("Wie spät is es?");
             questionLabel = new Label("Frage: " + "Wie spät ist es?" );
@@ -135,6 +137,7 @@ public class GUI extends Application {
 
             final VBox vbox = new VBox(20);
 
+            allAnswers = new Label("Anzahl aller Antworten");
             endButton = new Button("Spiel beenden");
             saveButton = new Button ("Speichern");
             vbox.getChildren().addAll(saveButton,endButton);
@@ -142,22 +145,22 @@ public class GUI extends Application {
 
          //    final ProgressBar pbs = new ProgressBar();
           //   final ProgressIndicator pins = new ProgressIndicator();
-          //   final HBox hbs  = new HBox ();
+
 
 
             richtigeAntwort = new Label("Richtige Antworten:");
             falscheAntwort = new Label("Falsche Antworten:");
 
-             final VBox vb = new VBox(30);
+             final VBox vb = new VBox(20);
              vb.setSpacing(50);
-             vb.getChildren().addAll( richtigeAntwort,falscheAntwort);
+             vb.getChildren().addAll( new Label("In diesem Level: "),richtigeAntwort,falscheAntwort);
 
-           // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-            borderPane.setPadding(new Insets(7, 50, 7, 25));
-            vb.setPadding(new Insets(70, 7, 7, 7));
-            vbox.setPadding(new Insets(70, 7, 7, 7));
+            //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
+            borderPane.setPadding(new Insets(120, 7, 7, 7));
+            vb.setPadding(new Insets(50, 7, 7, 7));
+            vbox.setPadding(new Insets(7, 7, 7, 7));
 
-            borderPane.setTop(new Label("Ergbnis"));
+            borderPane.setTop(allAnswers);
             borderPane.setCenter(vb);
             borderPane.setBottom(vbox);
 
