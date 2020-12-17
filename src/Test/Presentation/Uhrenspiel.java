@@ -14,8 +14,10 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -38,12 +40,12 @@ public class Uhrenspiel extends Application  {
     private AlertHelper alertHelper;
     public Game game;
     private SavedData data;
-    private File file;
-    public int richtigeAntwort;
-    public int falscheAntwort;
+    public int richtigeAntwort =0;
+    public int falscheAntwort = 0;
     private Thread thread;
     public int level = 1;
     public boolean strictGame = false;
+    private boolean saved = false;
 
 
 
@@ -206,7 +208,7 @@ public class Uhrenspiel extends Application  {
         game.nextQuestion();
         guiMC.zeit = game.key ;
         guiMC.start(stage1);
-
+        Collections.shuffle(game.liste);
         guiMC.antwort1.setText((String) game.liste.get(0));
         guiMC.antwort2.setText((String) game.liste.get(1));
         guiMC.antwort3.setText((String) game.liste.get(2));
@@ -402,11 +404,18 @@ public class Uhrenspiel extends Application  {
 
 
     public void endGame(){
-            Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION,  "Spiel beenden!",
-                "Wenn du das Spiel beendest, geht der Fortschritt verloren! Willst du wirklich beenden? " );
-            if(alert){
+           if (!saved) {
+               Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Spiel beenden!",
+                       "Du hast nicht gespeichert! Möchtest du wirklich beenden? ");
+               if (alert) {
+                   stage1.close();
+                   start(stage1);
+               }
+           }
+            else{
                 stage1.close();
                 start(stage1);
+
             }
     }
 
@@ -418,15 +427,16 @@ public class Uhrenspiel extends Application  {
 
     public void saveProgress() {
         try {
+            String fileName = createFileName();
+
             data.progress.add(Integer.toString(game.aufgabennummer));
             data.progress.add(Integer.toString(level));
             data.progress.add(Boolean.toString( strictGame));
             data.progress.add(game.playedGames.toString());
             data.progress.add(Integer.toString(richtigeAntwort));
             data.progress.add(Integer.toString(falscheAntwort));
-            String fileName = createFileName();
             data.saveProgress(fileName);
-
+            saved = true;
             alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Liste gespeichert in Datei " + fileName + ".");
         } catch (IOException e) {
             alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());

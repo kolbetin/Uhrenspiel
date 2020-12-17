@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class BufferWriter implements IOInterface {
-    private SavedData data;
+
 
     @Override
     public void save(String file, List<String> progress) throws IOException {
@@ -29,7 +29,7 @@ public class BufferWriter implements IOInterface {
             ClassNotFoundException {
              try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 List<String> spielstand = new ArrayList<>();
-                data = new SavedData();
+
                 String progress = reader.readLine();
                 while (progress != null) {
                     spielstand.add(progress);
