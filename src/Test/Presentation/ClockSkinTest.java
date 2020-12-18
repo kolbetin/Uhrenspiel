@@ -36,12 +36,15 @@ public class ClockSkinTest {
             Assert.assertTrue(sameLine);
         }
 
+
         @Test       // Minuten-Parser Method Test
         public void minutenParserTest (){
             clock.createClock("10:30");
             Line expectedMinute = clockElements.minutenMap.get("30");
             Line actualMinute = clock.parserMinuten(anzuzeigendeZeit);
+
             Assert.assertEquals(expectedMinute,actualMinute);
+
         }
 
 

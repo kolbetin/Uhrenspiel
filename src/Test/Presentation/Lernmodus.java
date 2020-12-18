@@ -24,7 +24,7 @@ public class Lernmodus extends GUI {
     }
 
 
-    public void startLernmodus() {
+    public void startLernmodusVolleStunde() {
 
         if( anzuzeigendeZiffer < 12) {
             anzuzeigendeZiffer += 1;

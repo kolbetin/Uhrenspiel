@@ -55,7 +55,7 @@ public class ClockSkin {
 
         // Kreiert Hauptgruppe und fügt diese der Node learningClock hinzu
 
-        //if (anzuzeigendeZeit.substring(3) == "00") {
+        if (anzuzeigendeZeit.substring(3).contains("00")) {
 
             if (anzuzeigendeZiffer < 12) {
                 Group root = new Group(clockElements.outerCircle, clockElements.ziffer_12, stunde, minute, clockElements.innerCircle, ziffer);
@@ -68,24 +68,24 @@ public class ClockSkin {
                 finalFormatSettings();
                 return learningClock;
             }
-        //}
+        }
 
-        /* if (anzuzeigendeZeit.substring(3) == "15") {
+        if (anzuzeigendeZeit.substring(3,5).contains("15")) {
+            System.out.println("ViertelStunde funktioniert" + anzuzeigendeZeit.substring(3));
 
             if (anzuzeigendeZiffer != 3) {
                 Group root = new Group(clockElements.outerCircle, clockElements.ziffer_3, stunde, minute, clockElements.innerCircle, ziffer);
-                learningClock = root;
-                //finalFormatSettings();
-                //return learningClock;
+                Node learningClock = root;
+                finalFormatSettings();
+                return learningClock;
             } else {
                 Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer);
-                learningClock = root;
-                //finalFormatSettings();
-                //return learningClock;
+                Node learningClock = root;
+                finalFormatSettings();
+                return learningClock;
             }
         }
-        finalFormatSettings();
-        return learningClock;*/
+        return null;
     } // Ende Methode clockLearningClock
 
 

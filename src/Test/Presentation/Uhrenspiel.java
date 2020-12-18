@@ -82,6 +82,7 @@ public class Uhrenspiel extends Application  {
           );
           mainScreen.lernmodusButton.setOnAction(event ->  startLernmodus());
 
+
            mainScreen.spielanleitungButton.setOnAction(event ->      spielanleitung.starteSpielanleitung(stage1)     );
 
 
@@ -120,7 +121,7 @@ public class Uhrenspiel extends Application  {
 
         public void startLernmodus(){
             lernmodus.anzuzeigendeZiffer = 1;
-            lernmodus.anzuzeigendeZeit = "01:00";
+            lernmodus.anzuzeigendeZeit = "01:15";
             lernmodus.start(stage1);
             lernmodus.text.setText("Es ist jetzt: " + lernmodus.anzuzeigendeZeit + " Uhr");
 
@@ -133,7 +134,8 @@ public class Uhrenspiel extends Application  {
 
                     @Override
                     public void run() {
-                        lernmodus.startLernmodus();
+                        //lernmodus.startLernmodus();
+                        lernmodus.startLernmodusViertelNach();
                         lernmodus.start(stage1);
                         lernmodus.endButton.setOnAction(event -> {
                             thread.stop();
