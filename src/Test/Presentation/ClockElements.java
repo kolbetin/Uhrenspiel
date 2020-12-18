@@ -14,7 +14,6 @@ import java.util.Random;
 public class ClockElements {
 
     public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
-    //public final HashMap<String, Group> ziffernMap = new HashMap<>();
     public final HashMap<String, Line> minutenMap = new HashMap<>();
     public final HashMap<String, Line> stundenMap = new HashMap<>();
     public Circle outerCircle;
@@ -96,7 +95,7 @@ public class ClockElements {
     public ClockElements (){
         createUhrKreise();
         setupClockElements();
-        createZiffernMapStunde();
+        createZiffernMap();
         createMinutenMap();
         createStundenMap();
     }
@@ -136,8 +135,8 @@ public class ClockElements {
         circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
     }
 
-    // --> ziffernMapStunde / + ziffernMapViertel-vor / +ziffernMapViertel-nach / + ziffernMapHalbeStunde
-    public void createZiffernMapStunde() {
+
+    public void createZiffernMap() {
 
         // Kreiert ZiffernMap für mit Ziffernblätter
         ziffernMap.put(1, ziffer_1);
@@ -154,21 +153,6 @@ public class ClockElements {
         ziffernMap.put(12, ziffer_12);
     }
 
-    // Kreiert ZiffernMap für mit Ziffernblätter
-    /*public void createZiffernMapStunde() {
-        ziffernMap.put("01", ziffer_1);
-        ziffernMap.put("02", ziffer_2);
-        ziffernMap.put("03", ziffer_3);
-        ziffernMap.put("04", ziffer_4);
-        ziffernMap.put("05", ziffer_5);
-        ziffernMap.put("06", ziffer_6);
-        ziffernMap.put("07", ziffer_7);
-        ziffernMap.put("08", ziffer_8);
-        ziffernMap.put("09", ziffer_9);
-        ziffernMap.put("10", ziffer_10);
-        ziffernMap.put("11", ziffer_11);
-        ziffernMap.put("12", ziffer_12);
-    }*/
 
     public void createMinutenMap() {
 

@@ -58,6 +58,41 @@ public class Lernmodus extends GUI {
         }
     }
 
+    public void startLernmodusHalbeStunde() {
+
+        if( anzuzeigendeZiffer < 12) {
+            anzuzeigendeZiffer += 1;
+
+            if (anzuzeigendeZiffer < 10) {
+                anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":30";
+            } else {
+                anzuzeigendeZeit = anzuzeigendeZiffer + ":30";
+            }
+            text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
+        }
+        else {
+            System.out.println("Bin fertig!");
+        }
+    }
+
+    public void startLernmodusViertelVor() {
+
+        if( anzuzeigendeZiffer < 12) {
+            anzuzeigendeZiffer += 1;
+
+            if (anzuzeigendeZiffer < 10) {
+                anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":45";
+            } else {
+                anzuzeigendeZeit = anzuzeigendeZiffer + ":45";
+            }
+            text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
+        }
+        else {
+            System.out.println("Bin fertig!");
+        }
+    }
+
+
     @Override
     public BorderPane middleArea() {
 
@@ -118,7 +153,5 @@ public class Lernmodus extends GUI {
 
         return borderPane;
     }
-
-
 
 }

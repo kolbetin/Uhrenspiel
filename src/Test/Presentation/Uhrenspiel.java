@@ -125,8 +125,10 @@ public class Uhrenspiel extends Application  {
 
                     @Override
                     public void run() {
-                        //lernmodus.startLernmodus();
-                        lernmodus.startLernmodusViertelNach();
+                        //lernmodus.startLernmodusVolleStunde();
+                        //lernmodus.startLernmodusViertelNach();
+                        lernmodus.startLernmodusHalbeStunde();
+                        //lernmodus.startLernmodusViertelVor();
                         lernmodus.start(stage1);
                         lernmodus.endButton.setOnAction(event -> {
                             thread.stop();
