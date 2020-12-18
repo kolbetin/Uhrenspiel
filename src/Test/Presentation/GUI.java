@@ -85,7 +85,7 @@ public class GUI extends Application {
     }
 
         public Pane questionArea() {
-            final BorderPane borderPane = new BorderPane();
+            BorderPane borderPane = new BorderPane();
             borderPane.setId("questionArea");
            // borderPane.setPadding(new Insets(7, 7, 10, 7));
 
@@ -121,7 +121,7 @@ public class GUI extends Application {
             //node = clock.clockLerningClock(zeit, 2);
 
            //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-            borderPane.setPadding(new Insets(70,170,7,250));
+            borderPane.setPadding(new Insets(7,170,7,350));
 
 
 
@@ -166,7 +166,7 @@ public class GUI extends Application {
 
 
          public  Pane answerArea() {
-            final HBox hBox = new HBox(25);
+            HBox hBox = new HBox(25);
             hBox.setId("answerArea");
 
             hBox.setPadding(new Insets(15, 7, 10, 7));
