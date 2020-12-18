@@ -53,6 +53,7 @@ public class Uhrenspiel extends Application  {
     private boolean strictGame = false;
     private boolean saved = false;
     private double sum = 0 ;
+    private Spielanleitung spielanleitung;
 
 
 
@@ -61,15 +62,13 @@ public class Uhrenspiel extends Application  {
           stage1 = new Stage();
           stage2 = new Stage();
 
-          //mainScreen.start(stage1);
-          starteSpielanleitung();
+          mainScreen.start(stage1);
 
-    /*      mainScreen.newGameButton.setOnAction(event -> {
+          mainScreen.newGameButton.setOnAction(event -> {
                  stage1.close();
                  setChoiceScreen();
            });
           mainScreen.loadGameButton.setOnAction(event -> {
-                 // stage1.close();
                   loadProgress();
                   }
           );
@@ -81,12 +80,13 @@ public class Uhrenspiel extends Application  {
                       }
                   }
           );
-          mainScreen.lernmodusButton.setOnAction(event -> {
-              //stage1.close();
-              startLernmodus();
+          mainScreen.lernmodusButton.setOnAction(event ->  startLernmodus());
 
-          });*/
+           mainScreen.spielanleitungButton.setOnAction(event ->      spielanleitung.starteSpielanleitung(stage1)     );
+
+
       }
+
 
     private void setChoiceScreen(){
         choiceScreen.start(stage1);
@@ -523,49 +523,6 @@ public class Uhrenspiel extends Application  {
         System.out.println(strictGame);
     }
 
-    private void starteSpielanleitung(){
-        guiMC.zeit = "04:00" ;
-        guiMC.start(stage1);
-
-        guiMC.antwort1.setText("04:00");
-        guiMC.antwort2.setText("02:00");
-        guiMC.antwort3.setText("05:00");
-        guiMC.antwort4.setText("03:00");
-        guiMC.goOn.setVisible(false);
-
-
-       // PauseTransition wait = new PauseTransition(Duration.seconds(3));
-        PauseTransition between = new PauseTransition(Duration.seconds(15));
-      //  wait.setOnFinished(event -> {
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.6), evt -> guiMC.antwort1.setVisible(false)),
-                                 new KeyFrame(Duration.seconds(1.2), evt -> guiMC.antwort1.setVisible(true)));
-            timeline.setCycleCount(5);
-            timeline.setDelay(Duration.seconds(3));
-            timeline.play();
-         Timeline answer = new Timeline(new KeyFrame(Duration.seconds(1.0), evt ->  guiMC.antwort1.setStyle("-fx-background-color: green")),
-                    new KeyFrame(Duration.seconds(4.0), evt -> guiMC.antwort1.setText("Super!!")),
-                    new KeyFrame(Duration.seconds(4.0), evt -> guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: 04:00 Uhr.")),
-                    new KeyFrame(Duration.seconds(5.0), evt -> guiMC.goOn.setVisible(true)));
-            answer.setDelay(Duration.seconds(8));
-            answer.play();
-         Timeline goOn = new Timeline(new KeyFrame(Duration.seconds(0.6), evt -> guiMC.goOn.setVisible(false)),
-                    new KeyFrame(Duration.seconds(1.2), evt -> guiMC.goOn.setVisible(true)));
-            goOn.setCycleCount(5);
-            goOn.setDelay(Duration.seconds(12));
-            goOn.play();
-
-
-        //});
-     //   between.setOnFinished(event -> {  stage1.close();
-
-      //  });
-
-       // wait.play();
-      //  between.play();
-
-    }
-
-
 
 
  /*   public void fillGuiList() {
@@ -595,6 +552,7 @@ public class Uhrenspiel extends Application  {
         summaryScreen = new SummaryScreen();
         lernmodus = new Lernmodus();
         data = new SavedData();
+        spielanleitung = new Spielanleitung();
 
        // fillGuiList();
 

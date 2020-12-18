@@ -30,6 +30,7 @@ public class GUI extends Application {
         public Label falscheAntwort;
         public Label textlevel;
         public Label allAnswers;
+        public Label levelexplain;
 
 
 
@@ -60,16 +61,15 @@ public class GUI extends Application {
 
         antwortzähler = new Label("Antwort 1 von 10");
         level = new Label ("Level");
-       // textlevel = new Label("Erklärung");
+        textlevel = new Label("");
         //Image image1 = new Image( System.getProperty("user.home"));
 
 
-        final BorderPane hBox= new BorderPane();
-        hBox.setLeft(level);
-        hBox.setCenter(textlevel);
+        final VBox vBox= new VBox(20);
+        vBox.getChildren().addAll(level,textlevel);
 
         final VBox upper = new VBox(20);
-        upper.getChildren().addAll(antwortzähler,hBox);
+        upper.getChildren().addAll(antwortzähler,vBox);
 
         final BorderPane borderPane = new BorderPane();
         borderPane.setTop(questionArea());
@@ -150,10 +150,11 @@ public class GUI extends Application {
 
             richtigeAntwort = new Label("Richtige Antworten:");
             falscheAntwort = new Label("Falsche Antworten:");
+            levelexplain = new Label("In diesem Level: ");
 
              final VBox vb = new VBox(20);
              vb.setSpacing(50);
-             vb.getChildren().addAll( new Label("In diesem Level: "),richtigeAntwort,falscheAntwort);
+             vb.getChildren().addAll( levelexplain, richtigeAntwort,falscheAntwort);
 
             //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(120, 7, 7, 7));
