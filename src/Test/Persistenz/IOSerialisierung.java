@@ -15,7 +15,7 @@ public class IOSerialisierung implements IOInterface {
                  ObjectOutputStream outObject = new ObjectOutputStream(outStream)) {
 
                 outObject.writeObject(spielstand);
-              //  System.out.println("Spiel in der Datei " + file + " gespeichert!");
+
             } catch (IOException e) {
                 throw new IOException("Daten können nicht in der Datei " + file + " gespeichert werden!");
             }

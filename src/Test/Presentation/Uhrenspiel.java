@@ -1,12 +1,9 @@
 package Test.Presentation;
 
 import Test.Domain.Game;
-import Test.Domain.SavedData;
+import Test.Persistenz.SavedData;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
+import Test.Domain.Spielanleitung;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -14,7 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 
 import java.io.File;
@@ -317,9 +313,6 @@ public class Uhrenspiel extends Application  {
           }
       }
 
-
-
-
       public void correctAnswerMC() {
           EventHandler<MouseEvent> eventHandler = getEventHandler();
           guiMC.antwort1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
@@ -430,6 +423,7 @@ public class Uhrenspiel extends Application  {
 
 
     public void endGame(){
+          strictGame= false;
            if (!saved) {
                Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Spiel beenden!",
                        "Du hast nicht gespeichert! Möchtest du wirklich beenden? ");
@@ -453,7 +447,7 @@ public class Uhrenspiel extends Application  {
 
     public void saveProgress() {
         try {
-
+            data.progress.clear();
             data.progress.add(Integer.toString(game.aufgabennummer));
             data.progress.add(Integer.toString(level));
             data.progress.add(Boolean.toString( strictGame));

@@ -1,7 +1,5 @@
 package Test.Persistenz;
 
-import Test.Domain.SavedData;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

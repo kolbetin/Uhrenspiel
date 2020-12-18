@@ -1,4 +1,4 @@
-package Test.Domain;
+package Test.Persistenz;
 
 import Test.Persistenz.*;
 import javafx.application.Application;

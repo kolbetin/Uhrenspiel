@@ -143,11 +143,6 @@ public class GUI extends Application {
             vbox.getChildren().addAll(saveButton,endButton);
 
 
-         //    final ProgressBar pbs = new ProgressBar();
-          //   final ProgressIndicator pins = new ProgressIndicator();
-
-
-
             richtigeAntwort = new Label("Richtige Antworten:");
             falscheAntwort = new Label("Falsche Antworten:");
             levelexplain = new Label("In diesem Level: ");
