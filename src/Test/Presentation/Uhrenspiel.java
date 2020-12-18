@@ -3,6 +3,10 @@ package Test.Presentation;
 import Test.Domain.Game;
 import Test.Domain.SavedData;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -10,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 import java.io.File;
@@ -56,9 +61,10 @@ public class Uhrenspiel extends Application  {
           stage1 = new Stage();
           stage2 = new Stage();
 
-          mainScreen.start(stage1);
+          //mainScreen.start(stage1);
+          starteSpielanleitung();
 
-          mainScreen.newGameButton.setOnAction(event -> {
+    /*      mainScreen.newGameButton.setOnAction(event -> {
                  stage1.close();
                  setChoiceScreen();
            });
@@ -79,7 +85,7 @@ public class Uhrenspiel extends Application  {
               //stage1.close();
               startLernmodus();
 
-          });
+          });*/
       }
 
     private void setChoiceScreen(){
@@ -516,6 +522,49 @@ public class Uhrenspiel extends Application  {
         System.out.println(game.playedGames);
         System.out.println(strictGame);
     }
+
+    private void starteSpielanleitung(){
+        guiMC.zeit = "04:00" ;
+        guiMC.start(stage1);
+
+        guiMC.antwort1.setText("04:00");
+        guiMC.antwort2.setText("02:00");
+        guiMC.antwort3.setText("05:00");
+        guiMC.antwort4.setText("03:00");
+        guiMC.goOn.setVisible(false);
+
+
+       // PauseTransition wait = new PauseTransition(Duration.seconds(3));
+        PauseTransition between = new PauseTransition(Duration.seconds(15));
+      //  wait.setOnFinished(event -> {
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.6), evt -> guiMC.antwort1.setVisible(false)),
+                                 new KeyFrame(Duration.seconds(1.2), evt -> guiMC.antwort1.setVisible(true)));
+            timeline.setCycleCount(5);
+            timeline.setDelay(Duration.seconds(3));
+            timeline.play();
+         Timeline answer = new Timeline(new KeyFrame(Duration.seconds(1.0), evt ->  guiMC.antwort1.setStyle("-fx-background-color: green")),
+                    new KeyFrame(Duration.seconds(4.0), evt -> guiMC.antwort1.setText("Super!!")),
+                    new KeyFrame(Duration.seconds(4.0), evt -> guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: 04:00 Uhr.")),
+                    new KeyFrame(Duration.seconds(5.0), evt -> guiMC.goOn.setVisible(true)));
+            answer.setDelay(Duration.seconds(8));
+            answer.play();
+         Timeline goOn = new Timeline(new KeyFrame(Duration.seconds(0.6), evt -> guiMC.goOn.setVisible(false)),
+                    new KeyFrame(Duration.seconds(1.2), evt -> guiMC.goOn.setVisible(true)));
+            goOn.setCycleCount(5);
+            goOn.setDelay(Duration.seconds(12));
+            goOn.play();
+
+
+        //});
+     //   between.setOnFinished(event -> {  stage1.close();
+
+      //  });
+
+       // wait.play();
+      //  between.play();
+
+    }
+
 
 
 
