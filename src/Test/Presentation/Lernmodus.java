@@ -95,12 +95,13 @@ public class Lernmodus extends GUI {
     public void setLearnLevel(int level) {
 
         if (level == 1) {
+            update(level);
             startLernmodusVolleStunde();
         }
         if (level == 2) {
             startLernmodusViertelNach();
         }
-   /*     if  (level == 3) {
+   /*    if  (level == 3) {
             questionsAnswermap.antwortenMapLevel3();
         }
         if (level == 4) {
@@ -112,7 +113,6 @@ public class Lernmodus extends GUI {
         System.out.println(level);*/
     }
     public void startLernmodusVolleStunde() {
-
 
         if( anzuzeigendeZiffer < 12) {
             anzuzeigendeZiffer += 1;
@@ -129,6 +129,24 @@ public class Lernmodus extends GUI {
         }
     }
 
+    public void update(int level){
+
+        if( anzuzeigendeZiffer < 12) {
+            anzuzeigendeZiffer += 1;
+
+            if (anzuzeigendeZiffer < 10) {
+                anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":15";
+            } else {
+                if(level == 1){
+                    anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
+                }
+                anzuzeigendeZeit = anzuzeigendeZiffer + ":15";
+            }
+            text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
+        }
+
+
+    }
     public void startLernmodusViertelNach() {
 
         if( anzuzeigendeZiffer < 12) {

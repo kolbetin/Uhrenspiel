@@ -82,7 +82,6 @@ public class Game extends Application {
     public Object getTaskkey() {
         boolean played = false;
 
-
         while ( !played ){
             Object[] objects = questionsAnswermap.antwortenMap.keySet().toArray();
             Object randomkey = objects[new Random().nextInt(objects.length)];
