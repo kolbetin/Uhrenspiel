@@ -119,10 +119,8 @@ public class Uhrenspiel extends Application  {
         choiceScreen.level2.setOnAction(e -> {
             game.level = 2;
 
-            if(setlernModus){
-                lernModus.setLearnLevel(game.level);
-                lernModus.setStartTime(game.level);
-                lernModus.startLernmodus(stage1, game.level);
+            if(setlernModus) {
+                setLernModusLevel(game.level);
             }
             else {
                 newGame();
@@ -131,9 +129,7 @@ public class Uhrenspiel extends Application  {
         choiceScreen.level3.setOnAction(e -> {
             game.level = 3;
             if(setlernModus){
-                lernModus.setLearnLevel(game.level);
-                lernModus.setStartTime(game.level);
-                lernModus.startLernmodus(stage1, game.level);
+               setLernModusLevel(game.level);
             }
             else {
                 newGame();
@@ -144,10 +140,15 @@ public class Uhrenspiel extends Application  {
             newGame();
         });
         choiceScreen.backButton.setOnAction(e -> {
+            stage1.close();
             start(stage1);
         });
     }
-
+        private void setLernModusLevel(int level){
+            lernModus.setLearnLevel(level);
+            lernModus.setStartTime(level);
+            lernModus.startLernmodus(stage1, level);
+        }
 
         public void startLernmodus(){
 

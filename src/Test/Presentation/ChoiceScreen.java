@@ -51,8 +51,8 @@ public class ChoiceScreen extends GUI {
 
         middle.setId("choiceMiddleArea");
 
-        middle.getChildren().addAll( text4, text1, text2,text3, text5);
-        right.getChildren().addAll(leadedGame,level1, level2, level3, level4);
+        middle.getChildren().addAll(  text1, text2,text3, text5, text4);
+        right.getChildren().addAll(level1, level2, level3, level4, leadedGame);
         bottom.getChildren().add(backButton);
 
         BorderPane root = new BorderPane();
