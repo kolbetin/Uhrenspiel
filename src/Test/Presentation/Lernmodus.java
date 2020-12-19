@@ -1,14 +1,11 @@
 package Test.Presentation;
 
-import javafx.animation.PauseTransition;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class Lernmodus extends GUI {
 
@@ -43,7 +40,7 @@ public class Lernmodus extends GUI {
                     @Override
                     public void run() {
                         //lernmodus.startLernmodus();
-                        setLernLevel(level);
+                        setLearnLevel(level);
                         //startLernmodusViertelNach();
                         start(stage1);
                         endButton.setOnAction(event -> {
@@ -81,7 +78,7 @@ public class Lernmodus extends GUI {
         thread.start();
     }
 
-    private void setStartTime(int level){
+    public void setStartTime(int level){
         if (level == 1) {
             anzuzeigendeZiffer = 1;
             anzuzeigendeZeit = "01:00";
@@ -95,7 +92,7 @@ public class Lernmodus extends GUI {
     }
 
 
-    public void setLernLevel(int level) {
+    public void setLearnLevel(int level) {
 
         if (level == 1) {
             startLernmodusVolleStunde();

@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 
 public class GamesChoiceScreen extends GUI {
 
-     private Label willkommensText;
+     public Label willkommensText;
      public Button level1;
      public Button level2;
      public Button level3;
@@ -42,8 +42,8 @@ public class GamesChoiceScreen extends GUI {
         text1 = new Text("Volle Stunde, zum Beispiel 01:00Uhr?");
         text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30Uhr?");
         text3 = new Text("Viertel Stunde lernen, zum Beispiel 01:15Uhr?");
-        text4 = new Text("Alles");
-        text5 = new Text("Alle Level gemischt");
+        text4 = new Text("Level 1-3 im Lernmodus");
+        text5 = new Text("Level 1-3 gemischt");
 
         final VBox middle = new VBox(30);
         final VBox right = new VBox(20);
