@@ -32,7 +32,7 @@ public class Uhrenspiel extends Application  {
     private MainScreen mainScreen;
     private SummaryScreen summaryScreen;
     private Verabschiedungsbildschirm verAbschieden;
-    private GamesChoiceScreen choiceScreen;
+    private ChoiceScreen choiceScreen;
     private Lernmodus lernModus;
     private Stage stage1;
     private Stage stage2;
@@ -102,6 +102,7 @@ public class Uhrenspiel extends Application  {
             game.level = 1;
              newGame();
         });
+
         choiceScreen.level1.setOnAction(e -> {
             game.level = 1;
             if(setlernModus){
@@ -114,6 +115,7 @@ public class Uhrenspiel extends Application  {
             }
 
         });
+
         choiceScreen.level2.setOnAction(e -> {
             game.level = 2;
 
@@ -563,10 +565,10 @@ public class Uhrenspiel extends Application  {
         guiMC = new GUI();
         guiFA = new QuestionFreeAnswer();
         mainScreen = new MainScreen();
-        choiceScreen = new GamesChoiceScreen();
+        choiceScreen = new ChoiceScreen();
         verAbschieden = new Verabschiedungsbildschirm();
         game = new Game();
-        choiceScreen = new GamesChoiceScreen();
+        choiceScreen = new ChoiceScreen();
         summaryScreen = new SummaryScreen();
         lernModus = new Lernmodus();
         data = new SavedData();
