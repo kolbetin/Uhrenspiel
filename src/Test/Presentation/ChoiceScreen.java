@@ -10,9 +10,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 
-public class GamesChoiceScreen extends GUI {
+public class ChoiceScreen extends GUI {
 
-     private Label willkommensText;
+     public Label willkommensText;
      public Button level1;
      public Button level2;
      public Button level3;
@@ -37,13 +37,13 @@ public class GamesChoiceScreen extends GUI {
         level2 = new Button("Starte Level 2");
         level3 = new Button("Starte Level 3");
         level4 = new Button("Starte Level 4");
-        leadedGame = new Button("Geführtes Spiel");
+        leadedGame = new Button("Lernmodus");
         backButton = new Button("zurück");
         text1 = new Text("Volle Stunde, zum Beispiel 01:00Uhr?");
         text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30Uhr?");
         text3 = new Text("Viertel Stunde lernen, zum Beispiel 01:15Uhr?");
-        text4 = new Text("Alles");
-        text5 = new Text("Alle Level gemischt");
+        text4 = new Text("Level 1-3 im Lernmodus");
+        text5 = new Text("Level 1-3 gemischt");
 
         final VBox middle = new VBox(30);
         final VBox right = new VBox(20);
@@ -51,8 +51,8 @@ public class GamesChoiceScreen extends GUI {
 
         middle.setId("choiceMiddleArea");
 
-        middle.getChildren().addAll( text4, text1, text2,text3, text5);
-        right.getChildren().addAll(leadedGame,level1, level2, level3, level4);
+        middle.getChildren().addAll(  text1, text2,text3, text5, text4);
+        right.getChildren().addAll(level1, level2, level3, level4, leadedGame);
         bottom.getChildren().add(backButton);
 
         BorderPane root = new BorderPane();

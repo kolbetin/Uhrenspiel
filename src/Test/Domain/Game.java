@@ -18,7 +18,7 @@ import java.util.*;
 public class Game extends Application {
 
     private QuestionsAnswer questionsAnswermap;
-    public List playedGames;
+    public List playedGames = null;
     public ArrayList<String> liste;
     public List answers;
     public String key;
@@ -49,6 +49,7 @@ public class Game extends Application {
     public void nextQuestion() {
 
         liste.clear();
+
        // answers.clear();
         getTaskkey();
         randomAnswer();
@@ -89,7 +90,7 @@ public class Game extends Application {
                 liste.add((String) randomkey);
                 key = (String) randomkey;
                 played = true;
-                playedGames.add(randomkey);
+               // playedGames.add(randomkey);
             }
 
         }
