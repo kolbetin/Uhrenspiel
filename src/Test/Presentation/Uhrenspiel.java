@@ -75,7 +75,7 @@ public class Uhrenspiel extends Application  {
                       }
                   }
           );
-          mainScreen.lernmodusButton.setOnAction(event ->  startLernmodus());
+          mainScreen.lernmodusButton.setOnAction(event ->  lernmodus.startLernmodus(stage1,2));
           mainScreen.spielanleitungButton.setOnAction(event ->  spielanleitung.starteSpielanleitung(stage1) );
       }
 
@@ -111,7 +111,7 @@ public class Uhrenspiel extends Application  {
 
 
         public void startLernmodus(){
-          lernmodus.startLernmodus(stage1,2);
+
      /*       lernmodus.anzuzeigendeZiffer = 1;
             lernmodus.anzuzeigendeZeit = "01:15";
             lernmodus.start(stage1);
