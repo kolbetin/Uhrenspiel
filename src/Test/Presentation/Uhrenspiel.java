@@ -43,7 +43,7 @@ public class Uhrenspiel extends Application  {
     public Game game;
     private SavedData data;
 
-    private Thread thread;
+    //private Thread thread;
 
     private boolean strictGame = false;
     private boolean saved = false;
@@ -111,7 +111,8 @@ public class Uhrenspiel extends Application  {
 
 
         public void startLernmodus(){
-            lernmodus.anzuzeigendeZiffer = 1;
+          lernmodus.startLernmodus(stage1,2);
+     /*       lernmodus.anzuzeigendeZiffer = 1;
             lernmodus.anzuzeigendeZeit = "01:15";
             lernmodus.start(stage1);
             lernmodus.text.setText("Es ist jetzt: " + lernmodus.anzuzeigendeZeit + " Uhr");
@@ -159,7 +160,7 @@ public class Uhrenspiel extends Application  {
 
         });
 
-        thread.start();
+        thread.start();*/
     }
 
 
