@@ -207,6 +207,7 @@ public class Uhrenspiel extends Application  {
         game.aufgabennummer = 0;
         game.richtigeAntwort =0;
         game.falscheAntwort= 0;
+        saved = false;
 
         if(!strictGame){
             game.sum =0;
@@ -228,7 +229,7 @@ public class Uhrenspiel extends Application  {
     }
 
      public void setgoOnButton(){
-
+         game.playedGames.add(game.key);
           if( game.aufgabennummer<10) {
               if (game.level < 4) {
                   if (game.aufgabennummer < 5) {
@@ -477,7 +478,7 @@ public class Uhrenspiel extends Application  {
     public void saveProgress() {
         try {
             data.progress.clear();
-            data.progress.add(Integer.toString(game.aufgabennummer));
+            data.progress.add(Integer.toString(game.aufgabennummer-1));
             data.progress.add(Integer.toString(game.level));
             data.progress.add(Boolean.toString( strictGame));
             data.progress.add(game.playedGames.toString());

@@ -49,7 +49,7 @@ public class Game extends Application {
     public void nextQuestion() {
 
         liste.clear();
-        playedGames.add(key);
+
        // answers.clear();
         getTaskkey();
         randomAnswer();
