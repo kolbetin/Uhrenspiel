@@ -1,14 +1,9 @@
 package Test.Domain;
 
-import Test.Presentation.ClockSkin;
-import Test.Presentation.GUI;
 import Test.Presentation.LernmodusGUI;
 import Test.Presentation.Uhrenspiel;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class Lernmodus {

@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 
-public class SummaryGUI extends GUI {
+public class SummaryGUI extends MainGUI {
 
     public Label willkommensText;
     public Label labelLevel;
@@ -53,7 +53,7 @@ public class SummaryGUI extends GUI {
         root.setCenter(middle);
 
         root.getStylesheets().add
-                (GUI.class.getResource("clock.css").toExternalForm());
+                (MainGUI.class.getResource("clock.css").toExternalForm());
         return root;
 
     }

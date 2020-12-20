@@ -1,6 +1,5 @@
 package Test.Presentation;
 
-import Test.Test;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -12,7 +11,7 @@ import javafx.scene.layout.VBox;
 
 
 
-public class MainScreenGUI extends GUI {
+public class MainScreenGUI extends MainGUI {
 
      private Label willkommensText;
      public Button newGameButton;
@@ -45,7 +44,7 @@ public class MainScreenGUI extends GUI {
         root.setLeft(middle);
       //  root.getChildren().add(label);
         root.getStylesheets().add
-                (GUI.class.getResource("clock.css").toExternalForm());
+                (MainGUI.class.getResource("clock.css").toExternalForm());
         return  root;
 
     }

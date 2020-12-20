@@ -2,14 +2,10 @@ package Test.Domain;
 
 import Test.Persistenz.QuestionsAnswer;
 import Test.Presentation.AlertHelper;
-import Test.Presentation.GUI;
+import Test.Presentation.MainGUI;
 import Test.Presentation.QuestionFreeAnswer;
 import Test.Presentation.Uhrenspiel;
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.util.*;
@@ -23,7 +19,7 @@ public class Game extends Application {
     public List answers;
     public String key;
     public int aufgabennummer;
-    public GUI guiMC;
+    public MainGUI guiMC;
     public QuestionFreeAnswer guiFA;
     public Uhrenspiel uhrenspiel;
     public int richtigeAntwort =0;
@@ -34,10 +30,9 @@ public class Game extends Application {
 
     public Game() {
         questionsAnswermap = new QuestionsAnswer();
-        guiMC = new GUI();
+        guiMC = new MainGUI();
         guiFA = new QuestionFreeAnswer();
-
-      //  answers = new ArrayList<String>();
+        answers = new ArrayList<String>();
         liste = new ArrayList<String>();
         playedGames = new ArrayList<String>();
     //    getLevel(1);
@@ -49,11 +44,10 @@ public class Game extends Application {
     public void nextQuestion() {
 
         liste.clear();
-
-       // answers.clear();
+       answers.clear();
         getTaskkey();
         randomAnswer();
-       // answerSet();
+        answerSet();
         aufgabennummer++;
         System.out.println(key);
     }
@@ -112,13 +106,13 @@ public class Game extends Application {
         return liste;
     }
 
-  /*  public void answerSet() {
+    public void answerSet() {
         for (int i = 0; i < 4; i++) {
             String value = questionsAnswermap.antwortenMap.get(liste.get(i));
             answers.add(value);
             Collections.shuffle(answers);
         }
-    }*/
+    }
 
     public String getAnswerFA(String keys) {
         String value = questionsAnswermap.antwortenMap.get(keys);

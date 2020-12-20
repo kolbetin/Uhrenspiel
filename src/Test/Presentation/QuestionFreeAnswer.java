@@ -5,7 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
-public class QuestionFreeAnswer extends GUI {
+public class QuestionFreeAnswer extends MainGUI {
     public Button goOn;
     public TextField givenHour;
     public TextField givenMinutes;

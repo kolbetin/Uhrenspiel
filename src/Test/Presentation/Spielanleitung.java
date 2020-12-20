@@ -1,17 +1,13 @@
 package Test.Presentation;
 
-import Test.Presentation.GUI;
-import Test.Presentation.QuestionFreeAnswer;
-import Test.Presentation.Uhrenspiel;
 import javafx.animation.KeyFrame;
-import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Spielanleitung {
 
-    public GUI guiMC;
+    public MainGUI guiMC;
     public QuestionFreeAnswer guiFA;
     public Uhrenspiel uhrenspiel;
     private Timeline startFC;
@@ -25,7 +21,7 @@ public class Spielanleitung {
 
 
     public Spielanleitung(){
-        guiMC = new GUI();
+        guiMC = new MainGUI();
         guiFA = new QuestionFreeAnswer();
     }
 

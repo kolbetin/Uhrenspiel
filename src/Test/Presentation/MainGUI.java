@@ -1,6 +1,5 @@
 package Test.Presentation;
 
-import Test.Test;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -10,7 +9,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
-public class GUI extends Application {
+public class MainGUI extends Application {
 
         public Button endButton;
         public Button antwort1;
@@ -44,11 +43,9 @@ public class GUI extends Application {
             borderPane.setLeft(leftArea());
           //  borderPane.setStyle("-fx-border-image-width: 1; -fx-border-color: black");
 
-
-            // rootTop.setTop(menuBar);
             Scene scene = new Scene(borderPane, 1400, 700);
             scene.getStylesheets().add
-                    (GUI.class.getResource("clock.css").toExternalForm());
+                    (MainGUI.class.getResource("clock.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.setTitle("Uhrenspiel");
             primaryStage.show();
@@ -118,12 +115,9 @@ public class GUI extends Application {
 
             clock = new ClockSkin();
             node = clock.createClock(zeit);
-            //node = clock.clockLerningClock(zeit, 2);
 
            //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(7,170,7,350));
-
-
 
             borderPane.setTop(node);
            // borderPane.setCenter(circle);
@@ -189,11 +183,6 @@ public class GUI extends Application {
 
           public static void main(String[] args) { launch(args);
         }
-
-
-
-
-
 
     }
 

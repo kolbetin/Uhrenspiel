@@ -1,6 +1,5 @@
 package Test.Presentation;
 
-import Test.Test;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,7 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 
-public class ChoiceScreen extends GUI {
+public class ChoiceScreen extends MainGUI {
 
      public Label willkommensText;
      public Button level1;
@@ -39,11 +38,11 @@ public class ChoiceScreen extends GUI {
         level4 = new Button("Starte Level 4");
         leadedGame = new Button("Lernmodus");
         backButton = new Button("zurück");
-        text1 = new Text("Volle Stunde, zum Beispiel 01:00Uhr?");
-        text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30Uhr?");
-        text3 = new Text("Viertel Stunde lernen, zum Beispiel 01:15Uhr?");
-        text4 = new Text("Level 1-3 im Lernmodus");
-        text5 = new Text("Level 1-3 gemischt");
+        text1 = new Text("Volle Stunde, zum Beispiel 01:00 Uhr?");
+        text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30 Uhr?");
+        text3 = new Text("Viertel Stunde lernen, zum Beispiel 01:15 Uhr?");
+        text4 = new Text("Level 1-3 im Lernmodus?");
+        text5 = new Text("Level 1-3 gemischt?");
 
         final VBox middle = new VBox(30);
         final VBox right = new VBox(20);
@@ -68,7 +67,7 @@ public class ChoiceScreen extends GUI {
         root.setBottom(bottom);
 
         root.getStylesheets().add
-                (GUI.class.getResource("clock.css").toExternalForm());
+                (MainGUI.class.getResource("clock.css").toExternalForm());
         return  root;
 
     }

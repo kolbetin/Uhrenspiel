@@ -1,19 +1,13 @@
 package Test.Presentation;
 
-import Test.Test;
-import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Path;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
-public class Verabschiedungsbildschirm extends GUI {
+public class Verabschiedungsbildschirm extends MainGUI {
 
      private Label label;
      private Button close;
@@ -35,7 +29,7 @@ public class Verabschiedungsbildschirm extends GUI {
         root.getChildren().add(close);
         String path = "src/Test";
         root.getStylesheets().add
-                (GUI.class.getResource("clock.css").toExternalForm());
+                (MainGUI.class.getResource("clock.css").toExternalForm());
         primaryStage.setScene(new Scene(root, 1100, 800));
         primaryStage.show();
     }

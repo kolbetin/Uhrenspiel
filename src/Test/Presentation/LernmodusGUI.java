@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 
-public class LernmodusGUI extends GUI {
+public class LernmodusGUI extends MainGUI {
 
     private ClockSkin clock;
     public Label text = new Label();
@@ -44,7 +44,7 @@ public class LernmodusGUI extends GUI {
         root.setRight(right);
 
         root.getStylesheets().add
-                (GUI.class.getResource("clock.css").toExternalForm());
+                (MainGUI.class.getResource("clock.css").toExternalForm());
         return root;
 
     }
