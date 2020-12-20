@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 
-public class SummaryScreen extends GUI {
+public class SummaryGUI extends GUI {
 
     public Label willkommensText;
     public Label labelLevel;

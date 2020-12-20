@@ -1,5 +1,9 @@
-package Test.Presentation;
+package Test.Domain;
 
+import Test.Presentation.ClockSkin;
+import Test.Presentation.GUI;
+import Test.Presentation.LernmodusGUI;
+import Test.Presentation.Uhrenspiel;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -7,52 +11,50 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class Lernmodus extends GUI {
+public class Lernmodus {
 
-    private ClockSkin clock;
-    public Label text = new Label();
-    public int anzuzeigendeZiffer = 1;
-    public String anzuzeigendeZeit = "01:00";
+    private Label text = new Label();
+    private int anzuzeigendeZiffer = 1;
+    private String anzuzeigendeZeit = "01:00";
     private Label uberschrift = new Label();
-    public Button repeatButton;
     private Thread thread;
     private Uhrenspiel uhrenspiel;
-    //  public void start(Stage primaryStage) {}
-    public static void main(String[] args) {
-        launch(args);
-    }
+    private LernmodusGUI guiLM;
 
 
-    public void startLernmodus(Stage stage1, int level){
-        setStartTime(level);
-      //  anzuzeigendeZiffer = 1;
-       // anzuzeigendeZeit = "01:15";
-        start(stage1);
-        text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
+
+    public void startLernmodus(Stage stage1, int level) {
+       setStartTime(level);
+
+        guiLM.getUhrzeit(anzuzeigendeZeit,anzuzeigendeZiffer);
+        guiLM.start(stage1);
+        guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
 
         // longrunning operation runs on different thread
         thread = new Thread(new Runnable() {
 
+            int n;
             @Override
             public void run() {
                 Runnable updater = new Runnable() {
 
                     @Override
                     public void run() {
-                        //lernmodus.startLernmodus();
                         setLearnLevel(level);
-                        //startLernmodusViertelNach();
-                        start(stage1);
-                        endButton.setOnAction(event -> {
+
+                        guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
+                        guiLM.getUhrzeit(anzuzeigendeZeit,anzuzeigendeZiffer);
+                        guiLM.start(stage1);
+
+                        guiLM.endButton.setOnAction(event -> {
                             uhrenspiel = new Uhrenspiel();
                             thread.stop();
                             stage1.close();
                             uhrenspiel.start(stage1);
                         });
-                        repeatButton.setOnAction(event -> {
+                        guiLM.repeatButton.setOnAction(event -> {
                             startLernmodus(stage1, level);
                         });
-
                     }
 
                 };
@@ -63,8 +65,7 @@ public class Lernmodus extends GUI {
                             Thread.sleep(1000);
                         } catch (InterruptedException ex) {
                         }
-                    }
-                    else {
+                    } else {
                         ende = true;
 
                     }
@@ -72,21 +73,27 @@ public class Lernmodus extends GUI {
                     Platform.runLater(updater);
                 }
             }
-
         });
 
         thread.start();
     }
 
-    public void setStartTime(int level){
+    public void setStartTime(int level) {
+        anzuzeigendeZiffer = 1;
         if (level == 1) {
-            anzuzeigendeZiffer = 1;
-            anzuzeigendeZeit = "01:00";
+           anzuzeigendeZeit = "01:00";
 
         }
         if (level == 2) {
-            anzuzeigendeZiffer = 1;
-            anzuzeigendeZeit = "01:15";
+           anzuzeigendeZeit = "01:15";
+
+        }
+        if (level == 3) {
+            anzuzeigendeZeit = "01:45";
+
+        }
+        if (level == 4) {
+            anzuzeigendeZeit = "01:30";
 
         }
     }
@@ -95,26 +102,24 @@ public class Lernmodus extends GUI {
     public void setLearnLevel(int level) {
 
         if (level == 1) {
-            update(level);
+           // update(level);
             startLernmodusVolleStunde();
         }
         if (level == 2) {
             startLernmodusViertelNach();
         }
-   /*    if  (level == 3) {
-            questionsAnswermap.antwortenMapLevel3();
+       if  (level == 3) {
+         startLernmodusViertelVor();
         }
         if (level == 4) {
-            questionsAnswermap.antwortenMapLevel1();
-            questionsAnswermap.antwortenMapLevel2();
-            questionsAnswermap.antwortenMapLevel3();
+           startLernmodusHalbeStunde();
         }
-        System.out.println(questionsAnswermap.antwortenMap.keySet());
-        System.out.println(level);*/
+
     }
+
     public void startLernmodusVolleStunde() {
 
-        if( anzuzeigendeZiffer < 12) {
+        if (anzuzeigendeZiffer < 12) {
             anzuzeigendeZiffer += 1;
 
             if (anzuzeigendeZiffer < 10) {
@@ -123,21 +128,21 @@ public class Lernmodus extends GUI {
                 anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
             }
             text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-        }
-        else {
-            System.out.println("Bin fertig!");
+        } else {
+            int n = 0;
+            System.out.println("wieso laufe ich nödd" );
         }
     }
 
-    public void update(int level){
+  /*  public void update(int level) {
 
-        if( anzuzeigendeZiffer < 12) {
+        if (anzuzeigendeZiffer < 12) {
             anzuzeigendeZiffer += 1;
 
             if (anzuzeigendeZiffer < 10) {
                 anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":15";
             } else {
-                if(level == 1){
+                if (level == 1) {
                     anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
                 }
                 anzuzeigendeZeit = anzuzeigendeZiffer + ":15";
@@ -146,10 +151,11 @@ public class Lernmodus extends GUI {
         }
 
 
-    }
+    }*/
+
     public void startLernmodusViertelNach() {
 
-        if( anzuzeigendeZiffer < 12) {
+        if (anzuzeigendeZiffer < 12) {
             anzuzeigendeZiffer += 1;
 
             if (anzuzeigendeZiffer < 10) {
@@ -158,15 +164,14 @@ public class Lernmodus extends GUI {
                 anzuzeigendeZeit = anzuzeigendeZiffer + ":15";
             }
             text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-        }
-        else {
+        } else {
             System.out.println("Bin fertig!");
         }
     }
 
     public void startLernmodusHalbeStunde() {
 
-        if( anzuzeigendeZiffer < 12) {
+        if (anzuzeigendeZiffer < 12) {
             anzuzeigendeZiffer += 1;
 
             if (anzuzeigendeZiffer < 10) {
@@ -175,15 +180,14 @@ public class Lernmodus extends GUI {
                 anzuzeigendeZeit = anzuzeigendeZiffer + ":30";
             }
             text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-        }
-        else {
+        } else {
             System.out.println("Bin fertig!");
         }
     }
 
     public void startLernmodusViertelVor() {
 
-        if( anzuzeigendeZiffer < 12) {
+        if (anzuzeigendeZiffer < 12) {
             anzuzeigendeZiffer += 1;
 
             if (anzuzeigendeZiffer < 10) {
@@ -192,72 +196,17 @@ public class Lernmodus extends GUI {
                 anzuzeigendeZeit = anzuzeigendeZiffer + ":45";
             }
             text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-        }
-        else {
+        } else {
             System.out.println("Bin fertig!");
         }
     }
-
-
-    @Override
-    public BorderPane middleArea() {
-
-        uberschrift.setText("Lernmodus - Wo stehen die Ziffern auf der Uhr?");
-
-        final VBox right = new VBox(20);
-        right.getChildren().add(text);
-        right.setPadding(new Insets(200, 550, 7, 7));
-
-        final VBox middle = new VBox(10);
-        middle.getChildren().addAll(clockArea());
-        //   middle.setPadding(new Insets(70,100,7,70));
-        //  middle.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        final BorderPane root = new BorderPane();
-        root.setTop(uberschrift);
-        root.setPadding(new Insets(7, 450, 7, 70));
-        // root.setStyle("-fx-border-width:  1; -fx-border-color: green");
-        root.setLeft(middle);
-        root.setRight(right);
-
-        root.getStylesheets().add
-                (GUI.class.getResource("clock.css").toExternalForm());
-        return root;
+    public Lernmodus(){
+        guiLM = new LernmodusGUI();
 
     }
-
-    public Pane clockArea() {
-        final BorderPane borderPane = new BorderPane();
-        borderPane.setId("clockArea");
-
-        clock = new ClockSkin();
-        node = clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
-
-        //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        borderPane.setPadding(new Insets(70, 170, 7, 250));
-
-        borderPane.setCenter(node);
-
-        return borderPane;
-    }
-
-    @Override
-    public Pane leftArea() {
-        final BorderPane borderPane = new BorderPane();
-        borderPane.setId("leftArea");
-
-        final VBox vbox = new VBox(20);
-
-        endButton = new Button("Lernmodus beenden");
-        repeatButton = new Button("Nochmal");
-        vbox.getChildren().addAll(repeatButton, endButton);
-
-        borderPane.setPadding(new Insets(7, 50, 7, 25));
-
-        vbox.setPadding(new Insets(70, 7, 7, 7));
-
-        borderPane.setBottom(vbox);
-
-        return borderPane;
-    }
-
 }
+
+
+
+
+

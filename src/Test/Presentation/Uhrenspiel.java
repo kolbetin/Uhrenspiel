@@ -1,17 +1,15 @@
 package Test.Presentation;
 
 import Test.Domain.Game;
+import Test.Domain.Lernmodus;
 import Test.Persistenz.SavedData;
 
-import Test.Domain.Spielanleitung;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,20 +18,16 @@ import java.util.Collections;
 import java.util.Random;
 
 
-
-
 public class Uhrenspiel extends Application  {
 
-
-    Random random;
-
+    private Random random;
     private GUI guiMC;
     private QuestionFreeAnswer guiFA;
-    private MainScreen mainScreen;
-    private SummaryScreen summaryScreen;
+    private MainScreenGUI mainScreen;
+    private SummaryGUI summaryScreen;
     private Verabschiedungsbildschirm verAbschieden;
     private ChoiceScreen choiceScreen;
-    private Lernmodus lernModus;
+    private Lernmodus learnModus;
     private Stage stage1;
     private Stage stage2;
     private Stage stage3;
@@ -41,13 +35,9 @@ public class Uhrenspiel extends Application  {
     private AlertHelper alertHelper;
     public Game game;
     private SavedData data;
-    private boolean setlernModus = false;
-
-    //private Thread thread;
-
+    private boolean setlearnModus = false;
     private boolean strictGame = false;
     private boolean saved = false;
-
     private Spielanleitung spielanleitung;
 
 
@@ -77,7 +67,7 @@ public class Uhrenspiel extends Application  {
           );
           mainScreen.lernmodusButton.setOnAction(event ->
           {
-              setlernModus = true;
+              setlearnModus = true;
               setChoiceScreen();
           });
           mainScreen.spielanleitungButton.setOnAction(event -> {
@@ -89,12 +79,17 @@ public class Uhrenspiel extends Application  {
 
     private void setChoiceScreen(){
         choiceScreen.start(stage1);
-        if(setlernModus){
+        if(setlearnModus){
+            choiceScreen.text5.setText("Halbe Stunde lernen, zum Beispiel 2:30Uhr?");
+            choiceScreen.level4.setText("Start");
+            choiceScreen.level1.setText("Start");
+            choiceScreen.level2.setText("Start");
+            choiceScreen.level3.setText("Start");
+            choiceScreen.willkommensText.setText("Welchen Lernmodus möchtest du starten?");
+            choiceScreen.text2.setText("Viertel nach lernen, zum Beispiel 3:15 Uhr?");
+            choiceScreen.text3.setText("Viertel vor lernen, zum Beispiel 3:45 Uhr?");
             choiceScreen.text4.setVisible(false);
             choiceScreen.leadedGame.setVisible(false);
-            choiceScreen.willkommensText.setText("Welchen Lernmodus möchtest du starten?");
-            choiceScreen.text5.setVisible(false);
-            choiceScreen.level4.setVisible(false);
         }
 
         choiceScreen.leadedGame.setOnAction(e ->{
@@ -105,105 +100,39 @@ public class Uhrenspiel extends Application  {
 
         choiceScreen.level1.setOnAction(e -> {
             game.level = 1;
-            if(setlernModus){
-                lernModus.setLearnLevel(game.level);
-                lernModus.setStartTime(game.level);
-                lernModus.startLernmodus(stage1, game.level);
-            }
-            else {
-                newGame();
-            }
-
+             setModus(game.level);
         });
 
         choiceScreen.level2.setOnAction(e -> {
             game.level = 2;
+             setModus(game.level);
 
-            if(setlernModus) {
-                setLernModusLevel(game.level);
-            }
-            else {
-                newGame();
-            }
         });
         choiceScreen.level3.setOnAction(e -> {
             game.level = 3;
-            if(setlernModus){
-               setLernModusLevel(game.level);
-            }
-            else {
-                newGame();
-            }
+            setModus(game.level);
+
         });
         choiceScreen.level4.setOnAction(e -> {
-            game.level = 4;
-            newGame();
+            game.level=4;
+            setModus(game.level);
+
         });
         choiceScreen.backButton.setOnAction(e -> {
             stage1.close();
             start(stage1);
         });
     }
-        private void setLernModusLevel(int level){
-            lernModus.setLearnLevel(level);
-            lernModus.setStartTime(level);
-            lernModus.startLernmodus(stage1, level);
-        }
-
-        public void startLernmodus(){
-
-     /*       lernmodus.anzuzeigendeZiffer = 1;
-            lernmodus.anzuzeigendeZeit = "01:15";
-            lernmodus.start(stage1);
-            lernmodus.text.setText("Es ist jetzt: " + lernmodus.anzuzeigendeZeit + " Uhr");
-
-        // longrunning operation runs on different thread
-         thread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                Runnable updater = new Runnable() {
-
-                    @Override
-                    public void run() {
-                        //lernmodus.startLernmodusVolleStunde();
-                        //lernmodus.startLernmodusViertelNach();
-                        lernmodus.startLernmodusHalbeStunde();
-                        //lernmodus.startLernmodusViertelVor();
-                        lernmodus.start(stage1);
-                        lernmodus.endButton.setOnAction(event -> {
-                            thread.stop();
-                            stage1.close();
-                            start(stage1);
-                        });
-                        lernmodus.repeatButton.setOnAction(event -> {
-                         startLernmodus();
-                        });
-
-                    }
-
-                };
-                boolean ende = false;
-                while (!ende) {
-                    if (lernmodus.anzuzeigendeZiffer < 11) {
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ex) {
-                        }
-                    }
-                     else {
-                       ende = true;
-
-                       }
-                        // UI update is run on the Application thread
-                        Platform.runLater(updater);
-                    }
+        private void setModus(int level){
+            if(setlearnModus){
+                learnModus.setLearnLevel(level);
+                learnModus.setStartTime(level);
+                learnModus.startLernmodus(stage1,level);
             }
-
-        });
-
-        thread.start();*/
-    }
+            else {
+                newGame();
+            }
+        }
 
 
     public void newGame(){
@@ -409,7 +338,6 @@ public class Uhrenspiel extends Application  {
         summaryScreen.backButton.setOnAction(event -> {
             stage1.close();
             start(stage1);
-
         });
         summaryScreen.repeatLevel.setOnAction(event ->
             newGame()
@@ -449,7 +377,6 @@ public class Uhrenspiel extends Application  {
                 });
             } else {
                 summaryScreen.nextGame.setVisible(false);
-
             }
         }
     }
@@ -468,7 +395,6 @@ public class Uhrenspiel extends Application  {
             else{
                 stage1.close();
                 start(stage1);
-
             }
     }
 
@@ -476,7 +402,6 @@ public class Uhrenspiel extends Application  {
           return  System.getProperty("user.home") + System.getProperty("file.separator") +"Spielstand.ser";
                   //(data.getBufferInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
       }
-
 
     public void saveProgress() {
         try {
@@ -495,7 +420,6 @@ public class Uhrenspiel extends Application  {
                 alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Spiel gespeichert in Datei " + file + ".");
                 saved = true;
             }
-
 
         } catch (IOException e) {
             alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
@@ -519,7 +443,6 @@ public class Uhrenspiel extends Application  {
                 stage1.close();
                 start(stage1);
             }
-
 
 
         } catch (IOException | ClassNotFoundException e) {
@@ -568,15 +491,16 @@ public class Uhrenspiel extends Application  {
     public Uhrenspiel() {
         guiMC = new GUI();
         guiFA = new QuestionFreeAnswer();
-        mainScreen = new MainScreen();
+        mainScreen = new MainScreenGUI();
         choiceScreen = new ChoiceScreen();
         verAbschieden = new Verabschiedungsbildschirm();
         game = new Game();
         choiceScreen = new ChoiceScreen();
-        summaryScreen = new SummaryScreen();
-        lernModus = new Lernmodus();
+        summaryScreen = new SummaryGUI();
+        learnModus = new Lernmodus();
         data = new SavedData();
         spielanleitung = new Spielanleitung();
+
 
        // fillGuiList();
 

@@ -1,4 +1,4 @@
-package Test.Domain;
+package Test.Presentation;
 
 import Test.Presentation.GUI;
 import Test.Presentation.QuestionFreeAnswer;

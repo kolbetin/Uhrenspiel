@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 
 
-public class MainScreen extends GUI {
+public class MainScreenGUI extends GUI {
 
      private Label willkommensText;
      public Button newGameButton;
@@ -29,12 +29,13 @@ public class MainScreen extends GUI {
         willkommensText.setText("Willkommen zum Uhrenspiel");
 
         newGameButton = new Button("Neues Spiel");
-        loadGameButton = new Button("Laden des letzten Spiels");
+        loadGameButton = new Button("Spiel laden");
         endGameButton = new Button("Beenden");
         lernmodusButton = new Button("Lernmodus");
         spielanleitungButton = new Button("Spielanleitung");
 
         final VBox middle = new VBox(10);
+        middle.setId("mainscreen");
         middle.getChildren().addAll(newGameButton,loadGameButton,lernmodusButton,spielanleitungButton,endGameButton);
         middle.setPadding(new Insets(70,500,7,70));
 

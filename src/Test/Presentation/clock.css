@@ -8,6 +8,12 @@
      -fx-font-weight: bold
 
  }
+#mainscreen Button{
+    -fx-min-width: 150;
+    -fx-max-width: 150;
+    //-fx-text-alignment: left;
+
+}
 #answerArea Button {
 -fx-min-width: 120;
 -fx-max-width: 180;
