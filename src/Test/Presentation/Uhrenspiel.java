@@ -125,7 +125,8 @@ public class Uhrenspiel extends Application  {
     }
         private void setModus(int level){
             if(setlearnModus){
-                learnModus.setLearnLevel(level);
+                learnModus.setAnzuzeigendeZeitLernmodus(level);
+                //learnModus.setLearnLevel(level);
                 learnModus.setStartTime(level);
                 learnModus.startLernmodus(stage1,level);
             }

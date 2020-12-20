@@ -15,7 +15,8 @@ public class ClockSkinTest {
 
         @Before     // Executed before each test
         public void before (){
-            System.out.println("I'm before each Test method");
+
+
         }*/
 
         @Test       // Stunden-Parser Method Test

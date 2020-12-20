@@ -35,7 +35,8 @@ public class Lernmodus {
 
                     @Override
                     public void run() {
-                        setLearnLevel(level);
+                        //setLearnLevel(level);
+                        setAnzuzeigendeZeitLernmodus(level);
 
                         guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
                         guiLM.getUhrzeit(anzuzeigendeZeit,anzuzeigendeZiffer);
@@ -94,25 +95,64 @@ public class Lernmodus {
     }
 
 
-    public void setLearnLevel(int level) {
+    /*public void setLearnLevel(int level) {
 
         if (level == 1) {
            // update(level);
-            startLernmodusVolleStunde();
+            setAnzuzeigendeZeitLernmodus(level);
         }
         if (level == 2) {
-            startLernmodusViertelNach();
+            setAnzuzeigendeZeitLernmodus(level);
         }
        if  (level == 3) {
-         startLernmodusViertelVor();
+           setAnzuzeigendeZeitLernmodus(level);
         }
         if (level == 4) {
-           startLernmodusHalbeStunde();
+            setAnzuzeigendeZeitLernmodus(level);
         }
 
+    }*/
+
+    public void setAnzuzeigendeZeitLernmodus(int level) {
+
+        if (anzuzeigendeZiffer < 12) {
+            anzuzeigendeZiffer += 1;
+
+            if (anzuzeigendeZiffer < 10) {
+
+                if (level == 1) {
+                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":00";
+                }
+                if (level == 2) {
+                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":15";
+                }
+                if (level == 3) {
+                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":45";
+                }
+                if (level == 4) {
+                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":30";
+                }
+            }
+            else {
+                if (level == 1) {
+                    anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
+                }
+                if (level == 2) {
+                    anzuzeigendeZeit = anzuzeigendeZiffer + ":15";
+                }
+                if (level == 3) {
+                    anzuzeigendeZeit = anzuzeigendeZiffer + ":45";
+                }
+                if (level == 4) {
+                    anzuzeigendeZeit = anzuzeigendeZiffer + ":30";
+                }
+            }
+            text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
+        }
     }
 
-    public void startLernmodusVolleStunde() {
+
+    /*public void startLernmodusVolleStunde() {
 
         if (anzuzeigendeZiffer < 12) {
             anzuzeigendeZiffer += 1;
@@ -129,24 +169,6 @@ public class Lernmodus {
         }
     }
 
-  /*  public void update(int level) {
-
-        if (anzuzeigendeZiffer < 12) {
-            anzuzeigendeZiffer += 1;
-
-            if (anzuzeigendeZiffer < 10) {
-                anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":15";
-            } else {
-                if (level == 1) {
-                    anzuzeigendeZeit = anzuzeigendeZiffer + ":00";
-                }
-                anzuzeigendeZeit = anzuzeigendeZiffer + ":15";
-            }
-            text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-        }
-
-
-    }*/
 
     public void startLernmodusViertelNach() {
 
@@ -194,7 +216,8 @@ public class Lernmodus {
         } else {
             System.out.println("Bin fertig!");
         }
-    }
+    }*/
+
     public Lernmodus(){
         guiLM = new LernmodusGUI();
 

@@ -31,11 +31,11 @@ public class ClockSkin {
         minute.setStrokeWidth(5); // move to CSS File
 
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
-        Group root = new Group (clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
+        Group clock = new Group (clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
         clockElements.outerCircle.toBack();
         clockElements.innerCircle.toFront();
         stunde.toFront();
-        Node clockSkin = root;
+        Node clockSkin = clock;
         return clockSkin;
     }
 
@@ -53,67 +53,87 @@ public class ClockSkin {
         Group ziffer = parserZiffern(anzuzeigendeZiffer);
         Group ziffer2 = parserZiffern(anzuzeigendeZiffer+1);
 
+        Group basicClockElements = new Group (clockElements.outerCircle, stunde, minute, clockElements.innerCircle);
+        Node learningClock = null;
+
         if (anzuzeigendeZeit.substring(3,5).contains("00")) {
 
             if (anzuzeigendeZiffer != 12) {
-                Group root = new Group(clockElements.outerCircle, clockElements.ziffer_12, stunde, minute, clockElements.innerCircle, ziffer);
-                Node learningClock = root;
-                finalFormatSettings();
-                return learningClock;
+                Group clock = new Group(basicClockElements, clockElements.ziffer_12, ziffer);
+                learningClock = clock;
+                //Group root = new Group(clockElements.outerCircle, clockElements.ziffer_12, stunde, minute, clockElements.innerCircle, ziffer);
+                //Node learningClock = clock;
+                //finalFormatSettings();
+                //return learningClock;
             } else {
-                Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer);
-                Node learningClock = root;
-                finalFormatSettings();
-                return learningClock;
+                Group clock = new Group(basicClockElements, ziffer);
+                learningClock = clock;
+                //Node LearningClock = root;
+                //Node learningClock = basicClockElements;
+                //finalFormatSettings();
+                //return learningClock;
             }
         }
 
         if (anzuzeigendeZeit.substring(3,5).contains("15")) {
 
             if (anzuzeigendeZiffer != 3) {
-                Group root = new Group(clockElements.outerCircle, clockElements.ziffer_3, stunde, minute, clockElements.innerCircle, ziffer);
-                Node learningClock = root;
-                finalFormatSettings();
-                return learningClock;
+                Group clock = new Group(basicClockElements, clockElements.ziffer_3, ziffer);
+                learningClock = clock;
+                //Group root = new Group(clockElements.outerCircle, clockElements.ziffer_3, stunde, minute, clockElements.innerCircle, ziffer);
+                //Node learningClock = root;
+                //finalFormatSettings();
+                //return learningClock;
             } else {
-                Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer);
-                Node learningClock = root;
-                finalFormatSettings();
-                return learningClock;
+                Group clock = new Group(basicClockElements,ziffer);
+                learningClock = clock;
+                //Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer);
+                //Node learningClock = root;
+                //finalFormatSettings();
+                //return learningClock;
             }
         }
 
         if (anzuzeigendeZeit.substring(3,5).contains("30")) {
 
             if (anzuzeigendeZiffer != 5 && anzuzeigendeZiffer != 6 ) {
-                Group root = new Group(clockElements.outerCircle, clockElements.ziffer_6, stunde, minute, clockElements.innerCircle, ziffer, ziffer2);
-                Node learningClock = root;
-                finalFormatSettings();
-                return learningClock;
+                Group clock = new Group(basicClockElements,clockElements.ziffer_6, ziffer, ziffer2);
+                learningClock = clock;
+                //Group root = new Group(clockElements.outerCircle, clockElements.ziffer_6, stunde, minute, clockElements.innerCircle, ziffer, ziffer2);
+                //Node learningClock = root;
+                //finalFormatSettings();
+                //return learningClock;
             } else {
-                Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer, ziffer2);
-                Node learningClock = root;
-                finalFormatSettings();
-                return learningClock;
+                Group clock = new Group(basicClockElements, ziffer, ziffer2);
+                learningClock = clock;
+                //Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer, ziffer2);
+                //Node learningClock = root;
+                //finalFormatSettings();
+                //return learningClock;
             }
         }
 
         if (anzuzeigendeZeit.substring(3,5).contains("45")) {
 
-            if (anzuzeigendeZiffer != 9) {
-                Group root = new Group(clockElements.outerCircle, clockElements.ziffer_9, stunde, minute, clockElements.innerCircle, ziffer2);
-                Node learningClock = root;
-                finalFormatSettings();
-                return learningClock;
+            if (anzuzeigendeZiffer != 8) {
+                Group clock = new Group(basicClockElements,clockElements.ziffer_9, ziffer2);
+                learningClock = clock;
+                //Group root = new Group(clockElements.outerCircle, clockElements.ziffer_9, stunde, minute, clockElements.innerCircle, ziffer2);
+                //Node learningClock = root;
+                //finalFormatSettings();
+                //return learningClock;
             } else {
-                Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer2);
-                Node learningClock = root;
-                finalFormatSettings();
-                return learningClock;
+                Group clock = new Group(basicClockElements, ziffer2);
+                learningClock = clock;
+
+                //Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer2);
+                //Node learningClock = root;
+                //finalFormatSettings();
+                //return learningClock;
             }
         }
-
-        return null;
+        finalFormatSettings();
+        return learningClock;
     } // Ende Methode clockLearningClock
 
 
