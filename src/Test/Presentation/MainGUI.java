@@ -5,8 +5,14 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 
 public class MainGUI extends Application {
@@ -30,6 +36,7 @@ public class MainGUI extends Application {
         public Label textlevel;
         public Label allAnswers;
         public Label levelexplain;
+
 
 
 
@@ -59,7 +66,7 @@ public class MainGUI extends Application {
         antwortzähler = new Label("Antwort 1 von 10");
         level = new Label ("Level");
         textlevel = new Label("");
-        //Image image1 = new Image( System.getProperty("user.home"));
+
 
 
         final VBox vBox= new VBox(20);
@@ -75,6 +82,7 @@ public class MainGUI extends Application {
         middleArea.setTop(upper);
         middleArea.setBottom(borderPane);
         middleArea.setCenter(clockArea());
+
         //middleArea.setStyle("-fx-border-image-width: 1; -fx-border-color: blue");
 
         return middleArea;
@@ -159,7 +167,9 @@ public class MainGUI extends Application {
 
 
 
-         public  Pane answerArea() {
+         public  Pane answerArea()  {
+
+
             HBox hBox = new HBox(25);
             hBox.setId("answerArea");
 
@@ -170,7 +180,7 @@ public class MainGUI extends Application {
             antwort3 = new Button("Antwort C");
             antwort4 = new Button("Antwort D");
 
-             goOn = new Button ("weiter");
+            goOn = new Button ("weiter");
 
 
             Label antwort = new Label("Antwort");

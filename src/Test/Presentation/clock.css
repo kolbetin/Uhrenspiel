@@ -11,7 +11,7 @@
 #mainscreen Button{
     -fx-min-width: 150;
     -fx-max-width: 150;
-    //-fx-text-alignment: left;
+//-fx-text-alignment: left;
 
 }
 #answerArea Button {
@@ -71,7 +71,23 @@
     -fx-alignment: CENTER;
 
 }
+#buttonOkay  {
+    -fx-background-image:  url(image/HappySmiley.png);
+    -fx-background-size: 40px 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:  right;
 
+}
+
+
+
+#buttonNotOkay{
+    -fx-background-image:  url(image/TraurigesSmiley.png);
+    -fx-background-size: 40px 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:  right;
+
+}
 
 .button {
     -fx-text-fill: white;

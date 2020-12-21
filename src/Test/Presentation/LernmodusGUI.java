@@ -18,7 +18,7 @@ public class LernmodusGUI extends MainGUI {
     private Label uberschrift = new Label();
     public Button repeatButton;
 
-    public void getUhrzeit(String zeit, int ziffer){
+    public void setUhrzeit(String zeit, int ziffer){
         this.anzuzeigendeZeit = zeit;
         this.anzuzeigendeZiffer = ziffer;
     }

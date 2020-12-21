@@ -5,13 +5,16 @@ import Test.Domain.Lernmodus;
 import Test.Persistenz.SavedData;
 
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -184,7 +187,12 @@ public class Uhrenspiel extends Application  {
     }
 
 
+
+
+
+
     public void newGameMultipleChoice() {
+
         game.nextQuestion();
         guiMC.zeit = game.key ;
         guiMC.start(stage1);
@@ -284,6 +292,7 @@ public class Uhrenspiel extends Application  {
           guiMC.antwort3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
           guiMC.antwort4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
           guiMC.goOn.setVisible(false);
+
       }
 
       private void disableButtons(){
@@ -292,6 +301,7 @@ public class Uhrenspiel extends Application  {
           guiMC.antwort3.setDisable(true);
           guiMC.antwort4.setDisable(true);
       }
+
 
 
           EventHandler<MouseEvent> getEventHandler() {
@@ -304,22 +314,26 @@ public class Uhrenspiel extends Application  {
                       Button button = (Button) event.getSource();
 
                       if (button.getText().contains(game.getAnswerFA(game.key)) ) {
-                              button.setStyle("-fx-background-color: green");
-                              button.setText("Super!!");
-                              guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
-                              game.richtigeAntwort++;
-                              game.sum++;
-                              disableButtons();
-                              guiMC.goOn.setVisible(true);
-                              }
+                          button.setId("buttonOkay");
+                          button.setText("Richtig!!");
+
+                          button.setStyle("-fx-background-color: #0af60a; -fx-alignment:CENTER-LEFT");
+
+                          guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
+                          game.richtigeAntwort++;
+                          game.sum++;
+                          disableButtons();
+                          guiMC.goOn.setVisible(true);
+                      }
                       else {
-                              button.setStyle("-fx-background-color: red");
-                              button.setText("Leider falsch!");
-                              guiMC.questionLabel.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
-                              game.falscheAntwort++;
-                              game.sum++;
-                              disableButtons();
-                              guiMC.goOn.setVisible(true);
+                          button.setId("buttonNotOkay");
+                          button.setText("Falsch");
+                          button.setStyle("-fx-background-color: red; -fx-alignment: CENTER-LEFT");
+                          guiMC.questionLabel.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
+                          game.falscheAntwort++;
+                          game.sum++;
+                          disableButtons();
+                          guiMC.goOn.setVisible(true);
 
                           }
 
@@ -468,6 +482,8 @@ public class Uhrenspiel extends Application  {
         int a = Integer.parseInt(data.progress.get(0));
         game.aufgabennummer = a;
 
+
+
         showData();
     }
 
@@ -489,7 +505,7 @@ public class Uhrenspiel extends Application  {
     }
 
 
-    public Uhrenspiel() {
+    public Uhrenspiel()  {
         guiMC = new MainGUI();
         guiFA = new QuestionFreeAnswer();
         mainScreen = new MainScreenGUI();
@@ -503,7 +519,7 @@ public class Uhrenspiel extends Application  {
         spielanleitung = new Spielanleitung();
 
 
-       // fillGuiList();
+        // fillGuiList();
 
         System.out.println(getGUI());
         System.out.println(guiList);

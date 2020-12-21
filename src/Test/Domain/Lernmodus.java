@@ -21,7 +21,7 @@ public class Lernmodus {
     public void startLernmodus(Stage stage1, int level) {
        setStartTime(level);
 
-        guiLM.getUhrzeit(anzuzeigendeZeit,anzuzeigendeZiffer);
+        guiLM.setUhrzeit(anzuzeigendeZeit,anzuzeigendeZiffer);
         guiLM.start(stage1);
         guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
 
@@ -39,7 +39,7 @@ public class Lernmodus {
                         setAnzuzeigendeZeitLernmodus(level);
 
                         guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-                        guiLM.getUhrzeit(anzuzeigendeZeit,anzuzeigendeZiffer);
+                        guiLM.setUhrzeit(anzuzeigendeZeit,anzuzeigendeZiffer);
                         guiLM.start(stage1);
 
                         guiLM.endButton.setOnAction(event -> {
