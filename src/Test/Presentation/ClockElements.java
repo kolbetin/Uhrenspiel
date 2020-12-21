@@ -301,6 +301,7 @@ public class ClockElements {
         stundenMap.put("11:45", stunde_11_45);
         stundenMap.put("12:00", stunde_12_00);
         stundenMap.put("12:15", stunde_12_15);
+
     }
 
 } // Ende Klasse
