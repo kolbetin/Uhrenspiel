@@ -316,9 +316,7 @@ public class Uhrenspiel extends Application  {
                       if (button.getText().contains(game.getAnswerFA(game.key)) ) {
                           button.setId("buttonOkay");
                           button.setText("Richtig!!");
-
                           button.setStyle("-fx-background-color: #0af60a; -fx-alignment:CENTER-LEFT");
-
                           guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                           game.richtigeAntwort++;
                           game.sum++;
