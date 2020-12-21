@@ -122,6 +122,10 @@ public class ClockSkin {
                 //Node learningClock = root;
                 //finalFormatSettings();
                 //return learningClock;
+
+            // Ausnahme für Ziffer12 einfügen, da ziffer 2 immer +1 gerechnet wird, sucht es bei 12 nach ziffer 13, welche nicht existiert.
+
+
             } else {
                 Group clock = new Group(basicClockElements, ziffer2);
                 learningClock = clock;
