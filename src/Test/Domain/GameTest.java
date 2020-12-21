@@ -28,9 +28,10 @@ class GameTest {
         game.playedGames.add("01:00");
         game.playedGames.add("03:00");
 
-        Assert.assertNotEquals("12:00", game.getTaskkey());
-        Assert.assertNotEquals("01:00", game.getTaskkey());
-        Assert.assertNotEquals("03:00", game.getTaskkey());
+        Assert.assertNotEquals("12:15", game.getTaskkey());
+        Assert.assertNotEquals("01:30", game.getTaskkey());
+        Assert.assertNotEquals("03:45", game.getTaskkey());
+        Assert.assertNotEquals(game.playedGames, game.getTaskkey());
 
     }
 
