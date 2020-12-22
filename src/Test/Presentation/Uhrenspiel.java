@@ -182,11 +182,6 @@ public class Uhrenspiel extends Application  {
           }
     }
 
-
-
-
-
-
     public void newGameMultipleChoice() {
 
         game.nextQuestion();

@@ -61,17 +61,9 @@ public class ClockSkin {
             if (anzuzeigendeZiffer != 12) {
                 Group clock = new Group(basicClockElements, clockElements.ziffer_12, ziffer);
                 learningClock = clock;
-                //Group root = new Group(clockElements.outerCircle, clockElements.ziffer_12, stunde, minute, clockElements.innerCircle, ziffer);
-                //Node learningClock = clock;
-                //finalFormatSettings();
-                //return learningClock;
             } else {
                 Group clock = new Group(basicClockElements, ziffer);
                 learningClock = clock;
-                //Node LearningClock = root;
-                //Node learningClock = basicClockElements;
-                //finalFormatSettings();
-                //return learningClock;
             }
         }
 
@@ -80,17 +72,9 @@ public class ClockSkin {
             if (anzuzeigendeZiffer != 3) {
                 Group clock = new Group(basicClockElements, clockElements.ziffer_3, ziffer);
                 learningClock = clock;
-                //Group root = new Group(clockElements.outerCircle, clockElements.ziffer_3, stunde, minute, clockElements.innerCircle, ziffer);
-                //Node learningClock = root;
-                //finalFormatSettings();
-                //return learningClock;
             } else {
-                Group clock = new Group(basicClockElements,ziffer);
+                Group clock = new Group(basicClockElements, ziffer);
                 learningClock = clock;
-                //Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer);
-                //Node learningClock = root;
-                //finalFormatSettings();
-                //return learningClock;
             }
         }
 
@@ -99,41 +83,21 @@ public class ClockSkin {
             if (anzuzeigendeZiffer != 5 && anzuzeigendeZiffer != 6 ) {
                 Group clock = new Group(basicClockElements,clockElements.ziffer_6, ziffer, ziffer2);
                 learningClock = clock;
-                //Group root = new Group(clockElements.outerCircle, clockElements.ziffer_6, stunde, minute, clockElements.innerCircle, ziffer, ziffer2);
-                //Node learningClock = root;
-                //finalFormatSettings();
-                //return learningClock;
             } else {
                 Group clock = new Group(basicClockElements, ziffer, ziffer2);
                 learningClock = clock;
-                //Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer, ziffer2);
-                //Node learningClock = root;
-                //finalFormatSettings();
-                //return learningClock;
             }
         }
 
         if (anzuzeigendeZeit.substring(3,5).contains("45")) {
 
             if (anzuzeigendeZiffer != 8) {
-                Group clock = new Group(basicClockElements,clockElements.ziffer_9, ziffer2);
+                Group clock = new Group(basicClockElements, clockElements.ziffer_9, ziffer2);
                 learningClock = clock;
-                //Group root = new Group(clockElements.outerCircle, clockElements.ziffer_9, stunde, minute, clockElements.innerCircle, ziffer2);
-                //Node learningClock = root;
-                //finalFormatSettings();
-                //return learningClock;
-
-            // Ausnahme für Ziffer12 einfügen, da ziffer 2 immer +1 gerechnet wird, sucht es bei 12 nach ziffer 13, welche nicht existiert.
-
-
-            } else {
+            }
+            else {
                 Group clock = new Group(basicClockElements, ziffer2);
                 learningClock = clock;
-
-                //Group root = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle, ziffer2);
-                //Node learningClock = root;
-                //finalFormatSettings();
-                //return learningClock;
             }
         }
         finalFormatSettings();

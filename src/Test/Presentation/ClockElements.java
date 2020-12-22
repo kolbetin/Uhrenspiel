@@ -151,6 +151,8 @@ public class ClockElements {
         ziffernMap.put(10, ziffer_10);
         ziffernMap.put(11, ziffer_11);
         ziffernMap.put(12, ziffer_12);
+        // Ziffer key 13 mit Ziffer 1 wird speziell für die Lernmodi mit 30min und 45min benötigt
+        ziffernMap.put(13,ziffer_1);
     }
 
 
