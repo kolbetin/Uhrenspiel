@@ -17,6 +17,7 @@ public class LernmodusGUI extends MainGUI {
     private String anzuzeigendeZeit ;
     private Label uberschrift = new Label();
     public Button repeatButton;
+    public Button goOnLevel;
 
     public void setUhrzeit(String zeit, int ziffer){
         this.anzuzeigendeZeit = zeit;
@@ -73,7 +74,8 @@ public class LernmodusGUI extends MainGUI {
 
         endButton = new Button("Lernmodus beenden");
         repeatButton = new Button("Nochmal");
-        vbox.getChildren().addAll(repeatButton, endButton);
+        goOnLevel = new Button ("Nächstes Level");
+        vbox.getChildren().addAll(goOnLevel, repeatButton, endButton);
 
         borderPane.setPadding(new Insets(7, 50, 7, 25));
 

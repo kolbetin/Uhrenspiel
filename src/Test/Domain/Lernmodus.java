@@ -48,6 +48,8 @@ public class Lernmodus {
                         guiLM.repeatButton.setOnAction(event -> {
                             startLernmodus(stage1, level);
                         });
+
+
                     }
 
                 };
