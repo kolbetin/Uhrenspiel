@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -58,9 +59,10 @@ public class LernmodusGUI extends MainGUI {
         node = clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
 
         //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        borderPane.setPadding(new Insets(70, 170, 7, 250));
+        borderPane.setPadding(new Insets(7, 170, 7, 250));
 
-        borderPane.setCenter(node);
+       borderPane.setCenter(node);
+
 
         return borderPane;
     }
@@ -73,9 +75,10 @@ public class LernmodusGUI extends MainGUI {
         final VBox vbox = new VBox(20);
 
         endButton = new Button("Lernmodus beenden");
-        repeatButton = new Button("Nochmal");
         goOnLevel = new Button ("Nächstes Level");
-        vbox.getChildren().addAll(goOnLevel, repeatButton, endButton);
+        repeatButton = new Button("Nochmal");
+
+        vbox.getChildren().addAll(  goOnLevel,repeatButton, endButton);
 
         borderPane.setPadding(new Insets(7, 50, 7, 25));
 

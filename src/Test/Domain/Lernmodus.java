@@ -63,6 +63,7 @@ public class Lernmodus {
                     } else {
                         ende = true;
 
+
                     }
 
                     // UI update is run on the Application thread
@@ -72,6 +73,7 @@ public class Lernmodus {
         });
 
         thread.start();
+
     }
 
     public void setStartTime(int level) {
@@ -159,9 +161,12 @@ public class Lernmodus {
 
             guiLM.setUhrzeit(anzuzeigendeZeit,anzuzeigendeZiffer);
             guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-            System.out.println(anzuzeigendeZeit + " Schleife");
+            System.out.println(anzuzeigendeZeit + " Zeit");
+            System.out.println(anzuzeigendeZiffer + " Ziffer");
+
 
         }
+
     }
 
 

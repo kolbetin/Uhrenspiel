@@ -251,8 +251,9 @@ public class Uhrenspiel extends Application  {
                       |(guiFA.givenHour.getText().equals("0"+game.getAnswerFA(game.key))
                         |(guiFA.givenHour.getText().equals(game.getAnswerFA(game.key))))
                 ) {
-                  guiFA.submitButton.setStyle("-fx-background-color: #1cf61c");
-                  guiFA.submitButton.setText("Super!!");
+                  guiFA.submitButton .setId("buttonOkay");
+                  guiFA.submitButton .setText("Richtig!");
+                  guiFA.submitButton .setStyle("-fx-background-color: #0af60a; -fx-alignment:CENTER-LEFT");
                   guiFA.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                   guiFA.givenHour.setDisable(true);
                   guiFA.givenMinutes.setDisable(true);
@@ -261,8 +262,9 @@ public class Uhrenspiel extends Application  {
                   game.richtigeAntwort++;
                   game.sum++;
                 } else {
-                  guiFA.submitButton.setStyle("-fx-background-color: #dd2323");
-                  guiFA.submitButton.setText("Leider, falsch!");
+                  guiFA.submitButton .setId("buttonNotOkay");
+                  guiFA.submitButton .setText("Falsch!");
+                  guiFA.submitButton .setStyle("-fx-background-color: red; -fx-alignment:CENTER-LEFT");
                   guiFA.questionLabel.setText("Das war leider nicht richtig!\n"
                           + "Deine Antwort: " + answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.getAnswerFA(game.key)+ " Uhr.");
@@ -311,7 +313,7 @@ public class Uhrenspiel extends Application  {
 
                       if (button.getText().contains(game.getAnswerFA(game.key)) ) {
                           button.setId("buttonOkay");
-                          button.setText("Richtig!!");
+                          button.setText("Richtig!");
                           button.setStyle("-fx-background-color: #0af60a; -fx-alignment:CENTER-LEFT");
                           guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                           game.richtigeAntwort++;
@@ -321,7 +323,7 @@ public class Uhrenspiel extends Application  {
                       }
                       else {
                           button.setId("buttonNotOkay");
-                          button.setText("Falsch");
+                          button.setText("Falsch!");
                           button.setStyle("-fx-background-color: red; -fx-alignment: CENTER-LEFT");
                           guiMC.questionLabel.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                           game.falscheAntwort++;
