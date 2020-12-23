@@ -186,9 +186,6 @@ public class Lernmodus {
 
             guiLM.setUhrzeit(anzuzeigendeZeit, anzuzeigendeZiffer);
             guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-            //System.out.println(anzuzeigendeZeit + " Zeit");
-            //System.out.println(anzuzeigendeZiffer + " Ziffer");
-
 
         }
 

@@ -128,7 +128,6 @@ public class Uhrenspiel extends Application  {
         private void setModus(int level){
             if(setlearnModus){
                 learnModus.setAnzuzeigendeZeitLernmodus(level);
-                //learnModus.setLearnLevel(level);
                 learnModus.setStartTime(level);
                 learnModus.startLernmodus(stage1,level);
             }
@@ -143,13 +142,13 @@ public class Uhrenspiel extends Application  {
         game.richtigeAntwort =0;
         game.falscheAntwort= 0;
         saved = false;
+        game.playedGames.clear();
+        game.setLevel(game.level);
 
         if(!strictGame){
             game.sum =0;
         }
 
-        game.playedGames.clear();
-        game.setLevel(game.level);
         if(game.level<4){
             newGameMultipleChoice();
         }
@@ -165,6 +164,7 @@ public class Uhrenspiel extends Application  {
 
      public void setgoOnButton(){
          game.playedGames.add(game.key);
+
           if( game.aufgabennummer<10) {
               if (game.level < 4) {
                   if (game.aufgabennummer < 5) {

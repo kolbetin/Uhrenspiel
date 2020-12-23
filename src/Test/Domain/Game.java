@@ -18,7 +18,7 @@ public class Game extends Application {
     public ArrayList<String> liste;
     public List answers;
     public String key;
-    public int aufgabennummer;
+    public int aufgabennummer= 0;
     public int richtigeAntwort =0;
     public int falscheAntwort = 0;
     public int level = 1;
@@ -27,20 +27,16 @@ public class Game extends Application {
 
     public Game() {
         questionsAnswermap = new QuestionsAnswer();
-
         answers = new ArrayList<String>();
         liste = new ArrayList<String>();
         playedGames = new ArrayList<String>();
-    //    getLevel(1);
-    //    nextQuestion();
-
 
     }
 
     public void nextQuestion() {
 
         liste.clear();
-       answers.clear();
+        answers.clear();
         getTaskkey();
         randomAnswer();
         answerSet();
