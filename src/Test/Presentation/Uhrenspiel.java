@@ -5,9 +5,12 @@ import Test.Domain.Lernmodus;
 import Test.Persistenz.SavedData;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -228,11 +231,30 @@ public class Uhrenspiel extends Application  {
           }
           guiFA.goOn.setVisible(false);
           guiFA.submitButton.setOnAction(event -> answerCheckFA());
+           guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
+              @Override
+              public void handle(KeyEvent keyEvent) {
+                  if (keyEvent.getCode() == KeyCode.ENTER) {
+                       answerCheckFA();
+                  }
+              }
+          });
+          guiFA.givenMinutes.setOnKeyPressed(new EventHandler<KeyEvent>() {
+              @Override
+              public void handle(KeyEvent keyEvent) {
+                  if (keyEvent.getCode() == KeyCode.ENTER) {
+                      answerCheckFA();
+                  }
+              }
+          });
           guiFA.endButton.setOnAction(event -> endGame());
           guiFA.saveButton.setOnAction(event -> saveProgress());
           showData();
 
       }
+
+
+
 
       public void answerCheckFA() {
 
@@ -333,6 +355,9 @@ public class Uhrenspiel extends Application  {
 
               };
           }
+
+
+
 
     public void summaryGame(){
        stage1.close();
