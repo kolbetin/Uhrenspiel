@@ -15,15 +15,18 @@ public class Lernmodus {
     private Thread thread;
     private Uhrenspiel uhrenspiel;
     private LernmodusGUI guiLM;
+    private int lmLevel = 0;
 
 
     public void startLernmodus(Stage stage1, int level) {
-        setStartTime(level);
+
+        lmLevel = level;
+        setStartTime(lmLevel);
         guiLM.setUhrzeit(anzuzeigendeZeit, anzuzeigendeZiffer);
 
         guiLM.start(stage1);
         guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-
+        guiLM.levelLM.setText(setText(lmLevel));
         // longrunning operation runs on different thread
         thread = new Thread(new Runnable() {
 
@@ -35,9 +38,10 @@ public class Lernmodus {
 
                     @Override
                     public void run() {
-                        setAnzuzeigendeZeitLernmodus(level);
+                        setAnzuzeigendeZeitLernmodus(lmLevel);
 
                         guiLM.start(stage1);
+                        guiLM.levelLM.setText(setText(lmLevel));
 
                         guiLM.endButton.setOnAction(event -> {
                             uhrenspiel = new Uhrenspiel();
@@ -46,13 +50,36 @@ public class Lernmodus {
                             uhrenspiel.start(stage1);
                         });
                         guiLM.repeatButton.setOnAction(event -> {
-                            startLernmodus(stage1, level);
+                            startLernmodus(stage1, lmLevel);
                         });
+                        if(lmLevel >1) {
+                        guiLM.preLevel.setOnAction(event -> {
+                                thread.stop();
+                                lmLevel = lmLevel - 1;
+                                guiLM.levelLM.setText(setText(lmLevel));
+                                startLernmodus(stage1, lmLevel);
 
+                        });
+                        }
+                        else {
+                            guiLM.preLevel.setDisable(true);
+                        }
+
+                        if(lmLevel < 4){
+                            guiLM.goOnLevel.setOnAction(event -> {
+                                thread.stop();
+                                lmLevel = lmLevel + 1;
+                                guiLM.levelLM.setText(setText(lmLevel));
+                                startLernmodus(stage1, lmLevel);
+                                System.out.println(lmLevel);
+                            });
+                        } else {
+                            guiLM.goOnLevel.setDisable(true);
+                        }
 
                     }
-
                 };
+
                 boolean ende = false;
                 while (!ende) {
                     if (anzuzeigendeZiffer < 11) {
@@ -70,6 +97,27 @@ public class Lernmodus {
         });
 
         thread.start();
+
+    }
+    private String setText(int level){
+        String labelText;
+        switch (level) {
+            case 1:
+                labelText = "Level 1: Volle Stunde";
+                break;
+            case 2:
+                labelText = "Level 2: Viertel nach";
+                break;
+            case 3:
+                labelText = "Level 3: Viertel vor";
+                break;
+            case 4:
+                labelText = "Level 4: Halbe Stunde";
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid level");
+        }
+        return labelText;
 
     }
 
