@@ -198,7 +198,13 @@ public class Lernmodus {
         guiLM = new LernmodusGUI();
 
     }
-}
+
+    // Getter Methode für LernmodusTest Klasse
+    public String getAnzuzeigendeZeit() {
+        return anzuzeigendeZeit;
+    }
+
+}// Ende Klasse Lernmodus
 
 
 
