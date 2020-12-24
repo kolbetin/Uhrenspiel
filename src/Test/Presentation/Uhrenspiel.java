@@ -545,6 +545,14 @@ public class Uhrenspiel extends Application  {
      public static void main(String[] args) { launch(args);    }
 
 
+     public boolean getSaved(){
+        return saved;
+     }
+
+     public void setSaved(){
+        saved = true;
+     }
+
 }
 
 

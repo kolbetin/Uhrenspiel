@@ -2,7 +2,7 @@ package Test.Presentation;
 import javafx.scene.shape.Line;
 import org.junit.*;
 
-public class ClockSkinTest {
+public class OLDClockSkinTest {
 
     private ClockSkin clock = new ClockSkin();
     private ClockElements clockElements = new ClockElements();
