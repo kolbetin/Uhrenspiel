@@ -50,6 +50,7 @@ public class Lernmodus {
                             uhrenspiel.start(stage1);
                         });
                         guiLM.repeatButton.setOnAction(event -> {
+                            thread.stop();
                             startLernmodus(stage1, lmLevel);
                         });
                         if(lmLevel >1) {
@@ -103,16 +104,16 @@ public class Lernmodus {
         String labelText;
         switch (level) {
             case 1:
-                labelText = "Level 1: Volle Stunde";
+                labelText = "Volle Stunde";
                 break;
             case 2:
-                labelText = "Level 2: Viertel nach";
+                labelText = "Viertel nach";
                 break;
             case 3:
-                labelText = "Level 3: Viertel vor";
+                labelText = "Viertel vor";
                 break;
             case 4:
-                labelText = "Level 4: Halbe Stunde";
+                labelText = "Halbe Stunde";
                 break;
             default:
                 throw new IllegalArgumentException("Invalid level");

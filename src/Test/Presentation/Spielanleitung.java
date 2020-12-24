@@ -80,7 +80,9 @@ public class Spielanleitung {
          answer = new Timeline(
                 new KeyFrame(Duration.seconds(0.1), evt ->
                 {
-                    guiMC.antwort1.setText("Super!!");
+                    guiMC.antwort1.setId("buttonOkay");
+                    guiMC.antwort1.setText("Richtig!");
+                    guiMC.antwort1.setStyle("-fx-background-color: green; -fx-alignment:CENTER-LEFT");
                     guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: 04:00 Uhr.");
                 }),
                 new KeyFrame(Duration.seconds(4.0), evt -> guiMC.goOn.setVisible(true)));
@@ -105,7 +107,7 @@ public class Spielanleitung {
 
         startFC = new Timeline(
                        new KeyFrame(Duration.seconds(0.1), evt ->{
-                                        stage1.close();
+                                      //  stage1.close();
                                         guiFA.zeit = "07:15";
                                         guiFA.start(stage1);
                                         guiFA.antwortzähler.setVisible(false);
@@ -141,8 +143,9 @@ public class Spielanleitung {
 
           abschicken = new Timeline(
                 new KeyFrame(Duration.seconds(0.6), evt -> {
-                    guiFA.submitButton.setStyle("-fx-background-color: green");
-                    guiFA.submitButton.setText("Super!!");
+                    guiFA.submitButton.setId("buttonOkay");
+                    guiFA.submitButton.setText("Richtig!");
+                    guiFA.submitButton.setStyle("-fx-background-color: green; -fx-alignment:CENTER-LEFT");
                 }),
                 new KeyFrame(Duration.seconds(0.6), evt -> guiFA.submitButton.setVisible(false)),
                 new KeyFrame(Duration.seconds(1.2), evt -> guiFA.submitButton.setVisible(true)));
