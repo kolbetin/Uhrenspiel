@@ -28,7 +28,7 @@ public class MainGUI extends Application {
         private ClockSkin clock;
         public Label questionLabel;
         public Label uberschrift;
-        public String zeit = "12:00";
+        public String zeit = "01:15"; //Standardwert: 12:00
         public Node node;
         public Label level;
         public Label richtigeAntwort;

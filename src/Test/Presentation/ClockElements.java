@@ -173,10 +173,17 @@ public class ClockElements {
     public void createStundenMap() {
 
         // Linien Koordinaten für Stunde 1 Uhr
-        Line stunde_12_30 = new Line(300, 300, 325, 210);
-        Line stunde_12_45 = new Line(300, 300, 335, 215);
-        Line stunde_01_00 = new Line(300, 300, 345, 220);
-        Line stunde_01_15 = new Line(300, 300, 355, 225);
+        //Line stunde_12_30 = new Line(300, 300, 325, 210);
+        //Line stunde_12_45 = new Line(300, 300, 335, 215);
+        //Line stunde_01_00 = new Line(300, 300, 345, 220);
+        //Line stunde_01_15 = new Line(300, 300, 355, 225);
+
+        // Kurze Linien Koordinaten für Stunde 1 Uhr
+        Line stunde_12_30 = new Line(300, 300, 318, 230);
+        Line stunde_12_45 = new Line(300, 300, 325, 230);
+        Line stunde_01_00 = new Line(300, 300, 335, 235);
+        Line stunde_01_15 = new Line(300, 300, 350, 240);
+
         //  HashMap Erstellung für Stunde 1 Uhr
         stundenMap.put("12:30", stunde_12_30);
         stundenMap.put("12:45", stunde_12_45);
