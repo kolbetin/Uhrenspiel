@@ -9,15 +9,11 @@ import java.util.ArrayList;
 
 class GameTest {
     private Game game;
-    private QuestionsAnswer qa;
+
 
     @BeforeEach
     void setUp() {
         game = new Game();
-        game.playedGames = new ArrayList<String>();
-        qa = new QuestionsAnswer();
-
-
     }
 
     @Test
@@ -162,7 +158,7 @@ class GameTest {
         game.setLevel(2);
         game.randomAnswer();
         game.answerSet();
-        Assert.assertTrue(game.answers.contains("4:30"));
+        Assert.assertFalse(game.answers.contains("4:45"));
 
         game.liste.clear();
 

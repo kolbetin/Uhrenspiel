@@ -83,6 +83,7 @@ public class Spielanleitung {
                     guiMC.antwort1.setId("buttonOkay");
                     guiMC.antwort1.setText("Richtig!");
                     guiMC.antwort1.setStyle("-fx-background-color: green; -fx-alignment:CENTER-LEFT");
+                    guiMC.antwort1.setDisable(true);
                     guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: 04:00 Uhr.");
                 }),
                 new KeyFrame(Duration.seconds(4.0), evt -> guiMC.goOn.setVisible(true)));
@@ -145,6 +146,7 @@ public class Spielanleitung {
                 new KeyFrame(Duration.seconds(0.6), evt -> {
                     guiFA.submitButton.setId("buttonOkay");
                     guiFA.submitButton.setText("Richtig!");
+                    guiFA.submitButton.setDisable(true);
                     guiFA.submitButton.setStyle("-fx-background-color: green; -fx-alignment:CENTER-LEFT");
                 }),
                 new KeyFrame(Duration.seconds(0.6), evt -> guiFA.submitButton.setVisible(false)),

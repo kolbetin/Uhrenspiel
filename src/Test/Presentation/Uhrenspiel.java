@@ -231,7 +231,7 @@ public class Uhrenspiel extends Application  {
           }
           guiFA.goOn.setVisible(false);
           guiFA.submitButton.setOnAction(event -> answerCheckFA());
-           guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
+          guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
@@ -530,9 +530,10 @@ public class Uhrenspiel extends Application  {
         game = new Game();
         choiceScreen = new ChoiceScreen();
         summaryScreen = new SummaryGUI();
-        learnModus = new Lernmodus();
-        data = new SavedData();
         spielanleitung = new Spielanleitung();
+      //  learnModus = new Lernmodus();
+        data = new SavedData();
+
 
 
         // fillGuiList();
