@@ -261,7 +261,9 @@ public class Uhrenspiel extends Application  {
           if (!guiFA.givenHour.getText().isEmpty()
                   & guiFA.givenHour.getText() != null
                   & guiFA.givenHour.getText().matches("[0-9]*")
-           ){ String answer = guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
+                  &guiFA.givenHour.getLength()<=2
+                  &guiFA.givenMinutes.getLength()<=2) {
+              String answer = guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
               String answer0 =  "0"+ guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
               if (answer.equals(game.getAnswerFA(game.key))
                       |answer.equals("0" + game.getAnswerFA(game.key))
@@ -295,7 +297,6 @@ public class Uhrenspiel extends Application  {
           } else {
               alertHelper.showAlert(Alert.AlertType.ERROR,"Fehler" ,"Bitte eine Zahl eingeben, z.B. 8 oder 12.");
               guiFA.givenHour.clear();
-              guiFA.goOn.setVisible(true);
 
           }
       }
@@ -543,7 +544,10 @@ public class Uhrenspiel extends Application  {
 
     }
 
-     public static void main(String[] args) { launch(args);    }
+     public static void main(String[] args) {
+        launch(args);
+
+    }
 
 
      public boolean getSaved(){

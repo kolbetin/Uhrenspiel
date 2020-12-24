@@ -1,6 +1,7 @@
 package Test.Domain;
 
 import javafx.scene.shape.Line;
+import javafx.stage.Stage;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -9,6 +10,8 @@ import org.junit.Test;
 public class LernmodusTest {
 
     private Lernmodus lernmodus;
+    private Stage stage1;
+    private int level;
 
 
      /*@BeforeClass        // Executed once, before testing starts
@@ -19,11 +22,15 @@ public class LernmodusTest {
         @Before     // Executed before each test
         public void before (){
             lernmodus = new Lernmodus();
+            level = 1;
+            lernmodus.startLernmodus(stage1,level);
+            stage1 = new Stage();
         }
 
         @Test       // Set Start Time Method Test
         public void setStartTimeTest (){
-        int level = 1;
+
+
         lernmodus.setStartTime(level);
         //Assert.assertEquals("01:00", lernmodus.getAnzuzeigendeZeit());
         Assert.assertTrue(lernmodus.getAnzuzeigendeZeit().contains("01:00"));
