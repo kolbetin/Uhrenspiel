@@ -304,11 +304,13 @@ public class ClockElements {
         //Line stunde_10_45 = new Line(300, 300, 245, 225);
         //Line stunde_11_00 = new Line(300, 300, 255, 220);
         //Line stunde_11_15 = new Line(300, 300, 265, 215);
-        // Komplett neue Linien 11 Uhr
+        // ÜBERARBEITEN - Komplett neue Linien 11 Uhr
         Line stunde_10_30 = new Line(300, 300, 254, 255);
         Line stunde_10_45 = new Line(300, 300, 262, 250);
         Line stunde_11_00 = new Line(300, 300, 270, 245);
         Line stunde_11_15 = new Line(300, 300, 278, 240);
+        Line stunde_11_30 = new Line(300, 300, 283, 240);
+        Line stunde_11_45 = new Line(300, 300, 290, 237);
         //  HashMap Erstellung für Stunde 11 Uhr
         stundenMap.put("10:30", stunde_10_30);
         stundenMap.put("10:45", stunde_10_45);
@@ -321,8 +323,7 @@ public class ClockElements {
         //Line stunde_12_00 = new Line(300, 300, 300, 225);
         //Line stunde_12_15 = new Line(300, 300, 315, 200);
         // Komplett neue Linien 12 Uhr
-        Line stunde_11_30 = new Line(300, 300, 283, 240);
-        Line stunde_11_45 = new Line(300, 300, 290, 237);
+
 
 
 
