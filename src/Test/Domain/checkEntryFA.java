@@ -14,7 +14,6 @@ public class checkEntryFA {
 
     public checkEntryFA(){
         alertHelper = new AlertHelper();
-
     }
 
     public void setValues(String stunde, String minuten) {
@@ -26,7 +25,6 @@ public class checkEntryFA {
 
     public void changeFormat() {
         this.stunde = Integer.valueOf(givenHour);
-
         this.minuten  = Integer.valueOf(givenMinutes);
 
     }
@@ -48,17 +46,17 @@ public class checkEntryFA {
             if ((givenMinutes.trim().isEmpty() | givenMinutes == null)
                     & (givenHour.trim().isEmpty() | givenHour == null)
                     | (!givenHour.matches("[0-9]*") | !givenMinutes.matches("[0-9]*")) ) {
-                alertHelper.showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte eine gültige Uhrzeit eingeben, z.B. 3:30.");
+                alertHelper.errorAlert("Fehler", "Bitte eine gültige Uhrzeit eingeben, z.B. 3:30.");
             } else {
                 if (givenHour.trim().isEmpty()
                         | givenHour == null) {
-                    alertHelper.showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte die Stunde eingeben, z.B. 8 oder 12.");
+                    alertHelper.errorAlert( "Fehler", "Bitte die Stunde eingeben, z.B. 8 oder 12.");
                 } else {
                     if (givenMinutes.trim().isEmpty()
                             | givenMinutes == null) {
                         this.stunde = Integer.valueOf(givenHour);
                         if(stunde ==0 | stunde >12){
-                            alertHelper.showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte eine Stunde eingeben zwischen 1 und 12.");
+                            alertHelper.errorAlert( "Fehler", "Bitte eine Stunde eingeben zwischen 1 und 12.");
                         }
                         if((stunde > 0 & stunde <13)
                                 & (!givenMinutes.trim().isEmpty()
@@ -73,7 +71,7 @@ public class checkEntryFA {
                                                 checkValues();
                                             }
                                             else {
-                                                alertHelper.showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte die Minuten eingeben, z.B. 15,30 oder 45.");
+                                                alertHelper.errorAlert( "Fehler", "Bitte die Minuten eingeben, z.B. 15,30 oder 45.");
                                             }
                                      }
                                  }
@@ -92,11 +90,11 @@ public class checkEntryFA {
                     ) {
 
             if ( stunde == 0 & stunde > 12) {
-                alertHelper.showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte eine Stunde eingeben zwischen 1 und 12.");
+                alertHelper.errorAlert( "Fehler", "Bitte eine Stunde eingeben zwischen 1 und 12.");
 
             } else {
                 if (minuten != 00 & minuten != 15 & minuten != 30 & minuten != 45) {
-                    alertHelper.showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte die Minuten eingeben, z.B. 15,30 oder 45.");
+                    alertHelper.errorAlert( "Fehler", "Bitte die Minuten eingeben, z.B. 15,30 oder 45.");
                 }else {
                     return korrekt = true;
                 }

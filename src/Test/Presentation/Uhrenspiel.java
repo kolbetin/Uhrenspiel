@@ -237,8 +237,7 @@ public class Uhrenspiel extends Application  {
           guiFA.goOn.setVisible(false);
           guiFA.submitButton.setOnAction(event -> {
               checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-              // checkEntryFA();
-              if(!checkEntryFA.checkValues()){
+              if(checkEntryFA.checkValues()){
                   answerCheckFA();
               }
           });
@@ -247,8 +246,7 @@ public class Uhrenspiel extends Application  {
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
                       checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-                     // checkEntryFA();
-                      if(checkEntryFA.korrekt){
+                            if(checkEntryFA.korrekt){
                           answerCheckFA();
                       }
 
@@ -260,9 +258,8 @@ public class Uhrenspiel extends Application  {
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
                       checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-                     // checkEntryFA();
-                      if(checkEntryFA.korrekt){
-                          answerCheckFA();
+                             if(checkEntryFA.korrekt){
+                                 answerCheckFA();
                       }
 
                   }
@@ -273,64 +270,8 @@ public class Uhrenspiel extends Application  {
           showData();
 
       }
-      /*  private void checkEntryFA(){
-
-         if(   guiFA.givenHour.getText().isEmpty()
-                  & guiFA.givenHour.getText() == null
-                  & !guiFA.givenHour.getText().matches("[0-9]*")
-                  &  guiFA.givenHour.getLength()>2)
-               {
-                   alertHelper.showAlert(Alert.AlertType.ERROR,"Fehler" ,"Bitte die Stunde eingeben, z.B. 8 oder 12.");
-                guiFA.givenHour.clear();
-                    }
-             if (guiFA.givenMinutes.getText().isEmpty()
-                      & guiFA.givenMinutes.getText() == null
-                      & !guiFA.givenMinutes.getText().matches("[0-9]*")
-                      & guiFA.givenMinutes.getLength() <= 2) {
-                  alertHelper.showAlert(Alert.AlertType.ERROR, "Fehler", "Bitte die Minuten eingeben, z.B. 15,30 oder 45.");
-                  guiFA.givenMinutes.clear();
-              }
-              else
-              {
-                  answerCheckFA();
-              }
-
-            if(!guiFA.givenHour.getText().isEmpty()
-                    &!guiFA.givenMinutes.getText().isEmpty()
-                    & guiFA.givenHour.getText() != null
-                    & guiFA.givenMinutes.getText() != null
-                    & guiFA.givenHour.getText().matches("[0-9]*")
-                    & guiFA.givenMinutes.getText().matches("[0-9]*")
-                    &guiFA.givenHour.getLength()<=2
-                    &guiFA.givenMinutes.getLength()<=2   ) {
-                answerCheckFA();
-            }
-            if (!guiFA.givenHour.getText().isEmpty()
-                  &!guiFA.givenMinutes.getText().isEmpty()
-                  & guiFA.givenHour.getText() != null
-                  & guiFA.givenHour.getText().matches("[0-9]*")
-
-                  &guiFA.givenMinutes.getLength()<=2){
-
-          }
-          else{   //  answerCheckFA();
-              alertHelper.showAlert(Alert.AlertType.ERROR,"Fehler" ,"Bitte eine Stunde eingeben, z.B. 8 test oder 12 oder Minuten eingeben, z.B. 30 oder 45.");
-
-          }
-
-         }*/
-
 
       public void answerCheckFA() {
-
-        /*  if (
-                  /*!guiFA.givenHour.getText().isEmpty()
-                  &!guiFA.givenMinutes.getText().isEmpty()
-                  & guiFA.givenHour.getText() != null
-                  & guiFA.givenHour.getText().matches("[0-9]*")
-                  &guiFA.givenHour.getLength()<=2
-                  &guiFA.givenMinutes.getLength()<=2
-                  ) {*/
 
               String answer = guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
               String answer0 =  "0"+ guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
@@ -363,12 +304,7 @@ public class Uhrenspiel extends Application  {
                   guiFA.submitButton.setDisable(true);
                   guiFA.goOn.setVisible(true);
                  }
-        /*  }          else {
-              alertHelper.showAlert(Alert.AlertType.ERROR,"Fehler" ,"Bitte eine Zahl eingeben, z.B. 8 oder 12.");
-              guiFA.givenHour.clear();
-
-          }*/
-      }
+         }
 
     private void answerCheckMC() {
           EventHandler<MouseEvent> eventHandler = getEventHandler();
