@@ -2,6 +2,7 @@ package Test.Presentation;
 
 import Test.Domain.Game;
 import Test.Domain.Lernmodus;
+import Test.Domain.checkEntryFA;
 import Test.Persistenz.SavedData;
 
 import javafx.application.Application;
@@ -42,6 +43,7 @@ public class Uhrenspiel extends Application  {
     private boolean saved = false;
     private Spielanleitung spielanleitung;
     private boolean testEntry = false;
+    private checkEntryFA checkEntryFA;
 
 
 
@@ -233,13 +235,23 @@ public class Uhrenspiel extends Application  {
                   guiFA.givenMinutes.setText("");
           }
           guiFA.goOn.setVisible(false);
-          guiFA.submitButton.setOnAction(event ->  checkEntryFA());
+          guiFA.submitButton.setOnAction(event -> {
+              checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
+              // checkEntryFA();
+              if(!checkEntryFA.checkValues()){
+                  answerCheckFA();
+              }
+          });
           guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
-                      checkEntryFA();
-                       //answerCheckFA();
+                      checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
+                     // checkEntryFA();
+                      if(checkEntryFA.korrekt){
+                          answerCheckFA();
+                      }
+
                   }
               }
           });
@@ -247,8 +259,12 @@ public class Uhrenspiel extends Application  {
               @Override
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
-                      checkEntryFA();
-                      //answerCheckFA();
+                      checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
+                     // checkEntryFA();
+                      if(checkEntryFA.korrekt){
+                          answerCheckFA();
+                      }
+
                   }
               }
           });
@@ -257,9 +273,9 @@ public class Uhrenspiel extends Application  {
           showData();
 
       }
-        private void checkEntryFA(){
+      /*  private void checkEntryFA(){
 
-         /* if(   guiFA.givenHour.getText().isEmpty()
+         if(   guiFA.givenHour.getText().isEmpty()
                   & guiFA.givenHour.getText() == null
                   & !guiFA.givenHour.getText().matches("[0-9]*")
                   &  guiFA.givenHour.getLength()>2)
@@ -277,7 +293,7 @@ public class Uhrenspiel extends Application  {
               else
               {
                   answerCheckFA();
-              }*/
+              }
 
             if(!guiFA.givenHour.getText().isEmpty()
                     &!guiFA.givenMinutes.getText().isEmpty()
@@ -289,20 +305,20 @@ public class Uhrenspiel extends Application  {
                     &guiFA.givenMinutes.getLength()<=2   ) {
                 answerCheckFA();
             }
-           /* if (!guiFA.givenHour.getText().isEmpty()
+            if (!guiFA.givenHour.getText().isEmpty()
                   &!guiFA.givenMinutes.getText().isEmpty()
                   & guiFA.givenHour.getText() != null
                   & guiFA.givenHour.getText().matches("[0-9]*")
 
                   &guiFA.givenMinutes.getLength()<=2){
 
-          }*/
+          }
           else{   //  answerCheckFA();
               alertHelper.showAlert(Alert.AlertType.ERROR,"Fehler" ,"Bitte eine Stunde eingeben, z.B. 8 test oder 12 oder Minuten eingeben, z.B. 30 oder 45.");
 
           }
 
-         }
+         }*/
 
 
       public void answerCheckFA() {
@@ -585,8 +601,9 @@ public class Uhrenspiel extends Application  {
         choiceScreen = new ChoiceScreen();
         summaryScreen = new SummaryGUI();
         spielanleitung = new Spielanleitung();
-      //  learnModus = new Lernmodus();
+        learnModus = new Lernmodus();
         data = new SavedData();
+        checkEntryFA = new checkEntryFA();
 
 
 
