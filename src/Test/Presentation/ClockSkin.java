@@ -28,7 +28,7 @@ public class ClockSkin {
 
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
         minute.setStroke(Color.RED); // move to CSS File
-        minute.setStrokeWidth(5); // move to CSS File
+        minute.setStrokeWidth(4); // move to CSS File
 
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
         Group clock = new Group (clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
