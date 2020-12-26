@@ -173,13 +173,13 @@ public class ClockElements {
     public void createStundenMap() {
 
         // Linien 12 Uhr
-        Line stunde_11_30 = new Line(300, 300, 285, 237);
-        Line stunde_11_45 = new Line(300, 300, 290, 237);
+        Line stunde_11_30 = new Line(300, 300, 285, 245);
+        Line stunde_11_45 = new Line(300, 300, 290, 240);
         Line stunde_12_00 = new Line(300, 300, 300, 235);
-        Line stunde_12_15 = new Line(300, 300, 310, 237);
+        Line stunde_12_15 = new Line(300, 300, 310, 240);
 
         // Linien 1 Uhr
-        Line stunde_12_30 = new Line(300, 300, 315, 237);
+        Line stunde_12_30 = new Line(300, 300, 315, 245);
         Line stunde_12_45 = new Line(300, 300, 325, 240);
         Line stunde_01_00 = new Line(300, 300, 330, 245);
         Line stunde_01_15 = new Line(300, 300, 335, 255);
@@ -192,9 +192,9 @@ public class ClockElements {
 
         // Linien 3 Uhr
         Line stunde_02_30 = new Line(300, 300, 360, 285);
-        Line stunde_02_45 = new Line(300, 300, 363, 290);
+        Line stunde_02_45 = new Line(300, 300, 360, 290);
         Line stunde_03_00 = new Line(300, 300, 365, 300);
-        Line stunde_03_15 = new Line(300, 300, 363, 310);
+        Line stunde_03_15 = new Line(300, 300, 360, 310);
 
         // Linien 4 Uhr
         Line stunde_03_30 = new Line(300, 300, 360, 315);
@@ -209,13 +209,13 @@ public class ClockElements {
         Line stunde_05_15 = new Line(300, 300, 325, 360);
 
         // Linien 6 Uhr
-        Line stunde_05_30 = new Line(300, 300, 315, 363);
-        Line stunde_05_45 = new Line(300, 300, 310, 363);
+        Line stunde_05_30 = new Line(300, 300, 315, 355);
+        Line stunde_05_45 = new Line(300, 300, 310, 360);
         Line stunde_06_00 = new Line(300, 300, 300, 365);
-        Line stunde_06_15 = new Line(300, 300, 290, 363);
+        Line stunde_06_15 = new Line(300, 300, 290, 360);
 
         // Linien 7 Uhr
-        Line stunde_06_30 = new Line(300, 300, 285, 363);
+        Line stunde_06_30 = new Line(300, 300, 285, 355);
         Line stunde_06_45 = new Line(300, 300, 275, 360);
         Line stunde_07_00 = new Line(300, 300, 270, 355);
         Line stunde_07_15 = new Line(300, 300, 265, 345);
@@ -228,9 +228,9 @@ public class ClockElements {
 
         // Linien 9 Uhr
         Line stunde_08_30 = new Line(300, 300, 240, 315);
-        Line stunde_08_45 = new Line(300, 300, 237, 310);
+        Line stunde_08_45 = new Line(300, 300, 240, 310);
         Line stunde_09_00 = new Line(300, 300, 235, 300);
-        Line stunde_09_15 = new Line(300, 300, 237, 290);
+        Line stunde_09_15 = new Line(300, 300, 240, 290);
 
         // Linien 10 Uhr
         Line stunde_09_30 = new Line(300, 300, 240, 285);
