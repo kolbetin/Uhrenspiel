@@ -159,10 +159,10 @@ public class ClockElements {
     public void createMinutenMap() {
 
         // Koordinaten für Minutenzeiger
-        Line minuten_30 = new Line(300, 300, 300, 400);
-        Line minuten_45 = new Line(300, 300, 200, 300);
-        Line minuten_00 = new Line(300, 300, 300, 200);
-        Line minuten_15 = new Line(300, 300, 400, 300);
+        Line minuten_30 = new Line(300, 300, 300, 390);
+        Line minuten_45 = new Line(300, 300, 210, 300);
+        Line minuten_00 = new Line(300, 300, 300, 210);
+        Line minuten_15 = new Line(300, 300, 390, 300);
         // HashMap Erstellung für Minuten
         minutenMap.put("30", minuten_30);
         minutenMap.put("45", minuten_45);
@@ -172,106 +172,77 @@ public class ClockElements {
 
     public void createStundenMap() {
 
-        // Linien Koordinaten für Stunde 1 Uhr
-        //Line stunde_12_30 = new Line(300, 300, 325, 210);
-        //Line stunde_12_45 = new Line(300, 300, 335, 215);
-        //Line stunde_01_00 = new Line(300, 300, 345, 220);
-        //Line stunde_01_15 = new Line(300, 300, 355, 225);
-        // Komplett neue Linien 1 Uhr
+        // Linien 12 Uhr
+        Line stunde_11_30 = new Line(300, 300, 285, 237);
+        Line stunde_11_45 = new Line(300, 300, 290, 237);
         Line stunde_12_00 = new Line(300, 300, 300, 235);
         Line stunde_12_15 = new Line(300, 300, 310, 237);
+
+        // Linien 1 Uhr
         Line stunde_12_30 = new Line(300, 300, 315, 237);
         Line stunde_12_45 = new Line(300, 300, 325, 240);
         Line stunde_01_00 = new Line(300, 300, 330, 245);
         Line stunde_01_15 = new Line(300, 300, 335, 255);
-        //  HashMap Erstellung für Stunde 1 Uhr
 
-
-        // Koordinaten Stunde 2 Uhr
-        //Line stunde_01_30 = new Line(300, 300, 365, 235);
-        //Line stunde_01_45 = new Line(300, 300, 375, 245);
-        //Line stunde_02_00 = new Line(300, 300, 380, 255);
-        //Line stunde_02_15 = new Line(300, 300, 385, 265);
-        // ÜBERPRÜFEN - Komplett neue Linien 2 Uhr
+        // Linien 2 Uhr
         Line stunde_01_30 = new Line(300, 300, 340, 260);
         Line stunde_01_45 = new Line(300, 300, 345, 265);
         Line stunde_02_00 = new Line(300, 300, 350, 270);
         Line stunde_02_15 = new Line(300, 300, 355, 280);
-        //  HashMap Erstellung für Stunde 2 Uhr
 
-
-        // Koordinaten Stunde 3 Uhr
-        //Line stunde_02_30 = new Line(300, 300, 395, 275);
-        //Line stunde_02_45 = new Line(300, 300, 390, 285);
-        //Line stunde_03_00 = new Line(300, 300, 390, 300);
-        //Line stunde_03_15 = new Line(300, 300, 390, 315);
-        // Komplett neue Linien 3 Uhr
+        // Linien 3 Uhr
         Line stunde_02_30 = new Line(300, 300, 360, 285);
         Line stunde_02_45 = new Line(300, 300, 363, 290);
         Line stunde_03_00 = new Line(300, 300, 365, 300);
         Line stunde_03_15 = new Line(300, 300, 363, 310);
-        //  HashMap Erstellung für Stunde 3 Uhr
 
-
-        // Koordinaten Stunde 4 Uhr
+        // Linien 4 Uhr
         Line stunde_03_30 = new Line(300, 300, 360, 315);
-        Line stunde_03_45 = new Line(300, 300, 385, 335);
-        Line stunde_04_00 = new Line(300, 300, 380, 345);
-        Line stunde_04_15 = new Line(300, 300, 375, 355);
-        //  HashMap Erstellung für Stunde 4 Uhr
+        Line stunde_03_45 = new Line(300, 300, 355, 320);
+        Line stunde_04_00 = new Line(300, 300, 350, 330);
+        Line stunde_04_15 = new Line(300, 300, 345, 335);
 
+        // Linien 5 Uhr
+        Line stunde_04_30 = new Line(300, 300, 340, 340);
+        Line stunde_04_45 = new Line(300, 300, 335, 345);
+        Line stunde_05_00 = new Line(300, 300, 330, 355);
+        Line stunde_05_15 = new Line(300, 300, 325, 360);
 
-        // Koordinaten Stunde 5 Uhr
-        Line stunde_04_30 = new Line(300, 300, 365, 365);
-        Line stunde_04_45 = new Line(300, 300, 355, 375);
-        Line stunde_05_00 = new Line(300, 300, 345, 380);
-        Line stunde_05_15 = new Line(300, 300, 335, 385);
-        //  HashMap Erstellung für Stunde 5 Uhr
+        // Linien 6 Uhr
+        Line stunde_05_30 = new Line(300, 300, 315, 363);
+        Line stunde_05_45 = new Line(300, 300, 310, 363);
+        Line stunde_06_00 = new Line(300, 300, 300, 365);
+        Line stunde_06_15 = new Line(300, 300, 290, 363);
 
+        // Linien 7 Uhr
+        Line stunde_06_30 = new Line(300, 300, 285, 363);
+        Line stunde_06_45 = new Line(300, 300, 275, 360);
+        Line stunde_07_00 = new Line(300, 300, 270, 355);
+        Line stunde_07_15 = new Line(300, 300, 265, 345);
 
-        // Koordinaten Stunde 6 Uhr
-        Line stunde_05_30 = new Line(300, 300, 325, 400);
-        Line stunde_05_45 = new Line(300, 300, 315, 390);
-        Line stunde_06_00 = new Line(300, 300, 300, 390);
-        Line stunde_06_15 = new Line(300, 300, 285, 390);
-        //  HashMap Erstellung für Stunde 6 Uhr
-
-
-        // Koordinaten Stunde 7 Uhr
-        Line stunde_06_30 = new Line(300, 300, 275, 400);
-        Line stunde_06_45 = new Line(300, 300, 265, 385);
-        Line stunde_07_00 = new Line(300, 300, 255, 380);
-        Line stunde_07_15 = new Line(300, 300, 245, 375);
-        //  HashMap Erstellung für Stunde 7 Uhr
-
-
-        // Komplett neue Linien für 8 Uhr
+        // Linien 8 Uhr
         Line stunde_07_30 = new Line(300, 300, 260, 340);
         Line stunde_07_45 = new Line(300, 300, 255, 335);
         Line stunde_08_00 = new Line(300, 300, 250, 330);
         Line stunde_08_15 = new Line(300, 300, 245, 320);
 
-
-        // Komplett neue Linien für 9 Uhr
+        // Linien 9 Uhr
         Line stunde_08_30 = new Line(300, 300, 240, 315);
         Line stunde_08_45 = new Line(300, 300, 237, 310);
         Line stunde_09_00 = new Line(300, 300, 235, 300);
         Line stunde_09_15 = new Line(300, 300, 237, 290);
 
-        // Komplett neue Linien 10 Uhr
+        // Linien 10 Uhr
         Line stunde_09_30 = new Line(300, 300, 240, 285);
         Line stunde_09_45 = new Line(300, 300, 245, 280);
         Line stunde_10_00 = new Line(300, 300, 250, 270);
         Line stunde_10_15 = new Line(300, 300, 255, 265);
-        //  HashMap Erstellung für Stunde 10 Uhr
 
-        // Komplett neue Linien 11 Uhr
+        // Linien 11 Uhr
         Line stunde_10_30 = new Line(300, 300, 260, 260);
         Line stunde_10_45 = new Line(300, 300, 265, 255);
         Line stunde_11_00 = new Line(300, 300, 270, 245);
         Line stunde_11_15 = new Line(300, 300, 275, 240);
-        Line stunde_11_30 = new Line(300, 300, 285, 237);
-        Line stunde_11_45 = new Line(300, 300, 290, 237);
 
 
         // HashMap Erstellung für Stunde
