@@ -237,19 +237,22 @@ public class Uhrenspiel extends Application  {
           guiFA.goOn.setVisible(false);
           guiFA.submitButton.setOnAction(event -> {
               checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-              if(checkEntryFA.checkValues()){
+              if(checkEntryFA.checkHour() & checkEntryFA.checkMinutes()){
                   answerCheckFA();
               }
+         /*     else{
+                  checkEntryFA.sendAlert();
+              }*/
+
           });
           guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
                       checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-                            if(checkEntryFA.korrekt){
+                      if(checkEntryFA.checkHour() & checkEntryFA.checkMinutes()){
                           answerCheckFA();
                       }
-
                   }
               }
           });
@@ -258,8 +261,8 @@ public class Uhrenspiel extends Application  {
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
                       checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-                             if(checkEntryFA.korrekt){
-                                 answerCheckFA();
+                      if(checkEntryFA.checkHour() & checkEntryFA.checkMinutes()){
+                          answerCheckFA();
                       }
 
                   }
