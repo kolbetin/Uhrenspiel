@@ -1,14 +1,13 @@
 package Test.Domain;
 
-import Test.Persistenz.QuestionsAnswer;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 class GameTest {
     private Game game;
+    private String hour;
+    private String minutes;
 
 
     @BeforeEach
@@ -183,5 +182,46 @@ class GameTest {
         game.key = "09:15";
         game.setLevel(3);
         Assert.assertEquals("9:15",game.getAnswerFA(game.key));
+    }
+
+    @Test
+    void checkAnswerFA(){
+        hour = "1";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "01:00";
+        Assert.assertTrue(game.checkAnswerFA(hour,minutes));
+
+        hour = "02";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "02:00";
+        Assert.assertTrue(game.checkAnswerFA(hour,minutes));
+
+
+        hour = "03";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "02:00";
+        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
+
+        hour = "1";
+        minutes = "15";
+        game.setLevel(3);
+        game.key = "01:15";
+        Assert.assertTrue(game.checkAnswerFA(hour,minutes));
+
+        hour = "02";
+        minutes = "30";
+        game.setLevel(2);
+        game.key = "02:30";
+        Assert.assertTrue(game.checkAnswerFA(hour,minutes));
+
+
+        hour = "03";
+        minutes = "45";
+        game.setLevel(3);
+        game.key = "02:15";
+        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
     }
 }

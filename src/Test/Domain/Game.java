@@ -23,6 +23,8 @@ public class Game extends Application {
     public int falscheAntwort = 0;
     public int level = 1;
     public double sum = 0 ;
+    public boolean saved = false;
+    public String answer;
 
 
     public Game() {
@@ -64,6 +66,18 @@ public class Game extends Application {
         System.out.println(level);
     }
 
+    public boolean checkAnswerFA(String hour, String minutes){
+        answer = hour + ":" + minutes;
+        String answer0 =  "0"+ hour + ":" + minutes;
+        if (answer.equals(getAnswerFA(key))
+                |answer.equals("0" + getAnswerFA(key))
+                |(hour.equals("0"+getAnswerFA(key))
+                |(hour.equals(getAnswerFA(key))))
+        ){
+            return true;
+        }
+        else return false;
+    }
 
     public Object getTaskkey() {
         boolean played = false;

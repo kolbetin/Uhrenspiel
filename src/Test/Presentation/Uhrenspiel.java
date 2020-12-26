@@ -6,9 +6,7 @@ import Test.Domain.checkEntryFA;
 import Test.Persistenz.SavedData;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -40,7 +38,6 @@ public class Uhrenspiel extends Application  {
     private SavedData data;
     private boolean setlearnModus = false;
     private boolean strictGame = false;
-    private boolean saved = false;
     private Spielanleitung spielanleitung;
     private boolean testEntry = false;
     private checkEntryFA checkEntryFA;
@@ -141,7 +138,7 @@ public class Uhrenspiel extends Application  {
       game.aufgabennummer = 0;
       game.richtigeAntwort =0;
       game.falscheAntwort= 0;
-      saved = false;
+      game.saved = false;
       game.playedGames.clear();
       game.setLevel(game.level);
 
@@ -185,7 +182,7 @@ public class Uhrenspiel extends Application  {
               }
           }
           else {
-              summaryGame();
+              gameSummary();
           }
     }
 
@@ -293,13 +290,15 @@ public class Uhrenspiel extends Application  {
 
       public void answerCheckFA() {
 
-              String answer = guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
+             /* String answer = guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
               String answer0 =  "0"+ guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
               if (answer.equals(game.getAnswerFA(game.key))
                       |answer.equals("0" + game.getAnswerFA(game.key))
                       |(guiFA.givenHour.getText().equals("0"+game.getAnswerFA(game.key))
                         |(guiFA.givenHour.getText().equals(game.getAnswerFA(game.key))))
-                ) {
+                )*/
+                if(game.checkAnswerFA(guiFA.givenHour.getText(), guiFA.givenMinutes.getText()))
+                {
                   guiFA.submitButton .setId("buttonOkay");
                   guiFA.submitButton .setText("Richtig!");
                   guiFA.submitButton .setStyle("-fx-background-color: #0af60a; -fx-alignment:CENTER-LEFT");
@@ -310,12 +309,13 @@ public class Uhrenspiel extends Application  {
                   guiFA.goOn.setVisible(true);
                   game.richtigeAntwort++;
                   game.sum++;
-                } else {
+                }
+                else {
                   guiFA.submitButton .setId("buttonNotOkay");
                   guiFA.submitButton .setText("Falsch!");
                   guiFA.submitButton .setStyle("-fx-background-color: red; -fx-alignment:CENTER-LEFT");
                   guiFA.questionLabel.setText("Das war leider nicht richtig!\n"
-                          + "Deine Antwort: " + answer+ " Uhr.\n"
+                          + "Deine Antwort: " + game.answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.getAnswerFA(game.key)+ " Uhr.");
                   game.falscheAntwort++;
                   game.sum++;
@@ -342,8 +342,6 @@ public class Uhrenspiel extends Application  {
           guiMC.antwort3.setDisable(true);
           guiMC.antwort4.setDisable(true);
       }
-
-
 
           EventHandler<MouseEvent> getEventHandler() {
               //Creating the mouse event handler
@@ -385,7 +383,7 @@ public class Uhrenspiel extends Application  {
 
 
 
-    public void summaryGame(){
+    public void gameSummary(){
        stage1.close();
         summaryScreen.start(stage1);
 
@@ -441,7 +439,7 @@ public class Uhrenspiel extends Application  {
 
     public void endGame(){
           strictGame= false;
-           if (!saved) {
+           if (!game.saved) {
                Boolean alert = alertHelper.confirmationAlert("Spiel beenden!",
                        "Du hast nicht gespeichert! Möchtest du wirklich beenden? ");
                if (alert) {
@@ -475,7 +473,7 @@ public class Uhrenspiel extends Application  {
             if (file != null) {
                  data.saveProgress(file, data.progress);
                 alertHelper.confirmationAlert("Speichern","Spiel gespeichert in Datei " + file + ".");
-                saved = true;
+                game.saved = true;
             }
 
         } catch (IOException e) {
@@ -490,7 +488,7 @@ public class Uhrenspiel extends Application  {
             if (file != null) {
                 stage1.close();
                 data.loadProgress(file);
-                updateDta();
+                updateData();
                 game.setLevel(game.level);
                 setgoOnButton();
                 alertHelper.confirmationAlert("Speichern", "Liste von Datei " + file + " geladen.");
@@ -508,7 +506,7 @@ public class Uhrenspiel extends Application  {
     }
 
 
-    public void updateDta(){
+    private void updateData(){
         int r = Integer.parseInt(data.progress.get(4));
         game.richtigeAntwort = r;
         int f = Integer.parseInt(data.progress.get(5));
@@ -523,9 +521,6 @@ public class Uhrenspiel extends Application  {
         game.playedGames.addAll(Arrays.asList(data.progress.get(3)));
         int a = Integer.parseInt(data.progress.get(0));
         game.aufgabennummer = a;
-
-
-
         showData();
     }
 
@@ -576,13 +571,6 @@ public class Uhrenspiel extends Application  {
     }
 
 
-     public boolean getSaved(){
-        return saved;
-     }
-
-     public void setSaved(){
-        saved = true;
-     }
 
 }
 

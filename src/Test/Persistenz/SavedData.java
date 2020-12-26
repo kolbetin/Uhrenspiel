@@ -66,13 +66,6 @@ public class SavedData extends Application  {
         return fileChooser.showOpenDialog(stage);
     }
 
- /*   public void setBufferInterface(IOInterface bufferInterface) {
-        this.bufferInterface = bufferInterface;
-    }
-
-    public IOInterface getBufferInterface() {
-        return bufferInterface;
-    }*/
 
     public static void main(String[] args) {
         launch();

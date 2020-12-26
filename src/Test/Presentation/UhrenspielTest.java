@@ -51,18 +51,23 @@ class UhrenspielTest {
         game.aufgabennummer = 3;
         game.falscheAntwort = 2;
         game.richtigeAntwort = 1;
-        uhrenspiel.setSaved();
+        game.saved = false;
         game.playedGames.add("12:00");
         game.playedGames.add("01:00");
         game.playedGames.add("02:00");
 
         // Zurücksetzen all Werte in Game
 
+        game.nextQuestion();
+        game.nextQuestion();
+        game.nextQuestion();
+
+        Assert.assertEquals(6, game.aufgabennummer);
 
         uhrenspiel.setBackData();
 
 
-        Assert.assertEquals(3, game.aufgabennummer);
+        Assert.assertEquals(0, game.aufgabennummer);
       /*  Assert.assertFalse(uhrenspiel.getSaved());
         Assert.assertNotEquals(1,game.richtigeAntwort);
         Assert.assertEquals(0,game.falscheAntwort);
