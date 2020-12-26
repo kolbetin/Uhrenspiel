@@ -237,22 +237,23 @@ public class Uhrenspiel extends Application  {
           guiFA.goOn.setVisible(false);
           guiFA.submitButton.setOnAction(event -> {
               checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-              if(checkEntryFA.checkHour() & checkEntryFA.checkMinutes()){
+              clearFieldsFA();
+              if(checkEntryFA.korrekt){
                   answerCheckFA();
-              }
-         /*     else{
-                  checkEntryFA.sendAlert();
-              }*/
 
+              }
           });
           guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
                       checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-                      if(checkEntryFA.checkHour() & checkEntryFA.checkMinutes()){
+                      clearFieldsFA();
+                      if(checkEntryFA.korrekt){
                           answerCheckFA();
+
                       }
+
                   }
               }
           });
@@ -260,11 +261,12 @@ public class Uhrenspiel extends Application  {
               @Override
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
-                      checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-                      if(checkEntryFA.checkHour() & checkEntryFA.checkMinutes()){
+                      checkEntryFA.setValues(guiFA.givenHour.getText(), guiFA.givenMinutes.getText());
+                      clearFieldsFA();
+                      if (checkEntryFA.korrekt) {
                           answerCheckFA();
-                      }
 
+                      }
                   }
               }
           });
@@ -272,6 +274,16 @@ public class Uhrenspiel extends Application  {
           guiFA.saveButton.setOnAction(event -> saveProgress());
           showData();
 
+      }
+      private void clearFieldsFA(){
+          if(checkEntryFA.clearMinute){
+              guiFA.givenMinutes.clear();
+          }
+          else {
+              if (checkEntryFA.clearHour) {
+                  guiFA.givenHour.clear();
+              }
+          }
       }
 
       public void answerCheckFA() {

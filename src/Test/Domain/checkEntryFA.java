@@ -8,6 +8,9 @@ public class checkEntryFA {
     private String givenHour = null;
     private String givenMinutes = null;
     private AlertHelper alertHelper;
+    public boolean korrekt = false;
+    public boolean clearMinute= false;
+    public boolean clearHour= false;
 
 
     public checkEntryFA() {
@@ -18,13 +21,14 @@ public class checkEntryFA {
         this.givenHour = stunde;
         this.givenMinutes = minuten;
         checkHour();
-        System.out.println("Check Hour: " + checkHour());
         checkMinutes();
-        System.out.println("Check Minutes: " + checkMinutes());
         sendAlert();
+        if(checkMinutes() & checkHour()){
+            korrekt = true;
+        }
     }
 
-    public boolean checkHour() {
+    private boolean checkHour() {
         if (!givenHour.trim().isEmpty()
                 & givenHour != null
                 & givenHour.matches("[0-9]*")) {
@@ -32,6 +36,7 @@ public class checkEntryFA {
             stunde = Integer.valueOf(givenHour);
 
             if (stunde > 0 & stunde < 13) {
+
                 return true;
             }
             else
@@ -40,7 +45,7 @@ public class checkEntryFA {
         return false;
     }
 
-    public boolean checkMinutes() {
+    private boolean checkMinutes() {
         if (!givenMinutes.trim().isEmpty()
                 & givenMinutes != null
                 & givenMinutes.matches("[0-9]*")
@@ -61,16 +66,20 @@ public class checkEntryFA {
             return false;
     }
 
-    public void sendAlert() {
+    private void sendAlert() {
 
         if (!checkHour() & !checkMinutes()) {
             alertHelper.errorAlert("Fehler", "Bitte eine gültige Uhrzeit eingeben, z.B. 3:30.");
+            clearHour = true;
+            clearMinute= true;
         } else {
             if (!checkHour()) {
                 alertHelper.errorAlert("Fehler", "Bitte die Stunde eingeben, z.B. 8 oder 12.");
+                clearHour = true;
             }
             if (!checkMinutes()) {
                 alertHelper.errorAlert("Fehler", "Bitte die Minuten eingeben, z.B. 15, 30 oder 45.");
+                clearMinute = true;
 
             } else System.out.println("Eingabe okay");
         }
