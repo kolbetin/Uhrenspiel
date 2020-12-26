@@ -70,12 +70,15 @@
     -fx-effect: dropshadow(three-pass-box, wheat, 10, 0, 0, 0);
     -fx-alignment: CENTER;
 
+
 }
 #buttonOkay  {
     -fx-background-image:  url(image/SmileyTransparent.png);
     -fx-background-size: 40px 40px;
     -fx-background-repeat: no-repeat;
     -fx-background-position:  right;
+    -fx-background-color: #0af60a;
+    -fx-alignment: CENTER-LEFT;
 }
 
 
@@ -85,10 +88,13 @@
     -fx-background-size: 40px 40px;
     -fx-background-repeat: no-repeat;
     -fx-background-position:  right;
+    -fx-background-color: red;
+    -fx-alignment:  CENTER-LEFT;
 
 }
 
 .button {
+
     -fx-text-fill: white;
     -fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;

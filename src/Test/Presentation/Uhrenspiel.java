@@ -231,62 +231,45 @@ public class Uhrenspiel extends Application  {
                   guiFA.givenMinutes.setText("");
           }
           guiFA.goOn.setVisible(false);
-          guiFA.submitButton.setOnAction(event -> {
-              checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-
-              if(checkEntryFA.korrekt){
-                  answerCheckFA();
-
-              }
-              else
-                  checkEntryFA.sendAlert();
-                  clearFieldsFA();
-          });
+          guiFA.submitButton.setOnAction(event -> checkEntry() );
           guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
-                      checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-                      //clearFieldsFA();
-                      if(checkEntryFA.korrekt){
-                          answerCheckFA();
-
-                      }
-                      else
-                          checkEntryFA.sendAlert();
-                          clearFieldsFA();
+                      checkEntry();
                   }
               }
           });
           guiFA.givenMinutes.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
               public void handle(KeyEvent keyEvent) {
+
                   if (keyEvent.getCode() == KeyCode.ENTER) {
-                      checkEntryFA.setValues(guiFA.givenHour.getText(), guiFA.givenMinutes.getText());
-
-                      if (checkEntryFA.korrekt) {
-                          answerCheckFA();
-
-                      }
-                      else
-                          checkEntryFA.sendAlert();
-                          clearFieldsFA();
+                      checkEntry();
                   }
               }
           });
           guiFA.endButton.setOnAction(event -> endGame());
           guiFA.saveButton.setOnAction(event -> saveProgress());
           showData();
-
       }
-      private void clearFieldsFA(){
-          if(checkEntryFA.clearMinute){
-              guiFA.givenMinutes.clear();
+
+      private void checkEntry(){
+          checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
+
+          if(checkEntryFA.korrekt){
+              answerCheckFA();
           }
-          if (checkEntryFA.clearHour) {
-                  guiFA.givenHour.clear();
-              }
-          }
+          else
+              checkEntryFA.sendAlert();
+               if(checkEntryFA.clearMinute){
+                 guiFA.givenMinutes.clear();
+             }
+            if (checkEntryFA.clearHour) {
+              guiFA.givenHour.clear();
+            }
+      }
+
 
       public void answerCheckFA() {
 
@@ -299,9 +282,8 @@ public class Uhrenspiel extends Application  {
                 )*/
                 if(game.checkAnswerFA(guiFA.givenHour.getText(), guiFA.givenMinutes.getText()))
                 {
-                  guiFA.submitButton .setId("buttonOkay");
-                  guiFA.submitButton .setText("Richtig!");
-                  guiFA.submitButton .setStyle("-fx-background-color: #0af60a; -fx-alignment:CENTER-LEFT");
+                  guiFA.submitButton.setId("buttonOkay");
+                  guiFA.submitButton.setText("Richtig!");
                   guiFA.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                   guiFA.givenHour.setDisable(true);
                   guiFA.givenMinutes.setDisable(true);
@@ -313,7 +295,6 @@ public class Uhrenspiel extends Application  {
                 else {
                   guiFA.submitButton .setId("buttonNotOkay");
                   guiFA.submitButton .setText("Falsch!");
-                  guiFA.submitButton .setStyle("-fx-background-color: red; -fx-alignment:CENTER-LEFT");
                   guiFA.questionLabel.setText("Das war leider nicht richtig!\n"
                           + "Deine Antwort: " + game.answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.getAnswerFA(game.key)+ " Uhr.");
@@ -336,7 +317,7 @@ public class Uhrenspiel extends Application  {
 
       }
 
-      private void disableButtons(){
+      private void disableButtonsMC(){
           guiMC.antwort1.setDisable(true);
           guiMC.antwort2.setDisable(true);
           guiMC.antwort3.setDisable(true);
@@ -355,27 +336,24 @@ public class Uhrenspiel extends Application  {
                       if (button.getText().contains(game.getAnswerFA(game.key)) ) {
                           button.setId("buttonOkay");
                           button.setText("Richtig!");
-                          button.setStyle("-fx-background-color: #0af60a; -fx-alignment:CENTER-LEFT");
                           guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                           game.richtigeAntwort++;
                           game.sum++;
-                          disableButtons();
+                          disableButtonsMC();
                           guiMC.goOn.setVisible(true);
                       }
                       else {
                           button.setId("buttonNotOkay");
                           button.setText("Falsch!");
-                          button.setStyle("-fx-background-color: red; -fx-alignment: CENTER-LEFT");
                           guiMC.questionLabel.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                           game.falscheAntwort++;
                           game.sum++;
-                          disableButtons();
+                          disableButtonsMC();
                           guiMC.goOn.setVisible(true);
-
-                          }
-
                       }
+
                   }
+              }
 
               };
           }
