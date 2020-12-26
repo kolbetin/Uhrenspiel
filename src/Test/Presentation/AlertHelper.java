@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class AlertHelper {
 
-    public static boolean  showAlert(Alert.AlertType alertType,  String title, String message) {
+  /*  public static boolean  showAlert(Alert.AlertType alertType,  String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -24,9 +24,9 @@ public class AlertHelper {
         } else {
             return false;
         }
-    }
+    }*/
 
-    public static boolean confirmationAlert(Alert.AlertType alertType,  String title, String message) {
+    public static boolean confirmationAlert( String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -43,13 +43,13 @@ public class AlertHelper {
         }
     }
 
-    public static void informationAlert(Alert.AlertType alertType,  String title, String message) {
+   /* public static void informationAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.show();
-    }
+    }*/
 
     public static void errorAlert( String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -58,5 +58,8 @@ public class AlertHelper {
         alert.setContentText(message);
         alert.show();
     }
+
+
+
 
 }

@@ -1,6 +1,7 @@
 package Test.Domain;
 
 import Test.Presentation.AlertHelper;
+import javafx.scene.control.Alert;
 
 public class checkEntryFA {
     private int stunde = 0;
@@ -20,9 +21,12 @@ public class checkEntryFA {
     public void setValues(String stunde, String minuten) {
         this.givenHour = stunde;
         this.givenMinutes = minuten;
+        clearMinute= false;
+        clearHour= false;
+        korrekt = false;
         checkHour();
         checkMinutes();
-        sendAlert();
+      //  sendAlert();
         if(checkMinutes() & checkHour()){
             korrekt = true;
         }
@@ -40,6 +44,7 @@ public class checkEntryFA {
                 return true;
             }
             else
+
                 return false;
         }
         return false;
@@ -60,13 +65,14 @@ public class checkEntryFA {
                      return true;
             }
             else
+
                 return false;
 
         } else
             return false;
     }
 
-    private void sendAlert() {
+    public void sendAlert() {
 
         if (!checkHour() & !checkMinutes()) {
             alertHelper.errorAlert("Fehler", "Bitte eine gültige Uhrzeit eingeben, z.B. 3:30.");
@@ -85,6 +91,21 @@ public class checkEntryFA {
         }
 
     }
+    public boolean getCheckMinutes(){
+        return checkMinutes();
+    }
+    public boolean getCheckHour(){
+        return checkHour();
+    }
+    public boolean getClearMinute(){
+        return clearMinute;
+    }
+    public boolean getClearHour(){
+        return clearHour;
+    }
+
+
+
 
 }
 

@@ -63,8 +63,7 @@ public class Uhrenspiel extends Application  {
                   }
           );
           mainScreen.endGameButton.setOnAction(event -> {
-                      Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Spiel beenden!",
-                              "Willst du wirklich beenden? ");
+                      Boolean alert = alertHelper.confirmationAlert("Spiel beenden!",  "Willst du wirklich beenden? ");
                       if (alert) {
                           stage1.close();
                       }
@@ -237,23 +236,28 @@ public class Uhrenspiel extends Application  {
           guiFA.goOn.setVisible(false);
           guiFA.submitButton.setOnAction(event -> {
               checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-              clearFieldsFA();
+
               if(checkEntryFA.korrekt){
                   answerCheckFA();
 
               }
+              else
+                  checkEntryFA.sendAlert();
+                  clearFieldsFA();
           });
           guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
                       checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
-                      clearFieldsFA();
+                      //clearFieldsFA();
                       if(checkEntryFA.korrekt){
                           answerCheckFA();
 
                       }
-
+                      else
+                          checkEntryFA.sendAlert();
+                          clearFieldsFA();
                   }
               }
           });
@@ -262,11 +266,14 @@ public class Uhrenspiel extends Application  {
               public void handle(KeyEvent keyEvent) {
                   if (keyEvent.getCode() == KeyCode.ENTER) {
                       checkEntryFA.setValues(guiFA.givenHour.getText(), guiFA.givenMinutes.getText());
-                      clearFieldsFA();
+
                       if (checkEntryFA.korrekt) {
                           answerCheckFA();
 
                       }
+                      else
+                          checkEntryFA.sendAlert();
+                          clearFieldsFA();
                   }
               }
           });
@@ -279,12 +286,10 @@ public class Uhrenspiel extends Application  {
           if(checkEntryFA.clearMinute){
               guiFA.givenMinutes.clear();
           }
-          else {
-              if (checkEntryFA.clearHour) {
+          if (checkEntryFA.clearHour) {
                   guiFA.givenHour.clear();
               }
           }
-      }
 
       public void answerCheckFA() {
 
@@ -437,7 +442,7 @@ public class Uhrenspiel extends Application  {
     public void endGame(){
           strictGame= false;
            if (!saved) {
-               Boolean alert = alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Spiel beenden!",
+               Boolean alert = alertHelper.confirmationAlert("Spiel beenden!",
                        "Du hast nicht gespeichert! Möchtest du wirklich beenden? ");
                if (alert) {
                   stage1.close();
@@ -469,12 +474,12 @@ public class Uhrenspiel extends Application  {
             File file = data.chooseSaveFile(new File(createFileName()), stage1);
             if (file != null) {
                  data.saveProgress(file, data.progress);
-                alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern","Spiel gespeichert in Datei " + file + ".");
+                alertHelper.confirmationAlert("Speichern","Spiel gespeichert in Datei " + file + ".");
                 saved = true;
             }
 
         } catch (IOException e) {
-            alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
+            alertHelper.errorAlert("Error" ,e.getLocalizedMessage());
         }
     }
 
@@ -488,7 +493,7 @@ public class Uhrenspiel extends Application  {
                 updateDta();
                 game.setLevel(game.level);
                 setgoOnButton();
-                alertHelper.confirmationAlert(Alert.AlertType.CONFIRMATION, "Speichern", "Liste von Datei " + file + " geladen.");
+                alertHelper.confirmationAlert("Speichern", "Liste von Datei " + file + " geladen.");
 
             }
             else {
@@ -498,7 +503,7 @@ public class Uhrenspiel extends Application  {
 
 
         } catch (IOException | ClassNotFoundException e) {
-            alertHelper.showAlert(Alert.AlertType.ERROR,"Error" ,e.getLocalizedMessage());
+            alertHelper.errorAlert("Error" ,e.getLocalizedMessage());
         }
     }
 
