@@ -1,5 +1,5 @@
 /**
- * Die Klasse checkEntryFA nimmt die Eingabe der beiden Textfelder für die freie Antwort entgegen
+ * Die Klasse nimmt die Eingabe der beiden Textfelder für die freie Antwort entgegen
  *  und prüft die Eingabe auf Vollständigkeit und prüft ob nur Zahlen eingegeben wurden.
  *
  *  @author Tina Kolbe & Oliver Piert
@@ -37,7 +37,7 @@ public class checkEntryFA {
      * und nach korrekten Muster
      *
      * @param  stunde  Übergibt einen String mit der Stunde im Format "12"
-     * @param  minuten Übergibt einen String mit der Minuten im Format "40"
+     * @param  minuten Übergibt einen String mit der Minuten im Format "45"
      */
 
     public void setValues(String stunde, String minuten) {
