@@ -261,7 +261,7 @@ public class Uhrenspiel extends Application  {
       private void checkEntry(){
           checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
 
-          if(checkEntryFA.korrekt){
+          if(checkEntryFA.correctEntry){
               answerCheckFA();
           }
           else

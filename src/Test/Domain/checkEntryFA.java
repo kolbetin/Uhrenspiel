@@ -1,36 +1,66 @@
+/**
+ * Die Klasse checkEntryFA nimmt die Eingabe der beiden Textfelder für die freie Antwort entgegen
+ *  und prüft die Eingabe auf Vollständigkeit und prüft ob nur Zahlen eingegeben wurden.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
+
 package Test.Domain;
 
 import Test.Presentation.AlertHelper;
-import javafx.scene.control.Alert;
 
 public class checkEntryFA {
+    // Instanzvariablen
     private int stunde = 0;
     private int minuten = 0;
     private String givenHour = null;
     private String givenMinutes = null;
     private AlertHelper alertHelper;
-    public boolean korrekt = false;
+    public boolean correctEntry = false;
     public boolean clearMinute= false;
     public boolean clearHour= false;
 
+    /**
+     * Konstruktor der Klasse.
+     *
+     * Die Klasse AlertHelper wird initialisiert.
+     */
 
     public checkEntryFA() {
         alertHelper = new AlertHelper();
     }
+
+    /**
+     * Die Methode nimmt die eingegeben Parameter entgegen und startet den Check der Eingabe auf Vollständigkeit
+     * und nach korrekten Muster
+     *
+     * @param  stunde  Übergibt einen String mit der Stunde im Format "12"
+     * @param  minuten Übergibt einen String mit der Minuten im Format "40"
+     */
 
     public void setValues(String stunde, String minuten) {
         this.givenHour = stunde;
         this.givenMinutes = minuten;
         clearMinute= false;
         clearHour= false;
-        korrekt = false;
+        correctEntry = false;
         checkHour();
         checkMinutes();
-      //  sendAlert();
         if(checkMinutes() & checkHour()){
-            korrekt = true;
+            correctEntry = true;
         }
     }
+
+    /**
+     * Die Methode prüft ob die Eingabe nicht Null, Buchstaben, Negativzahlen oder Sonderzeichen ist und
+     * dass nur Zahlen zwischen 1 und 12 eingegeben worden sind
+     *
+
+     * @return  Gibt den Boolean zurück ob die Stunde korrekt eingegeben wurde,
+     *          so dass die Antwort auf Richtigkeit geprüften werden kann.
+     */
 
     private boolean checkHour() {
         if (!givenHour.trim().isEmpty()
@@ -49,6 +79,16 @@ public class checkEntryFA {
         }
         return false;
     }
+
+    /**
+     * Die Methode prüft ob die Eingabe nicht Null, Buchstaben, Negativzahlen oder Sonderzeichen ist und
+     * dass nur die Zahlen 00, 15, 30 oder 45 eingegeben worden sind
+     *
+
+     * @return  Gibt den Boolean zurück ob die Minuten korrekt eingegeben wurden,
+     *          so dass die Antwort auf Richtigkeit geprüften werden kann.
+     */
+
 
     private boolean checkMinutes() {
         if (!givenMinutes.trim().isEmpty()
@@ -72,12 +112,18 @@ public class checkEntryFA {
             return false;
     }
 
+    /**
+     * Die Methode wirft einen Alert, falls die Checks in checkMinutes() und checkHour()
+     * ein False zurückgegeben haben
+     *
+     */
+
     public void sendAlert() {
 
         if (!checkHour() & !checkMinutes()) {
             alertHelper.errorAlert("Fehler", "Bitte eine gültige Uhrzeit eingeben, z.B. 3:30.");
             clearHour = true;
-            clearMinute= true;
+            clearMinute = true;
         } else {
             if (!checkHour()) {
                 alertHelper.errorAlert("Fehler", "Bitte die Stunde eingeben, z.B. 8 oder 12.");
@@ -89,23 +135,30 @@ public class checkEntryFA {
 
             } else System.out.println("Eingabe okay");
         }
-
-    }
-    public boolean getCheckMinutes(){
-        return checkMinutes();
-    }
-    public boolean getCheckHour(){
-        return checkHour();
-    }
-    public boolean getClearMinute(){
-        return clearMinute;
-    }
-    public boolean getClearHour(){
-        return clearHour;
     }
 
+        /**
+         * Getter Methode
+         *
+
+         * @return  Gibt Boolean von checkMinutes() zurück.
+         */
 
 
+        public boolean getCheckMinutes(){
+                return checkMinutes();
+        }
+
+    /**
+     * Getter Methode
+     *
+
+     * @return  Gibt Boolean von checkHour() zurück.
+     */
+
+        public boolean getCheckHour(){
+            return checkHour();
+        }
 
 }
 

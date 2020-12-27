@@ -1,23 +1,8 @@
 package Test.Domain;
 
-import Test.Presentation.AlertHelper;
-import javafx.concurrent.Worker;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DialogEvent;
-import javafx.scene.text.Text;
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.ContextWrapper;
 
-import java.security.AccessController;
-import java.util.concurrent.CompletableFuture;
-
-import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
 class checkEntryFATest {
@@ -39,7 +24,7 @@ class checkEntryFATest {
         checkEntryFA.setValues(hour, minutes);
         assertTrue(checkEntryFA.getCheckHour());
         assertTrue(checkEntryFA.getCheckMinutes());
-        assertTrue(checkEntryFA.korrekt);
+        assertTrue(checkEntryFA.correctEntry);
 
 
         hour = "7";
@@ -48,7 +33,7 @@ class checkEntryFATest {
         checkEntryFA.setValues(hour, minutes);
         assertTrue(checkEntryFA.getCheckHour());
         assertTrue(checkEntryFA.getCheckMinutes());
-        assertTrue(checkEntryFA.korrekt);
+        assertTrue(checkEntryFA.correctEntry);
 
 
         hour = "6";
@@ -57,7 +42,7 @@ class checkEntryFATest {
         checkEntryFA.setValues(hour, minutes);
         assertTrue(checkEntryFA.getCheckHour());
         assertTrue(checkEntryFA.getCheckMinutes());
-        assertTrue(checkEntryFA.korrekt);
+        assertTrue(checkEntryFA.correctEntry);
 
 
         hour = "5";
@@ -66,7 +51,7 @@ class checkEntryFATest {
         checkEntryFA.setValues(hour, minutes);
         assertTrue(checkEntryFA.getCheckHour());
         assertTrue(checkEntryFA.getCheckMinutes());
-        assertTrue(checkEntryFA.korrekt);
+        assertTrue(checkEntryFA.correctEntry);
 
 
         hour = "13";
@@ -76,7 +61,7 @@ class checkEntryFATest {
 
         assertFalse(checkEntryFA.getCheckHour());
         assertTrue(checkEntryFA.getCheckMinutes());
-        assertFalse(checkEntryFA.korrekt);
+        assertFalse(checkEntryFA.correctEntry);
 
 
         hour = "00";
@@ -86,7 +71,7 @@ class checkEntryFATest {
 
         assertFalse(checkEntryFA.getCheckHour());
         assertFalse(checkEntryFA.getCheckMinutes());
-        assertFalse(checkEntryFA.korrekt);
+        assertFalse(checkEntryFA.correctEntry);
 
 
         hour = "";
@@ -96,7 +81,7 @@ class checkEntryFATest {
 
         assertFalse(checkEntryFA.getCheckHour());
         assertFalse(checkEntryFA.getCheckMinutes());
-        assertFalse(checkEntryFA.korrekt);
+        assertFalse(checkEntryFA.correctEntry);
 
 
         hour = "11";
@@ -106,7 +91,7 @@ class checkEntryFATest {
 
         assertTrue(checkEntryFA.getCheckHour());
         assertFalse(checkEntryFA.getCheckMinutes());
-        assertFalse(checkEntryFA.korrekt);
+        assertFalse(checkEntryFA.correctEntry);
 
 
     }
@@ -121,7 +106,7 @@ class checkEntryFATest {
 
         assertFalse(checkEntryFA.getCheckHour());
         assertFalse(checkEntryFA.getCheckMinutes());
-        assertFalse(checkEntryFA.korrekt);
+        assertFalse(checkEntryFA.correctEntry);
 
 
         hour = "-1";
@@ -131,7 +116,7 @@ class checkEntryFATest {
 
         assertFalse(checkEntryFA.getCheckHour());
         assertTrue(checkEntryFA.getCheckMinutes());
-        assertFalse(checkEntryFA.korrekt);
+        assertFalse(checkEntryFA.correctEntry);
 
 
         hour = "12";
@@ -141,7 +126,7 @@ class checkEntryFATest {
 
         assertTrue(checkEntryFA.getCheckHour());
         assertFalse(checkEntryFA.getCheckMinutes());
-        assertFalse(checkEntryFA.korrekt);
+        assertFalse(checkEntryFA.correctEntry);
 
 
 
@@ -152,7 +137,7 @@ class checkEntryFATest {
 
         assertFalse(checkEntryFA.getCheckHour());
         assertFalse(checkEntryFA.getCheckMinutes());
-        assertFalse(checkEntryFA.korrekt);
+        assertFalse(checkEntryFA.correctEntry);
 
     }
 
