@@ -1,4 +1,4 @@
-package Test.Domain;
+package Test.Presentation;
 
 import Test.Presentation.LernmodusGUI;
 import Test.Presentation.Uhrenspiel;

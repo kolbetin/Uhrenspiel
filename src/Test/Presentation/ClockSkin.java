@@ -1,5 +1,6 @@
 /**
- * Beschreiben Sie hier die Klasse BeispielStruktur.
+ * Die Klasse ClockSkin nimmt Angaben zur anzuzeigenden Zeit als String entgegen und erstellt
+ * das gewünschte Uhrenbild für alle Spielmodi im Uhrenspiel.
  *
  * @author Tina Kolbe & Oliver Piert
  * @version 1.0

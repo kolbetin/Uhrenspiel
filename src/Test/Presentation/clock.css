@@ -111,11 +111,11 @@
     -fx-max-width: 50;
   }
 
-.circle{
+.font{
     -fx-font-family: "Comic Sans MS";
     -fx-font-size: 30px;
-
 }
+
 
 /*
 .text-area{

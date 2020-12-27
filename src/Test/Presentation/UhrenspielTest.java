@@ -1,23 +1,10 @@
 package Test.Presentation;
 
 import Test.Domain.Game;
-import Test.Domain.Lernmodus;
-import Test.Persistenz.QuestionsAnswer;
-import com.sun.javafx.application.PlatformImpl;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import javafx.embed.swing.JFXPanel;
-import javafx.stage.Stage;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import javax.swing.*;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UhrenspielTest {
     private Uhrenspiel uhrenspiel;

@@ -1,10 +1,9 @@
 package Test.Domain;
 
-import javafx.scene.shape.Line;
+import Test.Presentation.Lernmodus;
 import javafx.stage.Stage;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class LernmodusTest {

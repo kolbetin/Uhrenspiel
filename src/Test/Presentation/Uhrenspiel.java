@@ -1,7 +1,6 @@
 package Test.Presentation;
 
 import Test.Domain.Game;
-import Test.Domain.Lernmodus;
 import Test.Domain.checkEntryFA;
 import Test.Persistenz.SavedData;
 
