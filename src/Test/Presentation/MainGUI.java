@@ -5,17 +5,14 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class MainGUI extends Application {
+public class MainGUI {
 
         public Button endButton;
         public Button antwort1;
@@ -27,8 +24,8 @@ public class MainGUI extends Application {
         public Button goOn;
         private ClockSkin clock;
         public Label questionLabel;
-        public Label uberschrift;
-        public String zeit = "08:30"; //Standardwert: 12:00
+        public Label header;
+        public String time = "08:30"; //Standardwert: 12:00
         public Node node;
         public Label level;
         public Label richtigeAntwort;
@@ -36,6 +33,13 @@ public class MainGUI extends Application {
         public Label textlevel;
         public Label allAnswers;
         public Label levelexplain;
+        private int levelnummer = 0;
+        private int aufgabennummer = 0;
+        private int sum = 0;
+        private int richtigeAntwortNummer= 0;
+        private int falscheAntwortNummer = 0;
+        private List<String> answers;
+
 
 
 
@@ -43,6 +47,7 @@ public class MainGUI extends Application {
     public void start(Stage primaryStage) {
 
             final BorderPane borderPane = new BorderPane();
+
 
             borderPane.setPadding(new Insets(7,7,7,7));
             borderPane.setTop(upperArea());
@@ -63,8 +68,8 @@ public class MainGUI extends Application {
         final BorderPane middleArea = new BorderPane();
         middleArea.setId("middleArea");
 
-        antwortzähler = new Label("Antwort 1 von 10");
-        level = new Label ("Level");
+        antwortzähler = new Label("Aufgabe: " + aufgabennummer + "  von 10");
+        level = new Label ("Level: " + levelnummer );
         textlevel = new Label("");
 
 
@@ -109,9 +114,9 @@ public class MainGUI extends Application {
 
           //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: black");
 
-            uberschrift = new Label("Uhrenspiel");
+            header = new Label("Uhrenspiel");
 
-            vBox.getChildren().add(uberschrift);
+            vBox.getChildren().add(header);
 
             return vBox;
         }
@@ -122,7 +127,7 @@ public class MainGUI extends Application {
 
 
             clock = new ClockSkin();
-            node = clock.createClock(zeit);
+            node = clock.createClock(time);
 
            //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
             borderPane.setPadding(new Insets(7,170,7,350));
@@ -139,14 +144,14 @@ public class MainGUI extends Application {
 
             final VBox vbox = new VBox(20);
 
-            allAnswers = new Label("Anzahl aller Antworten");
+            allAnswers = new Label("Insgesamt beantwortete "+ "\n"+"Fragen: "+ sum );
             endButton = new Button("Spiel beenden");
             saveButton = new Button ("Speichern");
             vbox.getChildren().addAll(saveButton,endButton);
 
 
-            richtigeAntwort = new Label("Richtige Antworten:");
-            falscheAntwort = new Label("Falsche Antworten:");
+            richtigeAntwort = new Label("Richtige Antworten: " + richtigeAntwortNummer);
+            falscheAntwort = new Label("Falsche Antworten: " + falscheAntwortNummer);
             levelexplain = new Label("In diesem Level: ");
 
              final VBox vb = new VBox(20);
@@ -180,8 +185,12 @@ public class MainGUI extends Application {
             antwort3 = new Button("Antwort C");
             antwort4 = new Button("Antwort D");
 
-            goOn = new Button ("weiter");
+            antwort1.setText(answers.get(0));
+            antwort2.setText(answers.get(1));
+            antwort3.setText(answers.get(2));
+            antwort4.setText(answers.get(3));
 
+            goOn = new Button ("weiter");
 
             Label antwort = new Label("Antwort");
             hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);
@@ -191,8 +200,23 @@ public class MainGUI extends Application {
             return hBox;
          }
 
-          public static void main(String[] args) { launch(args);
+         public void setGameValues(int aufgabennummer, int level, double sum, int richtigeAntwortNummer, int falscheAntwortNummer, List answers){
+             this.answers.clear();
+             this.aufgabennummer = aufgabennummer;
+             this.levelnummer = level;
+             this.sum = (int) sum;
+             this.richtigeAntwortNummer = richtigeAntwortNummer;
+             this.falscheAntwortNummer = falscheAntwortNummer;
+             this.answers.addAll(answers);
+            // System.out.println(answers);
+         }
+
+          public  MainGUI() {
+                   answers = new ArrayList<>();
         }
+    /*     public static void main(String[] args) {
+            launch(args);
+        }*/
 
     }
 

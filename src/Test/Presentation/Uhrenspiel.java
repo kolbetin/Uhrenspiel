@@ -189,20 +189,18 @@ public class Uhrenspiel extends Application  {
     public void newGameMultipleChoice() {
 
         game.nextQuestion();
-        guiMC.zeit = game.key ;
-        guiMC.start(stage1);
-        //Collections.shuffle(game.liste);
-        guiMC.antwort1.setText((String) game.answers.get(0));
-        guiMC.antwort2.setText((String) game.answers.get(1));
-        guiMC.antwort3.setText((String) game.answers.get(2));
-        guiMC.antwort4.setText((String) game.answers.get(3));
+        guiMC.time = game.key ;
+        guiMC.setGameValues(game.aufgabennummer,
+                game.level,
+                game.sum,
+                game.richtigeAntwort,
+                game.falscheAntwort,
+                game.answers);
 
-        guiMC.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-        guiMC.level.setText("Level: " + game.level );
-        guiMC.allAnswers.setText("Insgesamt beantwortete "+ "\n"+"Fragen: "+ (int)game.sum );
-        guiMC.richtigeAntwort.setText("Richtige Antworten: " + game.richtigeAntwort);
-        guiMC.falscheAntwort.setText("Falsche Antworten: " + game.falscheAntwort );
+        guiMC.start(stage1);
+
         guiMC.goOn.setOnAction(event -> setgoOnButton());
+        guiMC.goOn.setVisible(false);
         guiMC.endButton.setOnAction(event -> endGame());
         guiMC.saveButton.setOnAction(event -> saveProgress());
         answerCheckMC();
@@ -216,21 +214,26 @@ public class Uhrenspiel extends Application  {
         System.out.println("Falsche Antwort: " + game.falscheAntwort);
         System.out.println(game.playedGames);
     }
+
       public void newGameFreeAnswer(){
           game.nextQuestion();
-          guiFA.zeit = game.key;
+          guiFA.time = game.key;
+          guiFA.setGameValues(game.aufgabennummer,
+                  game.level,
+                  game.sum,
+                  game.richtigeAntwort,
+                  game.falscheAntwort,
+                  game.answers);
           guiFA.start(stage1);
-          guiFA.antwortzähler.setText("Aufgabe: " + game.aufgabennummer + "  von 10");
-          guiFA.level.setText("Level: " + game.level);
           guiFA.givenMinutes.setText("00");
-          guiFA.allAnswers.setText("Insgesamt beantwortete "+ "\n"+"Fragen: "+ (int)game.sum  );
-          guiFA.richtigeAntwort.setText("Richtige Antworten: " + game.richtigeAntwort );
-          guiFA.falscheAntwort.setText("Falsche Antworten: " + game.falscheAntwort);
-          guiFA.goOn.setOnAction(event -> setgoOnButton());
+
           if(game.level > 1){
                   guiFA.givenMinutes.setText("");
           }
           guiFA.goOn.setVisible(false);
+          guiFA.goOn.setOnAction(event -> setgoOnButton());
+
+
           guiFA.submitButton.setOnAction(event -> checkEntry() );
           guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
@@ -249,6 +252,7 @@ public class Uhrenspiel extends Application  {
                   }
               }
           });
+
           guiFA.endButton.setOnAction(event -> endGame());
           guiFA.saveButton.setOnAction(event -> saveProgress());
           showData();
@@ -273,39 +277,33 @@ public class Uhrenspiel extends Application  {
 
       public void answerCheckFA() {
 
-             /* String answer = guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
-              String answer0 =  "0"+ guiFA.givenHour.getText() + ":" + guiFA.givenMinutes.getText();
-              if (answer.equals(game.getAnswerFA(game.key))
-                      |answer.equals("0" + game.getAnswerFA(game.key))
-                      |(guiFA.givenHour.getText().equals("0"+game.getAnswerFA(game.key))
-                        |(guiFA.givenHour.getText().equals(game.getAnswerFA(game.key))))
-                )*/
                 if(game.checkAnswerFA(guiFA.givenHour.getText(), guiFA.givenMinutes.getText()))
                 {
                   guiFA.submitButton.setId("buttonOkay");
                   guiFA.submitButton.setText("Richtig!");
                   guiFA.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
-                  guiFA.givenHour.setDisable(true);
-                  guiFA.givenMinutes.setDisable(true);
-                  guiFA.submitButton.setDisable(true);
-                  guiFA.goOn.setVisible(true);
                   game.richtigeAntwort++;
-                  game.sum++;
+                  manageButtonsFA();
+                    game.sum++;
                 }
                 else {
-                  guiFA.submitButton .setId("buttonNotOkay");
-                  guiFA.submitButton .setText("Falsch!");
+                  guiFA.submitButton.setId("buttonNotOkay");
+                  guiFA.submitButton.setText("Falsch!");
                   guiFA.questionLabel.setText("Das war leider nicht richtig!\n"
                           + "Deine Antwort: " + game.answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.getAnswerFA(game.key)+ " Uhr.");
                   game.falscheAntwort++;
-                  game.sum++;
-                  guiFA.givenHour.setDisable(true);
-                  guiFA.givenMinutes.setDisable(true);
-                  guiFA.submitButton.setDisable(true);
-                  guiFA.goOn.setVisible(true);
-                 }
+                  manageButtonsFA();
+                    game.sum++;
+               }
          }
+     private void manageButtonsFA(){
+         guiFA.givenHour.setDisable(true);
+         guiFA.givenMinutes.setDisable(true);
+         guiFA.submitButton.setDisable(true);
+         guiFA.goOn.setVisible(true);
+
+     }
 
     private void answerCheckMC() {
           EventHandler<MouseEvent> eventHandler = getEventHandler();
@@ -313,15 +311,15 @@ public class Uhrenspiel extends Application  {
           guiMC.antwort2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
           guiMC.antwort3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
           guiMC.antwort4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-          guiMC.goOn.setVisible(false);
-
       }
 
-      private void disableButtonsMC(){
+      private void manageButtonsMC(){
           guiMC.antwort1.setDisable(true);
           guiMC.antwort2.setDisable(true);
           guiMC.antwort3.setDisable(true);
           guiMC.antwort4.setDisable(true);
+          guiMC.goOn.setVisible(true);
+
       }
 
           EventHandler<MouseEvent> getEventHandler() {
@@ -338,18 +336,18 @@ public class Uhrenspiel extends Application  {
                           button.setText("Richtig!");
                           guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                           game.richtigeAntwort++;
+                          manageButtonsMC();
                           game.sum++;
-                          disableButtonsMC();
-                          guiMC.goOn.setVisible(true);
+
                       }
                       else {
                           button.setId("buttonNotOkay");
                           button.setText("Falsch!");
                           guiMC.questionLabel.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                           game.falscheAntwort++;
+                          manageButtonsMC();
                           game.sum++;
-                          disableButtonsMC();
-                          guiMC.goOn.setVisible(true);
+
                       }
 
                   }
@@ -503,13 +501,6 @@ public class Uhrenspiel extends Application  {
     }
 
 
-
- /*   public void fillGuiList() {
-        guiList = new ArrayList<>();
-        guiList.add(guiFA);
-        guiList.add(guiMC);
-    }*/
-
     public MainGUI getGUI() {
         guiList = new ArrayList<>();
         guiList.add(guiFA);
@@ -534,9 +525,6 @@ public class Uhrenspiel extends Application  {
         data = new SavedData();
         checkEntryFA = new checkEntryFA();
 
-
-
-        // fillGuiList();
 
         System.out.println(getGUI());
         System.out.println(guiList);

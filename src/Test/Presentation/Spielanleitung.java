@@ -27,7 +27,7 @@ public class Spielanleitung {
 
     public void starteSpielanleitung(Stage stage1) {
 
-        guiMC.zeit = "04:00";
+        guiMC.time = "04:00";
         guiMC.start(stage1);
         guiMC.antwortzähler.setVisible(false);
         guiMC.textlevel.setVisible(false);
@@ -109,7 +109,7 @@ public class Spielanleitung {
         startFC = new Timeline(
                        new KeyFrame(Duration.seconds(0.1), evt ->{
                                       //  stage1.close();
-                                        guiFA.zeit = "07:15";
+                                        guiFA.time = "07:15";
                                         guiFA.start(stage1);
                                         guiFA.antwortzähler.setVisible(false);
                                         guiFA.textlevel.setVisible(false);
