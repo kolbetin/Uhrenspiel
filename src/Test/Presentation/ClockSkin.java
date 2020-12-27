@@ -1,3 +1,10 @@
+/**
+ * Beschreiben Sie hier die Klasse BeispielStruktur.
+ *
+ * @author (Ihr Name)
+ * @version (eine Versionsnummer oder ein Datum)
+ */
+
 package Test.Presentation;
 
 import javafx.scene.Group;
@@ -7,18 +14,24 @@ import javafx.scene.shape.Line;
 
 public class ClockSkin {
 
-    // Variable für alle Grafikelemente der Uhr
-    private ClockElements clockElements;
+    // Instanzvariablen
+    private ClockElements clockElements; // Beinhaltet Grafikelemente das Uhrenbild (ClockSkin)
+    Line stunde; // Variable für den Stundenzeiger
+    Line minute; // Variable für den Minutenzeiger
 
-    // Variablen für Stunden- & Minutenzeiger
-    Line stunde;
-    Line minute;
-
-    // Konstruktor
+    /**
+     * Konstruktor für Objekte der Klasse ClockSkin
+     */
     public ClockSkin() {
 
     }
 
+    /**
+     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     *
+     * @param  anzuzeigendeZeit - Übergibt einen String mit der Uhrzeit im Format "12:30"
+     * @return  Gibt das zusammengesetzte Uhrenbild als Typ Node "clockSkin" zurück
+     */
     public Node createClock(String anzuzeigendeZeit) {
 
         clockElements = new ClockElements();
