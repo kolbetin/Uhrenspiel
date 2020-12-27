@@ -35,7 +35,7 @@ public class Uhrenspiel extends Application  {
     private AlertHelper alertHelper;
     public Game game;
     private SavedData data;
-    private boolean setlearnModus = false;
+    public boolean setlearnModus = false;
     private boolean strictGame = false;
     private Spielanleitung spielanleitung;
   //  private boolean testEntry = false;
@@ -119,6 +119,7 @@ public class Uhrenspiel extends Application  {
 
         });
         choiceScreen.backButton.setOnAction(e -> {
+            setlearnModus = false;
             stage1.close();
             start(stage1);
         });
@@ -374,8 +375,19 @@ public class Uhrenspiel extends Application  {
                     game.level = game.level + 1;
                     newGame();
                 });
-            } else {
+            }
+            else {
                 summaryScreen.nextGame.setDisable(true);
+            }
+            if(game.level >1) {
+                summaryScreen.preLevel.setOnAction(event -> {
+                    game.level = game.level - 1;
+                    newGame();
+
+                });
+            }
+            else {
+                summaryScreen.preLevel.setDisable(true);
             }
         }
         else {

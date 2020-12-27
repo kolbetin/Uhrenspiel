@@ -48,6 +48,7 @@ public class Lernmodus {
                             thread.stop();
                             stage1.close();
                             uhrenspiel.start(stage1);
+                            uhrenspiel.setlearnModus = false;
                         });
                         guiLM.repeatButton.setOnAction(event -> {
                             thread.stop();

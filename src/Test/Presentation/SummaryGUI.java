@@ -18,6 +18,7 @@ public class SummaryGUI extends MainGUI {
     public Button backButton;
     public Button nextGame;
     public Button repeatLevel;
+    public Button preLevel;
 
 
     @Override
@@ -31,7 +32,8 @@ public class SummaryGUI extends MainGUI {
 
         nextGame = new Button("Nächstes Level");
         repeatLevel = new Button("Nochmal");
-        backButton = new Button("zurück");
+        backButton = new Button("Zurück");
+        preLevel = new Button ("Vorheriges Level");
         labelLevel = new Label("Level: ");
 
 
@@ -43,7 +45,7 @@ public class SummaryGUI extends MainGUI {
         middle.getChildren().addAll(willkommensText,labelRA, labelFA);
         middle.setPadding(new Insets(70,270,7,270));
 
-        bottom.getChildren().addAll(backButton, repeatLevel, nextGame);
+        bottom.getChildren().addAll(backButton, preLevel, repeatLevel, nextGame);
         bottom.setPadding(new Insets(100, 7, 200, 270));
 
         BorderPane root = new BorderPane();
