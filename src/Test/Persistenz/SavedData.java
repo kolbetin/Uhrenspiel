@@ -36,12 +36,12 @@ public class SavedData extends Application  {
 
     public void loadProgress(File file) throws ClassNotFoundException, IOException {
           setProgress(bufferInterface.load(file));
-        System.out.println("Datei wurde geladen: " + progress);
+        System.out.println("Das Spiel wurde geladen: " + progress);
     }
 
     public File chooseSaveFile (File file, Stage stage) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Decision File");
+        fileChooser.setTitle("Speichere Spiel");
         fileChooser.setInitialDirectory(new File(file.getParent()));
         fileChooser.setInitialFileName(file.getName());
 
@@ -55,7 +55,7 @@ public class SavedData extends Application  {
 
     public File chooseLoadFile (File file, Stage stage) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Load Decision File");
+        fileChooser.setTitle("Lade Spiel");
 
         // Set extension filter
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Serialized files (*.ser)", "*.ser");

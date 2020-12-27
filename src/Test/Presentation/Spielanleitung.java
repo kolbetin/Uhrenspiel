@@ -32,10 +32,6 @@ public class Spielanleitung {
         guiMC.antwortzähler.setVisible(false);
         guiMC.textlevel.setVisible(false);
         guiMC.level.setText("Wir zeigen dir jetzt die beiden Antwortmöglichkeiten.");
-        guiMC.antwort1.setText("04:00");
-        guiMC.antwort2.setText("02:00");
-        guiMC.antwort3.setText("05:00");
-        guiMC.antwort4.setText("03:00");
         guiMC.goOn.setVisible(false);
         guiMC.richtigeAntwort.setVisible(false);
         guiMC.falscheAntwort.setVisible(false);
@@ -82,7 +78,6 @@ public class Spielanleitung {
                 {
                     guiMC.antwort1.setId("buttonOkay");
                     guiMC.antwort1.setText("Richtig!");
-                    guiMC.antwort1.setStyle("-fx-background-color: green; -fx-alignment:CENTER-LEFT");
                     guiMC.antwort1.setDisable(true);
                     guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: 04:00 Uhr.");
                 }),
@@ -147,7 +142,7 @@ public class Spielanleitung {
                     guiFA.submitButton.setId("buttonOkay");
                     guiFA.submitButton.setText("Richtig!");
                     guiFA.submitButton.setDisable(true);
-                    guiFA.submitButton.setStyle("-fx-background-color: green; -fx-alignment:CENTER-LEFT");
+
                 }),
                 new KeyFrame(Duration.seconds(0.6), evt -> guiFA.submitButton.setVisible(false)),
                 new KeyFrame(Duration.seconds(1.2), evt -> guiFA.submitButton.setVisible(true)));

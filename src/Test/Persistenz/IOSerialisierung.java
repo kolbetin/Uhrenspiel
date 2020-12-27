@@ -17,7 +17,7 @@ public class IOSerialisierung implements IOInterface {
                 outObject.writeObject(spielstand);
 
             } catch (IOException e) {
-                throw new IOException("Daten können nicht in der Datei " + file + " gespeichert werden!");
+                throw new IOException("Das Spiel kann nicht in der Datei " + file + " gespeichert werden!");
             }
         }
        @SuppressWarnings("unchecked")
@@ -27,7 +27,7 @@ public class IOSerialisierung implements IOInterface {
                 return (List<String>) inObject.readObject();
 
             } catch (ClassNotFoundException | IOException e) {
-                throw new IOException("Die Daten können nicht von der Datei " + file + " gelesen werden");
+                throw new IOException("Das Spiel konnte nicht von der Datei " + file + " gelesen werden");
             }
         }
 

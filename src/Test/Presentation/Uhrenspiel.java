@@ -232,8 +232,8 @@ public class Uhrenspiel extends Application  {
           guiFA.goOn.setVisible(false);
           guiFA.goOn.setOnAction(event -> setgoOnButton());
 
-
           guiFA.submitButton.setOnAction(event -> checkEntry() );
+
           guiFA.givenHour.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
               public void handle(KeyEvent keyEvent) {
@@ -242,6 +242,7 @@ public class Uhrenspiel extends Application  {
                   }
               }
           });
+
           guiFA.givenMinutes.setOnKeyPressed(new EventHandler<KeyEvent>() {
               @Override
               public void handle(KeyEvent keyEvent) {
@@ -283,7 +284,7 @@ public class Uhrenspiel extends Application  {
                   guiFA.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                   game.richtigeAntwort++;
                   manageButtonsFA();
-                    game.sum++;
+                  game.sum++;
                 }
                 else {
                   guiFA.submitButton.setId("buttonNotOkay");
@@ -293,7 +294,7 @@ public class Uhrenspiel extends Application  {
                           + "Die korrekte Antwort ist: " + game.getAnswerFA(game.key)+ " Uhr.");
                   game.falscheAntwort++;
                   manageButtonsFA();
-                    game.sum++;
+                  game.sum++;
                }
          }
      private void manageButtonsFA(){
@@ -301,7 +302,6 @@ public class Uhrenspiel extends Application  {
          guiFA.givenMinutes.setDisable(true);
          guiFA.submitButton.setDisable(true);
          guiFA.goOn.setVisible(true);
-
      }
 
     private void answerCheckMC() {
@@ -318,7 +318,6 @@ public class Uhrenspiel extends Application  {
           guiMC.antwort3.setDisable(true);
           guiMC.antwort4.setDisable(true);
           guiMC.goOn.setVisible(true);
-
       }
 
           EventHandler<MouseEvent> getEventHandler() {
@@ -346,16 +345,11 @@ public class Uhrenspiel extends Application  {
                           game.falscheAntwort++;
                           manageButtonsMC();
                           game.sum++;
-
                       }
-
                   }
               }
-
-              };
-          }
-
-
+          };
+        }
 
 
     public void gameSummary(){
@@ -390,7 +384,7 @@ public class Uhrenspiel extends Application  {
             internalsum = internalsum+ game.richtigeAntwort + game.falscheAntwort;
             float pct = 0;
             pct =  (float) (game.richtigeAntwort/internalsum);
-            System.out.println("Summe: " + internalsum+ " PCT: " + pct);
+
 
             if (pct >= 0.6) {
                 summaryScreen.willkommensText.setText("Level: " + game.level +  " wurde erfolgreich abgeschlossen!");
@@ -447,7 +441,7 @@ public class Uhrenspiel extends Application  {
             File file = data.chooseSaveFile(new File(createFileName()), stage1);
             if (file != null) {
                  data.saveProgress(file, data.progress);
-                alertHelper.confirmationAlert("Speichern","Spiel gespeichert in Datei " + file + ".");
+                alertHelper.confirmationAlert("Speichern","Spiel wurde in Datei " + file + " gespeichert.");
                 game.saved = true;
             }
 
@@ -466,14 +460,13 @@ public class Uhrenspiel extends Application  {
                 updateData();
                 game.setLevel(game.level);
                 setgoOnButton();
-                alertHelper.confirmationAlert("Speichern", "Liste von Datei " + file + " geladen.");
+                alertHelper.confirmationAlert("Speichern", "Spiel von Datei " + file + " geladen.");
 
             }
             else {
                 stage1.close();
                 start(stage1);
             }
-
 
         } catch (IOException | ClassNotFoundException e) {
             alertHelper.errorAlert("Error" ,e.getLocalizedMessage());
