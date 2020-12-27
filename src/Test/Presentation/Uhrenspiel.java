@@ -31,14 +31,14 @@ public class Uhrenspiel extends Application  {
     private Stage stage1;
     private Stage stage2;
     private Stage stage3;
-    ArrayList<MainGUI> guiList;
+    private ArrayList<MainGUI> guiList;
     private AlertHelper alertHelper;
     public Game game;
     private SavedData data;
     private boolean setlearnModus = false;
     private boolean strictGame = false;
     private Spielanleitung spielanleitung;
-    private boolean testEntry = false;
+  //  private boolean testEntry = false;
     private checkEntryFA checkEntryFA;
 
 
