@@ -1,8 +1,8 @@
 /**
  * Beschreiben Sie hier die Klasse BeispielStruktur.
  *
- * @author (Ihr Name)
- * @version (eine Versionsnummer oder ein Datum)
+ * @author Tina Kolbe & Oliver Piert
+ * @version 1.0
  */
 
 package Test.Presentation;
@@ -52,6 +52,13 @@ public class ClockSkin {
         return clockSkin;
     }
 
+    /**
+     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
+     *
+     * @param anzuzeigendeZeit- Übergibt einen String mit der Uhrzeit im Format "12:30"
+     * @param anzuzeigendeZiffer - Übergibt einen Integer mit der Zahl der jeweil anzuzeigenden Ziffer in der Lernuhr
+     * @return  Gibt das zusammengesetzte Lern-Uhrenbild als Typ Node "lerningClock" zurück
+     */
     public Node clockLerningClock (String anzuzeigendeZeit, int anzuzeigendeZiffer){
 
         clockElements = new ClockElements();
