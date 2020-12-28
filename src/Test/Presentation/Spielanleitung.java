@@ -112,6 +112,7 @@ public class Spielanleitung {
                                         guiFA.levelexplain.setVisible(false);
                                         guiFA.saveButton.setVisible(false);
                                         guiFA.endButton.setText("Beenden");
+                                        guiFA.goOn.setVisible(false);
 
                                        guiFA.endButton.setOnAction(event -> {
                                            uhrenspiel = new Uhrenspiel();
