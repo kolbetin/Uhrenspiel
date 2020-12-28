@@ -111,6 +111,8 @@ public class Spielanleitung {
                                         guiFA.allAnswers.setVisible(false);
                                         guiFA.levelexplain.setVisible(false);
                                         guiFA.saveButton.setVisible(false);
+                                        guiFA.givenHour.setDisable(true);
+                                        guiFA.givenMinutes.setDisable(true);
                                         guiFA.endButton.setText("Beenden");
                                         guiFA.goOn.setVisible(false);
 
@@ -127,6 +129,7 @@ public class Spielanleitung {
                       new KeyFrame(Duration.seconds(5.0), evt ->{
                               guiFA.givenHour.setText("07");
                               guiFA.givenMinutes.setText("15");
+
 
                       }),
                       new KeyFrame(Duration.seconds(7.0), evt ->  guiFA.givenHour.setText(" 7")));
