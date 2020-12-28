@@ -2,9 +2,11 @@ package Test.Presentation;
 
 import Test.Presentation.LernmodusGUI;
 import Test.Presentation.Uhrenspiel;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Lernmodus {
 
@@ -20,85 +22,87 @@ public class Lernmodus {
 
     public void startLernmodus(Stage stage1, int level) {
 
-        lmLevel = level;
-        setStartTime(lmLevel);
-        guiLM.setUhrzeit(anzuzeigendeZeit, anzuzeigendeZiffer);
+        PauseTransition wait = new PauseTransition(Duration.seconds(5));
+        wait.setDelay(Duration.seconds(5));
 
-        guiLM.start(stage1);
-        guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-        guiLM.levelLM.setText(setText(lmLevel));
-        // longrunning operation runs on different thread
-        thread = new Thread(new Runnable() {
+            lmLevel = level;
+            setStartTime(lmLevel);
+            guiLM.setUhrzeit(anzuzeigendeZeit, anzuzeigendeZiffer);
 
-            int n;
+            guiLM.start(stage1);
+            guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
+            guiLM.levelLM.setText(setText(lmLevel));
+            // longrunning operation runs on different thread
+            thread = new Thread(new Runnable() {
 
-            @Override
-            public void run() {
-                Runnable updater = new Runnable() {
+                int n;
 
-                    @Override
-                    public void run() {
-                        setAnzuzeigendeZeitLernmodus(lmLevel);
+                @Override
+                public void run() {
+                    Runnable updater = new Runnable() {
 
-                        guiLM.start(stage1);
-                        guiLM.levelLM.setText(setText(lmLevel));
+                        @Override
+                        public void run() {
+                            setAnzuzeigendeZeitLernmodus(lmLevel);
 
-                        guiLM.endButton.setOnAction(event -> {
-                            uhrenspiel = new Uhrenspiel();
-                            thread.stop();
-                            stage1.close();
-                            uhrenspiel.start(stage1);
+                            guiLM.start(stage1);
+                            guiLM.levelLM.setText(setText(lmLevel));
 
-                        });
-                        guiLM.repeatButton.setOnAction(event -> {
-                            thread.stop();
-                            startLernmodus(stage1, lmLevel);
-                        });
-                        if(lmLevel >1) {
-                        guiLM.preLevel.setOnAction(event -> {
+                            guiLM.endButton.setOnAction(event -> {
+                                uhrenspiel = new Uhrenspiel();
                                 thread.stop();
-                                lmLevel = lmLevel - 1;
-                                guiLM.levelLM.setText(setText(lmLevel));
-                                startLernmodus(stage1, lmLevel);
+                                stage1.close();
+                                uhrenspiel.start(stage1);
 
-                        });
-                        }
-                        else {
-                            guiLM.preLevel.setDisable(true);
-                        }
-
-                        if(lmLevel < 4){
-                            guiLM.goOnLevel.setOnAction(event -> {
-                                thread.stop();
-                                lmLevel = lmLevel + 1;
-                                guiLM.levelLM.setText(setText(lmLevel));
-                                startLernmodus(stage1, lmLevel);
-                                System.out.println(lmLevel);
                             });
+                            guiLM.repeatButton.setOnAction(event -> {
+                                thread.stop();
+                                startLernmodus(stage1, lmLevel);
+                            });
+                            if (lmLevel > 1) {
+                                guiLM.preLevel.setOnAction(event -> {
+                                    thread.stop();
+                                    lmLevel = lmLevel - 1;
+                                    guiLM.levelLM.setText(setText(lmLevel));
+                                    startLernmodus(stage1, lmLevel);
+
+                                });
+                            } else {
+                                guiLM.preLevel.setDisable(true);
+                            }
+
+                            if (lmLevel < 4) {
+                                guiLM.goOnLevel.setOnAction(event -> {
+                                    thread.stop();
+                                    lmLevel = lmLevel + 1;
+                                    guiLM.levelLM.setText(setText(lmLevel));
+                                    startLernmodus(stage1, lmLevel);
+                                    System.out.println(lmLevel);
+                                });
+                            } else {
+                                guiLM.goOnLevel.setDisable(true);
+                            }
+
+                        }
+                    };
+
+                    boolean ende = false;
+                    while (!ende) {
+                        if (anzuzeigendeZiffer < 11) {
+                            try {
+                                Thread.sleep(7000);
+                            } catch (InterruptedException ex) {
+                            }
                         } else {
-                            guiLM.goOnLevel.setDisable(true);
+                            ende = true;
                         }
-
+                        // UI update is run on the Application thread
+                        Platform.runLater(updater);
                     }
-                };
-
-                boolean ende = false;
-                while (!ende) {
-                    if (anzuzeigendeZiffer < 11) {
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ex) {
-                        }
-                    } else {
-                        ende = true;
-                    }
-                    // UI update is run on the Application thread
-                    Platform.runLater(updater);
                 }
-            }
-        });
+            });
 
-        thread.start();
+            thread.start();
 
     }
     private String setText(int level){

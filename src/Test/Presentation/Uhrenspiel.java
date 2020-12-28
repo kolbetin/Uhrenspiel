@@ -431,6 +431,7 @@ public class Uhrenspiel extends Application  {
 
     public void endGame(){
           strictGame= false;
+          game.sum = 0;
            if (!game.saved) {
                Boolean alert = alertHelper.confirmationAlert("Spiel beenden!",
                        "Du hast nicht gespeichert! Möchtest du wirklich beenden? ");

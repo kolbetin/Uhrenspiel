@@ -65,7 +65,9 @@ public class checkEntryFA {
     private boolean checkHour() {
         if (!givenHour.trim().isEmpty()
                 & givenHour != null
-                & givenHour.matches("[0-9]*")) {
+                & givenHour.matches("[0-9]*")
+                & givenHour.length() <3
+        ) {
 
             stunde = Integer.valueOf(givenHour);
 
@@ -94,13 +96,12 @@ public class checkEntryFA {
         if (!givenMinutes.trim().isEmpty()
                 & givenMinutes != null
                 & givenMinutes.matches("[0-9]*")
+                & givenMinutes.length() <3
         ) {
             minuten = Integer.valueOf(givenMinutes);
 
-            if (minuten == 00
-                    | minuten == 15
-                    | minuten == 30
-                    | minuten == 45
+            if (minuten >= 0
+                  & minuten < 60
             ) {
                      return true;
             }
@@ -126,11 +127,11 @@ public class checkEntryFA {
             clearMinute = true;
         } else {
             if (!checkHour()) {
-                alertHelper.errorAlert("Fehler", "Bitte die Stunde eingeben, z.B. 8 oder 12.");
+                alertHelper.errorAlert("Fehler", "Bitte die Stunde zwischen 1 und 12 eingeben.");
                 clearHour = true;
             }
             if (!checkMinutes()) {
-                alertHelper.errorAlert("Fehler", "Bitte die Minuten eingeben, z.B. 15, 30 oder 45.");
+                alertHelper.errorAlert("Fehler", "Bitte die Minuten zwischen 1 und 59 eingeben");
                 clearMinute = true;
 
             } else System.out.println("Eingabe okay");
