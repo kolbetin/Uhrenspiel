@@ -22,7 +22,7 @@ public class Lernmodus {
 
     public void startLernmodus(Stage stage1, int level) {
 
-        PauseTransition wait = new PauseTransition(Duration.seconds(5));
+        PauseTransition wait = new PauseTransition();
         wait.setDelay(Duration.seconds(5));
 
             lmLevel = level;
@@ -32,6 +32,7 @@ public class Lernmodus {
             guiLM.start(stage1);
             guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
             guiLM.levelLM.setText(setText(lmLevel));
+            guiLM.explanation.setText(setExplanation(lmLevel));
             // longrunning operation runs on different thread
             thread = new Thread(new Runnable() {
 
@@ -47,6 +48,7 @@ public class Lernmodus {
 
                             guiLM.start(stage1);
                             guiLM.levelLM.setText(setText(lmLevel));
+                            guiLM.explanation.setText(setExplanation(lmLevel));
 
                             guiLM.endButton.setOnAction(event -> {
                                 uhrenspiel = new Uhrenspiel();
@@ -64,6 +66,7 @@ public class Lernmodus {
                                     thread.stop();
                                     lmLevel = lmLevel - 1;
                                     guiLM.levelLM.setText(setText(lmLevel));
+                                    guiLM.explanation.setText(setExplanation(lmLevel));
                                     startLernmodus(stage1, lmLevel);
 
                                 });
@@ -76,6 +79,7 @@ public class Lernmodus {
                                     thread.stop();
                                     lmLevel = lmLevel + 1;
                                     guiLM.levelLM.setText(setText(lmLevel));
+                                    guiLM.explanation.setText(setExplanation(lmLevel));
                                     startLernmodus(stage1, lmLevel);
                                     System.out.println(lmLevel);
                                 });
@@ -128,16 +132,39 @@ public class Lernmodus {
 
     }
 
+    private String setExplanation(int level){
+        String labelText;
+        switch (level) {
+            case 1:
+                labelText = "Wenn der kleine schwarze Zeiger \n"
+                            + "auf der Stunde ist und der\n"
+                            + "rote Zeiger auf der 12, dann \n"
+                            + "haben wir eine volle Stunde.";
+                break;
+            case 2:
+                labelText = "Wenn der kleine schwarze Zeiger auf der Stunde ist und der rote Zeiger auf der 12, dann haben wir eine volle Stunde.";
+
+                break;
+            case 3:
+                labelText ="Wenn der kleine schwarze Zeiger auf der Stunde ist und der rote Zeiger auf der 12, dann haben wir eine volle Stunde.";
+                break;
+            case 4:
+                labelText = "Wenn der kleine schwarze Zeiger auf der Stunde ist und der rote Zeiger auf der 12, dann haben wir eine volle Stunde.";
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid level");
+        }
+        return labelText;
+
+    }
+
     public void setStartTime(int level) {
         anzuzeigendeZiffer = 1;
         if (level == 1) {
             anzuzeigendeZeit = "01:00";
-
         }
         if (level == 2) {
             anzuzeigendeZeit = "01:30";
-
-
         }
         if (level == 3) {
             anzuzeigendeZeit = "01:15";

@@ -464,19 +464,20 @@ public class Uhrenspiel extends Application  {
 
             File file = data.chooseSaveFile(new File(createFileName()), stage1);
             if (file != null) {
-                 data.saveProgress(file, data.progress);
+                data.saveProgress(file, data.progress);
                 alertHelper.confirmationAlert("Speichern","Spiel wurde in Datei " + file + " gespeichert.");
                 game.saved = true;
             }
 
         } catch (IOException e) {
             alertHelper.errorAlert("Error" ,e.getLocalizedMessage());
+            game.saved = false;
         }
     }
 
 
     private void loadProgress() {
-        try {
+        try {game.saved = false;
             File file = data.chooseLoadFile(new File(createFileName()), stage1);
             if (file != null) {
                 stage1.close();

@@ -18,9 +18,6 @@
 }
 
 
-.Textfield {
-    -fx-min-width: 25;
-}
 
 
 #upperArea {
@@ -105,9 +102,15 @@
 
 .text-field {
     -fx-font-size: 20px;
-    -fx-font-weight: bold;
     -fx-max-width: 50;
   }
+
+#textExplanation{
+    -fx-font-size: 20px;
+    -fx-fill: #073566;
+
+}
+
 
 .font{
     -fx-font-family: "Comic Sans MS";
@@ -116,12 +119,6 @@
 
 
 /*
-.text-area{
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-font-family: Arial;
-}
-
 
 #face {
     -fx-fill: radial-gradient(radius 180%, burlywood, derive(burlywood, -30%), derive(burlywood, 30%));

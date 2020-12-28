@@ -4,13 +4,16 @@ package Test.Presentation;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 
 
 public class LernmodusGUI extends MainGUI {
 
     private ClockSkin clock;
     public Label text = new Label();
+    public Text explanation = new Text();
     public Label levelLM = new Label();
     private int anzuzeigendeZiffer ;
     private String anzuzeigendeZeit ;
@@ -29,22 +32,24 @@ public class LernmodusGUI extends MainGUI {
 
         uberschrift.setText("Lernmodus - Wo stehen die Ziffern auf der Uhr?");
         levelLM.setText("Level");
+        explanation.setText("Test");
+        explanation.setId("textExplanation");
 
         final VBox top = new VBox(20);
+
         top.getChildren().addAll(uberschrift,levelLM);
         top.setPadding(new Insets(7, 7, 7, 7));
 
         final VBox right = new VBox(10);
-        right.getChildren().add(text);
+        right.getChildren().addAll(text, explanation);
 
         right.setPadding(new Insets(200, 270, 7, 7));
 
         final BorderPane middle = new BorderPane();
-      //  middle.getChildren().addAll (text,clockArea());
+
         middle.setRight(right);
         middle.setLeft(clockArea());
-       // middle.setStyle("-fx-border-color: red");
-       // middle.setPadding(new Insets(7, 70, 7, 7));
+
         final HBox hbox = new HBox(40);
 
         hbox .setPadding(new Insets(7, 350, 18, 170));
@@ -54,14 +59,13 @@ public class LernmodusGUI extends MainGUI {
 
         hbox.getChildren().addAll( preLevel, repeatButton,goOnLevel );
 
-        //   middle.setPadding(new Insets(70,100,7,70));
-        //  middle.setStyle("-fx-border-width:  1; -fx-border-color: blue");
         final BorderPane root = new BorderPane();
         root.setTop(top);
-       // root.setPadding(new Insets(70, 450, 7, 70));
-        // root.setStyle("-fx-border-width:  1; -fx-border-color: green");
+
         root.setLeft(middle);
         root.setBottom(hbox);
+
+
 
         root.getStylesheets().add
                 (MainGUI.class.getResource("clock.css").toExternalForm());
