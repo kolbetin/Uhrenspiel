@@ -26,7 +26,8 @@ public class Uhrenspiel extends Application  {
     private MainScreenGUI mainScreen;
     private SummaryGUI summaryScreen;
     private Verabschiedungsbildschirm verAbschieden;
-    private ChoiceScreen choiceScreen;
+    private ChoiceScreenGame choiceScreenGame;
+    private ChoiceScreenLernmodus choiceScreenLernmodus;
     private Lernmodus learnModus;
     private Stage stage1;
     private Stage stage2;
@@ -52,7 +53,7 @@ public class Uhrenspiel extends Application  {
 
           mainScreen.newGameButton.setOnAction(event -> {
                  stage1.close();
-                 setChoiceScreen();
+                 startChoiceScreenGame();
            });
           mainScreen.loadGameButton.setOnAction(event -> {
                   loadProgress();
@@ -67,8 +68,7 @@ public class Uhrenspiel extends Application  {
           );
           mainScreen.lernmodusButton.setOnAction(event ->
           {
-              setlearnModus = true;
-              setChoiceScreen();
+              startChoiceScreenLernmodus();
           });
           mainScreen.spielanleitungButton.setOnAction(event -> {
 
@@ -77,70 +77,83 @@ public class Uhrenspiel extends Application  {
       }
 
 
-    private void setChoiceScreen(){
-        choiceScreen.start(stage1);
-        if(setlearnModus){
-            choiceScreen.text5.setText("Halbe Stunde lernen, zum Beispiel 2:30 Uhr?");
-            choiceScreen.level4.setText("Start");
-            choiceScreen.level1.setText("Start");
-            choiceScreen.level2.setText("Start");
-            choiceScreen.level3.setText("Start");
-            choiceScreen.willkommensText.setText("Welchen Lernmodus möchtest du starten?");
-            choiceScreen.text2.setText("Viertel nach lernen, zum Beispiel 3:15 Uhr?");
-            choiceScreen.text3.setText("Viertel vor lernen, zum Beispiel 3:45 Uhr?");
-            choiceScreen.text4.setVisible(false);
-            choiceScreen.leadedGame.setVisible(false);
-        }
+    private void startChoiceScreenGame(){
+        choiceScreenGame.start(stage1);
 
-        choiceScreen.leadedGame.setOnAction(e ->{
+        choiceScreenGame.leadedGame.setOnAction(e ->{
             strictGame=true;
             game.level = 1;
              newGame();
         });
 
-        choiceScreen.level1.setOnAction(e -> {
+        choiceScreenGame.level1.setOnAction(e -> {
             game.level = 1;
-             setModus(game.level);
+            newGame();
         });
 
-        choiceScreen.level2.setOnAction(e -> {
+        choiceScreenGame.level2.setOnAction(e -> {
             game.level = 2;
-             setModus(game.level);
+            newGame();
 
         });
-        choiceScreen.level3.setOnAction(e -> {
+        choiceScreenGame.level3.setOnAction(e -> {
             game.level = 3;
-            setModus(game.level);
+            newGame();
 
         });
-        choiceScreen.level4.setOnAction(e -> {
+        choiceScreenGame.level4.setOnAction(e -> {
             game.level=4;
-            setModus(game.level);
+            newGame();
 
         });
-        choiceScreen.backButton.setOnAction(e -> {
-            setlearnModus = false;
+        choiceScreenGame.backButton.setOnAction(e -> {
             stage1.close();
             start(stage1);
         });
     }
-        private void setModus(int level){
-            if(setlearnModus){
+
+    private void startChoiceScreenLernmodus(){
+        choiceScreenLernmodus.start(stage1);
+
+        choiceScreenLernmodus.level1.setOnAction(e -> {
+            game.level = 1;
+            setLernmodus(game.level);
+        });
+
+        choiceScreenLernmodus.level2.setOnAction(e -> {
+            game.level = 2;
+            setLernmodus(game.level);
+
+        });
+        choiceScreenLernmodus.level3.setOnAction(e -> {
+            game.level = 3;
+            setLernmodus(game.level);
+
+        });
+        choiceScreenLernmodus.level4.setOnAction(e -> {
+            game.level=4;
+            setLernmodus(game.level);
+
+        });
+        choiceScreenLernmodus.backButton.setOnAction(e -> {
+            stage1.close();
+            start(stage1);
+        });
+    }
+         private void setLernmodus(int level){
                 learnModus.setAnzuzeigendeZeitLernmodus(level);
                 learnModus.setStartTime(level);
                 learnModus.startLernmodus(stage1,level);
-            }
-            else {
-                newGame();
-            }
-        }
-  public void setBackData(){
-      game.aufgabennummer = 0;
-      game.richtigeAntwort =0;
-      game.falscheAntwort= 0;
-      game.saved = false;
-      game.playedGames.clear();
-      game.setLevel(game.level);
+         }
+
+
+         public void setBackData(){
+                game.aufgabennummer = 0;
+                game.richtigeAntwort =0;
+                game.falscheAntwort= 0;
+                game.saved = false;
+                game.playedGames.clear();
+                game.setLevel(game.level);
 
       if(!strictGame){
           game.sum =0;
@@ -519,10 +532,11 @@ public class Uhrenspiel extends Application  {
         guiMC = new MainGUI();
         guiFA = new QuestionFreeAnswer();
         mainScreen = new MainScreenGUI();
-        choiceScreen = new ChoiceScreen();
+        choiceScreenGame = new ChoiceScreenGame();
         verAbschieden = new Verabschiedungsbildschirm();
         game = new Game();
-        choiceScreen = new ChoiceScreen();
+        choiceScreenGame = new ChoiceScreenGame();
+        choiceScreenLernmodus = new ChoiceScreenLernmodus();
         summaryScreen = new SummaryGUI();
         spielanleitung = new Spielanleitung();
         learnModus = new Lernmodus();

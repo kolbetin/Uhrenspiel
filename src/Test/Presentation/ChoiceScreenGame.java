@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 
-public class ChoiceScreen extends MainGUI {
+public class ChoiceScreenGame extends MainGUI {
 
      public Label willkommensText;
      public Button level1;
