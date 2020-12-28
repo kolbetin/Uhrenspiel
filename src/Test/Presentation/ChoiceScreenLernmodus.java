@@ -16,12 +16,10 @@ public class ChoiceScreenLernmodus extends MainGUI {
      public Button level2;
      public Button level3;
      public Button level4;
-     public Button leadedGame;
      public Text text1;
      public Text text2;
      public Text text3;
      public Text text4;
-     public Text text5;
      public Button backButton;
 
 
@@ -40,10 +38,7 @@ public class ChoiceScreenLernmodus extends MainGUI {
         text1 = new Text("Volle Stunde, zum Beispiel 01:00 Uhr?");
         text2 = new Text("Viertel nach lernen, zum Beispiel 3:15 Uhr?");
         text3 = new Text("Viertel vor lernen, zum Beispiel 3:45 Uhr?");
-       // text4 = new Text("Level 1-3 im Lernmodus?");
-        text5 = new Text("Halbe Stunde lernen, zum Beispiel 2:30 Uhr?");
-
-
+        text4 = new Text("Halbe Stunde lernen, zum Beispiel 2:30 Uhr?");
 
 
         final VBox middle = new VBox(30);
@@ -52,7 +47,7 @@ public class ChoiceScreenLernmodus extends MainGUI {
 
         middle.setId("choiceMiddleArea");
 
-        middle.getChildren().addAll(  text1, text2,text3, text5);
+        middle.getChildren().addAll(  text1, text2,text3, text4);
         right.getChildren().addAll(level1, level2, level3, level4);
         bottom.getChildren().add(backButton);
 

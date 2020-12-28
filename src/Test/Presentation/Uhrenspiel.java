@@ -34,12 +34,10 @@ public class Uhrenspiel extends Application  {
     private Stage stage3;
     private ArrayList<MainGUI> guiList;
     private AlertHelper alertHelper;
-    public Game game;
+    private Game game;
     private SavedData data;
-    public boolean setlearnModus = false;
     private boolean strictGame = false;
     private Spielanleitung spielanleitung;
-  //  private boolean testEntry = false;
     private checkEntryFA checkEntryFA;
 
 
@@ -155,10 +153,10 @@ public class Uhrenspiel extends Application  {
                 game.playedGames.clear();
                 game.setLevel(game.level);
 
-      if(!strictGame){
-          game.sum =0;
-      }
-  }
+                if(!strictGame){
+                game.sum =0;
+                 }
+        }
 
     public void newGame(){
         setBackData();

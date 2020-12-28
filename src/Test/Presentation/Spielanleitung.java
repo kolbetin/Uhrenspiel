@@ -30,7 +30,6 @@ public class Spielanleitung {
         guiMC.time = "04:00";
         guiMC.start(stage1);
         guiMC.antwortzähler.setVisible(false);
-        guiMC.textlevel.setVisible(false);
         guiMC.level.setText("Wir zeigen dir jetzt die beiden Antwortmöglichkeiten.");
         guiMC.goOn.setVisible(false);
         guiMC.richtigeAntwort.setVisible(false);
@@ -107,7 +106,6 @@ public class Spielanleitung {
                                         guiFA.time = "07:15";
                                         guiFA.start(stage1);
                                         guiFA.antwortzähler.setVisible(false);
-                                        guiFA.textlevel.setVisible(false);
                                         guiFA.richtigeAntwort.setVisible(false);
                                         guiFA.falscheAntwort.setVisible(false);
                                         guiFA.allAnswers.setVisible(false);

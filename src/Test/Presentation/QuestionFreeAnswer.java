@@ -19,14 +19,14 @@ public class QuestionFreeAnswer extends MainGUI {
         final HBox hBox = new HBox(10);
         hBox.setId("answerArea");
         hBox.setPadding(new Insets(15, 10, 10, 7));
-        submitButton = new Button("abschicken");
+        submitButton = new Button("Abschicken");
         givenHour = new TextField();
         givenMinutes = new TextField();
 
-        goOn = new Button ("weiter");
+        goOn = new Button ("Weiter");
 
         hBox.getChildren().addAll(
-                 new Label("Antwort: "), givenHour,new Text(":"),givenMinutes,new Label(" Uhr  "), submitButton, goOn);
+                 new Label("Antwort: Es ist "), givenHour,new Text(":"),givenMinutes,new Label(" Uhr  "), submitButton, goOn);
         return hBox;
     }
 

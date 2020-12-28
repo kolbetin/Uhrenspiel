@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainGUI {
+public class MainGUI extends Application {
 
         public Button endButton;
         public Button antwort1;
@@ -30,7 +30,7 @@ public class MainGUI {
         public Label level;
         public Label richtigeAntwort;
         public Label falscheAntwort;
-        public Label textlevel;
+      //  public Label textlevel;
         public Label allAnswers;
         public Label levelexplain;
         private int levelnummer = 0;
@@ -53,7 +53,7 @@ public class MainGUI {
             borderPane.setTop(upperArea());
             borderPane.setRight(middleArea());
             borderPane.setLeft(leftArea());
-          //  borderPane.setStyle("-fx-border-image-width: 1; -fx-border-color: black");
+           // borderPane.setStyle("-fx-border-image-width: 1; -fx-border-color: black");
 
             Scene scene = new Scene(borderPane, 1400, 700);
             scene.getStylesheets().add
@@ -70,23 +70,20 @@ public class MainGUI {
 
         antwortzähler = new Label("Aufgabe: " + aufgabennummer + "  von 10");
         level = new Label ("Level: " + levelnummer );
-        textlevel = new Label("");
 
+        final HBox upper = new HBox(70);
+        upper.getChildren().addAll( level,antwortzähler);
+        upper.setPadding(new Insets(7,7,7,7));
 
+        final VBox vBox = new VBox(30);
 
-        final VBox vBox= new VBox(20);
-        vBox.getChildren().addAll(level,textlevel);
+        vBox.getChildren().addAll(questionArea(),answerArea());
+        middleArea.setPadding(new Insets(7,7,7,100));
 
-        final VBox upper = new VBox(20);
-        upper.getChildren().addAll(antwortzähler,vBox);
-
-        final BorderPane borderPane = new BorderPane();
-        borderPane.setTop(questionArea());
-        borderPane.setBottom(answerArea());
-        //borderPane.setRight(vBox2);
         middleArea.setTop(upper);
-        middleArea.setBottom(borderPane);
+        middleArea.setBottom(vBox);
         middleArea.setCenter(clockArea());
+
 
         //middleArea.setStyle("-fx-border-image-width: 1; -fx-border-color: blue");
 
@@ -97,10 +94,9 @@ public class MainGUI {
         public Pane questionArea() {
             BorderPane borderPane = new BorderPane();
             borderPane.setId("questionArea");
-           // borderPane.setPadding(new Insets(7, 7, 10, 7));
 
-           // Text frage = new Text("Wie spät is es?");
             questionLabel = new Label("Frage: " + "Wie spät ist es?" );
+
 
             borderPane.setTop(questionLabel);
 
@@ -112,7 +108,7 @@ public class MainGUI {
             final VBox vBox = new VBox();
             vBox.setId("upperArea");
 
-          //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: black");
+          //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: yellow");
 
             header = new Label("Uhrenspiel");
 
@@ -122,20 +118,21 @@ public class MainGUI {
         }
 
         public Pane clockArea(){
-            final  BorderPane borderPane= new BorderPane();
-            borderPane.setId("clockArea");
+
+            final HBox hbox = new HBox();
+            hbox.setId("clockArea");
 
 
             clock = new ClockSkin();
             node = clock.createClock(time);
 
-           //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-            borderPane.setPadding(new Insets(7,170,7,350));
+         //   borderPane.setStyle("-fx-border-width:  1; -fx-border-color: #882cc1");
+            hbox.setPadding(new Insets(70,7,7,200));
 
-            borderPane.setTop(node);
-           // borderPane.setCenter(circle);
+              hbox.getChildren().add(node);
 
-            return borderPane;
+
+            return hbox;
         }
 
          public Pane leftArea() {
@@ -158,8 +155,8 @@ public class MainGUI {
              vb.setSpacing(50);
              vb.getChildren().addAll( levelexplain, richtigeAntwort,falscheAntwort);
 
-            //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-            borderPane.setPadding(new Insets(120, 7, 7, 7));
+           // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: #59ff00");
+            borderPane.setPadding(new Insets(100, 7, 7, 7));
             vb.setPadding(new Insets(50, 7, 7, 7));
             vbox.setPadding(new Insets(7, 7, 7, 7));
 
@@ -196,7 +193,7 @@ public class MainGUI {
 
             goOn = new Button ("weiter");
 
-            Label antwort = new Label("Antwort");
+            Label antwort = new Label("Antwort: Es ist ");
             hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);
             hBox.getChildren().add(goOn);
 
@@ -218,9 +215,9 @@ public class MainGUI {
           public  MainGUI() {
                    answers = new ArrayList<>();
         }
-    /*     public static void main(String[] args) {
+         public static void main(String[] args) {
             launch(args);
-        }*/
+        }
 
     }
 
