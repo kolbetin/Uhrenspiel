@@ -36,9 +36,9 @@ public class ChoiceScreenLernmodus extends MainGUI {
         level4 = new Button("Start");
         backButton = new Button("Zurück");
         text1 = new Text("Volle Stunde, zum Beispiel 01:00 Uhr?");
-        text2 = new Text("Viertel nach lernen, zum Beispiel 3:15 Uhr?");
-        text3 = new Text("Viertel vor lernen, zum Beispiel 3:45 Uhr?");
-        text4 = new Text("Halbe Stunde lernen, zum Beispiel 2:30 Uhr?");
+        text2 = new Text("Halbe Stunde lernen, zum Beispiel 2:30 Uhr?");
+        text3 = new Text("Viertel nach lernen, zum Beispiel 3:15 Uhr?");
+        text4 = new Text("Viertel vor lernen, zum Beispiel 3:45 Uhr?");
 
 
         final VBox middle = new VBox(30);

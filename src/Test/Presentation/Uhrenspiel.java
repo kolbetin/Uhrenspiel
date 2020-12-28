@@ -483,7 +483,7 @@ public class Uhrenspiel extends Application  {
                 updateData();
                 game.setLevel(game.level);
                 setgoOnButton();
-                alertHelper.confirmationAlert("Speichern", "Spiel von Datei " + file + " geladen.");
+                alertHelper.confirmationAlert("Laden", "Spiel von Datei " + file + " geladen.");
 
             }
             else {

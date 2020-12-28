@@ -108,13 +108,14 @@ public class Lernmodus {
                 labelText = "Volle Stunde";
                 break;
             case 2:
-                labelText = "Viertel nach";
+                labelText = "Halbe Stunde";
+
                 break;
             case 3:
-                labelText = "Viertel vor";
+                labelText = "Viertel nach";
                 break;
             case 4:
-                labelText = "Halbe Stunde";
+                labelText = "Viertel vor";
                 break;
             default:
                 throw new IllegalArgumentException("Invalid level");
@@ -130,15 +131,16 @@ public class Lernmodus {
 
         }
         if (level == 2) {
-            anzuzeigendeZeit = "01:15";
+            anzuzeigendeZeit = "01:30";
+
 
         }
         if (level == 3) {
-            anzuzeigendeZeit = "01:45";
+            anzuzeigendeZeit = "01:15";
 
         }
         if (level == 4) {
-            anzuzeigendeZeit = "01:30";
+            anzuzeigendeZeit = "01:45";
 
         }
     }
@@ -156,15 +158,15 @@ public class Lernmodus {
 
                 }
                 if (level == 2) {
-                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":15";
+                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":30";
 
                 }
                 if (level == 3) {
-                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":45";
+                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":15";
 
                 }
                 if (level == 4) {
-                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":30";
+                    anzuzeigendeZeit = "0" + anzuzeigendeZiffer + ":45";
 
                 }
             } else {
@@ -173,15 +175,15 @@ public class Lernmodus {
 
                 }
                 if (level == 2) {
-                    anzuzeigendeZeit = anzuzeigendeZiffer + ":15";
+                    anzuzeigendeZeit = anzuzeigendeZiffer + ":30";
 
                 }
                 if (level == 3) {
-                    anzuzeigendeZeit = anzuzeigendeZiffer + ":45";
+                    anzuzeigendeZeit = anzuzeigendeZiffer + ":15";
 
                 }
                 if (level == 4) {
-                    anzuzeigendeZeit = anzuzeigendeZiffer + ":30";
+                    anzuzeigendeZeit = anzuzeigendeZiffer + ":45";
 
                 }
             }

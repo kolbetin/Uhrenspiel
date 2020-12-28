@@ -71,7 +71,7 @@ public class MainGUI extends Application {
         antwortzähler = new Label("Aufgabe: " + aufgabennummer + "  von 10");
         level = new Label ("Level: " + levelnummer );
 
-        final HBox upper = new HBox(70);
+        final HBox upper = new HBox(100);
         upper.getChildren().addAll( level,antwortzähler);
         upper.setPadding(new Insets(7,7,7,7));
 

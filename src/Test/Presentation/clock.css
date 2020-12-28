@@ -1,8 +1,6 @@
 /** clock.css (place input same directory as Clock.java and ensure build script copies the file to the same location as Clock.class) */
 
-#questionArea{
-    -fx-font-size: 25px;
-}
+
 #answerArea {
      -fx-font-size: 25px;
      -fx-font-weight: bold
@@ -11,14 +9,15 @@
 #mainscreen Button{
     -fx-min-width: 150;
     -fx-max-width: 150;
-//-fx-text-alignment: left;
+
 
 }
 #answerArea Button {
--fx-min-width: 130;
--fx-max-width: 180;
-
+    -fx-min-width: 130;
+    -fx-max-width: 150;
 }
+
+
 .Textfield {
     -fx-min-width: 25;
 }
@@ -38,7 +37,7 @@
 
 #leftArea Label  {
     -fx-font-size: 20px;
-    -fx-min-width: 250;
+    -fx-min-width: 200;
     -fx-max-width: 250;
     -fx-label-padding:0 ;
     -fx-alignment: Center-Left;
