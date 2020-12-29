@@ -236,11 +236,7 @@ public class Uhrenspiel extends Application  {
                   game.falscheAntwort,
                   game.answers);
           guiFA.start(stage1);
-          guiFA.givenMinutes.setText("00");
 
-          if(game.level > 1){
-                  guiFA.givenMinutes.setText("");
-          }
           guiFA.goOn.setVisible(false);
           guiFA.goOn.setOnAction(event -> setgoOnButton());
 

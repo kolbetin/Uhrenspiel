@@ -62,7 +62,7 @@ public class LernmodusGUI extends MainGUI {
 
         final HBox hbox = new HBox(40);
 
-        hbox .setPadding(new Insets(7, 50, 18, 70));
+        hbox .setPadding(new Insets(7, 7, 18, 7));
         goOnLevel = new Button ("Nächstes Level");
         preLevel = new Button ("Vorheriges Level");
         repeatButton = new Button("Nochmal");

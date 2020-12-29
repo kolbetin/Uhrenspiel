@@ -132,26 +132,26 @@ public class Lernmodus {
         String labelText;
         switch (level) {
             case 1:
-                labelText = "Wenn der Sundenzeiger \n"
+                labelText = "Wenn der Stundenzeiger \n"
                             + "auf der Stunde ist und der\n"
                             + "Minutenzeiger auf der 12, dann \n"
                             + "haben wir eine volle Stunde.";
                 break;
             case 2:
-                labelText = "Wenn der Sundenzeiger \n"
+                labelText = "Wenn der Stundenzeiger \n"
                         + "zwischen zwei Stunden ist und\n"
                         + "der Minutenzeiger auf der 6, dann \n"
                         + "haben wir es halb.";
 
                 break;
             case 3:
-                labelText = "Wenn der Sundenzeiger \n"
+                labelText = "Wenn der Stundenzeiger \n"
                         + "kurz nach der Stunde ist und \n"
                         + "der Minutenzeiger auf der 3, dann \n"
                         + "haben wir es viertel nach.";
                 break;
             case 4:
-                labelText = "Wenn der Sundenzeiger\n"
+                labelText = "Wenn der Stundenzeiger\n"
                         + "kurz vor der Stunde ist und der\n"
                         + "Minutenzeiger auf der 9, dann \n"
                         + "haben wir es viertel vor.";
