@@ -90,15 +90,11 @@ public class Lernmodus {
                         }
                     };
 
-                    boolean ende = false;
-                    while (!ende) {
-                        if (anzuzeigendeZiffer < 11) {
-                            try {
-                                Thread.sleep(7000);
-                            } catch (InterruptedException ex) {
-                            }
-                        } else {
-                            ende = true;
+                    for (int i = 0; i < 11; i++) {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
                         }
                         // UI update is run on the Application thread
                         Platform.runLater(updater);
@@ -136,20 +132,29 @@ public class Lernmodus {
         String labelText;
         switch (level) {
             case 1:
-                labelText = "Wenn der kleine schwarze Zeiger \n"
+                labelText = "Wenn der Sundenzeiger \n"
                             + "auf der Stunde ist und der\n"
-                            + "rote Zeiger auf der 12, dann \n"
+                            + "Minutenzeiger auf der 12, dann \n"
                             + "haben wir eine volle Stunde.";
                 break;
             case 2:
-                labelText = "Wenn der kleine schwarze Zeiger auf der Stunde ist und der rote Zeiger auf der 12, dann haben wir eine volle Stunde.";
+                labelText = "Wenn der Sundenzeiger \n"
+                        + "zwischen zwei Stunden ist und\n"
+                        + "der Minutenzeiger auf der 6, dann \n"
+                        + "haben wir es halb.";
 
                 break;
             case 3:
-                labelText ="Wenn der kleine schwarze Zeiger auf der Stunde ist und der rote Zeiger auf der 12, dann haben wir eine volle Stunde.";
+                labelText = "Wenn der Sundenzeiger \n"
+                        + "kurz nach der Stunde ist und \n"
+                        + "der Minutenzeiger auf der 3, dann \n"
+                        + "haben wir es viertel nach.";
                 break;
             case 4:
-                labelText = "Wenn der kleine schwarze Zeiger auf der Stunde ist und der rote Zeiger auf der 12, dann haben wir eine volle Stunde.";
+                labelText = "Wenn der Sundenzeiger\n"
+                        + "kurz vor der Stunde ist und der\n"
+                        + "Minutenzeiger auf der 9, dann \n"
+                        + "haben wir es viertel vor.";
                 break;
             default:
                 throw new IllegalArgumentException("Invalid level");

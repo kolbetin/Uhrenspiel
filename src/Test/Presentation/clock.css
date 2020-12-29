@@ -10,15 +10,11 @@
     -fx-min-width: 150;
     -fx-max-width: 150;
 
-
 }
 #answerArea Button {
     -fx-min-width: 130;
     -fx-max-width: 180;
 }
-
-
-
 
 #upperArea {
     -fx-font-size: 25px;
@@ -28,7 +24,6 @@
 
 #choiceMiddleArea Text{
     -fx-font-size: 20px;
-
 
 }
 
@@ -44,14 +39,12 @@
     -fx-font-size: 25px;
     -fx-min-width: 1500;
     -fx-max-width: 1500;
-
 }
 
 
 .label {
     -fx-font-size: 25px;
     -fx-font-weight: bold;
-
     -fx-text-fill: #333333;
     -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
     -fx-alignment: CENTER;
@@ -66,18 +59,15 @@
     -fx-font-family: Arial;
     -fx-font-weight: bold;
 
-
 }
 #buttonOkay  {
-    -fx-background-image:  url(image/SmileyTransparent.png);
+    -fx-background-image:  url(image/HappySmiley.png);
     -fx-background-size: 40px 40px;
     -fx-background-repeat: no-repeat;
     -fx-background-position:  right;
     -fx-background-color: #0af60a;
     -fx-alignment: CENTER-LEFT;
 }
-
-
 
 #buttonNotOkay{
     -fx-background-image:  url(image/TraurigesSmiley.png);
@@ -86,11 +76,9 @@
     -fx-background-position:  right;
     -fx-background-color: red;
     -fx-alignment:  CENTER-LEFT;
-
 }
 
 .button {
-
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 18px;

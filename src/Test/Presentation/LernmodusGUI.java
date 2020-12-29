@@ -15,6 +15,7 @@ public class LernmodusGUI extends MainGUI {
     public Label text = new Label();
     public Text explanation = new Text();
     public Label levelLM = new Label();
+    public Label zeiger = new Label();
     private int anzuzeigendeZiffer ;
     private String anzuzeigendeZeit ;
     private Label uberschrift = new Label();
@@ -34,6 +35,9 @@ public class LernmodusGUI extends MainGUI {
         levelLM.setText("Level");
         explanation.setText("Test");
         explanation.setId("textExplanation");
+        zeiger.setText("Legende:\n"
+                        +"Stundenzeiger: kurzer schwarzer Zeiger\n"
+                        +"Minutenzeiger: langer roter Zeiger");
 
         final VBox top = new VBox(20);
 
@@ -43,16 +47,22 @@ public class LernmodusGUI extends MainGUI {
         final VBox right = new VBox(10);
         right.getChildren().addAll(text, explanation);
 
-        right.setPadding(new Insets(200, 270, 7, 7));
+        final VBox left = new VBox(10);
+        left.getChildren().addAll(zeiger);
+        left.setPadding(new Insets(7,7,7,440));
+        zeiger.setId("textExplanation");
+
+        right.setPadding(new Insets(150, 270, 7, 7));
 
         final BorderPane middle = new BorderPane();
 
         middle.setRight(right);
         middle.setLeft(clockArea());
+        middle.setTop(left);
 
         final HBox hbox = new HBox(40);
 
-        hbox .setPadding(new Insets(7, 350, 18, 170));
+        hbox .setPadding(new Insets(7, 50, 18, 70));
         goOnLevel = new Button ("Nächstes Level");
         preLevel = new Button ("Vorheriges Level");
         repeatButton = new Button("Nochmal");
@@ -81,7 +91,7 @@ public class LernmodusGUI extends MainGUI {
         node = clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
 
         //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        borderPane.setPadding(new Insets(7, 170, 7, 250));
+         borderPane.setPadding(new Insets(7, 70, 7, 50));
 
        borderPane.setCenter(node);
 
