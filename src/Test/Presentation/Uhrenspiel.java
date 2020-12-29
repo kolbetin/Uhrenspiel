@@ -46,8 +46,8 @@ public class Uhrenspiel extends Application  {
 
           stage1 = new Stage();
           stage2 = new Stage();
-
-          mainScreen.start(stage1);
+          verAbschieden.start(stage2);
+         /* mainScreen.start(stage1);
 
           mainScreen.newGameButton.setOnAction(event -> {
                  stage1.close();
@@ -71,7 +71,7 @@ public class Uhrenspiel extends Application  {
           mainScreen.spielanleitungButton.setOnAction(event -> {
 
               spielanleitung.starteSpielanleitung(stage1) ;
-          });
+          });*/
       }
 
 

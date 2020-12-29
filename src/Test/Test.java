@@ -1,53 +1,100 @@
 package Test;
 
-import com.sun.javafx.collections.MappingChange;
+import java.awt.*;
+import java.io.FileInputStream;
+import java.util.Collection;
 
-import java.util.HashMap;
-import java.util.Iterator;
+import Test.Presentation.MainGUI;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-import java.util.Map;
-import java.util.stream.Stream;
+public class Test  extends Application {
+
+    private Label name;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 
+    public void start(Stage primaryStage) {
 
-public class Test  {
 
-    public static void main (String[] args)
-{
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, "One");
-        map.put(2, "Two");
+        try {
 
-// 1. using Iterator
-Iterator<Integer> itr = map.keySet().iterator();
-while (itr.hasNext()) {
-System.out.println(itr.next());
-}
 
-// 2. For-each Loop
-for (Integer key : map.keySet()) {
-System.out.println(key);
-}
+            // set title
+            primaryStage.setTitle("JavaFX ImageView Tutorial - tutorialkart.com");
 
-// 3. Java 8 - Collection.iterator() + Iterator.forEachRemaining()
-map.keySet().iterator().forEachRemaining(System.out::println);
+            //read image as stream
+            FileInputStream input = new FileInputStream("src/Test/Presentation/image/Success.jfif");
+            //prepare image object
+            Image image = new Image(input);
 
-// 4. Java 8 - Collection.stream() + Stream.forEach()
-map.keySet().stream()
-.forEach(System.out::println);
+            //create ImageView object
+            ImageView imageView = new ImageView(image);
 
-// Java 8 - Stream.of() + Collection.toArray() + Stream.forEach()
-Stream.of(map.keySet().toArray()).forEach(System.out::println);
+            // stack pane
+            TilePane tilePane = new TilePane();
 
-// 5. Convert to String
-System.out.println(map.keySet().toString());
 
-// Java 8
-Stream.of(map.keySet().toString())
-.forEach(System.out::println);
-}
+            // add ImageView to the tile pane
+            tilePane.getChildren().addAll(picture());
 
+            tilePane.setPadding(new Insets(170, 7, 7, 570));
+            imageView.setStyle("-fx-background-color: rgba(0, 0, 0, 0);");
+            //set up scene
+            Scene scene = new Scene(tilePane, 1450, 800);
+            scene.getStylesheets().add
+                    (MainGUI.class.getResource("clock.css").toExternalForm());
+
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
+
+    public Node picture() throws Exception {
+
+        try {
+            //read image as stream
+            FileInputStream input = new FileInputStream("src/Test/Presentation/image/Success.jfif");
+            //prepare image object
+            Image image = new Image(input);
+
+            //create ImageView object
+            ImageView imageView = new ImageView(image);
+
+            // stack pane
+            TilePane tilePane = new TilePane();
+
+
+            // add ImageView to the tile pane
+            tilePane.getChildren().addAll(imageView);
+
+            tilePane.setPadding(new Insets(170, 7, 7, 570));
+
+            //set up scene
+            return tilePane;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+}
 
 

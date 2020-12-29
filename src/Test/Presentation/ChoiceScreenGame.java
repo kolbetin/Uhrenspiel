@@ -36,12 +36,13 @@ public class ChoiceScreenGame extends MainGUI {
         level2 = new Button("Starte Level 2");
         level3 = new Button("Starte Level 3");
         level4 = new Button("Starte Level 4");
-        leadedGame = new Button("Herausforderung");
+        leadedGame = new Button("Experten Modus");
         backButton = new Button("Zurück");
         text1 = new Text("Volle Stunde, zum Beispiel 01:00 Uhr?");
         text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30 Uhr?");
         text3 = new Text("Viertel Stunde lernen, zum Beispiel 01:15 Uhr?");
-        text4 = new Text("Level 1-3 im Lernmodus?");
+        text4 = new Text("Um zum Experten zu werden musst du 80% der\n"
+                +"Fragen richtige beantworten!");
         text5 = new Text("Level 1-3 gemischt?");
 
         final VBox middle = new VBox(30);
@@ -50,8 +51,8 @@ public class ChoiceScreenGame extends MainGUI {
 
         middle.setId("choiceMiddleArea");
 
-        middle.getChildren().addAll( text4, text1, text2,text3, text5);
-        right.getChildren().addAll(leadedGame, level1, level2, level3, level4 );
+        middle.getChildren().addAll(  text1, text2,text3, text5, text4);
+        right.getChildren().addAll( level1, level2, level3, level4, leadedGame );
         bottom.getChildren().add(backButton);
 
         BorderPane root = new BorderPane();
@@ -61,7 +62,7 @@ public class ChoiceScreenGame extends MainGUI {
 
         middle.setPadding(new Insets(50,7,10,7));
         right.setPadding(new Insets(50,7,10,70));
-        bottom.setPadding(new Insets(0,7,200,7));
+        bottom.setPadding(new Insets(0,7,70,7));
         root.setLeft(middle);
         root.setRight(right);
         root.setBottom(bottom);

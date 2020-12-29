@@ -49,8 +49,6 @@ public class LernmodusGUI extends MainGUI {
 
         zeiger.setId("textExplanation");
 
-       // right.setPadding(new Insets(70, 270, 7, 7));
-
         final BorderPane middle = new BorderPane();
 
         VBox vbox = new VBox(80);
@@ -75,8 +73,6 @@ public class LernmodusGUI extends MainGUI {
 
         root.setLeft(middle);
         root.setBottom(hbox);
-
-
 
         root.getStylesheets().add
                 (MainGUI.class.getResource("clock.css").toExternalForm());
