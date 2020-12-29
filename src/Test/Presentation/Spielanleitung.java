@@ -37,7 +37,7 @@ public class Spielanleitung {
         guiMC.allAnswers.setVisible(false);
         guiMC.levelexplain.setVisible(false);
         guiMC.saveButton.setVisible(false);
-        guiMC.endButton.setText("Beenden");
+        guiMC.endButton.setText("Tutorial Beenden");
         guiMC.endButton.setOnAction(event -> {
             uhrenspiel = new Uhrenspiel();
             stage1.close();
@@ -53,10 +53,10 @@ public class Spielanleitung {
                 new KeyFrame(Duration.seconds(0.1), evt -> {
                     guiMC.level.setText("Wir zeigen dir jetzt die beiden Antwortmöglichkeiten.");
                 }),
-                new KeyFrame(Duration.seconds(2.0), evt -> {
+                new KeyFrame(Duration.seconds(5.0), evt -> {
                     guiMC.level.setText("Die erste Antwortmöglichkeit ist die Auswahl mit Knopfdruck.");
                 }),
-                new KeyFrame(Duration.seconds(7.0), evt -> guiMC.antwort1.setStyle("-fx-background-color: green")));
+                new KeyFrame(Duration.seconds(9.0), evt -> guiMC.antwort1.setStyle("-fx-background-color: green")));
 
         if(green != null){
             green.play();
@@ -68,7 +68,7 @@ public class Spielanleitung {
 
         if(timeline != null){
             timeline.setCycleCount(2);
-            timeline.setDelay(Duration.seconds(8));
+            timeline.setDelay(Duration.seconds(10));
             timeline.play();
         }
 
@@ -84,7 +84,7 @@ public class Spielanleitung {
 
 
         if(answer != null){
-            answer.setDelay(Duration.seconds(10));
+            answer.setDelay(Duration.seconds(11));
             answer.play();
         }
 
@@ -95,7 +95,7 @@ public class Spielanleitung {
 
         if(goOn != null){
             goOn.setCycleCount(2);
-            goOn.setDelay(Duration.seconds(12));
+            goOn.setDelay(Duration.seconds(14));
             goOn.play();
         }
 
@@ -113,7 +113,7 @@ public class Spielanleitung {
                                         guiFA.saveButton.setVisible(false);
                                         guiFA.givenHour.setDisable(true);
                                         guiFA.givenMinutes.setDisable(true);
-                                        guiFA.endButton.setText("Beenden");
+                                        guiFA.endButton.setText("Tutorial Beenden");
                                         guiFA.goOn.setVisible(false);
 
                                        guiFA.endButton.setOnAction(event -> {
@@ -132,15 +132,15 @@ public class Spielanleitung {
 
 
                       }),
-                      new KeyFrame(Duration.seconds(7.0), evt ->  guiFA.givenHour.setText(" 7")));
+                      new KeyFrame(Duration.seconds(8.0), evt ->  guiFA.givenHour.setText(" 7")));
 
         if(startFC != null) {
-            startFC.setDelay(Duration.seconds(16));
+            startFC.setDelay(Duration.seconds(19));
             startFC.play();
         }
 
           abschicken = new Timeline(
-                new KeyFrame(Duration.seconds(0.6), evt -> {
+                new KeyFrame(Duration.seconds(0.1), evt -> {
                     guiFA.submitButton.setId("buttonOkay");
                     guiFA.submitButton.setText("Richtig!");
                     guiFA.submitButton.setDisable(true);
@@ -153,7 +153,7 @@ public class Spielanleitung {
 
         if(abschicken != null){
             abschicken.setCycleCount(2);
-            abschicken.setDelay(Duration.seconds(24));
+            abschicken.setDelay(Duration.seconds(29));
             abschicken.play();
         }
 
@@ -163,23 +163,21 @@ public class Spielanleitung {
                 new KeyFrame(Duration.seconds(1.2), evt -> guiFA.goOn.setVisible(true)));
          if(submit != null){
             submit.setCycleCount(2);
-            submit.setDelay(Duration.seconds(27));
+            submit.setDelay(Duration.seconds(31));
             submit.play();
         }
 
         ende = new Timeline( new KeyFrame(Duration.seconds(0.1), evt ->{
-            guiFA.goOn.setText("Tutorial Beenden");
+            guiFA.goOn.setText("Tutorial Wiederholen");
             guiFA.goOn.setOnAction(event -> {
-                uhrenspiel = new Uhrenspiel();
-                stage1.close();
-                uhrenspiel.start(stage1);
+               starteSpielanleitung(stage1);
             });
         }));
 
 
             if(ende != null){
 
-            ende.setDelay(Duration.seconds(30));
+            ende.setDelay(Duration.seconds(34));
             ende.play();
         }
 

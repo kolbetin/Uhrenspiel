@@ -131,7 +131,7 @@ public class checkEntryFA {
                 clearHour = true;
             }
             if (!checkMinutes()) {
-                alertHelper.errorAlert("Fehler", "Bitte die Minuten zwischen 1 und 59 eingeben");
+                alertHelper.errorAlert("Fehler", "Bitte die Minuten zwischen 0 und 59 eingeben");
                 clearMinute = true;
 
             } else System.out.println("Eingabe okay");

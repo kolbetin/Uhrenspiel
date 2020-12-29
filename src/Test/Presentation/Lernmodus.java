@@ -92,7 +92,7 @@ public class Lernmodus {
 
                     for (int i = 0; i < 11; i++) {
                         try {
-                            Thread.sleep(1000);
+                            Thread.sleep(7000);
                         } catch (InterruptedException ex) {
                             ex.printStackTrace();
                         }

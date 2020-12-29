@@ -127,6 +127,15 @@ class checkEntryFATest {
         assertTrue(checkEntryFA.getCheckMinutes());
         assertFalse(checkEntryFA.correctEntry);
 
+        hour = "11";
+        minutes = "123456789101112";
+
+        checkEntryFA.setValues(hour, minutes);
+
+        assertTrue(checkEntryFA.getCheckHour());
+        assertFalse(checkEntryFA.getCheckMinutes());
+        assertFalse(checkEntryFA.correctEntry);
+
 
         hour = "12";
         minutes = "-1";

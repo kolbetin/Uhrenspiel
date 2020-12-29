@@ -44,25 +44,26 @@ public class LernmodusGUI extends MainGUI {
         top.getChildren().addAll(uberschrift,levelLM);
         top.setPadding(new Insets(7, 7, 7, 7));
 
-        final VBox right = new VBox(10);
+        final VBox right = new VBox(30);
         right.getChildren().addAll(text, explanation);
 
-        final VBox left = new VBox(10);
-        left.getChildren().addAll(zeiger);
-        left.setPadding(new Insets(7,7,7,440));
         zeiger.setId("textExplanation");
 
-        right.setPadding(new Insets(150, 270, 7, 7));
+       // right.setPadding(new Insets(70, 270, 7, 7));
 
         final BorderPane middle = new BorderPane();
 
-        middle.setRight(right);
+        VBox vbox = new VBox(80);
+        vbox.getChildren().addAll(zeiger, right);
+        vbox.setPadding(new Insets(50, 220, 7, 7));
+
+        middle.setRight(vbox);
         middle.setLeft(clockArea());
-        middle.setTop(left);
+
 
         final HBox hbox = new HBox(40);
 
-        hbox .setPadding(new Insets(7, 7, 18, 7));
+        hbox .setPadding(new Insets(7, 7, 18, 50));
         goOnLevel = new Button ("Nächstes Level");
         preLevel = new Button ("Vorheriges Level");
         repeatButton = new Button("Nochmal");
@@ -91,7 +92,7 @@ public class LernmodusGUI extends MainGUI {
         node = clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
 
         //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-         borderPane.setPadding(new Insets(7, 70, 7, 50));
+        borderPane.setPadding(new Insets(7, 150, 7, 80));
 
        borderPane.setCenter(node);
 
@@ -109,13 +110,9 @@ public class LernmodusGUI extends MainGUI {
         endButton = new Button("Lernmodus beenden");
 
 
-        vbox.getChildren().addAll(  endButton);
+        borderPane.setPadding(new Insets(7, 50, 19, 25));
 
-        borderPane.setPadding(new Insets(7, 50, 7, 25));
-
-        vbox.setPadding(new Insets(70, 7, 7, 7));
-
-        borderPane.setBottom(vbox);
+        borderPane.setBottom(endButton);
 
         return borderPane;
     }
