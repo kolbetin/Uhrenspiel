@@ -72,6 +72,12 @@ public class ClockElements {
 
     public Group ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
 
+    public void createUhrKreise(){
+        // Hauptkreise Uhr
+        outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
+        innerCircle = new Circle(300, 300, 6, Color.BLACK);
+    }
+
     EventHandler<MouseEvent> eventHandler = getEventHandler();
 
     EventHandler<MouseEvent> getEventHandler() {
@@ -82,8 +88,8 @@ public class ClockElements {
             double g = rand.nextDouble();
             double b = rand.nextDouble();
             Color randomColor = new Color(r, g, b, 1);
-            System.out.println("The color is: " +
-                    randomColor.toString());
+            //System.out.println("The color is: " +
+            //        randomColor.toString());
             if (event.getSource() instanceof Circle) {
                 Circle c = (Circle) event.getSource();
                 c.setFill(randomColor);
@@ -98,12 +104,6 @@ public class ClockElements {
         createZiffernMap();
         createMinutenMap();
         createStundenMap();
-    }
-
-    public void createUhrKreise(){
-        // Hauptkreise Uhr
-        outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
-        innerCircle = new Circle(300, 300, 6, Color.BLACK);
     }
 
     public void setupClockElements(){

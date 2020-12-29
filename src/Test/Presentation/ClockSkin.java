@@ -141,6 +141,7 @@ public class ClockSkin {
     public void finalFormatSettings(){
         clockElements.outerCircle.toBack();
         clockElements.innerCircle.toFront();
+
         stunde.toFront();
     }
 
