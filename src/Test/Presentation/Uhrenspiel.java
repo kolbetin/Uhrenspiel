@@ -6,6 +6,7 @@ import Test.Persistenz.SavedData;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -33,7 +34,6 @@ public class Uhrenspiel extends Application  {
     private Stage stage2;
     private Stage stage3;
     private ArrayList<MainGUI> guiList;
-    private AlertHelper alertHelper;
     private Game game;
     private SavedData data;
     private boolean strictGame = false;
@@ -46,10 +46,6 @@ public class Uhrenspiel extends Application  {
       public void start(Stage primarystage) {
 
           stage1 = new Stage();
-          stage2 = new Stage();
-          stage3 = new Stage();
-
-
 
           mainScreen.start(stage1);
 
@@ -62,7 +58,7 @@ public class Uhrenspiel extends Application  {
                   loadProgress()
                             );
           mainScreen.endGameButton.setOnAction(event -> {
-                      Boolean alert = alertHelper.confirmationAlert("Spiel beenden!",  "Willst du wirklich beenden? ");
+                      Boolean alert = AlertHelper.confirmationAlert("Spiel beenden!",  "Willst du wirklich beenden? ");
                       if (alert) {
                           stage1.close();
                       }
@@ -434,7 +430,7 @@ public class Uhrenspiel extends Application  {
           strictGame= false;
           game.sum = 0;
            if (!game.saved) {
-               Boolean alert = alertHelper.confirmationAlert("Spiel beenden!",
+               Boolean alert = AlertHelper.confirmationAlert("Achtung",
                        "Du hast nicht gespeichert! Möchtest du wirklich beenden? ");
                if (alert) {
                   stage1.close();
@@ -466,19 +462,19 @@ public class Uhrenspiel extends Application  {
             File file = data.chooseSaveFile(new File(createFileName()), stage1);
             if (file != null) {
                 data.saveProgress(file, data.progress);
-                alertHelper.confirmationAlert("Speichern","Spiel wurde in Datei " + file + " gespeichert.");
+                AlertHelper.informationAlert("Speichern","Spiel wurde in Datei " + file + " gespeichert.");
                 game.saved = true;
             }
 
         } catch (IOException e) {
-            alertHelper.errorAlert("Error" ,e.getLocalizedMessage());
+            AlertHelper.errorAlert("Error" ,e.getLocalizedMessage());
             game.saved = false;
         }
     }
 
 
     private void loadProgress() {
-        try {game.saved = false;
+        try {
             File file = data.chooseLoadFile(new File(createFileName()), stage1);
             if (file != null) {
                 stage1.close();
@@ -486,16 +482,17 @@ public class Uhrenspiel extends Application  {
                 updateData();
                 game.setLevel(game.level);
                 setgoOnButton();
-                alertHelper.confirmationAlert("Laden", "Spiel von Datei " + file + " geladen.");
+                AlertHelper.informationAlert("Laden", "Spiel von Datei " + file + " geladen.");
 
             }
             else {
                 stage1.close();
                 start(stage1);
+                game.saved = false;
             }
 
         } catch (IOException | ClassNotFoundException e) {
-            alertHelper.errorAlert("Error" ,e.getLocalizedMessage());
+            AlertHelper.errorAlert("Error" ,e.getLocalizedMessage());
         }
     }
 

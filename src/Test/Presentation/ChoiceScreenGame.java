@@ -28,7 +28,6 @@ public class ChoiceScreenGame extends MainGUI {
     @Override
     public BorderPane middleArea(){
 
-
         willkommensText = new Label();
         willkommensText.setText("Was möchtest du lernen?");
 
@@ -77,16 +76,9 @@ public class ChoiceScreenGame extends MainGUI {
     public Pane leftArea() {
         VBox vBox = new VBox(5);
 
-      //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: blue");
         vBox.setPadding(new Insets(7, 150, 7, 70));
-        //vBox.getChildren().addAll(new Text("Fortschrittsleiste"));
-
 
         return vBox;
     }
-
-
-
-
 
 }

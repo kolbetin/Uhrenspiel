@@ -5,8 +5,6 @@
  *  @version 1.0
  */
 
-
-
 package Test.Domain;
 
 import Test.Persistenz.QuestionsAnswer;
@@ -16,11 +14,11 @@ import javafx.stage.Stage;
 import java.util.*;
 
 
-public class Game extends Application {
+public class Game {
 
     // Instanzvariablen
     private QuestionsAnswer questionsAnswermap;
-    public List playedGames = null;
+    public List playedGames ;
     public ArrayList<String> keyList;
     public List answerList;
     public String key;
@@ -41,7 +39,7 @@ public class Game extends Application {
     public Game() {
         questionsAnswermap = new QuestionsAnswer();
         answerList = new ArrayList<String>();
-        keyList = new ArrayList<String>();
+        keyList = new ArrayList<>();
         playedGames = new ArrayList<String>();
     }
 
@@ -105,14 +103,10 @@ public class Game extends Application {
     public boolean checkAnswerFA(String hour, String minutes){
         answer = hour + ":" + minutes;
         String answer0 =  "0"+ hour + ":" + minutes;
-        if (answer.equals(getAnswerFA(key))
-                |answer.equals("0" + getAnswerFA(key))
-                |(hour.equals("0"+getAnswerFA(key))
-                |(hour.equals(getAnswerFA(key))))
-        ){
-            return true;
-        }
-        else return false;
+        return answer.equals(getAnswerFA(key))
+                | answer.equals("0" + getAnswerFA(key))
+                | (hour.equals("0" + getAnswerFA(key))
+                | (hour.equals(getAnswerFA(key))));
     }
 
     /**
@@ -184,12 +178,11 @@ public class Game extends Application {
      */
 
     public String getAnswerFA(String keys) {
-        String value = questionsAnswermap.antwortenMap.get(keys);
-        return value;
+        return questionsAnswermap.antwortenMap.get(keys);
     }
-
+/*
     public void start(Stage primaryStage) {}
       public static void main(String[] args) {
         launch(args);
-    }
+    }*/
 }

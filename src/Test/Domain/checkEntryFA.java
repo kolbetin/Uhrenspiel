@@ -13,36 +13,27 @@ import Test.Presentation.AlertHelper;
 
 public class checkEntryFA {
     // Instanzvariablen
-    private int stunde = 0;
-    private int minuten = 0;
+    private int hour = 0;
+    private int minutes = 0;
     private String givenHour = null;
     private String givenMinutes = null;
-    private AlertHelper alertHelper;
+
     public boolean correctEntry = false;
     public boolean clearMinute= false;
     public boolean clearHour= false;
 
-    /**
-     * Konstruktor der Klasse.
-     *
-     * Die Klasse AlertHelper wird initialisiert.
-     */
-
-    public checkEntryFA() {
-        alertHelper = new AlertHelper();
-    }
 
     /**
      * Die Methode nimmt die eingegebenen Parameter entgegen und startet den Check der Eingabe auf Vollständigkeit
      * und nach korrekten Muster
      *
-     * @param  stunde  Übergibt einen String mit der Stunde im Format "12"
-     * @param  minuten Übergibt einen String mit der Minuten im Format "45"
+     * @param  hour  Übergibt einen String mit der Stunde im Format "12"
+     * @param  minutes Übergibt einen String mit der Minuten im Format "45"
      */
 
-    public void setValues(String stunde, String minuten) {
-        this.givenHour = stunde;
-        this.givenMinutes = minuten;
+    public void setValues(String hour, String minutes) {
+        this.givenHour = hour;
+        this.givenMinutes = minutes;
         clearMinute= false;
         clearHour= false;
         correctEntry = false;
@@ -69,9 +60,9 @@ public class checkEntryFA {
                 & givenHour.length() <3
         ) {
 
-            stunde = Integer.valueOf(givenHour);
+            hour = Integer.valueOf(givenHour);
 
-            if (stunde > 0 & stunde < 13) {
+            if (hour > 0 & hour < 13) {
 
                 return true;
             }
@@ -98,10 +89,10 @@ public class checkEntryFA {
                 & givenMinutes.matches("[0-9]*")
                 & givenMinutes.length() <3
         ) {
-            minuten = Integer.valueOf(givenMinutes);
+            minutes = Integer.valueOf(givenMinutes);
 
-            if (minuten >= 0
-                  & minuten < 60
+            if (minutes >= 0
+                  & minutes < 60
             ) {
                      return true;
             }
@@ -122,16 +113,16 @@ public class checkEntryFA {
     public void sendAlert() {
 
         if (!checkHour() & !checkMinutes()) {
-            alertHelper.errorAlert("Fehler", "Bitte eine gültige Uhrzeit eingeben, z.B. 3:30.");
+            AlertHelper.errorAlert("Fehler", "Bitte eine gültige Uhrzeit eingeben, z.B. 3:30.");
             clearHour = true;
             clearMinute = true;
         } else {
             if (!checkHour()) {
-                alertHelper.errorAlert("Fehler", "Bitte die Stunde zwischen 1 und 12 eingeben.");
+                AlertHelper.errorAlert("Fehler", "Bitte die Stunde zwischen 1 und 12 eingeben.");
                 clearHour = true;
             }
             if (!checkMinutes()) {
-                alertHelper.errorAlert("Fehler", "Bitte die Minuten zwischen 0 und 59 eingeben");
+                AlertHelper.errorAlert("Fehler", "Bitte die Minuten zwischen 0 und 59 eingeben");
                 clearMinute = true;
 
             } else System.out.println("Eingabe okay");
