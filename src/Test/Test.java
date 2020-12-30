@@ -30,14 +30,14 @@ public class Test  extends Application {
     public void start(Stage primaryStage) {
 
 
-        try {
+/*        try {
 
 
             // set title
             primaryStage.setTitle("JavaFX ImageView Tutorial - tutorialkart.com");
 
             //read image as stream
-            FileInputStream input = new FileInputStream("src/Test/Presentation/image/Success.jfif");
+          //  FileInputStream input = new FileInputStream("src/Test/Presentation/image/expertHappy.png");
             //prepare image object
             Image image = new Image(input);
 
@@ -62,11 +62,11 @@ public class Test  extends Application {
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 
-    public Node picture() throws Exception {
+  /*  public Node picture() throws Exception {
 
         try {
             //read image as stream
@@ -93,7 +93,7 @@ public class Test  extends Application {
         }
         return null;
 
-    }
+    }*/
 
 }
 

@@ -61,21 +61,22 @@
 
 }
 #buttonOkay  {
-    -fx-background-image:  url(image/HappySmiley.png);
+    -fx-background-image:  url(image/summaryHappy.png);
     -fx-background-size: 40px 40px;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position:  right;
+    -fx-background-repeat: stretch;
+    -fx-background-position:  CENTER CENTER;
     -fx-background-color: #0af60a;
-    -fx-alignment: CENTER-LEFT;
+
+
 }
 
 #buttonNotOkay{
-    -fx-background-image:  url(image/TraurigesSmiley.png);
+    -fx-background-image:  url(image/summarySorry.png);
     -fx-background-size: 40px 40px;
     -fx-background-repeat: no-repeat;
-    -fx-background-position:  right;
-    -fx-background-color: red;
-    -fx-alignment:  CENTER-LEFT;
+    -fx-background-position:  CENTER CENTER;
+    -fx-background-color: #e01c33;
+
 }
 
 .button {

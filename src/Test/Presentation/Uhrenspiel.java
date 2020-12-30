@@ -25,7 +25,7 @@ public class Uhrenspiel extends Application  {
     private QuestionFreeAnswer guiFA;
     private MainScreenGUI mainScreen;
     private SummaryGUI summaryScreen;
-    private Verabschiedungsbildschirm verAbschieden;
+    private ExpertSummaryGUI expertSummaryGUI;
     private ChoiceScreenGame choiceScreenGame;
     private ChoiceScreenLernmodus choiceScreenLernmodus;
     private Lernmodus learnModus;
@@ -39,6 +39,7 @@ public class Uhrenspiel extends Application  {
     private boolean strictGame = false;
     private Spielanleitung spielanleitung;
     private checkEntryFA checkEntryFA;
+    private boolean success = false;
 
 
 
@@ -46,8 +47,11 @@ public class Uhrenspiel extends Application  {
 
           stage1 = new Stage();
           stage2 = new Stage();
-          verAbschieden.start(stage2);
-         /* mainScreen.start(stage1);
+          stage3 = new Stage();
+
+
+
+          mainScreen.start(stage1);
 
           mainScreen.newGameButton.setOnAction(event -> {
                  stage1.close();
@@ -71,7 +75,7 @@ public class Uhrenspiel extends Application  {
           mainScreen.spielanleitungButton.setOnAction(event -> {
 
               spielanleitung.starteSpielanleitung(stage1) ;
-          });*/
+          });
       }
 
 
@@ -177,9 +181,9 @@ public class Uhrenspiel extends Application  {
      public void setgoOnButton(){
          game.playedGames.add(game.key);
 
-          if( game.aufgabennummer<10) {
+          if( game.aufgabennummer<5) {
               if (game.level < 4) {
-                  if (game.aufgabennummer < 5) {
+                  if (game.aufgabennummer < 4) {
                       newGameMultipleChoice();
                   } else {
                       newGameFreeAnswer();
@@ -288,7 +292,7 @@ public class Uhrenspiel extends Application  {
                 if(game.checkAnswerFA(guiFA.givenHour.getText(), guiFA.givenMinutes.getText()))
                 {
                   guiFA.submitButton.setId("buttonOkay");
-                  guiFA.submitButton.setText("Richtig!");
+                  guiFA.submitButton.setText("");
                   guiFA.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                   game.richtigeAntwort++;
                   manageButtonsFA();
@@ -296,7 +300,7 @@ public class Uhrenspiel extends Application  {
                 }
                 else {
                   guiFA.submitButton.setId("buttonNotOkay");
-                  guiFA.submitButton.setText("Falsch!");
+                  guiFA.submitButton.setText("");
                   guiFA.questionLabel.setText("Das war leider nicht richtig!\n"
                           + "Deine Antwort: " + game.answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.getAnswerFA(game.key)+ " Uhr.");
@@ -339,7 +343,8 @@ public class Uhrenspiel extends Application  {
 
                       if (button.getText().contains(game.getAnswerFA(game.key)) ) {
                           button.setId("buttonOkay");
-                          button.setText("Richtig!");
+                        //  button.setText("Richtig!");
+                          button.setText("");
                           guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                           game.richtigeAntwort++;
                           manageButtonsMC();
@@ -348,7 +353,8 @@ public class Uhrenspiel extends Application  {
                       }
                       else {
                           button.setId("buttonNotOkay");
-                          button.setText("Falsch!");
+                         // button.setText("Falsch!");
+                          button.setText("");
                           guiMC.questionLabel.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                           game.falscheAntwort++;
                           manageButtonsMC();
@@ -375,7 +381,8 @@ public class Uhrenspiel extends Application  {
             newGame()
         );
 
-        if(! strictGame){
+        if(!strictGame){
+
             summaryScreen.willkommensText.setText("Level: " + game.level + " wurde abgeschlossen!");
             if(game.level< 4){
                 summaryScreen.nextGame.setOnAction(event -> {
@@ -384,9 +391,11 @@ public class Uhrenspiel extends Application  {
                 });
             }
             else {
+
                 summaryScreen.nextGame.setDisable(true);
             }
             if(game.level >1) {
+
                 summaryScreen.preLevel.setOnAction(event -> {
                     game.level = game.level - 1;
                     newGame();
@@ -394,6 +403,7 @@ public class Uhrenspiel extends Application  {
                 });
             }
             else {
+                summaryScreen.getPicture().setVisible(false);
                 summaryScreen.preLevel.setDisable(true);
             }
         }
@@ -406,10 +416,12 @@ public class Uhrenspiel extends Application  {
 
 
             if (pct >= 0.6) {
+                summaryScreen.setSuccess(true,strictGame);
                 summaryScreen.willkommensText.setText("Level: " + game.level +  " wurde erfolgreich abgeschlossen!");
 
             }
             else {
+                summaryScreen.setSuccess(false,strictGame);
                 summaryScreen.willkommensText.setText("Level: " + game.level + " wurde nicht erfolgreich abgeschlossen!");
 
             }
@@ -418,8 +430,34 @@ public class Uhrenspiel extends Application  {
                     game.level = game.level + 1;
                     newGame();
                 });
-            } else {
+
+            }
+            else {
                 summaryScreen.nextGame.setVisible(false);
+            }
+
+            if (pct>=0.6 & game.level== 4){
+               expertSummaryGUI.setSuccess(true);
+                expertSummaryGUI.start(stage1);
+                expertSummaryGUI.close.setOnAction(event -> {
+                    stage1.close();
+                    start(stage1);
+                });
+            }
+            else {
+                if (pct <0.6 & game.level== 4) {
+                    expertSummaryGUI.setSuccess(false);
+                    expertSummaryGUI.start(stage1);
+                    expertSummaryGUI.repeatButton.setOnAction(event -> {
+                        strictGame=true;
+                        game.level = 1;
+                        newGame();
+                    });
+                    expertSummaryGUI.close.setOnAction(event -> {
+                        stage1.close();
+                        start(stage1);
+                    });
+                }
             }
         }
     }
@@ -529,7 +567,7 @@ public class Uhrenspiel extends Application  {
         guiFA = new QuestionFreeAnswer();
         mainScreen = new MainScreenGUI();
         choiceScreenGame = new ChoiceScreenGame();
-        verAbschieden = new Verabschiedungsbildschirm();
+        expertSummaryGUI = new ExpertSummaryGUI();
         game = new Game();
         choiceScreenGame = new ChoiceScreenGame();
         choiceScreenLernmodus = new ChoiceScreenLernmodus();
