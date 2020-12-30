@@ -6,10 +6,8 @@ import Test.Persistenz.SavedData;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -68,7 +66,7 @@ public class Uhrenspiel extends Application  {
                      startChoiceScreenLernmodus()
           );
           mainScreen.spielanleitungButton.setOnAction(event ->
-              spielanleitung.starteSpielanleitung(stage1)
+              spielanleitung.startSpielanleitung(stage1)
           );
       }
 
@@ -163,7 +161,7 @@ public class Uhrenspiel extends Application  {
             newGameMultipleChoice();
         }
         else {
-            if (getGUI()== guiFA){
+            if (getRandomGUI()== guiFA){
                newGameFreeAnswer();
             }
             else {
@@ -183,7 +181,7 @@ public class Uhrenspiel extends Application  {
                       newGameFreeAnswer();
                   }
               } else {
-                  if (getGUI() == guiFA) {
+                  if (getRandomGUI() == guiFA) {
                       newGameFreeAnswer();
                   } else {
                      newGameMultipleChoice();
@@ -247,7 +245,6 @@ public class Uhrenspiel extends Application  {
           });
 
           guiFA.givenMinutes.setOnKeyPressed(keyEvent -> {
-
               if (keyEvent.getCode() == KeyCode.ENTER) {
                   checkEntry();
               }
@@ -255,6 +252,7 @@ public class Uhrenspiel extends Application  {
 
           guiFA.endButton.setOnAction(event -> endGame());
           guiFA.saveButton.setOnAction(event -> saveProgress());
+
           showData();
       }
 
@@ -262,7 +260,7 @@ public class Uhrenspiel extends Application  {
           checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
 
           if(checkEntryFA.correctEntry){
-              answerCheckFA();
+              answerFA();
           }
           else
               checkEntryFA.sendAlert();
@@ -275,7 +273,7 @@ public class Uhrenspiel extends Application  {
       }
 
 
-      public void answerCheckFA() {
+      public void answerFA() {
 
                 if(game.checkAnswerFA(guiFA.givenHour.getText(), guiFA.givenMinutes.getText()))
                 {
@@ -445,8 +443,7 @@ public class Uhrenspiel extends Application  {
 
       private String createFileName () {
           return  System.getProperty("user.home") + System.getProperty("file.separator") +"Spielstand.ser";
-                  //(data.getBufferInterface() instanceof IOSerialisierung ?  "Spielstand.ser" : "Spielstand.txt");
-      }
+          }
 
     public void saveProgress() {
         try {
@@ -510,7 +507,7 @@ public class Uhrenspiel extends Application  {
     }
 
 
-    public MainGUI getGUI() {
+    public MainGUI getRandomGUI() {
         guiList = new ArrayList<>();
         guiList.add(guiFA);
         guiList.add(guiMC);
@@ -535,18 +532,13 @@ public class Uhrenspiel extends Application  {
         data = new SavedData();
         checkEntryFA = new checkEntryFA();
 
-
-        System.out.println(getGUI());
+        System.out.println(getRandomGUI());
         System.out.println(guiList);
-
     }
 
      public static void main(String[] args) {
         launch(args);
-
     }
-
-
 
 }
 

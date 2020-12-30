@@ -127,11 +127,8 @@ public class Game {
                 keyList.add((String) randomkey);
                 key = (String) randomkey;
                 played = true;
-
             }
-
         }
-
         return key;
     }
 

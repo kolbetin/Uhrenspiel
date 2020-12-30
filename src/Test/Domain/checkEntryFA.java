@@ -17,7 +17,6 @@ public class checkEntryFA {
     private int minutes = 0;
     private String givenHour = null;
     private String givenMinutes = null;
-
     public boolean correctEntry = false;
     public boolean clearMinute= false;
     public boolean clearHour= false;

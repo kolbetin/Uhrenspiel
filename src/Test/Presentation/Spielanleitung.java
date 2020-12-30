@@ -25,7 +25,7 @@ public class Spielanleitung {
         guiFA = new QuestionFreeAnswer();
     }
 
-    public void starteSpielanleitung(Stage stage1) {
+    public void startSpielanleitung(Stage stage1) {
 
         guiMC.time = "04:00";
         guiMC.start(stage1);
@@ -162,7 +162,7 @@ public class Spielanleitung {
         ende = new Timeline( new KeyFrame(Duration.seconds(0.1), evt ->{
             guiFA.goOn.setText("Tutorial Wiederholen");
             guiFA.goOn.setOnAction(event ->
-               starteSpielanleitung(stage1)
+               startSpielanleitung(stage1)
                 );
         }));
 
