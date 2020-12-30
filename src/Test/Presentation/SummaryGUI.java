@@ -24,16 +24,10 @@ public class SummaryGUI extends MainGUI {
     public Button nextGame;
     public Button repeatLevel;
     public Button preLevel;
-    private Boolean success = false;
     private FileInputStream input;
-    private Boolean strictGame = false;
     private int richtigeAntwort;
     private int falscheAntwort;
 
-    public void setSuccess(boolean success){
-        this.success = success;
-
-    }
 
     public void setAnswer(int richtigeAntwort,int falscheAntwort){
         this.richtigeAntwort = richtigeAntwort;
@@ -66,7 +60,7 @@ public class SummaryGUI extends MainGUI {
             middle.setPadding(new Insets(7, 270, 7, 270));
 
             bottom.getChildren().addAll(backButton, preLevel, repeatLevel, nextGame);
-            bottom.setPadding(new Insets(100, 7, 200, 270));
+            bottom.setPadding(new Insets(100, 7, 200, 200));
 
             BorderPane root = new BorderPane();
 

@@ -22,6 +22,7 @@ public class ExpertSummaryGUI extends MainGUI {
      private Boolean success = false;
      private FileInputStream input;
      public Button repeatButton;
+    public Button preLevel;
 
 
      public void setSuccess(boolean success){
@@ -36,25 +37,27 @@ public class ExpertSummaryGUI extends MainGUI {
         label.setText("Super, du bist jetzt ein Experte im Uhren lesen!!!");
 
 
-        close = new Button("Spiel Beenden");
+        close = new Button("Zurück");
 
 
-        repeatButton = new Button ("Nochmal");
-            HBox hBox = new HBox(50);
-            hBox.getChildren().addAll(repeatButton,close);
+        repeatButton = new Button ("Nochmal Expertenmodus");
+        preLevel = new Button("Nochmal Level 4");
+            HBox hBox = new HBox(30);
+            hBox.getChildren().addAll(preLevel,repeatButton,close);
 
 
         if(success) {
            input  = new FileInputStream("src/Test/Presentation/image/expertHappy.png");
             label.setText("Super, du bist jetzt ein Experte im Uhren lesen!!!");
             repeatButton.setVisible(false);
-            hBox.setPadding(new Insets(7,7,7,330));
+            preLevel.setVisible(false);
+            hBox.setPadding(new Insets(7,7,7,7));
         }
         else {
             input = new FileInputStream("src/Test/Presentation/image/expertEncourage.png");
             label.setText("Leider, bist du noch kein Experte.\n" + "Versuchs nochmal!!!");
             repeatButton.setVisible(true);
-            hBox.setPadding(new Insets(7,7,7,400));
+            hBox.setPadding(new Insets(7,7,7,220));
         }
         //prepare image object
         Image image = new Image(input);

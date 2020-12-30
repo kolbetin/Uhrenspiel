@@ -47,6 +47,13 @@ public class Uhrenspiel extends Application  {
           stage2 = new Stage();
           stage3 = new Stage();
 
+        /* expertSummaryGUI.setSuccess(true);
+          expertSummaryGUI.start(stage2);
+
+        expertSummaryGUI.setSuccess(false);
+          expertSummaryGUI.start(stage3);*/
+
+     /*     summaryScreen.start(stage3);*/
           mainScreen.start(stage1);
 
           mainScreen.newGameButton.setOnAction(event -> {
@@ -404,7 +411,7 @@ public class Uhrenspiel extends Application  {
                     expertSummaryGUI.setSuccess(true);
                     expertSummaryGUI.start(stage1);
                     expertSummaryGUI.close.setOnAction(event -> endGamewithoutsave());
-                } else {
+                    } else {
                     if (pct < 0.6 & game.level == 4) {
                         stage1.close();
                         expertSummaryGUI.setSuccess(false);
@@ -413,6 +420,10 @@ public class Uhrenspiel extends Application  {
                             strictGame = true;
                             game.sum = 0;
                             game.level = 1;
+                            newGame();
+                        });
+                        expertSummaryGUI.preLevel.setOnAction(event -> {
+                            strictGame = true;
                             newGame();
                         });
                         expertSummaryGUI.close.setOnAction(event -> {
