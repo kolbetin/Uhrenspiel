@@ -75,6 +75,7 @@ public class ClockElements {
     public void createUhrKreise(){
         // Hauptkreise Uhr
         outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
+        outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         innerCircle = new Circle(300, 300, 6, Color.BLACK);
     }
 
