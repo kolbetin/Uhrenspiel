@@ -351,8 +351,9 @@ public class Uhrenspiel extends Application  {
 
     public void gameSummary(){
        stage1.close();
-        summaryScreen.start(stage1);
         summaryScreen.setAnswer(game.correctAnswer, game.wrongAnswer);
+        summaryScreen.start(stage1);
+
 
         summaryScreen.backButton.setOnAction(event ->   endGame() );
         summaryScreen.repeatLevel.setOnAction(event ->  newGame() );
@@ -375,8 +376,7 @@ public class Uhrenspiel extends Application  {
                 });
             }
             else {
-                summaryScreen.getPicture().setVisible(false);
-                summaryScreen.preLevel.setDisable(true);
+               summaryScreen.preLevel.setDisable(true);
             }
         }
         else {
@@ -404,7 +404,7 @@ public class Uhrenspiel extends Application  {
             }
 
             if (pct>=0.6 & game.level== 4){
-               expertSummaryGUI.setSuccess(true);
+                expertSummaryGUI.setSuccess(true);
                 expertSummaryGUI.start(stage1);
                 expertSummaryGUI.close.setOnAction(event ->  endGame());
             }

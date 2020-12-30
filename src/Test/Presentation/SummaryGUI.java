@@ -24,16 +24,10 @@ public class SummaryGUI extends MainGUI {
     public Button nextGame;
     public Button repeatLevel;
     public Button preLevel;
-    private Boolean success = false;
-    private FileInputStream input;
-    private Boolean strictGame = false;
     private int richtigeAntwort;
     private int falscheAntwort;
 
-    public void setSuccess(boolean success,boolean strictGame){
-        this.success = success;
-        this.strictGame = strictGame;
-    }
+
 
     public void setAnswer(int richtigeAntwort,int falscheAntwort){
         this.richtigeAntwort = richtigeAntwort;
@@ -74,17 +68,8 @@ public class SummaryGUI extends MainGUI {
              root.setPadding(new Insets(150, 370, 7, 20));
              root.setCenter(middle);
 
-            System.out.println(strictGame);
-            System.out.println(success);
-            if(strictGame){
-                root.setTop(getPicture());
-                root.setBottom(bottom);
-                root.setCenter(middle);
-                root.setPadding(new Insets(70, 370, 7, 20));
-                bottom.setPadding(new Insets(50, 7, 200, 200));
-           }
 
-        root.getStylesheets().add
+              root.getStylesheets().add
                     (MainGUI.class.getResource("clock.css").toExternalForm());
             return root;
 
@@ -101,37 +86,6 @@ public class SummaryGUI extends MainGUI {
         return vBox;
     }
 
-    public Node getPicture() {
-        try {
-
-
-            if (success) {
-                input = new FileInputStream("src/Test/Presentation/image/summaryHappy.png");
-
-
-            } else {
-                input = new FileInputStream("src/Test/Presentation/image/summarySorry.png");
-            }
-
-            //prepare image object
-            Image image = new Image(input);
-
-
-            //create ImageView object
-            ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(140);
-            imageView.setFitWidth(150);
-            HBox hBox = new HBox();
-            hBox.getChildren().add(imageView);
-            hBox.setPadding(new Insets(7,7,50,350));
-
-            return hBox;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
 
 
