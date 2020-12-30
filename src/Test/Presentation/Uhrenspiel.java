@@ -175,9 +175,9 @@ public class Uhrenspiel extends Application  {
      public void setgoOnButton(){
          game.playedGames.add(game.key);
 
-          if( game.taskNumber <10) {
+          if( game.taskNumber <4) {
               if (game.level < 4) {
-                  if (game.taskNumber < 5) {
+                  if (game.taskNumber < 4) {
                       newGameMultipleChoice();
                   } else {
                       newGameFreeAnswer();
@@ -351,75 +351,85 @@ public class Uhrenspiel extends Application  {
         }
 
 
-    public void gameSummary(){
+    public void gameSummary() {
         stage1.close();
         summaryScreen.setAnswer(game.correctAnswer, game.wrongAnswer);
-     //   summaryScreen.setSuccess(true);
+        //   summaryScreen.setSuccess(true);
         summaryScreen.start(stage1);
 
-        summaryScreen.backButton.setOnAction(event ->   endGame() );
-        summaryScreen.repeatLevel.setOnAction(event ->  newGame() );
+        summaryScreen.backButton.setOnAction(event -> {
+            strictGame = false;
+            game.sum = 0;
+            start(stage1);
+        });
+        summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
-        if(!strictGame){
+        if (!strictGame) {
             summaryScreen.willkommensText.setText("Level: " + game.level + " wurde abgeschlossen!");
-            if(game.level< 4){
+            if (game.level < 4) {
                 summaryScreen.nextGame.setOnAction(event -> {
                     game.level = game.level + 1;
                     newGame();
                 });
-            }
-            else {
+            } else {
                 summaryScreen.nextGame.setDisable(true);
             }
-            if(game.level >1) {
+            if (game.level > 1) {
                 summaryScreen.preLevel.setOnAction(event -> {
                     game.level = game.level - 1;
                     newGame();
                 });
+            } else {
+                summaryScreen.preLevel.setDisable(true);
             }
-            else {
-               summaryScreen.preLevel.setDisable(true);
-            }
-        }
-        else {
+        } else {
 
             double internalsum = 0;
-            internalsum = internalsum+ game.correctAnswer + game.wrongAnswer;
+            internalsum = internalsum + game.correctAnswer + game.wrongAnswer;
             float pct;
-            pct =  (float) (game.correctAnswer /internalsum);
+            pct = (float) (game.correctAnswer / internalsum);
 
             if (pct >= 0.6) {
-                summaryScreen.willkommensText.setText("Level: " + game.level +  " wurde erfolgreich abgeschlossen!");
-            }
-            else {
+                summaryScreen.willkommensText.setText("Level: " + game.level + " wurde erfolgreich abgeschlossen!");
+            } else {
                 summaryScreen.willkommensText.setText("Level: " + game.level + " wurde nicht erfolgreich abgeschlossen!");
             }
-            if (pct >= 0.6 & game.level< 4){
-                    summaryScreen.nextGame.setOnAction(event -> {
+            if (pct >= 0.6 & game.level < 4) {
+                summaryScreen.nextGame.setOnAction(event -> {
                     game.level = game.level + 1;
                     newGame();
                 });
 
-            }
-            else {
+            } else {
                 summaryScreen.nextGame.setVisible(false);
-            }
 
-            if (pct>=0.6 & game.level== 4){
-                expertSummaryGUI.setSuccess(true);
-                expertSummaryGUI.start(stage1);
-                expertSummaryGUI.close.setOnAction(event ->  endGame());
-            }
-            else {
-                if (pct <0.6 & game.level== 4) {
-                    expertSummaryGUI.setSuccess(false);
+                if (pct >= 0.6 & game.level == 4) {
+                    stage1.close();
+                    expertSummaryGUI.setSuccess(true);
                     expertSummaryGUI.start(stage1);
-                    expertSummaryGUI.repeatButton.setOnAction(event -> {
-                        strictGame=true;
-                        game.level = 1;
-                        newGame();
+                    expertSummaryGUI.close.setOnAction(event ->
+                    {
+                        strictGame = false;
+                        game.sum = 0;
+                        start(stage1);
                     });
-                    expertSummaryGUI.close.setOnAction(event ->  endGame());
+                } else {
+                    if (pct < 0.6 & game.level == 4) {
+                        stage1.close();
+                        expertSummaryGUI.setSuccess(false);
+                        expertSummaryGUI.start(stage1);
+                        expertSummaryGUI.repeatButton.setOnAction(event -> {
+                            strictGame = true;
+                            game.sum = 0;
+                            game.level = 1;
+                            newGame();
+                        });
+                        expertSummaryGUI.close.setOnAction(event -> {
+                            strictGame = false;
+                            game.sum = 0;
+                            start(stage1);
+                        });
+                    }
                 }
             }
         }
