@@ -44,6 +44,8 @@ public class Uhrenspiel extends Application  {
       public void start(Stage primarystage) {
 
           stage1 = new Stage();
+          stage2 = new Stage();
+          stage3 = new Stage();
 
           mainScreen.start(stage1);
 
@@ -350,10 +352,10 @@ public class Uhrenspiel extends Application  {
 
 
     public void gameSummary(){
-       stage1.close();
+        stage1.close();
         summaryScreen.setAnswer(game.correctAnswer, game.wrongAnswer);
+     //   summaryScreen.setSuccess(true);
         summaryScreen.start(stage1);
-
 
         summaryScreen.backButton.setOnAction(event ->   endGame() );
         summaryScreen.repeatLevel.setOnAction(event ->  newGame() );
@@ -533,7 +535,7 @@ public class Uhrenspiel extends Application  {
         checkEntryFA = new checkEntryFA();
 
         System.out.println(getRandomGUI());
-        System.out.println(guiList);
+        System.out.println("Uhrenspiel startet");
     }
 
      public static void main(String[] args) {
