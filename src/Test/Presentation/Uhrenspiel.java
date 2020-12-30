@@ -181,9 +181,9 @@ public class Uhrenspiel extends Application  {
      public void setgoOnButton(){
          game.playedGames.add(game.key);
 
-          if( game.aufgabennummer<2) {
+          if( game.aufgabennummer<10) {
               if (game.level < 4) {
-                  if (game.aufgabennummer < 2) {
+                  if (game.aufgabennummer < 5) {
                       newGameMultipleChoice();
                   } else {
                       newGameFreeAnswer();
