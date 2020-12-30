@@ -175,9 +175,9 @@ public class Uhrenspiel extends Application  {
      public void setgoOnButton(){
          game.playedGames.add(game.key);
 
-          if( game.taskNumber <4) {
+          if( game.taskNumber <10) {
               if (game.level < 4) {
-                  if (game.taskNumber < 4) {
+                  if (game.taskNumber < 5) {
                       newGameMultipleChoice();
                   } else {
                       newGameFreeAnswer();
@@ -357,11 +357,7 @@ public class Uhrenspiel extends Application  {
         //   summaryScreen.setSuccess(true);
         summaryScreen.start(stage1);
 
-        summaryScreen.backButton.setOnAction(event -> {
-            strictGame = false;
-            game.sum = 0;
-            start(stage1);
-        });
+        summaryScreen.backButton.setOnAction(event -> endGamewithoutsave());
         summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
         if (!strictGame) {
@@ -407,12 +403,7 @@ public class Uhrenspiel extends Application  {
                     stage1.close();
                     expertSummaryGUI.setSuccess(true);
                     expertSummaryGUI.start(stage1);
-                    expertSummaryGUI.close.setOnAction(event ->
-                    {
-                        strictGame = false;
-                        game.sum = 0;
-                        start(stage1);
-                    });
+                    expertSummaryGUI.close.setOnAction(event -> endGamewithoutsave());
                 } else {
                     if (pct < 0.6 & game.level == 4) {
                         stage1.close();
@@ -425,9 +416,7 @@ public class Uhrenspiel extends Application  {
                             newGame();
                         });
                         expertSummaryGUI.close.setOnAction(event -> {
-                            strictGame = false;
-                            game.sum = 0;
-                            start(stage1);
+                            endGamewithoutsave();
                         });
                     }
                 }
@@ -451,6 +440,12 @@ public class Uhrenspiel extends Application  {
                 stage1.close();
                 start(stage1);
             }
+    }
+    public void endGamewithoutsave(){
+        strictGame= false;
+        game.sum = 0;
+        start(stage1);
+
     }
 
       private String createFileName () {
