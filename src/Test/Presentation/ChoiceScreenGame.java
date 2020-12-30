@@ -40,8 +40,8 @@ public class ChoiceScreenGame extends MainGUI {
         text1 = new Text("Volle Stunde, zum Beispiel 01:00 Uhr?");
         text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30 Uhr?");
         text3 = new Text("Viertel Stunde lernen, zum Beispiel 01:15 Uhr?");
-        text4 = new Text("Um zum Experten zu werden musst du 80% der\n"
-                +"Fragen richtige beantworten!");
+        text4 = new Text("Um zum Experten zu werden musst du 6 von 10 \n"
+                +"Fragen pro Level richtig beantworten!");
         text5 = new Text("Level 1-3 gemischt?");
 
         final VBox middle = new VBox(30);
