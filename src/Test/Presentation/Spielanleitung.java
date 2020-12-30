@@ -50,54 +50,47 @@ public class Spielanleitung {
 
 
         green = new Timeline(
-                new KeyFrame(Duration.seconds(0.1), evt -> {
-                    guiMC.level.setText("Wir zeigen dir jetzt die beiden Antwortmöglichkeiten.");
-                }),
-                new KeyFrame(Duration.seconds(5.0), evt -> {
-                    guiMC.level.setText("Die erste Antwortmöglichkeit ist die Auswahl mit Knopfdruck.");
-                }),
+                new KeyFrame(Duration.seconds(0.1), evt ->
+                    guiMC.level.setText("Wir zeigen dir jetzt die beiden Antwortmöglichkeiten.")
+                ),
+                new KeyFrame(Duration.seconds(5.0), evt ->
+                    guiMC.level.setText("Die erste Antwortmöglichkeit ist die Auswahl mit Knopfdruck.")
+                ),
                 new KeyFrame(Duration.seconds(9.0), evt -> guiMC.antwort1.setStyle("-fx-background-color: green")));
 
-        if(green != null){
             green.play();
-        }
+
 
          timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0.6), evt -> guiMC.antwort1.setVisible(false)),
                 new KeyFrame(Duration.seconds(1.2), evt -> guiMC.antwort1.setVisible(true)));
 
-        if(timeline != null){
             timeline.setCycleCount(2);
             timeline.setDelay(Duration.seconds(10));
             timeline.play();
-        }
+
 
          answer = new Timeline(
                 new KeyFrame(Duration.seconds(0.1), evt ->
                 {
                     guiMC.antwort1.setId("buttonOkay");
-                    guiMC.antwort1.setText("Richtig!");
+                    guiMC.antwort1.setText("");
                     guiMC.antwort1.setDisable(true);
                     guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: 04:00 Uhr.");
                 }),
                 new KeyFrame(Duration.seconds(4.0), evt -> guiMC.goOn.setVisible(true)));
 
-
-        if(answer != null){
             answer.setDelay(Duration.seconds(11));
             answer.play();
-        }
 
 
          goOn = new Timeline(new KeyFrame(Duration.seconds(0.6), evt -> guiMC.goOn.setVisible(false)),
                         new KeyFrame(Duration.seconds(1.2), evt -> guiMC.goOn.setVisible(true)));
 
-
-        if(goOn != null){
             goOn.setCycleCount(2);
             goOn.setDelay(Duration.seconds(14));
             goOn.play();
-        }
+
 
 
         startFC = new Timeline(
@@ -134,15 +127,14 @@ public class Spielanleitung {
                       }),
                       new KeyFrame(Duration.seconds(8.0), evt ->  guiFA.givenHour.setText(" 7")));
 
-        if(startFC != null) {
             startFC.setDelay(Duration.seconds(19));
             startFC.play();
-        }
+
 
           abschicken = new Timeline(
                 new KeyFrame(Duration.seconds(0.1), evt -> {
                     guiFA.submitButton.setId("buttonOkay");
-                    guiFA.submitButton.setText("Richtig!");
+                    guiFA.submitButton.setText("");
                     guiFA.submitButton.setDisable(true);
 
                 }),
@@ -151,35 +143,32 @@ public class Spielanleitung {
 
 
 
-        if(abschicken != null){
+
             abschicken.setCycleCount(2);
             abschicken.setDelay(Duration.seconds(29));
             abschicken.play();
-        }
+
 
 
         submit = new Timeline(
                 new KeyFrame(Duration.seconds(0.6), evt -> guiFA.goOn.setVisible(false)),
                 new KeyFrame(Duration.seconds(1.2), evt -> guiFA.goOn.setVisible(true)));
-         if(submit != null){
+
             submit.setCycleCount(2);
             submit.setDelay(Duration.seconds(31));
             submit.play();
-        }
+
 
         ende = new Timeline( new KeyFrame(Duration.seconds(0.1), evt ->{
             guiFA.goOn.setText("Tutorial Wiederholen");
-            guiFA.goOn.setOnAction(event -> {
-               starteSpielanleitung(stage1);
-            });
+            guiFA.goOn.setOnAction(event ->
+               starteSpielanleitung(stage1)
+                );
         }));
-
-
-            if(ende != null){
 
             ende.setDelay(Duration.seconds(34));
             ende.play();
-        }
+
 
 
     }

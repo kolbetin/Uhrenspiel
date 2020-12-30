@@ -372,14 +372,12 @@ public class Uhrenspiel extends Application  {
                 });
             }
             else {
-
                 summaryScreen.nextGame.setDisable(true);
             }
             if(game.level >1) {
                 summaryScreen.preLevel.setOnAction(event -> {
                     game.level = game.level - 1;
                     newGame();
-
                 });
             }
             else {
@@ -394,16 +392,11 @@ public class Uhrenspiel extends Application  {
             float pct;
             pct =  (float) (game.correctAnswer /internalsum);
 
-
             if (pct >= 0.6) {
-
                 summaryScreen.willkommensText.setText("Level: " + game.level +  " wurde erfolgreich abgeschlossen!");
-
             }
             else {
-
                 summaryScreen.willkommensText.setText("Level: " + game.level + " wurde nicht erfolgreich abgeschlossen!");
-
             }
             if (pct >= 0.6 & game.level< 4){
                     summaryScreen.nextGame.setOnAction(event -> {
