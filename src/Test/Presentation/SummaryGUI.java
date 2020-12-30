@@ -27,10 +27,17 @@ public class SummaryGUI extends MainGUI {
     private Boolean success = false;
     private FileInputStream input;
     private Boolean strictGame = false;
+    private int richtigeAntwort;
+    private int falscheAntwort;
 
     public void setSuccess(boolean success,boolean strictGame){
         this.success = success;
         this.strictGame = strictGame;
+    }
+
+    public void setAnswer(int richtigeAntwort,int falscheAntwort){
+        this.richtigeAntwort = richtigeAntwort;
+        this.falscheAntwort = falscheAntwort;
     }
 
 
@@ -40,8 +47,8 @@ public class SummaryGUI extends MainGUI {
 
             willkommensText = new Label();
             willkommensText.setText("Level wurde abgeschlossen");
-            labelRA = new Label("Test");
-            labelFA = new Label("Test");
+            labelRA = new Label("Richtige Antworten: " + richtigeAntwort);
+            labelFA = new Label("Falsche Antworten: " + falscheAntwort);
 
 
             nextGame = new Button("Nächstes Level");
@@ -63,6 +70,10 @@ public class SummaryGUI extends MainGUI {
 
             BorderPane root = new BorderPane();
 
+             root.setBottom(bottom);
+             root.setPadding(new Insets(150, 370, 7, 20));
+             root.setCenter(middle);
+
             System.out.println(strictGame);
             System.out.println(success);
             if(strictGame){
@@ -72,12 +83,6 @@ public class SummaryGUI extends MainGUI {
                 root.setPadding(new Insets(70, 370, 7, 20));
                 bottom.setPadding(new Insets(50, 7, 200, 200));
            }
-            else {
-                root.setBottom(bottom);
-                root.setPadding(new Insets(150, 370, 7, 20));
-                root.setCenter(middle);
-            }
-
 
         root.getStylesheets().add
                     (MainGUI.class.getResource("clock.css").toExternalForm());

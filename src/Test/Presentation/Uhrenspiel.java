@@ -181,9 +181,9 @@ public class Uhrenspiel extends Application  {
      public void setgoOnButton(){
          game.playedGames.add(game.key);
 
-          if( game.aufgabennummer<5) {
+          if( game.aufgabennummer<2) {
               if (game.level < 4) {
-                  if (game.aufgabennummer < 4) {
+                  if (game.aufgabennummer < 2) {
                       newGameMultipleChoice();
                   } else {
                       newGameFreeAnswer();
@@ -369,20 +369,16 @@ public class Uhrenspiel extends Application  {
     public void gameSummary(){
        stage1.close();
         summaryScreen.start(stage1);
-
-        summaryScreen.labelRA.setText("Richtige Antworten: " + game.richtigeAntwort);
-        summaryScreen.labelFA.setText("Falsche Antworten: " + game.falscheAntwort);
+        summaryScreen.setAnswer(game.richtigeAntwort, game.falscheAntwort);
 
         summaryScreen.backButton.setOnAction(event -> {
-            stage1.close();
-            start(stage1);
+           endGame();
         });
         summaryScreen.repeatLevel.setOnAction(event ->
             newGame()
         );
 
         if(!strictGame){
-
             summaryScreen.willkommensText.setText("Level: " + game.level + " wurde abgeschlossen!");
             if(game.level< 4){
                 summaryScreen.nextGame.setOnAction(event -> {
@@ -395,7 +391,6 @@ public class Uhrenspiel extends Application  {
                 summaryScreen.nextGame.setDisable(true);
             }
             if(game.level >1) {
-
                 summaryScreen.preLevel.setOnAction(event -> {
                     game.level = game.level - 1;
                     newGame();
@@ -416,17 +411,17 @@ public class Uhrenspiel extends Application  {
 
 
             if (pct >= 0.6) {
-                summaryScreen.setSuccess(true,strictGame);
+
                 summaryScreen.willkommensText.setText("Level: " + game.level +  " wurde erfolgreich abgeschlossen!");
 
             }
             else {
-                summaryScreen.setSuccess(false,strictGame);
+
                 summaryScreen.willkommensText.setText("Level: " + game.level + " wurde nicht erfolgreich abgeschlossen!");
 
             }
             if (pct >= 0.6 & game.level< 4){
-                summaryScreen.nextGame.setOnAction(event -> {
+                    summaryScreen.nextGame.setOnAction(event -> {
                     game.level = game.level + 1;
                     newGame();
                 });
@@ -440,8 +435,7 @@ public class Uhrenspiel extends Application  {
                expertSummaryGUI.setSuccess(true);
                 expertSummaryGUI.start(stage1);
                 expertSummaryGUI.close.setOnAction(event -> {
-                    stage1.close();
-                    start(stage1);
+                  endGame();
                 });
             }
             else {
@@ -454,8 +448,7 @@ public class Uhrenspiel extends Application  {
                         newGame();
                     });
                     expertSummaryGUI.close.setOnAction(event -> {
-                        stage1.close();
-                        start(stage1);
+                       endGame();
                     });
                 }
             }

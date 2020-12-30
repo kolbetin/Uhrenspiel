@@ -23,6 +23,7 @@ public class ExpertSummaryGUI extends MainGUI {
      private FileInputStream input;
      public Button repeatButton;
 
+
      public void setSuccess(boolean success){
          this.success = success;
      }
@@ -41,7 +42,6 @@ public class ExpertSummaryGUI extends MainGUI {
         repeatButton = new Button ("Nochmal");
             HBox hBox = new HBox(50);
             hBox.getChildren().addAll(repeatButton,close);
-
 
 
         if(success) {
