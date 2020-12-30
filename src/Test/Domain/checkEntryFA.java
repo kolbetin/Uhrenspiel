@@ -33,7 +33,7 @@ public class checkEntryFA {
     }
 
     /**
-     * Die Methode nimmt die eingegeben Parameter entgegen und startet den Check der Eingabe auf Vollständigkeit
+     * Die Methode nimmt die eingegebenen Parameter entgegen und startet den Check der Eingabe auf Vollständigkeit
      * und nach korrekten Muster
      *
      * @param  stunde  Übergibt einen String mit der Stunde im Format "12"

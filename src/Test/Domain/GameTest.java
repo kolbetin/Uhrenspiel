@@ -34,30 +34,30 @@ class GameTest {
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
-        Assert.assertEquals(1,game.aufgabennummer);
+        Assert.assertEquals(1,game.taskNumber);
         System.out.println(game.playedGames);
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
-        Assert.assertEquals(2,game.aufgabennummer);
+        Assert.assertEquals(2,game.taskNumber);
         System.out.println(game.playedGames);
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
-        Assert.assertEquals(3,game.aufgabennummer);
+        Assert.assertEquals(3,game.taskNumber);
         System.out.println(game.playedGames);
 
 
         game.playedGames.clear();
-        game.aufgabennummer= 0;
+        game.taskNumber = 0;
 
         game.level = 2;
         game.setLevel(game.level);
@@ -75,21 +75,21 @@ class GameTest {
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
         System.out.println(game.playedGames);
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
         System.out.println(game.playedGames);
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
         System.out.println(game.playedGames);
 
@@ -113,27 +113,27 @@ class GameTest {
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         System.out.println(game.playedGames);
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
         System.out.println(game.playedGames);
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
         System.out.println(game.playedGames);
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
-        Assert.assertTrue(game.liste.contains(game.key));
+        Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
         System.out.println(game.playedGames);
 
@@ -144,29 +144,29 @@ class GameTest {
     @Test
     void answerSet(){
         game.key = "01:00";
-        game.liste.add(game.key);
+        game.keyList.add(game.key);
         game.setLevel(1);
         game.randomAnswer();
         game.answerSet();
-        Assert.assertTrue(game.answers.contains("1:00"));
+        Assert.assertTrue(game.answerList.contains("1:00"));
 
-        game.liste.clear();
+        game.keyList.clear();
 
         game.key = "04:30";
-        game.liste.add(game.key);
+        game.keyList.add(game.key);
         game.setLevel(2);
         game.randomAnswer();
         game.answerSet();
-        Assert.assertFalse(game.answers.contains("4:45"));
+        Assert.assertFalse(game.answerList.contains("4:45"));
 
-        game.liste.clear();
+        game.keyList.clear();
 
         game.key = "07:45";
-        game.liste.add(game.key);
+        game.keyList.add(game.key);
         game.setLevel(3);
         game.randomAnswer();
         game.answerSet();
-        Assert.assertTrue(game.answers.contains("7:45"));
+        Assert.assertTrue(game.answerList.contains("7:45"));
 
     }
     @Test

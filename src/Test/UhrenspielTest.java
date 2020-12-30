@@ -35,9 +35,9 @@ class UhrenspielTest {
     void newGame() {
         // Setzen der Test Ausgangslage für Game
         //uhrenspiel.launch(Uhrenspiel.class);
-        game.aufgabennummer = 3;
-        game.falscheAntwort = 2;
-        game.richtigeAntwort = 1;
+        game.taskNumber = 3;
+        game.wrongAnswer = 2;
+        game.correctAnswer = 1;
         game.saved = false;
         game.playedGames.add("12:00");
         game.playedGames.add("01:00");
@@ -49,12 +49,12 @@ class UhrenspielTest {
         game.nextQuestion();
         game.nextQuestion();
 
-        Assert.assertEquals(6, game.aufgabennummer);
+        Assert.assertEquals(6, game.taskNumber);
 
         uhrenspiel.setBackData();
 
 
-        Assert.assertEquals(0, game.aufgabennummer);
+        Assert.assertEquals(0, game.taskNumber);
       /*  Assert.assertFalse(uhrenspiel.getSaved());
         Assert.assertNotEquals(1,game.richtigeAntwort);
         Assert.assertEquals(0,game.falscheAntwort);
