@@ -1,7 +1,5 @@
 package Test.Persistenz;
 
-import Test.Persistenz.*;
-import javafx.application.Application;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -9,14 +7,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class SavedData extends Application  {
+public class SavedData {
 
     private IOInterface bufferInterface;
     private Random random;
     public List<String> progress;
 
-
-    public void start(Stage p){}
 
     public SavedData() {
         progress = new ArrayList();
@@ -31,15 +27,15 @@ public class SavedData extends Application  {
 
 
     public void saveProgress(File file, List<String> list) throws IOException {
-        bufferInterface.save(file,list);
+        bufferInterface.save(file, list);
     }
 
     public void loadProgress(File file) throws ClassNotFoundException, IOException {
-          setProgress(bufferInterface.load(file));
+        setProgress(bufferInterface.load(file));
         System.out.println("Das Spiel wurde geladen: " + progress);
     }
 
-    public File chooseSaveFile (File file, Stage stage) {
+    public File chooseSaveFile(File file, Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Speichere Spiel");
         fileChooser.setInitialDirectory(new File(file.getParent()));
@@ -53,7 +49,7 @@ public class SavedData extends Application  {
         return fileChooser.showSaveDialog(stage);
     }
 
-    public File chooseLoadFile (File file, Stage stage) {
+    public File chooseLoadFile(File file, Stage stage) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Lade Spiel");
 
@@ -65,9 +61,5 @@ public class SavedData extends Application  {
         // Show open file dialog
         return fileChooser.showOpenDialog(stage);
     }
-
-
-    public static void main(String[] args) {
-        launch();
-    }
 }
+
