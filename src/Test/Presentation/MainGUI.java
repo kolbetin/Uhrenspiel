@@ -8,7 +8,6 @@
 
 package Test.Presentation;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -22,12 +21,12 @@ import java.util.List;
 public class MainGUI  {
 
         public Button endButton;
-        public Button antwort1;
-        public Button antwort2;
-        public Button antwort3;
-        public Button antwort4;
+        public Button answer1;
+        public Button answer2;
+        public Button answer3;
+        public Button answer4;
         public Button saveButton;
-        public Label antwortzähler;
+        public Label answerCount;
         public Button goOn;
         private ClockSkin clock;
         public Label questionLabel;
@@ -50,6 +49,8 @@ public class MainGUI  {
 
     /**
      * Die Methode erstellt den Hauptbildschirm.
+     *
+     * @param primaryStage nimmt die Stage entgegeben um den Hauptbildschirm anzeigen zu können.
      */
 
 
@@ -73,17 +74,19 @@ public class MainGUI  {
 
     /**
      * Die Methode erstellt den Mittelteil des Hauptbildschirms.
+     *
+     * @return Gibt die BorderPane des Mittelteils für den Hauptbildschirm zurück.
      */
     public BorderPane middleArea() {
 
         final BorderPane middleArea = new BorderPane();
         middleArea.setId("middleArea");
 
-        antwortzähler = new Label("Aufgabe: " + aufgabennummer + "  von 10");
+        answerCount = new Label("Aufgabe: " + aufgabennummer + "  von 10");
         level = new Label ("Level: " + levelnummer );
 
         final HBox upper = new HBox(100);
-        upper.getChildren().addAll( level,antwortzähler);
+        upper.getChildren().addAll( level, answerCount);
         upper.setPadding(new Insets(7,7,7,7));
 
         final VBox vBox = new VBox(30);
@@ -104,6 +107,8 @@ public class MainGUI  {
 
     /**
      * Die Methode erstellt den Fragenteil im unteren Mittelbildschirm.
+     *
+     * @return Gibt die Pane zurück für den Fragenteil im Mittelbildschirm.
      */
 
         public Pane questionArea() {
@@ -121,7 +126,9 @@ public class MainGUI  {
 
      /**
      * Die Methode erstellt den oberen Teil des Hauptbildschirms.
-     */
+      *
+      * @return Gibt die Pane zurück für den oberen Teil im Hauptbildschirms.
+      */
         private Pane upperArea() {
             final VBox vBox = new VBox();
             vBox.setId("upperArea");
@@ -137,6 +144,8 @@ public class MainGUI  {
 
     /**
      * Die Methode erstellt das Uhrenbild im Mittelbildschirm.
+     *
+     * @return Gibt die Pane zurück für das Uhrenbild im Mittelbildschirm.
      */
         public Pane clockArea(){
 
@@ -158,6 +167,8 @@ public class MainGUI  {
 
     /**
      * Die Methode erstellt den linken Bildschirmteil im Hauptbildschirm.
+     *
+     *  @return Gibt die Pane zurück für den linken Bildschirmteil im Hauptbildschirm.
      */
          public Pane leftArea() {
             final BorderPane borderPane = new BorderPane();
@@ -193,6 +204,8 @@ public class MainGUI  {
 
     /**
      * Die Methode erstellt den Antwortenteil im unteren Mittelbildschirm.
+     *
+     * @return Gibt die Pane zurück für den Antwortenteil im Mittelbildschirm.
      */
 
 
@@ -207,20 +220,20 @@ public class MainGUI  {
 
             hBox.setPadding(new Insets(15, 7, 10, 7));
 
-            antwort1 = new Button("Antwort A");
-            antwort2 = new Button("Antwort B");
-            antwort3 = new Button("Antwort C");
-            antwort4 = new Button("Antwort D");
+            answer1 = new Button("Antwort A");
+            answer2 = new Button("Antwort B");
+            answer3 = new Button("Antwort C");
+            answer4 = new Button("Antwort D");
 
-            antwort1.setText(answers.get(0));
-            antwort2.setText(answers.get(1));
-            antwort3.setText(answers.get(2));
-            antwort4.setText(answers.get(3));
+            answer1.setText(answers.get(0));
+            answer2.setText(answers.get(1));
+            answer3.setText(answers.get(2));
+            answer4.setText(answers.get(3));
 
             goOn = new Button ("weiter");
 
             Label antwort = new Label("Antwort: Es ist ");
-            hBox.getChildren().addAll(antwort, antwort1, antwort2, antwort3, antwort4);
+            hBox.getChildren().addAll(antwort, answer1, answer2, answer3, answer4);
             hBox.getChildren().add(goOn);
 
 

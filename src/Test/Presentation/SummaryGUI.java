@@ -86,7 +86,6 @@ public class SummaryGUI extends MainGUI {
             root.setCenter(middle);
             root.setPadding(new Insets(70, 370, 7, 20));
 
-
             return root;
 
     }
@@ -104,6 +103,8 @@ public class SummaryGUI extends MainGUI {
 
     /**
      * Die Methode erstellt das Bild.
+     *
+     * @return Gibt den Node für das auszugebende Bild zurück.
      */
     public Node getPicture() {
         try {

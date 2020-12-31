@@ -171,6 +171,8 @@ public class Game {
     /**
      * Die Methode gibt die Antwort für den Freie Antwortenmodus zurück.
      *
+     * @param keys Nimmt den String der ausgewählten Frage (Uhrzeit) entgegen.
+     *
      * @return Gibt die Anwort für die Frage (Uhrzeit) in Freie Antwort zurück.
      */
 

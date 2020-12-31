@@ -1,3 +1,10 @@
+/**
+ * Die Klasse ist die Hauptklasse die alle GUI's zusammenführt und durch das Spiel führt.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
 package Test.Presentation;
 
 import Test.Domain.Game;
@@ -40,6 +47,9 @@ public class Uhrenspiel extends Application  {
     private checkEntryFA checkEntryFA;
     private boolean success = false;
 
+    /**
+     * Die Methode startet den Main Screen GUI.
+     */
 
 
       public void start(Stage primaryStage) {
@@ -82,6 +92,10 @@ public class Uhrenspiel extends Application  {
       }
 
 
+    /**
+     * Die Methode startet die GUI für die Spielauswahl.
+     */
+
     private void startChoiceScreenGame(){
         choiceScreenGame.start(stage1);
 
@@ -117,6 +131,10 @@ public class Uhrenspiel extends Application  {
         });
     }
 
+
+    /**
+     * Die Methode startet die GUI für den Lernmodus.
+     */
     private void startChoiceScreenLernmodus(){
         choiceScreenLernmodus.start(stage1);
 
@@ -145,12 +163,19 @@ public class Uhrenspiel extends Application  {
             start(stage1);
         });
     }
+
+    /**
+     * Die Methode stellt den Lernmodus ein und startet die Lernmodus GUI.
+     */
          private void setLernmodus(int level){
                 learnModus.setAnzuzeigendeZeitLernmodus(level);
                 learnModus.setStartTime(level);
                 learnModus.startLernmodus(stage1,level);
          }
 
+    /**
+     * Die Methode stellt alle Spielparameter zurück.
+     */
 
          public void setBackData(){
                 game.taskNumber = 0;
@@ -164,6 +189,10 @@ public class Uhrenspiel extends Application  {
                 game.sum =0;
                  }
         }
+    /**
+     * Die Methode startet ein neues Spiel.
+     */
+
 
     public void newGame(){
         setBackData();
@@ -181,6 +210,9 @@ public class Uhrenspiel extends Application  {
         }
     }
 
+    /**
+     * Die Methode startet eine weitere Aufgabe oder beendet eine Level.
+     */
      public void setgoOnButton(){
          game.playedGames.add(game.key);
 
@@ -203,6 +235,9 @@ public class Uhrenspiel extends Application  {
               gameSummary();
           }
     }
+    /**
+     * Die Methode startet den Multiple Choice Bildschirm für eine Frage.
+     */
 
     public void newGameMultipleChoice() {
 
@@ -224,6 +259,9 @@ public class Uhrenspiel extends Application  {
         answerCheckMC();
         showData();
   }
+    /**
+     * Die Methode gibt alle relevanten Spielparameter in der Konsole aus.
+     */
     private void showData(){
         System.out.println(game.key);
         System.out.println(game.keyList);
@@ -233,6 +271,9 @@ public class Uhrenspiel extends Application  {
         System.out.println(game.playedGames);
     }
 
+    /**
+     * Die Methode startet den Freie Antwort Bildschirm für eine Frage.
+     */
       public void newGameFreeAnswer(){
           game.nextQuestion();
           guiFA.time = game.key;
@@ -267,6 +308,10 @@ public class Uhrenspiel extends Application  {
           showData();
       }
 
+    /**
+     * Die Methode startet die Kontrolle der Eingabe im Freien Antwortenmodus.
+     */
+
       private void checkEntry(){
           checkEntryFA.setValues(guiFA.givenHour.getText(),guiFA.givenMinutes.getText());
 
@@ -283,7 +328,9 @@ public class Uhrenspiel extends Application  {
             }
       }
 
-
+    /**
+     * Die Methode gibt dem User im Freie Antwortenmodus zurück ob die eingegbene Antwort korrekt oder falsch war.
+     */
       public void answerFA() {
 
                 if(game.checkAnswerFA(guiFA.givenHour.getText(), guiFA.givenMinutes.getText()))
@@ -306,6 +353,11 @@ public class Uhrenspiel extends Application  {
                   game.sum++;
                }
          }
+
+    /**
+     * Die Methode verwaltet die Buttons im Freie Antwortenmodus Bildschirm.
+     */
+
      private void manageButtonsFA(){
          guiFA.givenHour.setDisable(true);
          guiFA.givenMinutes.setDisable(true);
@@ -313,21 +365,34 @@ public class Uhrenspiel extends Application  {
          guiFA.goOn.setVisible(true);
      }
 
+    /**
+     * Die Methode fügt alle Multiple Choice Buttons dem Eventhandler hinzu.
+     */
+
     private void answerCheckMC() {
           EventHandler<MouseEvent> eventHandler = getEventHandler();
-          guiMC.antwort1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-          guiMC.antwort2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-          guiMC.antwort3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-          guiMC.antwort4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+          guiMC.answer1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+          guiMC.answer2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+          guiMC.answer3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+          guiMC.answer4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
       }
 
+    /**
+     * Die Methode verwaltet die Buttons im Mulitple Choice Bildschirm.
+     */
+
       private void manageButtonsMC(){
-          guiMC.antwort1.setDisable(true);
-          guiMC.antwort2.setDisable(true);
-          guiMC.antwort3.setDisable(true);
-          guiMC.antwort4.setDisable(true);
+          guiMC.answer1.setDisable(true);
+          guiMC.answer2.setDisable(true);
+          guiMC.answer3.setDisable(true);
+          guiMC.answer4.setDisable(true);
           guiMC.goOn.setVisible(true);
       }
+
+    /**
+     * Die Methode prüft alle Events der Buttons im Multiple Choice Screen und gibt Feedback an den Spieler,
+     * ob der korrekte oder falsche Button gedrückt wurde.
+     */
 
           EventHandler<MouseEvent> getEventHandler() {
               //Creating the mouse event handler
@@ -359,6 +424,11 @@ public class Uhrenspiel extends Application  {
              };
         }
 
+    /**
+     * Die Methode öffnet den Zusammenfassungsbildscshirm, bei Ende eines Levels.
+     * Bei Abschluss des Expertenmodus wird die ExpertenmodusGUI geöffnet.
+     */
+
 
     public void gameSummary() {
         stage1.close();
@@ -375,7 +445,7 @@ public class Uhrenspiel extends Application  {
             newGame();
         });
                 else{
-            summaryScreen.preLevel.setVisible(false);
+            summaryScreen.preLevel.setDisable(false);
         }
 
         if (!strictGame) {
@@ -435,6 +505,10 @@ public class Uhrenspiel extends Application  {
         }
     }
 
+    /**
+     * Die Methode beendet ein Spiel, mit Alert, falls nicht gespeichert wurde.
+     * Der Spieler wird zum Main Screen zurückgeleitet.
+     */
 
     public void endGame(){
           strictGame= false;
@@ -453,6 +527,10 @@ public class Uhrenspiel extends Application  {
                 start(stage1);
             }
     }
+    /**
+     * Die Methode beendet ein Spiel ohne Alert für Speicherung.
+     * Der Spieler wird zum Main Screen zurückgeleitet.
+     */
     public void endGamewithoutsave(){
         strictGame= false;
         game.sum = 0;
@@ -461,9 +539,18 @@ public class Uhrenspiel extends Application  {
 
     }
 
+    /**
+     * Die Methode wählt den Speicherort aus und gibt einen Namen für das File vor,
+     * welcher beim speichern abgeändert werden kann.
+     */
+
       private String createFileName () {
           return  System.getProperty("user.home") + System.getProperty("file.separator") +"Spielstand.ser";
           }
+
+    /**
+     * Die Methode speichert ein Spiel. Speicherort kann frei gewählt werden.
+     */
 
     public void saveProgress() {
         try {
@@ -489,6 +576,10 @@ public class Uhrenspiel extends Application  {
         }
     }
 
+    /**
+     * Die Methode lädt ein gespeichertes Spiel. File, welches geladen werden muss, kann ausgewählt werden.
+     * Es wird eine neue Frage gestartet basierend auf den geladenen Spielparametern.
+     */
 
     private void loadProgress() {
         try {
@@ -513,7 +604,9 @@ public class Uhrenspiel extends Application  {
         }
     }
 
-
+    /**
+     * Die Methode aktualisiert alle relevanten Spielparameter mit den geladenen Spielparametern
+     */
     private void updateData(){
         game.correctAnswer = Integer.parseInt(data.progress.get(4));
         game.wrongAnswer = Integer.parseInt(data.progress.get(5));
@@ -526,7 +619,10 @@ public class Uhrenspiel extends Application  {
         showData();
     }
 
-
+    /**
+     * Die Methode wählt per Zufall einen Antwortenmoudsbildschirm aus.
+     * @return Gibt die GUI des per Zufall ausgewählten Antwortenmodus zurück.
+     */
     public MainGUI getRandomGUI() {
         guiList = new ArrayList<>();
         guiList.add(guiFA);
@@ -536,6 +632,9 @@ public class Uhrenspiel extends Application  {
         return guiList.get(index);
     }
 
+    /**
+     * Der Konstruktor der Klasse
+     */
 
     public Uhrenspiel()  {
         guiMC = new MainGUI();

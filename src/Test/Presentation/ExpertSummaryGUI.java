@@ -81,6 +81,8 @@ public class ExpertSummaryGUI extends MainGUI {
 
     /**
      * Die Methode erstellt das Bild.
+     *
+     * @return Gibt das Node zurück für das auszugebende Bild.
      */
 
     public Node getPicture() {

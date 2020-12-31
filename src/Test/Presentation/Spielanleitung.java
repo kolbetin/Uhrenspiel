@@ -41,12 +41,13 @@ public class Spielanleitung {
      *
      * Zudem wird in einer Timeline die unterschiedlichen Phasen des Spiels
      * vorgestellt.
+     * @param stage1 nimmt die Stage entgegen, zum Aufbau der GUI.
      */
     public void startSpielanleitung(Stage stage1) {
 
         guiMC.time = "04:00";
         guiMC.start(stage1);
-        guiMC.antwortzähler.setVisible(false);
+        guiMC.answerCount.setVisible(false);
         guiMC.level.setText("Wir zeigen dir jetzt die beiden Antwortmöglichkeiten.");
         guiMC.goOn.setVisible(false);
         guiMC.richtigeAntwort.setVisible(false);
@@ -74,14 +75,14 @@ public class Spielanleitung {
                 new KeyFrame(Duration.seconds(5.0), evt ->
                     guiMC.level.setText("Die erste Antwortmöglichkeit ist die Auswahl mit Knopfdruck.")
                 ),
-                new KeyFrame(Duration.seconds(9.0), evt -> guiMC.antwort1.setStyle("-fx-background-color: green")));
+                new KeyFrame(Duration.seconds(9.0), evt -> guiMC.answer1.setStyle("-fx-background-color: green")));
 
             startMC.play();
 
 
          pressButton = new Timeline(
-                new KeyFrame(Duration.seconds(0.6), evt -> guiMC.antwort1.setVisible(false)),
-                new KeyFrame(Duration.seconds(1.2), evt -> guiMC.antwort1.setVisible(true)));
+                new KeyFrame(Duration.seconds(0.6), evt -> guiMC.answer1.setVisible(false)),
+                new KeyFrame(Duration.seconds(1.2), evt -> guiMC.answer1.setVisible(true)));
 
             pressButton.setCycleCount(2);
             pressButton.setDelay(Duration.seconds(10));
@@ -91,9 +92,9 @@ public class Spielanleitung {
          correctAnswerMC = new Timeline(
                 new KeyFrame(Duration.seconds(0.1), evt ->
                 {
-                    guiMC.antwort1.setId("buttonOkay");
-                    guiMC.antwort1.setText("");
-                    guiMC.antwort1.setDisable(true);
+                    guiMC.answer1.setId("buttonOkay");
+                    guiMC.answer1.setText("");
+                    guiMC.answer1.setDisable(true);
                     guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: 04:00 Uhr.");
                 }),
                 new KeyFrame(Duration.seconds(4.0), evt -> guiMC.goOn.setVisible(true)));
@@ -116,7 +117,7 @@ public class Spielanleitung {
                                       //  stage1.close();
                                         guiFA.time = "07:15";
                                         guiFA.start(stage1);
-                                        guiFA.antwortzähler.setVisible(false);
+                                        guiFA.answerCount.setVisible(false);
                                         guiFA.richtigeAntwort.setVisible(false);
                                         guiFA.falscheAntwort.setVisible(false);
                                         guiFA.allAnswers.setVisible(false);
