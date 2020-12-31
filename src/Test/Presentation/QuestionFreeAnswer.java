@@ -1,3 +1,10 @@
+/**
+ * Die Klasse erstellt die GUI für die Antwortenmoduse und Auswahlbildschirme.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
 package Test.Presentation;
 
 import javafx.geometry.Insets;
@@ -12,6 +19,9 @@ public class QuestionFreeAnswer extends MainGUI {
     public Button submitButton;
 
 
+    /**
+     * Die Methode überschreibt den unteren Antwortenteil des Mittelteils der Hauptgui.
+     */
 
     @Override
     public Pane answerArea() {

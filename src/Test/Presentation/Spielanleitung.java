@@ -1,3 +1,11 @@
+/**
+ * Die Klasse erstellt die Spielanleitung.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
+
 package Test.Presentation;
 
 import javafx.animation.KeyFrame;
@@ -10,21 +18,30 @@ public class Spielanleitung {
     public MainGUI guiMC;
     public QuestionFreeAnswer guiFA;
     public Uhrenspiel uhrenspiel;
-    private Timeline startFC;
-    private Timeline abschicken;
-    private Timeline ende;
-    private Timeline submit;
-    private Timeline green;
-    private Timeline timeline;
-    private Timeline answer;
+    private Timeline startMC;
+    private Timeline pressButton;
+    private Timeline correctAnswerMC;
     private Timeline goOn;
+    private Timeline startFA;
+    private Timeline correctAnswerFA;
+    private Timeline submitAnswer;
+    private Timeline end;
 
+    /**
+     * Der Konstruktor der Klasse.
+     */
 
     public Spielanleitung(){
         guiMC = new MainGUI();
         guiFA = new QuestionFreeAnswer();
     }
 
+    /**
+     * Die Methode erstellt die GUI für die Spielanleitung.
+     *
+     * Zudem wird in einer Timeline die unterschiedlichen Phasen des Spiels
+     * vorgestellt.
+     */
     public void startSpielanleitung(Stage stage1) {
 
         guiMC.time = "04:00";
@@ -42,14 +59,15 @@ public class Spielanleitung {
             uhrenspiel = new Uhrenspiel();
             stage1.close();
             uhrenspiel.start(stage1);
-            startFC.stop();
-            abschicken.stop();
-            submit.stop();
-            ende.stop();
+            startFA.stop();
+            correctAnswerFA.stop();
+            submitAnswer.stop();
+            end.stop();
+            System.out.println("Tutorial beendet");
         });
 
 
-        green = new Timeline(
+        startMC = new Timeline(
                 new KeyFrame(Duration.seconds(0.1), evt ->
                     guiMC.level.setText("Wir zeigen dir jetzt die beiden Antwortmöglichkeiten.")
                 ),
@@ -58,19 +76,19 @@ public class Spielanleitung {
                 ),
                 new KeyFrame(Duration.seconds(9.0), evt -> guiMC.antwort1.setStyle("-fx-background-color: green")));
 
-            green.play();
+            startMC.play();
 
 
-         timeline = new Timeline(
+         pressButton = new Timeline(
                 new KeyFrame(Duration.seconds(0.6), evt -> guiMC.antwort1.setVisible(false)),
                 new KeyFrame(Duration.seconds(1.2), evt -> guiMC.antwort1.setVisible(true)));
 
-            timeline.setCycleCount(2);
-            timeline.setDelay(Duration.seconds(10));
-            timeline.play();
+            pressButton.setCycleCount(2);
+            pressButton.setDelay(Duration.seconds(10));
+            pressButton.play();
 
 
-         answer = new Timeline(
+         correctAnswerMC = new Timeline(
                 new KeyFrame(Duration.seconds(0.1), evt ->
                 {
                     guiMC.antwort1.setId("buttonOkay");
@@ -80,8 +98,8 @@ public class Spielanleitung {
                 }),
                 new KeyFrame(Duration.seconds(4.0), evt -> guiMC.goOn.setVisible(true)));
 
-            answer.setDelay(Duration.seconds(11));
-            answer.play();
+            correctAnswerMC.setDelay(Duration.seconds(11));
+            correctAnswerMC.play();
 
 
          goOn = new Timeline(new KeyFrame(Duration.seconds(0.6), evt -> guiMC.goOn.setVisible(false)),
@@ -93,7 +111,7 @@ public class Spielanleitung {
 
 
 
-        startFC = new Timeline(
+        startFA = new Timeline(
                        new KeyFrame(Duration.seconds(0.1), evt ->{
                                       //  stage1.close();
                                         guiFA.time = "07:15";
@@ -113,7 +131,8 @@ public class Spielanleitung {
                                            uhrenspiel = new Uhrenspiel();
                                            stage1.close();
                                           uhrenspiel.start(stage1);
-                                           startFC.stop();
+                                           startFA.stop();
+                                           System.out.println("Tutorial beendet");
                                        });
 
 
@@ -127,11 +146,11 @@ public class Spielanleitung {
                       }),
                       new KeyFrame(Duration.seconds(8.0), evt ->  guiFA.givenHour.setText(" 7")));
 
-            startFC.setDelay(Duration.seconds(19));
-            startFC.play();
+            startFA.setDelay(Duration.seconds(19));
+            startFA.play();
 
 
-          abschicken = new Timeline(
+          correctAnswerFA = new Timeline(
                 new KeyFrame(Duration.seconds(0.1), evt -> {
                     guiFA.submitButton.setId("buttonOkay");
                     guiFA.submitButton.setText("");
@@ -144,30 +163,30 @@ public class Spielanleitung {
 
 
 
-            abschicken.setCycleCount(2);
-            abschicken.setDelay(Duration.seconds(29));
-            abschicken.play();
+            correctAnswerFA.setCycleCount(2);
+            correctAnswerFA.setDelay(Duration.seconds(29));
+            correctAnswerFA.play();
 
 
 
-        submit = new Timeline(
+        submitAnswer =new Timeline(
                 new KeyFrame(Duration.seconds(0.6), evt -> guiFA.goOn.setVisible(false)),
                 new KeyFrame(Duration.seconds(1.2), evt -> guiFA.goOn.setVisible(true)));
 
-            submit.setCycleCount(2);
-            submit.setDelay(Duration.seconds(31));
-            submit.play();
+            submitAnswer.setCycleCount(2);
+            submitAnswer.setDelay(Duration.seconds(31));
+            submitAnswer.play();
 
 
-        ende = new Timeline( new KeyFrame(Duration.seconds(0.1), evt ->{
+        end = new Timeline( new KeyFrame(Duration.seconds(0.1), evt ->{
             guiFA.goOn.setText("Tutorial Wiederholen");
             guiFA.goOn.setOnAction(event ->
                startSpielanleitung(stage1)
                 );
         }));
 
-            ende.setDelay(Duration.seconds(34));
-            ende.play();
+            end.setDelay(Duration.seconds(34));
+            end.play();
 
 
 

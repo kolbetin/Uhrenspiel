@@ -1,3 +1,11 @@
+/**
+ * Die Klasse nimmt die Eingabe der beiden Textfelder für die freie Antwort entgegen
+ *  und prüft die Eingabe auf Validität.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
 package Test.Domain;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,11 +18,21 @@ class checkEntryFATest {
     private String hour;
     private String minutes;
 
+    /**
+     * Die Methode wird vor jedem Test ausgeführt und bereitet das set up für die Tests.
+     */
+
     @BeforeEach
     public void setUp() {
         checkEntryFA = new checkEntryFA();
 
     }
+
+    /**
+     * Die Methode testet ob valide Eingaben korrekt erkannt werden.
+     *
+     */
+
 
     @Test
     void setValues() {
@@ -95,6 +113,11 @@ class checkEntryFATest {
 
 
     }
+
+    /**
+     * Die Methode testet ob invalide Eingaben erkannt werden.
+     *
+     */
 
     @Test
     void TestWrongValues()    {

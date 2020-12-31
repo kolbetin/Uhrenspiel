@@ -1,3 +1,11 @@
+/**
+ * Die Klasse erstellt die GUI für die Antwortenmoduse und Auswahlbildschirme.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
+
 package Test.Presentation;
 
 import javafx.application.Application;
@@ -7,12 +15,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainGUI extends Application {
+public class MainGUI  {
 
         public Button endButton;
         public Button antwort1;
@@ -30,7 +37,6 @@ public class MainGUI extends Application {
         public Label level;
         public Label richtigeAntwort;
         public Label falscheAntwort;
-      //  public Label textlevel;
         public Label allAnswers;
         public Label levelexplain;
         private int levelnummer = 0;
@@ -42,12 +48,14 @@ public class MainGUI extends Application {
 
 
 
+    /**
+     * Die Methode erstellt den Hauptbildschirm.
+     */
 
 
     public void start(Stage primaryStage) {
 
             final BorderPane borderPane = new BorderPane();
-
 
             borderPane.setPadding(new Insets(7,7,7,7));
             borderPane.setTop(upperArea());
@@ -63,6 +71,9 @@ public class MainGUI extends Application {
             primaryStage.show();
         }
 
+    /**
+     * Die Methode erstellt den Mittelteil des Hauptbildschirms.
+     */
     public BorderPane middleArea() {
 
         final BorderPane middleArea = new BorderPane();
@@ -91,6 +102,10 @@ public class MainGUI extends Application {
 
     }
 
+    /**
+     * Die Methode erstellt den Fragenteil im unteren Mittelbildschirm.
+     */
+
         public Pane questionArea() {
             BorderPane borderPane = new BorderPane();
             borderPane.setId("questionArea");
@@ -104,6 +119,9 @@ public class MainGUI extends Application {
             return borderPane;
         }
 
+     /**
+     * Die Methode erstellt den oberen Teil des Hauptbildschirms.
+     */
         private Pane upperArea() {
             final VBox vBox = new VBox();
             vBox.setId("upperArea");
@@ -115,8 +133,11 @@ public class MainGUI extends Application {
             vBox.getChildren().add(header);
 
             return vBox;
-        }
+     }
 
+    /**
+     * Die Methode erstellt das Uhrenbild im Mittelbildschirm.
+     */
         public Pane clockArea(){
 
             final HBox hbox = new HBox();
@@ -135,6 +156,9 @@ public class MainGUI extends Application {
             return hbox;
         }
 
+    /**
+     * Die Methode erstellt den linken Bildschirmteil im Hauptbildschirm.
+     */
          public Pane leftArea() {
             final BorderPane borderPane = new BorderPane();
             borderPane.setId("leftArea");
@@ -167,10 +191,12 @@ public class MainGUI extends Application {
             return borderPane;
         }
 
+    /**
+     * Die Methode erstellt den Antwortenteil im unteren Mittelbildschirm.
+     */
 
 
          public  Pane answerArea()  {
-
 
             HBox hBox = new HBox(25);
             hBox.setId("answerArea");
@@ -201,23 +227,35 @@ public class MainGUI extends Application {
             return hBox;
          }
 
-         public void setGameValues(int aufgabennummer, int level, double sum, int richtigeAntwortNummer, int falscheAntwortNummer, List answers){
+         /**
+        * Die Methode nimmt die aktuelle Spielparameter entgegen zum erstellen des nächsten Fragebildschirms.
+        *
+        * @param  tasknumber  Übergibt einen Integer der aktuellen Aufgabennummer.
+        * @param  level Übergibt einen Integer der aktuellen Level.
+        * @param  sum  Übergibt einen Integer der Anzahl der aktullen insgesamt beantworteten Fragen.
+        * @param  correctAnswer Übergibt einen Integer mit der Anzahl der aktuell korrekt beantworteten Fragen.
+        * @param  wrongAnswer Übergibt einen Integer mit der Anzahl der aktuell falsch beantworteten Fragen.
+        * @param  answers Übergibt eine Liste der Antworten, für die aktuelle Frage (Uhrzeit).
+        */
+
+         public void setGameValues(int tasknumber, int level, double sum, int correctAnswer, int wrongAnswer, List answers){
              this.answers.clear();
-             this.aufgabennummer = aufgabennummer;
+             this.aufgabennummer = tasknumber;
              this.levelnummer = level;
              this.sum = (int) sum;
-             this.richtigeAntwortNummer = richtigeAntwortNummer;
-             this.falscheAntwortNummer = falscheAntwortNummer;
+             this.richtigeAntwortNummer = correctAnswer;
+             this.falscheAntwortNummer = wrongAnswer;
              this.answers.addAll(answers);
-            // System.out.println(answers);
          }
+
+          /**
+            * Konstruktor der Klasse.
+            */
 
           public  MainGUI() {
                    answers = new ArrayList<>();
         }
-         public static void main(String[] args) {
-            launch(args);
-        }
+
 
     }
 

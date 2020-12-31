@@ -6,6 +6,7 @@ import Test.Persistenz.SavedData;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
@@ -41,19 +42,20 @@ public class Uhrenspiel extends Application  {
 
 
 
-      public void start(Stage primarystage) {
+      public void start(Stage primaryStage) {
+
 
           stage1 = new Stage();
           stage2 = new Stage();
           stage3 = new Stage();
 
-        /* expertSummaryGUI.setSuccess(true);
+     /*   expertSummaryGUI.setSuccess(true);
           expertSummaryGUI.start(stage2);
 
         expertSummaryGUI.setSuccess(false);
-          expertSummaryGUI.start(stage3);*/
+          expertSummaryGUI.start(stage3);
 
-     /*     summaryScreen.start(stage3);*/
+        /*  summaryScreen.start(stage3);*/
           mainScreen.start(stage1);
 
           mainScreen.newGameButton.setOnAction(event -> {
@@ -550,7 +552,6 @@ public class Uhrenspiel extends Application  {
         data = new SavedData();
         checkEntryFA = new checkEntryFA();
 
-        System.out.println(getRandomGUI());
         System.out.println("Uhrenspiel startet");
     }
 

@@ -1,3 +1,11 @@
+/**
+ * Die Klasse testet den Spielablauf.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
+
 package Test.Domain;
 
 import org.junit.Assert;
@@ -9,11 +17,23 @@ class GameTest {
     private String hour;
     private String minutes;
 
+    /**
+     * Die Methode wird vor jedem Test ausgeführt und bereitet das set up für die Tests.
+     */
 
     @BeforeEach
     void setUp() {
         game = new Game();
     }
+
+    /**
+     * Die Methode testet die Erstellung der nächsten Frage.
+     * Es wird getestet das Uhrzeiten innerhalb eines Aufgabensets nicht doppelt
+     * abgefragt werden.
+
+     * Diese Tests werden für alle drei Level durchgeführt.
+     */
+
 
     @Test
     void nextQuestion() {
@@ -141,6 +161,13 @@ class GameTest {
 
     }
 
+    /**
+     * Die Methode prüft, ob im Multiple Choice Mode zu jeder Uhrzeit, die korrekte Antwort in der
+     * ausgegebenen Antwortenliste enthalten ist.
+     */
+
+
+
     @Test
     void answerSet(){
         game.key = "01:00";
@@ -169,6 +196,11 @@ class GameTest {
         Assert.assertTrue(game.answerList.contains("7:45"));
 
     }
+
+    /**
+     * Die Methode prüft, ob zu jeder Uhrzeit, die korrekte Antwort im Freie Antwortenmodus ausgegeben wird.
+     */
+
     @Test
     void getAnswerFA() {
         game.key = "03:00";
@@ -183,6 +215,11 @@ class GameTest {
         game.setLevel(3);
         Assert.assertEquals("9:15",game.getAnswerFA(game.key));
     }
+    /**
+     * Die Methode prüft, ob die korrekte Antwort bei unterschiedlicher Eingabe von hour und minutes im
+     * Freien Antwortenmodus erkannt wird.
+     */
+
 
     @Test
     void checkAnswerFA(){
@@ -199,7 +236,7 @@ class GameTest {
         Assert.assertTrue(game.checkAnswerFA(hour,minutes));
 
 
-        hour = "03";
+        hour = "3";
         minutes = "00";
         game.setLevel(1);
         game.key = "02:00";

@@ -1,13 +1,18 @@
+/**
+ * Die Klasse erstellt die GUI für die Antwortenmoduse und Auswahlbildschirme.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
 package Test.Presentation;
 
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
 
 
 
@@ -19,6 +24,11 @@ public class MainScreenGUI extends MainGUI {
      public Button endGameButton;
      public Button lernmodusButton;
      public Button spielanleitungButton;
+
+
+    /**
+     * Die Methode überschreibt den mittleren Teil des Hauptbildschirms.
+     */
 
 
     @Override
@@ -49,20 +59,16 @@ public class MainScreenGUI extends MainGUI {
 
     }
 
+
+    /**
+     * Die Methode überschreibt den linken Teil des Hauptbildschirms.
+     */
+
     @Override
     public Pane leftArea() {
         final VBox vBox = new VBox(5);
-
-      //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        vBox.setPadding(new Insets(7, 150, 7, 70));
-        //vBox.getChildren().addAll(new Text("Fortschrittsleiste"));
-
-
         return vBox;
     }
 
 
-    public static void main(String[] args) {
-        Application.launch(args);
-    }
 }

@@ -1,6 +1,6 @@
 /**
  * Die Klasse nimmt die Eingabe der beiden Textfelder für die freie Antwort entgegen
- *  und prüft die Eingabe auf Vollständigkeit und prüft ob nur Zahlen eingegeben wurden.
+ *  und prüft die Eingabe auf Validität.
  *
  *  @author Tina Kolbe & Oliver Piert
  *  @version 1.0

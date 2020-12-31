@@ -74,8 +74,8 @@ public class LernmodusGUI extends MainGUI {
         root.setLeft(middle);
         root.setBottom(hbox);
 
-        root.getStylesheets().add
-                (MainGUI.class.getResource("clock.css").toExternalForm());
+    /*    root.getStylesheets().add
+                (MainGUI.class.getResource("clock.css").toExternalForm());*/
         return root;
 
     }

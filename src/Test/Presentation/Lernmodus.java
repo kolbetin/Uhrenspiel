@@ -22,9 +22,6 @@ public class Lernmodus {
 
     public void startLernmodus(Stage stage1, int level) {
 
-        PauseTransition wait = new PauseTransition();
-        wait.setDelay(Duration.seconds(5));
-
             lmLevel = level;
             setStartTime(lmLevel);
             guiLM.setUhrzeit(anzuzeigendeZeit, anzuzeigendeZiffer);
@@ -55,6 +52,7 @@ public class Lernmodus {
                                 thread.stop();
                                 stage1.close();
                                 uhrenspiel.start(stage1);
+                                System.out.println("Lernmodus beendet");
 
                             });
                             guiLM.repeatButton.setOnAction(event -> {

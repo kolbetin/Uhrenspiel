@@ -1,3 +1,10 @@
+/**
+ * Die Klasse erstellt die GUI für die Auswertung eines Spiels.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
 package Test.Presentation;
 
 import javafx.geometry.Insets;
@@ -25,15 +32,25 @@ public class SummaryGUI extends MainGUI {
     public Button repeatLevel;
     public Button preLevel;
     private FileInputStream input;
-    private int richtigeAntwort;
-    private int falscheAntwort;
+    private int correctAnswer;
+    private int wrongAnswer;
+
+    /**
+     * Die Methode nimmt die aktuelle Spielparameter entgegen zum erstellen der Zusammenfassung.
+     *
+     * @param  correctAnswer Übergibt einen Integer mit der Anzahl der aktuell korrekt beantworteten Fragen.
+     * @param  wrongAnswer Übergibt einen Integer mit der Anzahl der aktuell falsch beantworteten Fragen.
+     */
 
 
-    public void setAnswer(int richtigeAntwort,int falscheAntwort){
-        this.richtigeAntwort = richtigeAntwort;
-        this.falscheAntwort = falscheAntwort;
+    public void setAnswer(int correctAnswer,int wrongAnswer){
+        this.correctAnswer = correctAnswer;
+        this.wrongAnswer = wrongAnswer;
     }
 
+    /**
+     * Die Methode überschreibt den mittleren Teil des Hauptbildschirms.
+     */
 
     @Override
     public BorderPane middleArea() {
@@ -41,8 +58,8 @@ public class SummaryGUI extends MainGUI {
 
             willkommensText = new Label();
             willkommensText.setText("Level wurde abgeschlossen");
-            labelRA = new Label("Richtige Antworten: " + richtigeAntwort);
-            labelFA = new Label("Falsche Antworten: " + falscheAntwort);
+            labelRA = new Label("Richtige Antworten: " + correctAnswer);
+            labelFA = new Label("Falsche Antworten: " + wrongAnswer);
 
 
             nextGame = new Button("Nächstes Level");
@@ -60,46 +77,38 @@ public class SummaryGUI extends MainGUI {
             middle.setPadding(new Insets(7, 270, 7, 270));
 
             bottom.getChildren().addAll(backButton, preLevel, repeatLevel, nextGame);
-            bottom.setPadding(new Insets(100, 7, 200, 200));
+            bottom.setPadding(new Insets(50, 7, 200, 200));
 
             BorderPane root = new BorderPane();
 
-       /*      root.setBottom(bottom);
-                root.setPadding(new Insets(150, 370, 7, 20));
-        root.setCenter(middle);*/
-
-
-
             root.setTop(getPicture());
             root.setBottom(bottom);
-             root.setCenter(middle);
-             root.setPadding(new Insets(70, 370, 7, 20));
-             bottom.setPadding(new Insets(50, 7, 200, 200));
+            root.setCenter(middle);
+            root.setPadding(new Insets(70, 370, 7, 20));
 
 
-        root.getStylesheets().add
-                    (MainGUI.class.getResource("clock.css").toExternalForm());
             return root;
-
 
     }
 
+    /**
+     * Die Methode überschreibt den linken Teil des Hauptbildschirms.
+     */
 
     @Override
     public Pane leftArea() {
         VBox vBox = new VBox(5);
 
-        vBox.setPadding(new Insets(7, 150, 7, 70));
-
         return vBox;
     }
 
+    /**
+     * Die Methode erstellt das Bild.
+     */
     public Node getPicture() {
         try {
 
-
-             input = new FileInputStream("src/Test/Presentation/image/summaryWellDone.png");
-
+            input = new FileInputStream("src/Test/Presentation/image/summaryWellDone.png");
 
             //prepare image object
             Image image = new Image(input);

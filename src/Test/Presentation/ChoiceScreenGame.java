@@ -1,3 +1,11 @@
+/**
+ * Die Klasse erstellt die Auswahl GUI für den Spielbeginn.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
+
 package Test.Presentation;
 
 import javafx.geometry.Insets;
@@ -24,6 +32,9 @@ public class ChoiceScreenGame extends MainGUI {
      public Text text5;
      public Button backButton;
 
+    /**
+     * Die Methode überschreibt den Mittelteil der Hauptgui.
+     */
 
     @Override
     public BorderPane middleArea(){
@@ -71,6 +82,11 @@ public class ChoiceScreenGame extends MainGUI {
         return  root;
 
     }
+
+    /**
+     * Die Methode überschreibt den linken Teil der Hauptgui.
+     */
+
 
     @Override
     public Pane leftArea() {

@@ -1,3 +1,10 @@
+/**
+ * Die Klasse beinhaltet alle Alertvarianten.
+ *
+ *  @author Tina Kolbe & Oliver Piert
+ *  @version 1.0
+ */
+
 package Test.Presentation;
 
 import javafx.scene.control.Alert;
@@ -5,6 +12,10 @@ import javafx.scene.control.ButtonType;
 import java.util.Optional;
 
 public class AlertHelper {
+
+    /**
+     * Die Methode erstellt den Confirmation Alert.
+     */
 
     public static boolean  confirmationAlert( String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -21,6 +32,11 @@ public class AlertHelper {
         }
     }
 
+    /**
+     * Die Methode erstellt den Information Alert.
+     */
+
+
     public static void informationAlert( String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -28,6 +44,10 @@ public class AlertHelper {
         alert.setContentText(message);
         alert.show();
      }
+
+    /**
+     * Die Methode erstellt den Error Alert.
+     */
 
 
 
