@@ -367,6 +367,15 @@ public class Uhrenspiel extends Application  {
         summaryScreen.backButton.setOnAction(event -> endGamewithoutsave());
         summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
+        if(game.level>1)
+        summaryScreen.preLevel.setOnAction(event -> {
+            game.level = game.level - 1;
+            newGame();
+        });
+                else{
+            summaryScreen.preLevel.setVisible(false);
+        }
+
         if (!strictGame) {
             summaryScreen.willkommensText.setText("Level: " + game.level + " wurde abgeschlossen!");
             if (game.level < 4) {
@@ -377,14 +386,7 @@ public class Uhrenspiel extends Application  {
             } else {
                 summaryScreen.nextGame.setDisable(true);
             }
-            if (game.level > 1) {
-                summaryScreen.preLevel.setOnAction(event -> {
-                    game.level = game.level - 1;
-                    newGame();
-                });
-            } else {
-                summaryScreen.preLevel.setDisable(true);
-            }
+
         } else {
 
             double internalsum = 0;
@@ -403,9 +405,9 @@ public class Uhrenspiel extends Application  {
                     game.level = game.level + 1;
                     newGame();
                 });
-
-            } else {
+               } else {
                 summaryScreen.nextGame.setVisible(false);
+
 
                 if (pct >= 0.6 & game.level == 4) {
                     stage1.close();
@@ -423,10 +425,7 @@ public class Uhrenspiel extends Application  {
                             game.level = 1;
                             newGame();
                         });
-                        expertSummaryGUI.preLevel.setOnAction(event -> {
-                            strictGame = true;
-                            newGame();
-                        });
+                        expertSummaryGUI.preLevel.setOnAction(event ->   newGame() );
                         expertSummaryGUI.close.setOnAction(event -> {
                             endGamewithoutsave();
                         });
