@@ -52,9 +52,7 @@ public class MainScreenGUI extends MainGUI {
         root.setTop(willkommensText);
         root.setPadding(new Insets(150,100,7,70));
         root.setLeft(middle);
-      //  root.getChildren().add(label);
-        root.getStylesheets().add
-                (MainGUI.class.getResource("clock.css").toExternalForm());
+
         return  root;
 
     }

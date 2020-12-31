@@ -77,8 +77,6 @@ public class ChoiceScreenGame extends MainGUI {
         root.setRight(right);
         root.setBottom(bottom);
 
-        root.getStylesheets().add
-                (MainGUI.class.getResource("clock.css").toExternalForm());
         return  root;
 
     }

@@ -63,8 +63,6 @@ public class ChoiceScreenLernmodus extends MainGUI {
         root.setRight(right);
         root.setBottom(bottom);
 
-        root.getStylesheets().add
-                (MainGUI.class.getResource("clock.css").toExternalForm());
         return  root;
 
     }
@@ -72,11 +70,6 @@ public class ChoiceScreenLernmodus extends MainGUI {
     @Override
     public Pane leftArea() {
         VBox vBox = new VBox(5);
-
-      //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: blue");
-        vBox.setPadding(new Insets(7, 150, 7, 70));
-        //vBox.getChildren().addAll(new Text("Fortschrittsleiste"));
-
 
         return vBox;
     }
