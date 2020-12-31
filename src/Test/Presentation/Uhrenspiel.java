@@ -399,6 +399,7 @@ public class Uhrenspiel extends Application  {
             }
             if (pct >= 0.6 & game.level < 4) {
                 summaryScreen.nextGame.setOnAction(event -> {
+                    strictGame = true;
                     game.level = game.level + 1;
                     newGame();
                 });
@@ -438,13 +439,14 @@ public class Uhrenspiel extends Application  {
 
     public void endGame(){
           strictGame= false;
-          game.sum = 0;
+
            if (!game.saved) {
                Boolean alert = AlertHelper.confirmationAlert("Achtung",
                        "Du hast nicht gespeichert! Möchtest du wirklich beenden? ");
                if (alert) {
                   stage1.close();
                    start(stage1);
+                   game.sum = 0;
                }
            }
             else{
@@ -455,6 +457,7 @@ public class Uhrenspiel extends Application  {
     public void endGamewithoutsave(){
         strictGame= false;
         game.sum = 0;
+        stage1.close();
         start(stage1);
 
     }
@@ -498,7 +501,7 @@ public class Uhrenspiel extends Application  {
                 game.setLevel(game.level);
                 setgoOnButton();
                 AlertHelper.informationAlert("Laden", "Spiel von Datei " + file + " geladen.");
-
+                game.saved = false;
             }
             else {
                 stage1.close();
