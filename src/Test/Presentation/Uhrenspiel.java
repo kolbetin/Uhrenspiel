@@ -401,7 +401,7 @@ public class Uhrenspiel extends Application  {
             }
             if (pct >= 0.6 & game.level < 4) {
                 summaryScreen.nextGame.setOnAction(event -> {
-                    strictGame = true;
+
                     game.level = game.level + 1;
                     newGame();
                 });
@@ -426,9 +426,7 @@ public class Uhrenspiel extends Application  {
                             newGame();
                         });
                         expertSummaryGUI.preLevel.setOnAction(event ->   newGame() );
-                        expertSummaryGUI.close.setOnAction(event -> {
-                            endGamewithoutsave();
-                        });
+                        expertSummaryGUI.close.setOnAction(event ->      endGamewithoutsave());
                     }
                 }
             }
