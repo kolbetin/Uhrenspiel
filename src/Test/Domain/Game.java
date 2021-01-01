@@ -103,10 +103,13 @@ public class Game {
     public boolean checkAnswerFA(String hour, String minutes){
         answer = hour + ":" + minutes;
         String answer0 =  "0"+ hour + ":" + minutes;
+        System.out.println(answer);
+        System.out.println(answer0);
         return answer.equals(getAnswerFA(key))
                 | answer.equals("0" + getAnswerFA(key))
                 | (hour.equals("0" + getAnswerFA(key))
                 | (hour.equals(getAnswerFA(key))));
+
     }
 
     /**

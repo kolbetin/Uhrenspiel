@@ -260,5 +260,11 @@ class GameTest {
         game.setLevel(3);
         game.key = "02:15";
         Assert.assertFalse(game.checkAnswerFA(hour,minutes));
+
+        hour = "01";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "11:00";
+        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
     }
 }

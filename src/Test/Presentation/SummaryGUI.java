@@ -74,17 +74,17 @@ public class SummaryGUI extends MainGUI {
 
 
             middle.getChildren().addAll(willkommensText, labelRA, labelFA);
-            middle.setPadding(new Insets(7, 270, 7, 270));
+            middle.setPadding(new Insets(7, 270, 7, 400));
 
             bottom.getChildren().addAll(backButton, preLevel, repeatLevel, nextGame);
-            bottom.setPadding(new Insets(50, 7, 200, 200));
+            bottom.setPadding(new Insets(50, 7, 200, 250));
 
             BorderPane root = new BorderPane();
 
             root.setTop(getPicture());
             root.setBottom(bottom);
             root.setCenter(middle);
-            root.setPadding(new Insets(70, 370, 7, 20));
+            root.setPadding(new Insets(70, 250, 7, 20));
 
             return root;
 
@@ -121,7 +121,7 @@ public class SummaryGUI extends MainGUI {
             imageView.setFitWidth(150);
             HBox hBox = new HBox();
             hBox.getChildren().add(imageView);
-            hBox.setPadding(new Insets(7,7,50,350));
+            hBox.setPadding(new Insets(7,7,50,450));
 
             return hBox;
 

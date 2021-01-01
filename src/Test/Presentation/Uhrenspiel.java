@@ -59,13 +59,13 @@ public class Uhrenspiel extends Application  {
           stage2 = new Stage();
           stage3 = new Stage();
 
-     /*   expertSummaryGUI.setSuccess(true);
+      /*  expertSummaryGUI.setSuccess(true);
           expertSummaryGUI.start(stage2);
 
         expertSummaryGUI.setSuccess(false);
           expertSummaryGUI.start(stage3);
 
-        /*  summaryScreen.start(stage3);*/
+          summaryScreen.start(stage3);*/
           mainScreen.start(stage1);
 
           mainScreen.newGameButton.setOnAction(event -> {
@@ -242,6 +242,7 @@ public class Uhrenspiel extends Application  {
     public void newGameMultipleChoice() {
 
         game.nextQuestion();
+
         guiMC.time = game.key ;
         guiMC.setGameValues(game.taskNumber,
                 game.level,
@@ -401,9 +402,8 @@ public class Uhrenspiel extends Application  {
                  if (event.getSource() instanceof Button) {
                      Button button = (Button) event.getSource();
 
-                     if (button.getText().contains(game.getAnswerFA(game.key)) ) {
+                     if (button.getText().equals(game.getAnswerFA(game.key)) ) {
                          button.setId("buttonOkay");
-                       //  button.setText("Richtig!");
                          button.setText("");
                          guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                          game.correctAnswer++;
@@ -413,7 +413,6 @@ public class Uhrenspiel extends Application  {
                      }
                      else {
                          button.setId("buttonNotOkay");
-                        // button.setText("Falsch!");
                          button.setText("");
                          guiMC.questionLabel.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                          game.wrongAnswer++;
@@ -439,13 +438,14 @@ public class Uhrenspiel extends Application  {
         summaryScreen.backButton.setOnAction(event -> endGamewithoutsave());
         summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
-        if(game.level>1)
-        summaryScreen.preLevel.setOnAction(event -> {
-            game.level = game.level - 1;
-            newGame();
-        });
-                else{
-            summaryScreen.preLevel.setDisable(false);
+        if(game.level>1) {
+            summaryScreen.preLevel.setOnAction(event -> {
+                game.level = game.level - 1;
+                newGame();
+            });
+        }
+         else{
+         summaryScreen.preLevel.setDisable(true);
         }
 
         if (!strictGame) {
