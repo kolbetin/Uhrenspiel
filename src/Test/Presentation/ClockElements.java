@@ -2,7 +2,9 @@ package Test.Presentation;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -18,6 +20,7 @@ public class ClockElements {
     public final HashMap<String, Line> stundenMap = new HashMap<>();
     public Circle outerCircle;
     public Circle innerCircle;
+
 
     // Drawing a Circle1
     Circle circle1 = new Circle(366, 182, 25, Color.GREEN);

@@ -83,7 +83,7 @@ public class LernmodusGUI extends MainGUI {
         borderPane.setId("clockArea");
 
         clock = new ClockSkin();
-        node = clock.clockLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
+        node = clock.createLerningClock(anzuzeigendeZeit, anzuzeigendeZiffer);
 
         //borderPane.setStyle("-fx-border-width:  1; -fx-border-color: blue");
         borderPane.setPadding(new Insets(7, 150, 7, 80));
