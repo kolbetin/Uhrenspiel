@@ -261,10 +261,46 @@ class GameTest {
         game.key = "02:15";
         Assert.assertFalse(game.checkAnswerFA(hour,minutes));
 
+        hour = "1";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "11:00";
+        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
+
         hour = "01";
         minutes = "00";
         game.setLevel(1);
         game.key = "11:00";
+        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
+
+        hour = "11";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "01:00";
+        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
+
+        hour = "10";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "01:00";
+        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
+
+        hour = "1";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "12:00";
+        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
+
+        hour = "12";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "02:00";
+        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
+
+        hour = "2";
+        minutes = "00";
+        game.setLevel(1);
+        game.key = "12:00";
         Assert.assertFalse(game.checkAnswerFA(hour,minutes));
     }
 }
