@@ -29,12 +29,20 @@ public class Lernmodus {
     private int lmLevel = 0;
 
     /**
-     * Die Methode "createClock" erstellt die Uhrenbilder für alle Spielmodi im Uhrenspiel mit Ausnahme des Lernmodus. Die dazu
-     * benötigten grafischen Elemente werden aus der Klasse "ClockElements" geholt und zusammen mit der Information
-     * der anzuzeigenden Zeit für den Stunden- und Minutenzeiger zum entsprechenden Uhrenbild zusammengestellt.
+     * Der Konstruktor der Klasse "Lernmodus" Initialisiert die Variable "guiLM" mit einem "LernmodusGUI" Objekt, um
+     * darüber auf die Elemente zur Erstellung der Benutzeroberfläche für den Lernmodus zuzugreifen.
+     */
+    public Lernmodus() {
+        guiLM = new LernmodusGUI();
+
+    }
+
+    /**
+     * Die Methode "startLernmodus" started den Lernmodus im Auswahlbildschirm für die verschiedenen Lernmodus-Levels
+     * für volle Stunde, halbe Stunde sowie viertel nach und viertel vor.
      *
-     * @param stage1 x
-     * @param level x
+     * @param stage1 Parameter zur Erstellung der Stage für den Lernmodus
+     * @param level  Parameter zur Ansteuerung des entsprechenden Lernmudus-Levels
      **/
     public void startLernmodus(Stage stage1, int level) {
 
@@ -122,6 +130,12 @@ public class Lernmodus {
 
     }
 
+    /**
+     * Die Methode "setText" steuert den Text für die jeweilige Lernmodus-Level Überschrift.
+     *
+     * @param level Parameter zur Ansteuerung des entsprechenden Überschriften Text für den jeweiligen Lernmodus-Level.
+     * @return Gibt den Text der entsprechenden Lernmodus-Level Überschrift zurück.
+     **/
     private String setText(int level) {
         String labelText;
         switch (level) {
@@ -145,6 +159,13 @@ public class Lernmodus {
 
     }
 
+    /**
+     * Die Methode "setExplanation" steuert den Text für die jeweilige Erklärung der Uhrzeit in den verschiedenen
+     * Lernmodus-Levels.
+     *
+     * @param level Parameter zur Ansteuerung des entsprechenden Textes für den jeweiligen Lernmodus-Level.
+     * @return Gibt den Erklärungs-Text der jeweiligen Uhrzeit und pro Lernmodus-Level zurück.
+     **/
     private String setExplanation(int level) {
         String labelText;
         switch (level) {
@@ -180,6 +201,13 @@ public class Lernmodus {
 
     }
 
+    /**
+     * Die Methode "setStartTime" setzt die entsprechende String Variable für die anzuzeigende Zeit beim Start des
+     * jeweiligen Lernmodus-Levels.
+     *
+     * @param level Parameter steuert die Initialisierung der String Variablen für die erste anzuzeigende Zeit pro
+     *              Lernmodus-Level.
+     **/
     public void setStartTime(int level) {
         anzuzeigendeZiffer = 1;
         if (level == 1) {
@@ -198,6 +226,15 @@ public class Lernmodus {
         }
     }
 
+    /**
+     * Die Methode "setAnzuzeigendeZeitLernmodus" enthält die Logik zur korrekten Zusammensetzung der String Variablen
+     * "anzuzeigendeZeit" im Lernmodus. Je nach übergebenem Lernmodus-Level setzt die Methoden den String in einer
+     * Schleife für jeden Level anders zusammen und definiert so den jeweilig korrekten String Key.
+     *
+     * @param level Parameter steuert die Initialisierung der String Variablen (Key) für die jeweilige anzuzeigende Zeit
+     *              pro Lernmodus-Level für volle Stunde mit "00", für halbe Stunde "30", für viertel nach mit "15" und
+     *              für viertel vor mit "45".
+     **/
     public void setAnzuzeigendeZeitLernmodus(int level) {
 
         if (anzuzeigendeZiffer < 12) {
@@ -248,15 +285,6 @@ public class Lernmodus {
 
     }
 
-    public Lernmodus() {
-        guiLM = new LernmodusGUI();
-
-    }
-
-    // Getter Methode für LernmodusTest Klasse
-    public String getAnzuzeigendeZeit() {
-        return anzuzeigendeZeit;
-    }
 
 }// Ende Klasse Lernmodus
 
