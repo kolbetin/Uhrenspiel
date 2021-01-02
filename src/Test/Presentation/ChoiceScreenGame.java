@@ -46,7 +46,7 @@ public class ChoiceScreenGame extends MainGUI {
         level2 = new Button("Starte Level 2");
         level3 = new Button("Starte Level 3");
         level4 = new Button("Starte Level 4");
-        leadedGame = new Button("Experten Modus");
+        leadedGame = new Button("Expertenmodus");
         backButton = new Button("Zurück");
         text1 = new Text("Volle Stunde, zum Beispiel 01:00 Uhr?");
         text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30 Uhr?");

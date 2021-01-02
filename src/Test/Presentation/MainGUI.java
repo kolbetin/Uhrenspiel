@@ -263,7 +263,7 @@ public class MainGUI {
      * @param  correctAnswer Übergibt einen Integer mit der Anzahl der aktuell korrekt beantworteten Fragen.
      * @param  wrongAnswer Übergibt einen Integer mit der Anzahl der aktuell falsch beantworteten Fragen.
      * @param  answers Übergibt eine Liste der Antworten, für die aktuelle Frage (Uhrzeit).
-     * @param  strictGame Übergibt einen Boolean ob dies der Expertenmodus ist mit true oder false.
+     * @param  strictGame Übergibt einen Boolean für den Expertenmodus mit true oder false.
      */
 
     public void setGameValues(int tasknumber, int level, double sum, int correctAnswer, int wrongAnswer, List answers, boolean strictGame) {
@@ -275,7 +275,6 @@ public class MainGUI {
         this.falscheAntwortNummer = wrongAnswer;
         this.answers.addAll(answers);
         this.strictGame = strictGame;
-
     }
 
     /**
