@@ -45,6 +45,7 @@ public class MainGUI {
     private int richtigeAntwortNummer = 0;
     private int falscheAntwortNummer = 0;
     private List<String> answers;
+    private boolean strictGame;
 
 
     /**
@@ -134,7 +135,21 @@ public class MainGUI {
 
         //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: yellow");
 
-        header = new Label("Uhrenspiel");
+
+        if(!strictGame & aufgabennummer>0){
+            header = new Label("Freies Spiel");
+        }
+        else {
+            if(strictGame & aufgabennummer>0){
+                header = new Label("Expertenmodus");
+            }
+            else {
+                header = new Label("Uhrenspiel");
+            }
+
+        }
+        System.out.println("ExpertenModus " + strictGame );
+
 
         vBox.getChildren().add(header);
 
@@ -248,9 +263,10 @@ public class MainGUI {
      * @param  correctAnswer Übergibt einen Integer mit der Anzahl der aktuell korrekt beantworteten Fragen.
      * @param  wrongAnswer Übergibt einen Integer mit der Anzahl der aktuell falsch beantworteten Fragen.
      * @param  answers Übergibt eine Liste der Antworten, für die aktuelle Frage (Uhrzeit).
+     * @param  strictGame Übergibt einen Boolean ob dies der Expertenmodus ist mit true oder false.
      */
 
-    public void setGameValues(int tasknumber, int level, double sum, int correctAnswer, int wrongAnswer, List answers) {
+    public void setGameValues(int tasknumber, int level, double sum, int correctAnswer, int wrongAnswer, List answers, boolean strictGame) {
         this.answers.clear();
         this.aufgabennummer = tasknumber;
         this.levelnummer = level;
@@ -258,6 +274,8 @@ public class MainGUI {
         this.richtigeAntwortNummer = correctAnswer;
         this.falscheAntwortNummer = wrongAnswer;
         this.answers.addAll(answers);
+        this.strictGame = strictGame;
+
     }
 
     /**

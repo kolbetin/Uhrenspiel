@@ -27,6 +27,7 @@ public class Lernmodus {
             guiLM.setUhrzeit(anzuzeigendeZeit, anzuzeigendeZiffer);
 
             guiLM.start(stage1);
+            guiLM.header.setText("Lernmodus");
             guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
             guiLM.levelLM.setText(setText(lmLevel));
             guiLM.explanation.setText(setExplanation(lmLevel));
@@ -44,6 +45,7 @@ public class Lernmodus {
                             setAnzuzeigendeZeitLernmodus(lmLevel);
 
                             guiLM.start(stage1);
+                            guiLM.header.setText("Lernmodus");
                             guiLM.levelLM.setText(setText(lmLevel));
                             guiLM.explanation.setText(setExplanation(lmLevel));
 

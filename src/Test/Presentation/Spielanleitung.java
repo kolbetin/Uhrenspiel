@@ -47,6 +47,7 @@ public class Spielanleitung {
 
         guiMC.time = "04:00";
         guiMC.start(stage1);
+        guiMC.header.setText("Spielanleitung");
         guiMC.answerCount.setVisible(false);
         guiMC.level.setText("Wir zeigen dir jetzt die beiden Antwortmöglichkeiten.");
         guiMC.goOn.setVisible(false);
@@ -117,6 +118,7 @@ public class Spielanleitung {
                                       //  stage1.close();
                                         guiFA.time = "07:15";
                                         guiFA.start(stage1);
+                                        guiFA.header.setText("Spielanleitung");
                                         guiFA.answerCount.setVisible(false);
                                         guiFA.richtigeAntwort.setVisible(false);
                                         guiFA.falscheAntwort.setVisible(false);

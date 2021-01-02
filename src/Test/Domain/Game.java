@@ -102,20 +102,15 @@ public class Game {
 
     public boolean checkAnswerFA(String hour, String minutes){
         answer = hour + ":" + minutes;
-        String answer0 =  "0"+ hour + ":" + minutes;
-        System.out.println(answer);
-        System.out.println(answer0);
-        return answer.equals(getAnswerFA(key))
+             return answer.equals(getAnswerFA(key))
                 | answer.equals("0" + getAnswerFA(key))
                 | (hour.equals("0" + getAnswerFA(key))
                 | (hour.equals(getAnswerFA(key))));
-
     }
 
     /**
      * Die Methode wählt per Zufall eine Uhrzeit (Frage) aus. Die Methode stellt sicher,
      * dass eine Frage nicht doppelt gestellt wird.
-     *
      *
      * @return    Gibt das Object Frage (Uhrzeit) zurück.
      */
@@ -138,7 +133,6 @@ public class Game {
     /**
      * Die Methode befüllt die Uhrzeitenliste mit drei weiteren zufälligen Uhrzeiten, für den Multiple Choice
      * Antwortenmodus.
-     *
      *
      * @return    Gibt die Liste mit Uhrzeitmöglichkeiten zurück.
      */

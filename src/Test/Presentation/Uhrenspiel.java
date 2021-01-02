@@ -98,6 +98,7 @@ public class Uhrenspiel extends Application  {
 
     private void startChoiceScreenGame(){
         choiceScreenGame.start(stage1);
+        choiceScreenGame.header.setText("Neues Spiel");
 
         choiceScreenGame.leadedGame.setOnAction(e ->{
             strictGame=true;
@@ -137,6 +138,7 @@ public class Uhrenspiel extends Application  {
      */
     private void startChoiceScreenLernmodus(){
         choiceScreenLernmodus.start(stage1);
+        choiceScreenLernmodus.header.setText("Lernmodus");
 
         choiceScreenLernmodus.level1.setOnAction(e -> {
             game.level = 1;
@@ -249,7 +251,9 @@ public class Uhrenspiel extends Application  {
                 game.sum,
                 game.correctAnswer,
                 game.wrongAnswer,
-                game.answerList);
+                game.answerList,
+                strictGame
+        );
 
         guiMC.start(stage1);
 
@@ -275,6 +279,7 @@ public class Uhrenspiel extends Application  {
     /**
      * Die Methode startet den Freie Antwort Bildschirm für eine Frage.
      */
+
       public void newGameFreeAnswer(){
           game.nextQuestion();
           guiFA.time = game.key;
@@ -283,7 +288,9 @@ public class Uhrenspiel extends Application  {
                   game.sum,
                   game.correctAnswer,
                   game.wrongAnswer,
-                  game.answerList);
+                  game.answerList,
+                  strictGame
+          );
           guiFA.start(stage1);
 
           guiFA.goOn.setVisible(false);
@@ -330,7 +337,7 @@ public class Uhrenspiel extends Application  {
       }
 
     /**
-     * Die Methode gibt dem User im Freie Antwortenmodus zurück ob die eingegbene Antwort korrekt oder falsch war.
+     * Die Methode gibt im Freie Antwortenmodus zurück ob die eingegbene Antwort korrekt oder falsch war.
      */
       public void answerFA() {
 
