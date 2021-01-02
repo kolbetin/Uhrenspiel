@@ -8,12 +8,17 @@
 package Test.Presentation;
 
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.io.FileInputStream;
 
 
 public class MainScreenGUI extends MainGUI {
@@ -46,12 +51,13 @@ public class MainScreenGUI extends MainGUI {
         final VBox middle = new VBox(10);
         middle.setId("mainscreen");
         middle.getChildren().addAll(newGameButton,loadGameButton,lernmodusButton,spielanleitungButton,endGameButton);
-        middle.setPadding(new Insets(70,500,7,70));
+        middle.setPadding(new Insets(70,7,7,70));
 
         final BorderPane root = new BorderPane();
         root.setTop(willkommensText);
         root.setPadding(new Insets(150,100,7,70));
         root.setLeft(middle);
+        root.setRight(getPicture());
 
         return  root;
 
@@ -67,6 +73,32 @@ public class MainScreenGUI extends MainGUI {
         final VBox vBox = new VBox(5);
         return vBox;
     }
+
+    public Node getPicture() {
+        try {
+
+            FileInputStream input = new FileInputStream("src/Test/Presentation/image/MainScreenClock.png");
+
+            //prepare image object
+            Image image = new Image(input);
+
+
+            //create ImageView object
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(250);
+            imageView.setFitWidth(250);
+            HBox hBox = new HBox();
+            hBox.getChildren().add(imageView);
+            hBox.setPadding(new Insets(7,7,50,270));
+
+            return hBox;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
 }

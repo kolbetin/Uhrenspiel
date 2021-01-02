@@ -148,8 +148,6 @@ public class MainGUI {
             }
 
         }
-        System.out.println("ExpertenModus " + strictGame );
-
 
         vBox.getChildren().add(header);
 
