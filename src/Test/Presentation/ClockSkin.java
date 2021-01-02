@@ -20,7 +20,7 @@ public class ClockSkin {
     Line minute; // Variable für den Minutenzeiger
 
     /**
-     * Konstruktor für ClockSkin Objekte. Der Konstruktor nimmt keine Parameter entgegen, da die verschiedenen
+     * Konstruktor der Klasse ClockSkin. Der Konstruktor nimmt keine Parameter entgegen, da die verschiedenen
      * Uhren-Skins direkt über die Methoden "createClock" und "createLearningClock" mit dem String Parameter
      * für die Uhrzeit erstellt werden.
      */

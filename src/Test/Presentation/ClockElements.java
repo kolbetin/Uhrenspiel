@@ -1,10 +1,17 @@
+/**
+ * Die Klasse "ClockElements" enthält alle grafischen Elemente die zur Erstellung aller Uhrenbilder im Uhrenspiel
+ * nötig sind. Dies sind im Wesentlichen der äussere und innere Kreis, welche das Ziffernblatt bilden. Die Kreise
+ * sowie Nummern 1 bis 12 welche die einzelnen Ziffern ergeben. Die Linien für den Minuten- sowie Stundenzeiger mit
+ * den Koordinaten für die anzuzeigende Uhrzeit welche in der Muniten- und Stunden-Map mit dem jeweiligen Uhrzeit-Key
+ * als String verknüpft sind.
+ * @author Tina Kolbe & Oliver Piert
+ * @version 1.0
+ */
 package Test.Presentation;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -15,6 +22,7 @@ import java.util.Random;
 
 public class ClockElements {
 
+    // Instanzvariablen
     public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
     public final HashMap<String, Line> minutenMap = new HashMap<>();
     public final HashMap<String, Line> stundenMap = new HashMap<>();
@@ -101,7 +109,12 @@ public class ClockElements {
         };
     }
 
-    // Konstruktor Clock Elements
+    /**
+     * Der Konstruktor der Klasse ClockElements führt verschiedene Methoden der eigenen Klasse aus um die grafischen
+     * Elemente so bereitzustellen damit sie von der Klasse ClockSkin nur noch für den jeweiligen Spielmodus korrekt
+     * zusammengebaut werden müssen. Als zentrales Element erstellt er auch die verschiedenen Maps für die Ziffern sowie
+     * die Minuten- und Stunden-Linien.
+     */
     public ClockElements (){
         createUhrKreise();
         setupClockElements();
