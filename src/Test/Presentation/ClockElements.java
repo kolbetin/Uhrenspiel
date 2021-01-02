@@ -4,6 +4,7 @@
  * sowie Nummern 1 bis 12 welche die einzelnen Ziffern ergeben. Die Linien für den Minuten- sowie Stundenzeiger mit
  * den Koordinaten für die anzuzeigende Uhrzeit welche in der Muniten- und Stunden-Map mit dem jeweiligen Uhrzeit-Key
  * als String verknüpft sind.
+ *
  * @author Tina Kolbe & Oliver Piert
  * @version 1.0
  */
@@ -17,6 +18,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -57,20 +59,20 @@ public class ClockElements {
 
     // Gruppieren von Kreisen und Nummern zur jeweiligen Ziffer 1 bis 12
     Group ziffer_1 = new Group(circle1, nummer1);
-    Group ziffer_2 = new Group (circle2, nummer2);
-    Group ziffer_3 = new Group (circle3, nummer3);
-    Group ziffer_4 = new Group (circle4, nummer4);
-    Group ziffer_5 = new Group (circle5, nummer5);
-    Group ziffer_6 = new Group (circle6, nummer6);
-    Group ziffer_7 = new Group (circle7, nummer7);
-    Group ziffer_8 = new Group (circle8, nummer8);
-    Group ziffer_9 = new Group (circle9, nummer9);
-    Group ziffer_10 = new Group (circle10, nummer10);
-    Group ziffer_11 = new Group (circle11, nummer11);
-    Group ziffer_12 = new Group (circle12, nummer12);
+    Group ziffer_2 = new Group(circle2, nummer2);
+    Group ziffer_3 = new Group(circle3, nummer3);
+    Group ziffer_4 = new Group(circle4, nummer4);
+    Group ziffer_5 = new Group(circle5, nummer5);
+    Group ziffer_6 = new Group(circle6, nummer6);
+    Group ziffer_7 = new Group(circle7, nummer7);
+    Group ziffer_8 = new Group(circle8, nummer8);
+    Group ziffer_9 = new Group(circle9, nummer9);
+    Group ziffer_10 = new Group(circle10, nummer10);
+    Group ziffer_11 = new Group(circle11, nummer11);
+    Group ziffer_12 = new Group(circle12, nummer12);
 
     // Gruppieren von allen Ziffern für die erstellung des Uhrenbildes
-    public Group ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
+    public Group ziffern = new Group(ziffer_1, ziffer_2, ziffer_3, ziffer_4, ziffer_5, ziffer_6, ziffer_7, ziffer_8, ziffer_9, ziffer_10, ziffer_11, ziffer_12);
 
     /**
      * Der Konstruktor der Klasse ClockElements führt verschiedene Methoden der eigenen Klasse aus um die grafischen
@@ -78,8 +80,7 @@ public class ClockElements {
      * zusammengebaut werden müssen. Als zentrales Element erstellt er auch die verschiedenen Maps für die Ziffern sowie
      * die Minuten- und Stunden-Linien.
      */
-    public ClockElements (){
-        //createUhrKreise();
+    public ClockElements() {
         setupClockElements();
         createZiffernMap();
         createMinutenMap();
@@ -116,7 +117,7 @@ public class ClockElements {
      * Ziffern 1 bis 12 mit der Schriftart Comic Sans MS formatiert und fügt dem jeweiligen Kreis zum Event Handler
      * hinzu. Weiter werden der äussere und innere Kreis für das Zifferblatt erstellt und dem Event Handler hinzugefügt.
      */
-    public void setupClockElements(){
+    public void setupClockElements() {
         Font nummerFont = new Font("Comic Sans MS", 30);
 
         nummer1.setFont(nummerFont);
@@ -169,8 +170,11 @@ public class ClockElements {
         ziffernMap.put(10, ziffer_10);
         ziffernMap.put(11, ziffer_11);
         ziffernMap.put(12, ziffer_12);
-        // Ziffer key 13 mit Ziffer 1 wird speziell für die Lernmodi mit 30min und 45min benötigt
-        ziffernMap.put(13,ziffer_1);
+
+        /* Die Ziffer mit Key 13 und Ziffer 1 wird speziell für die Lernmodi für 30min und 45min benötigt, da die
+        chleife dort für die Variable ziffer2 am Schluss 12+1 rechnet und mit diesem Key die zuletzt verwendete
+        Ziffer 1 aus der Map holt.*/
+        ziffernMap.put(13, ziffer_1);
     }
 
     /**
@@ -323,7 +327,6 @@ public class ClockElements {
         stundenMap.put("11:45", stunde_11_45);
         stundenMap.put("12:00", stunde_12_00);
         stundenMap.put("12:15", stunde_12_15);
-
     }
 
 } // Ende Klasse ClockElements
