@@ -80,8 +80,14 @@ public class ClockElements {
         innerCircle = new Circle(300, 300, 6, Color.BLACK);
     }*/
 
+    // EventHandler auf dem Ziffernblatt sowie den einzelnen Ziffern selbst zur Änderung der Farbe des Uhrenbildes
     EventHandler<MouseEvent> eventHandler = getEventHandler();
 
+    /**
+     * Der EventHandler steuert die zufällige Farbänderung des Ziffernblatts sowie der einzelnen Ziffern im Uhrenbild.
+     * Dies ist eine versteckte Funktion im Spiel und soll beim Spieler beim Zufälligen anklicken der Uhr für eine
+     * entsprechende Überraschung sorgen.
+     */
     EventHandler<MouseEvent> getEventHandler() {
         //Creating the mouse event handler
         return event -> {
