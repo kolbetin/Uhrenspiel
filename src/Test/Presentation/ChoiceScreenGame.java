@@ -79,7 +79,7 @@ public class ChoiceScreenGame extends MainGUI {
         BorderPane root = new BorderPane();
 
         root.setTop(willkommensText);
-        root.setPadding(new Insets(150,370,7,20));
+        root.setPadding(new Insets(150,170,7,20));
 
         middle.setPadding(new Insets(50,7,10,7));
         right.setPadding(new Insets(50,7,10,70));

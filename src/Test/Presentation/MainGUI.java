@@ -225,10 +225,10 @@ public class MainGUI {
 
         HBox hBox = new HBox(25);
         hBox.setId("answerArea");
-        answers.add("04:00");
-        answers.add("02:00");
-        answers.add("03:00");
-        answers.add("05:00");
+        answers.add("4:00");
+        answers.add("2:00");
+        answers.add("3:00");
+        answers.add("5:00");
 
         hBox.setPadding(new Insets(15, 7, 10, 7));
 
