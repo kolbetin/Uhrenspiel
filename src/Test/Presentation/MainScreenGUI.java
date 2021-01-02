@@ -41,7 +41,7 @@ public class MainScreenGUI extends MainGUI {
         loadGameButton = new Button("Spiel laden");
         endGameButton = new Button("Beenden");
         lernmodusButton = new Button("Lernmodus");
-        spielanleitungButton = new Button("Spielanleitung");
+        spielanleitungButton = new Button("Tutorial");
 
         final VBox middle = new VBox(10);
         middle.setId("mainscreen");

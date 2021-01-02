@@ -47,7 +47,7 @@ public class Spielanleitung {
 
         guiMC.time = "04:00";
         guiMC.start(stage1);
-        guiMC.header.setText("Spielanleitung");
+        guiMC.header.setText("Tutorial");
         guiMC.answerCount.setVisible(false);
         guiMC.level.setText("Wir zeigen dir jetzt die beiden Antwortmöglichkeiten.");
         guiMC.goOn.setVisible(false);
@@ -96,7 +96,7 @@ public class Spielanleitung {
                     guiMC.answer1.setId("buttonOkay");
                     guiMC.answer1.setText("");
                     guiMC.answer1.setDisable(true);
-                    guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: 04:00 Uhr.");
+                    guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: 4:00 Uhr.");
                 }),
                 new KeyFrame(Duration.seconds(4.0), evt -> guiMC.goOn.setVisible(true)));
 
@@ -118,7 +118,7 @@ public class Spielanleitung {
                                       //  stage1.close();
                                         guiFA.time = "07:15";
                                         guiFA.start(stage1);
-                                        guiFA.header.setText("Spielanleitung");
+                                        guiFA.header.setText("Tutorial");
                                         guiFA.answerCount.setVisible(false);
                                         guiFA.richtigeAntwort.setVisible(false);
                                         guiFA.falscheAntwort.setVisible(false);
