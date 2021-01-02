@@ -1,6 +1,7 @@
 /**
  * Die Klasse "ClockSkin" ist für die Erstellung aller Uhrenbilder im Uhrenspiel zuständig. Sie nimmt Angaben
  * zur anzuzeigenden Zeit als String entgegen und erstellt das gewünschte Uhrenbild für alle Spielmodi.
+ *
  * @author Tina Kolbe & Oliver Piert
  * @version 1.0
  */
@@ -32,8 +33,9 @@ public class ClockSkin {
      * Die Methode "createClock" erstellt die Uhrenbilder für alle Spielmodi im Uhrenspiel mit Ausnahme des Lernmodus. Die dazu
      * benötigten grafischen Elemente werden aus der Klasse "ClockElements" geholt und zusammen mit der Information
      * der anzuzeigenden Zeit für den Stunden- und Minutenzeiger zum entsprechenden Uhrenbild zusammengestellt.
-     * @param  anzuzeigendeZeit Übergibt einen Parameter als String mit der anzuzeigenden Uhrzeit (Beispiel: "12:30")
-     * @return  Gibt das zusammengesetzte Uhrenbild als Typ Node zurück.
+     *
+     * @param anzuzeigendeZeit Übergibt einen Parameter als String mit der anzuzeigenden Uhrzeit (Beispiel: "12:30")
+     * @return Gibt das zusammengesetzte Uhrenbild als Typ Node zurück.
      */
     public Node createClock(String anzuzeigendeZeit) {
 
@@ -47,7 +49,7 @@ public class ClockSkin {
         minute.setStrokeWidth(4); // move to CSS File
 
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
-        Group clock = new Group (clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
+        Group clock = new Group(clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
         clockElements.outerCircle.toBack();
         clockElements.innerCircle.toFront();
         stunde.toFront();
@@ -60,12 +62,13 @@ public class ClockSkin {
      * werden aus der Klasse "ClockElements" geholt und zusammen mit der Information der anzuzeigenden Zeit für den
      * Stunden- und Minutenzeiger zum entsprechenden Uhrenbild zusammengestellt. Der Parameter anzuzeigende Ziffer vom
      * Typ Integer steuert welche jeweiligen Ziffer(n) im Lernmodus Uhrenbild angezeigt werden sollen.
-     * @param anzuzeigendeZeit Übergibt einen Parameter als String mit der anzuzeigenden Uhrzeit (Beispiel: "12:30")
+     *
+     * @param anzuzeigendeZeit   Übergibt einen Parameter als String mit der anzuzeigenden Uhrzeit (Beispiel: "12:30")
      * @param anzuzeigendeZiffer Übergibt einen Parameter als Integer mit der Zahl der jeweils anzuzeigenden Ziffer(n)
-     * in der Lernuhr.
-     * @return  Gibt das zusammengesetzte Lern-Uhrenbild als Typ Node zurück
+     *                           in der Lernuhr.
+     * @return Gibt das zusammengesetzte Lern-Uhrenbild als Typ Node zurück
      */
-    public Node createLerningClock (String anzuzeigendeZeit, int anzuzeigendeZiffer){
+    public Node createLerningClock(String anzuzeigendeZeit, int anzuzeigendeZiffer) {
 
         clockElements = new ClockElements();
 
@@ -77,12 +80,12 @@ public class ClockSkin {
         minute.setStrokeWidth(5); // move to CSS File
 
         Group ziffer = parserZiffern(anzuzeigendeZiffer);
-        Group ziffer2 = parserZiffern(anzuzeigendeZiffer+1);
+        Group ziffer2 = parserZiffern(anzuzeigendeZiffer + 1);
 
-        Group basicClockElements = new Group (clockElements.outerCircle, stunde, minute, clockElements.innerCircle);
+        Group basicClockElements = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle);
         Node learningClock = null;
 
-        if (anzuzeigendeZeit.substring(3,5).contains("00")) {
+        if (anzuzeigendeZeit.substring(3, 5).contains("00")) {
 
             if (anzuzeigendeZiffer != 12) {
                 Group clock = new Group(basicClockElements, clockElements.ziffer_12, ziffer);
@@ -93,7 +96,7 @@ public class ClockSkin {
             }
         }
 
-        if (anzuzeigendeZeit.substring(3,5).contains("15")) {
+        if (anzuzeigendeZeit.substring(3, 5).contains("15")) {
 
             if (anzuzeigendeZiffer != 3) {
                 Group clock = new Group(basicClockElements, clockElements.ziffer_3, ziffer);
@@ -104,10 +107,10 @@ public class ClockSkin {
             }
         }
 
-        if (anzuzeigendeZeit.substring(3,5).contains("30")) {
+        if (anzuzeigendeZeit.substring(3, 5).contains("30")) {
 
-            if (anzuzeigendeZiffer != 5 && anzuzeigendeZiffer != 6 ) {
-                Group clock = new Group(basicClockElements,clockElements.ziffer_6, ziffer, ziffer2);
+            if (anzuzeigendeZiffer != 5 && anzuzeigendeZiffer != 6) {
+                Group clock = new Group(basicClockElements, clockElements.ziffer_6, ziffer, ziffer2);
                 learningClock = clock;
             } else {
                 Group clock = new Group(basicClockElements, ziffer, ziffer2);
@@ -115,13 +118,12 @@ public class ClockSkin {
             }
         }
 
-        if (anzuzeigendeZeit.substring(3,5).contains("45")) {
+        if (anzuzeigendeZeit.substring(3, 5).contains("45")) {
 
             if (anzuzeigendeZiffer != 8) {
                 Group clock = new Group(basicClockElements, clockElements.ziffer_9, ziffer2);
                 learningClock = clock;
-            }
-            else {
+            } else {
                 Group clock = new Group(basicClockElements, ziffer2);
                 learningClock = clock;
             }
@@ -136,8 +138,9 @@ public class ClockSkin {
      * (Beispiel: "30") und holt mit diesem Key die entsprechende Linie für den Minutenzeiger aus der Minuten-Map
      * in der Klasse "clockElements".
      * Linie für den Minutenzeiger.
+     *
      * @param minuten Nimmt als Parameter einen String mit der anzuzeigenden Minute entgegen (Beispiel: "30")
-     * @return  Gibt aus der Klasse "clockElements" die Linie für den Minutenzeiger zurück.
+     * @return Gibt aus der Klasse "clockElements" die Linie für den Minutenzeiger zurück.
      */
     public Line parserMinuten(String minuten) {
         return clockElements.minutenMap.get(minuten);
@@ -147,8 +150,9 @@ public class ClockSkin {
      * Die Methode "parserStunde" nimmt einen String der anzuzeigenden Zeit für die Minuten entgegen
      * (Beispiel: "12:30") und holt mit diesem Key die entsprechende Linie für den Stundenzeiger aus der Stunden-Map
      * in der Klasse "clockElements".
+     *
      * @param stunde- Nimmt als Parameter einen String mit der anzuzeigenden Minute entgegen (Beispiel: "30")
-     * @return  Gibt aus der Klasse "clockElements" die Linie für den Stundenzeiger zurück.
+     * @return Gibt aus der Klasse "clockElements" die Linie für den Stundenzeiger zurück.
      */
     public Line parserStunde(String stunde) {
         return clockElements.stundenMap.get(stunde);
@@ -158,10 +162,11 @@ public class ClockSkin {
      * Die Methode "parserZiffern" nimmt einen Integer der anzuzeigenden Ziffer(n) im Uhrenbild des Lernmodus
      * entgegen (Beispiel: "12") und holt mit diesem Key die entsprechende(n) Ziffer(n) aus der Ziffern-Map
      * in der Klasse "clockElements".
+     *
      * @param ziffer Nimmt als Parameter einen Integer mit der anzuzeigenden Ziffer entgegen (Beispiel: "12")
-     * @return  Gibt aus der Klasse "clockElements" die anzuzeigenden Ziffer(n) für den Lernmodus zurück.
+     * @return Gibt aus der Klasse "clockElements" die anzuzeigenden Ziffer(n) für den Lernmodus zurück.
      */
-    public Group parserZiffern(int ziffer){
+    public Group parserZiffern(int ziffer) {
         return clockElements.ziffernMap.get(ziffer);
     }
 
@@ -169,7 +174,7 @@ public class ClockSkin {
      * Die Methode "finalFormatSetting" stellt die korrekte Reihenfolge des grossen äusseren und des kleinen
      * inneren Kreises sowie des Stundenzeigers im Uhrenbild sicher.
      */
-    public void finalFormatSettings(){
+    public void finalFormatSettings() {
         clockElements.outerCircle.toBack();
         clockElements.innerCircle.toFront();
         stunde.toFront();

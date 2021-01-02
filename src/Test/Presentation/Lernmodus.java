@@ -1,15 +1,24 @@
+/**
+ * Die Klasse "Lernmodus" steuert den Ablauf und die jeweiligen Erklärungen jedes Lernmodus-Levels für volle Stunde,
+ * halbe Stunde sowie viertel nach und viertel vor. Der Lernmodus geht dazu in den verschiedenen Levels mittels einer
+ * Schleife durch die verschiedenen Uhrzeiten von 1 bis 12 Uhr und zeigt das entsprechende Uhrenbild für eine Weile
+ * mit der dazugehörenden Erklärung der Uhrzeit an. Die Klasse Lernmodus enthält ausschliesslich die Logik für den Ablauf,
+ * die Lernmodus Benutzeroberfläche wird in der Klasse "LernmodusGUI" erzeugt.
+ *
+ * @author Tina Kolbe & Oliver Piert
+ * @version 1.0
+ */
+
 package Test.Presentation;
 
-import Test.Presentation.LernmodusGUI;
-import Test.Presentation.Uhrenspiel;
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
 
 public class Lernmodus {
 
+    // Instanzvariablen
     private Label text = new Label();
     private int anzuzeigendeZiffer = 1;
     private String anzuzeigendeZeit = "01:00";
@@ -19,93 +28,101 @@ public class Lernmodus {
     private LernmodusGUI guiLM;
     private int lmLevel = 0;
 
-
+    /**
+     * Die Methode "createClock" erstellt die Uhrenbilder für alle Spielmodi im Uhrenspiel mit Ausnahme des Lernmodus. Die dazu
+     * benötigten grafischen Elemente werden aus der Klasse "ClockElements" geholt und zusammen mit der Information
+     * der anzuzeigenden Zeit für den Stunden- und Minutenzeiger zum entsprechenden Uhrenbild zusammengestellt.
+     *
+     * @param stage1 x
+     * @param level x
+     **/
     public void startLernmodus(Stage stage1, int level) {
 
-            lmLevel = level;
-            setStartTime(lmLevel);
-            guiLM.setUhrzeit(anzuzeigendeZeit, anzuzeigendeZiffer);
+        lmLevel = level;
+        setStartTime(lmLevel);
+        guiLM.setUhrzeit(anzuzeigendeZeit, anzuzeigendeZiffer);
 
-            guiLM.start(stage1);
-            guiLM.header.setText("Lernmodus");
-            guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
-            guiLM.levelLM.setText(setText(lmLevel));
-            guiLM.explanation.setText(setExplanation(lmLevel));
-            // longrunning operation runs on different thread
-            thread = new Thread(new Runnable() {
+        guiLM.start(stage1);
+        guiLM.header.setText("Lernmodus");
+        guiLM.text.setText("Es ist jetzt: " + anzuzeigendeZeit + " Uhr");
+        guiLM.levelLM.setText(setText(lmLevel));
+        guiLM.explanation.setText(setExplanation(lmLevel));
+        // longrunning operation runs on different thread
+        thread = new Thread(new Runnable() {
 
-                int n;
+            int n;
 
-                @Override
-                public void run() {
-                    Runnable updater = new Runnable() {
+            @Override
+            public void run() {
+                Runnable updater = new Runnable() {
 
-                        @Override
-                        public void run() {
-                            setAnzuzeigendeZeitLernmodus(lmLevel);
+                    @Override
+                    public void run() {
+                        setAnzuzeigendeZeitLernmodus(lmLevel);
 
-                            guiLM.start(stage1);
-                            guiLM.header.setText("Lernmodus");
-                            guiLM.levelLM.setText(setText(lmLevel));
-                            guiLM.explanation.setText(setExplanation(lmLevel));
+                        guiLM.start(stage1);
+                        guiLM.header.setText("Lernmodus");
+                        guiLM.levelLM.setText(setText(lmLevel));
+                        guiLM.explanation.setText(setExplanation(lmLevel));
 
-                            guiLM.endButton.setOnAction(event -> {
-                                uhrenspiel = new Uhrenspiel();
+                        guiLM.endButton.setOnAction(event -> {
+                            uhrenspiel = new Uhrenspiel();
+                            thread.stop();
+                            stage1.close();
+                            uhrenspiel.start(stage1);
+                            System.out.println("Lernmodus beendet");
+
+                        });
+                        guiLM.repeatButton.setOnAction(event -> {
+                            thread.stop();
+                            startLernmodus(stage1, lmLevel);
+                        });
+                        if (lmLevel > 1) {
+                            guiLM.preLevel.setOnAction(event -> {
                                 thread.stop();
-                                stage1.close();
-                                uhrenspiel.start(stage1);
-                                System.out.println("Lernmodus beendet");
-
-                            });
-                            guiLM.repeatButton.setOnAction(event -> {
-                                thread.stop();
+                                lmLevel = lmLevel - 1;
+                                guiLM.levelLM.setText(setText(lmLevel));
+                                guiLM.explanation.setText(setExplanation(lmLevel));
                                 startLernmodus(stage1, lmLevel);
+
                             });
-                            if (lmLevel > 1) {
-                                guiLM.preLevel.setOnAction(event -> {
-                                    thread.stop();
-                                    lmLevel = lmLevel - 1;
-                                    guiLM.levelLM.setText(setText(lmLevel));
-                                    guiLM.explanation.setText(setExplanation(lmLevel));
-                                    startLernmodus(stage1, lmLevel);
-
-                                });
-                            } else {
-                                guiLM.preLevel.setDisable(true);
-                            }
-
-                            if (lmLevel < 4) {
-                                guiLM.goOnLevel.setOnAction(event -> {
-                                    thread.stop();
-                                    lmLevel = lmLevel + 1;
-                                    guiLM.levelLM.setText(setText(lmLevel));
-                                    guiLM.explanation.setText(setExplanation(lmLevel));
-                                    startLernmodus(stage1, lmLevel);
-                                    System.out.println(lmLevel);
-                                });
-                            } else {
-                                guiLM.goOnLevel.setDisable(true);
-                            }
-
+                        } else {
+                            guiLM.preLevel.setDisable(true);
                         }
-                    };
 
-                    for (int i = 0; i < 11; i++) {
-                        try {
-                            Thread.sleep(7000);
-                        } catch (InterruptedException ex) {
-                            ex.printStackTrace();
+                        if (lmLevel < 4) {
+                            guiLM.goOnLevel.setOnAction(event -> {
+                                thread.stop();
+                                lmLevel = lmLevel + 1;
+                                guiLM.levelLM.setText(setText(lmLevel));
+                                guiLM.explanation.setText(setExplanation(lmLevel));
+                                startLernmodus(stage1, lmLevel);
+                                System.out.println(lmLevel);
+                            });
+                        } else {
+                            guiLM.goOnLevel.setDisable(true);
                         }
-                        // UI update is run on the Application thread
-                        Platform.runLater(updater);
+
                     }
-                }
-            });
+                };
 
-            thread.start();
+                for (int i = 0; i < 11; i++) {
+                    try {
+                        Thread.sleep(7000);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                    // UI update is run on the Application thread
+                    Platform.runLater(updater);
+                }
+            }
+        });
+
+        thread.start();
 
     }
-    private String setText(int level){
+
+    private String setText(int level) {
         String labelText;
         switch (level) {
             case 1:
@@ -128,14 +145,14 @@ public class Lernmodus {
 
     }
 
-    private String setExplanation(int level){
+    private String setExplanation(int level) {
         String labelText;
         switch (level) {
             case 1:
                 labelText = "Wenn der Stundenzeiger \n"
-                            + "auf der Stunde ist und der\n"
-                            + "Minutenzeiger auf der 12, dann \n"
-                            + "haben wir eine volle Stunde.";
+                        + "auf der Stunde ist und der\n"
+                        + "Minutenzeiger auf der 12, dann \n"
+                        + "haben wir eine volle Stunde.";
                 break;
             case 2:
                 labelText = "Wenn der Stundenzeiger \n"
