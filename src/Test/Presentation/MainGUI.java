@@ -140,11 +140,11 @@ public class MainGUI {
         //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: yellow");
 
 
-        if(!strictGame & aufgabennummer>0){
+        if(!strictGame & levelnummer >0){
             header = new Label("Freies Spiel");
         }
         else {
-            if(strictGame & aufgabennummer>0){
+            if(strictGame & levelnummer>0){
                 header = new Label("Expertenmodus");
             }
             else {

@@ -57,11 +57,11 @@ public class ChoiceScreenGame extends MainGUI {
         text1 = new Text("Volle Stunde, zum Beispiel 01:00 Uhr?");
         text2 = new Text("Halbe Stunde lernen, zum Beispiel 01:30 Uhr?");
         text3 = new Text("Viertel Stunde lernen, zum Beispiel 01:15 Uhr?");
-        text4 = new Text("Um zum Experten zu werden, musst du 6 von 10 \n"
-                +"Fragen pro Level richtig beantworten!");
+        text4 = new Text("Um Experte zu werden, musst du 6 von 10 \n"
+                +"Fragen pro Level von 1-4 richtig beantworten!");
         text5 = new Text("Level 1-3 gemischt?");
 
-        final VBox middle = new VBox(30);
+        final VBox middle = new VBox(35);
         final VBox right = new VBox(20);
         final VBox bottom = new VBox(10);
         final BorderPane paneRight = new BorderPane();
@@ -101,8 +101,6 @@ public class ChoiceScreenGame extends MainGUI {
     @Override
     public Pane leftArea() {
         VBox vBox = new VBox(5);
-
-        vBox.setPadding(new Insets(7, 150, 7, 70));
 
         return vBox;
     }

@@ -44,9 +44,9 @@ public class ExpertSummaryGUI extends MainGUI {
 
     @Override
     public BorderPane middleArea() {
+        header.setText("Expertenmodus");
 
         label = new Label();
-        label.setText("Super, du bist jetzt ein Experte im Uhren lesen!!!");
 
         close = new Button("Zurück");
 
@@ -81,7 +81,7 @@ public class ExpertSummaryGUI extends MainGUI {
     }
 
     /**
-     * Die Methode erstellt das Bild.
+     * Die Methode erstellt das Bild und gibt je nach Erfolg oder Misserfolg ein unterschiedliches Bild zur
      *
      * @return Gibt das Node zurück für das auszugebende Bild.
      */
@@ -90,6 +90,7 @@ public class ExpertSummaryGUI extends MainGUI {
         try {
 
             if(success) {
+
                 label.setText("Super, du bist jetzt ein Experte im Uhren lesen!!!");
                 repeatButton.setVisible(false);
                 preLevel.setVisible(false);

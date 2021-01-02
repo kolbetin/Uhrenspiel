@@ -47,8 +47,31 @@ public class Uhrenspiel extends Application  {
     private checkEntryFA checkEntryFA;
     private boolean success = false;
 
+
     /**
-     * Die Methode startet den Main Screen GUI.
+     * Der Konstruktor der Klasse
+     */
+
+    public Uhrenspiel()  {
+        guiMC = new MainGUI();
+        guiFA = new QuestionFreeAnswer();
+        mainScreen = new MainScreenGUI();
+        choiceScreenGame = new ChoiceScreenGame();
+        expertSummaryGUI = new ExpertSummaryGUI();
+        game = new Game();
+        choiceScreenGame = new ChoiceScreenGame();
+        choiceScreenLernmodus = new ChoiceScreenLernmodus();
+        summaryScreen = new SummaryGUI();
+        spielanleitung = new Spielanleitung();
+        learnModus = new Lernmodus();
+        data = new SavedData();
+        checkEntryFA = new checkEntryFA();
+
+        System.out.println("Uhrenspiel startet");
+    }
+
+    /**
+     * Die Methode startet die Main Screen GUI.
      */
 
 
@@ -94,6 +117,7 @@ public class Uhrenspiel extends Application  {
 
     /**
      * Die Methode startet die GUI für die Spielauswahl.
+     *
      */
 
     private void startChoiceScreenGame(){
@@ -135,6 +159,7 @@ public class Uhrenspiel extends Application  {
 
     /**
      * Die Methode startet die GUI für den Lernmodus.
+     *
      */
     private void startChoiceScreenLernmodus(){
         choiceScreenLernmodus.start(stage1);
@@ -191,6 +216,7 @@ public class Uhrenspiel extends Application  {
                 game.sum =0;
                  }
         }
+
     /**
      * Die Methode startet ein neues Spiel.
      */
@@ -257,11 +283,13 @@ public class Uhrenspiel extends Application  {
 
         guiMC.start(stage1);
 
+        answerCheckMC();
+
         guiMC.goOn.setOnAction(event -> setgoOnButton());
         guiMC.goOn.setVisible(false);
         guiMC.endButton.setOnAction(event -> endGame());
         guiMC.saveButton.setOnAction(event -> saveProgress());
-        answerCheckMC();
+
         showData();
   }
     /**
@@ -439,7 +467,7 @@ public class Uhrenspiel extends Application  {
     public void gameSummary() {
         stage1.close();
         summaryScreen.setAnswer(game.correctAnswer, game.wrongAnswer);
-        //   summaryScreen.setSuccess(true);
+
         summaryScreen.start(stage1);
 
         summaryScreen.backButton.setOnAction(event -> endGamewithoutsave());
@@ -485,7 +513,7 @@ public class Uhrenspiel extends Application  {
                     newGame();
                 });
                } else {
-                summaryScreen.nextGame.setVisible(false);
+                summaryScreen.nextGame.setDisable(true);
 
 
                 if (pct >= 0.6 & game.level == 4) {
@@ -612,7 +640,7 @@ public class Uhrenspiel extends Application  {
     }
 
     /**
-     * Die Methode aktualisiert alle relevanten Spielparameter mit den geladenen Spielparametern
+     * Die Methode aktualisiert alle aktuellen Spielparameter mit den geladenen Spielparametern
      */
     private void updateData(){
         game.correctAnswer = Integer.parseInt(data.progress.get(4));
@@ -628,6 +656,7 @@ public class Uhrenspiel extends Application  {
 
     /**
      * Die Methode wählt per Zufall einen Antwortenmoudsbildschirm aus.
+     *
      * @return Gibt die GUI des per Zufall ausgewählten Antwortenmodus zurück.
      */
     public MainGUI getRandomGUI() {
@@ -639,27 +668,7 @@ public class Uhrenspiel extends Application  {
         return guiList.get(index);
     }
 
-    /**
-     * Der Konstruktor der Klasse
-     */
 
-    public Uhrenspiel()  {
-        guiMC = new MainGUI();
-        guiFA = new QuestionFreeAnswer();
-        mainScreen = new MainScreenGUI();
-        choiceScreenGame = new ChoiceScreenGame();
-        expertSummaryGUI = new ExpertSummaryGUI();
-        game = new Game();
-        choiceScreenGame = new ChoiceScreenGame();
-        choiceScreenLernmodus = new ChoiceScreenLernmodus();
-        summaryScreen = new SummaryGUI();
-        spielanleitung = new Spielanleitung();
-        learnModus = new Lernmodus();
-        data = new SavedData();
-        checkEntryFA = new checkEntryFA();
-
-        System.out.println("Uhrenspiel startet");
-    }
 
      public static void main(String[] args) {
         launch(args);

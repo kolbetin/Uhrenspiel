@@ -54,12 +54,13 @@ public class SummaryGUI extends MainGUI {
 
     @Override
     public BorderPane middleArea() {
-
+            header.setText("Zusammenfassung");
 
             willkommensText = new Label();
             willkommensText.setText("Level wurde abgeschlossen");
             labelRA = new Label("Richtige Antworten: " + correctAnswer);
             labelFA = new Label("Falsche Antworten: " + wrongAnswer);
+
 
 
             nextGame = new Button("Nächstes Level");
