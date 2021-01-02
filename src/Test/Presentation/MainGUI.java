@@ -242,7 +242,7 @@ public class MainGUI {
         answer3.setText(answers.get(2));
         answer4.setText(answers.get(3));
 
-        goOn = new Button("weiter");
+        goOn = new Button("Weiter");
 
         Label antwort = new Label("Antwort: Es ist ");
         hBox.getChildren().addAll(antwort, answer1, answer2, answer3, answer4);

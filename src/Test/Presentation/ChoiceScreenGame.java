@@ -9,12 +9,18 @@
 package Test.Presentation;
 
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+
+import java.io.FileInputStream;
 
 
 public class ChoiceScreenGame extends MainGUI {
@@ -58,11 +64,16 @@ public class ChoiceScreenGame extends MainGUI {
         final VBox middle = new VBox(30);
         final VBox right = new VBox(20);
         final VBox bottom = new VBox(10);
+        final BorderPane paneRight = new BorderPane();
 
         middle.setId("choiceMiddleArea");
 
         middle.getChildren().addAll(  text1, text2,text3, text5, text4);
+
         right.getChildren().addAll( level1, level2, level3, level4, leadedGame );
+        paneRight.setRight(getPicture());
+        paneRight.setLeft(right);
+
         bottom.getChildren().add(backButton);
 
         BorderPane root = new BorderPane();
@@ -72,10 +83,11 @@ public class ChoiceScreenGame extends MainGUI {
 
         middle.setPadding(new Insets(50,7,10,7));
         right.setPadding(new Insets(50,7,10,70));
-        bottom.setPadding(new Insets(0,7,70,7));
+        bottom.setPadding(new Insets(0,7,50,7));
         root.setLeft(middle);
-        root.setRight(right);
+        root.setRight(paneRight);
         root.setBottom(bottom);
+
 
         return  root;
 
@@ -93,6 +105,36 @@ public class ChoiceScreenGame extends MainGUI {
         vBox.setPadding(new Insets(7, 150, 7, 70));
 
         return vBox;
+    }
+
+    /**
+     * Die Methode erstellt das Bild.
+     *
+     * @return Gibt den Node für das auszugebende Bild zurück.
+     */
+    public Node getPicture() {
+        try {
+
+            FileInputStream input = new FileInputStream("src/Test/Presentation/image/ChoiceScreenSmiley.png");
+
+            //prepare image object
+            Image image = new Image(input);
+
+
+            //create ImageView object
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(150);
+            imageView.setFitWidth(150);
+            HBox hBox = new HBox();
+            hBox.getChildren().add(imageView);
+            hBox.setPadding(new Insets(7,7,150,70));
+
+            return hBox;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

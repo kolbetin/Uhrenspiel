@@ -74,6 +74,11 @@ public class MainScreenGUI extends MainGUI {
         return vBox;
     }
 
+    /**
+     * Die Methode erstellt das Bild.
+     *
+     * @return Gibt den Node für das auszugebende Bild zurück.
+     */
     public Node getPicture() {
         try {
 
