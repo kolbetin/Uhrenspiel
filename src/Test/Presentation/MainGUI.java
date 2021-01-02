@@ -12,9 +12,12 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +49,7 @@ public class MainGUI {
     private int falscheAntwortNummer = 0;
     private List<String> answers;
     private boolean strictGame;
+    private String addImage;
 
 
     /**
@@ -274,6 +278,38 @@ public class MainGUI {
         this.answers.addAll(answers);
         this.strictGame = strictGame;
     }
+
+    /**
+     * Die Methode erstellt das Bild.
+     *
+     * @return Gibt den Node für das auszugebende Bild zurück.
+     */
+    public Node setPicture(String addImage, int height, int width, int left) {
+        try {
+            String path="src/Test/Presentation/image/";
+            this.addImage = addImage;
+            FileInputStream input = new FileInputStream(path+addImage);
+
+            //prepare image object
+            Image image = new Image(input);
+
+
+            //create ImageView object
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(height);
+            imageView.setFitWidth(width);
+            HBox hBox = new HBox();
+            hBox.getChildren().add(imageView);
+            hBox.setPadding(new Insets(7,7,50,left));
+
+            return hBox;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     /**
      * Konstruktor der Klasse.

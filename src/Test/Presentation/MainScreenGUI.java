@@ -57,7 +57,7 @@ public class MainScreenGUI extends MainGUI {
         root.setTop(willkommensText);
         root.setPadding(new Insets(150,100,7,70));
         root.setLeft(middle);
-        root.setRight(getPicture());
+        root.setRight(setPicture("MainScreenClock.png",250,250, 270));
 
         return  root;
 
@@ -74,35 +74,6 @@ public class MainScreenGUI extends MainGUI {
         return vBox;
     }
 
-    /**
-     * Die Methode erstellt das Bild.
-     *
-     * @return Gibt den Node für das auszugebende Bild zurück.
-     */
-    public Node getPicture() {
-        try {
-
-            FileInputStream input = new FileInputStream("src/Test/Presentation/image/MainScreenClock.png");
-
-            //prepare image object
-            Image image = new Image(input);
-
-
-            //create ImageView object
-            ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(250);
-            imageView.setFitWidth(250);
-            HBox hBox = new HBox();
-            hBox.getChildren().add(imageView);
-            hBox.setPadding(new Insets(7,7,50,270));
-
-            return hBox;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
 
 

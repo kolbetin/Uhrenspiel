@@ -60,6 +60,7 @@ public class ExpertSummaryGUI extends MainGUI {
 
         VBox vBox = new VBox(40);
         vBox.getChildren().addAll(getPicture(), label, hBox);
+
         vBox.setPadding(new Insets(100, 7, 7, 7));
 
         BorderPane root = new BorderPane();

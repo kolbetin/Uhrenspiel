@@ -57,7 +57,7 @@ public class ChoiceScreenLernmodus extends MainGUI {
         middle.getChildren().addAll(  text1, text2,text3, text4);
 
         right.getChildren().addAll( level1, level2, level3, level4 );
-        paneRight.setRight(getPicture());
+        paneRight.setRight(setPicture("ChoiceScreenLernendesSmiley.png",150,150,70));
         paneRight.setLeft(right);
 
 
@@ -86,36 +86,6 @@ public class ChoiceScreenLernmodus extends MainGUI {
         return vBox;
     }
 
-
-    /**
-     * Die Methode erstellt das Bild.
-     *
-     * @return Gibt den Node für das auszugebende Bild zurück.
-     */
-    public Node getPicture() {
-        try {
-
-            FileInputStream input = new FileInputStream("src/Test/Presentation/image/ChoiceScreenLernendesSmiley.png");
-
-            //prepare image object
-            Image image = new Image(input);
-
-
-            //create ImageView object
-            ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(150);
-            imageView.setFitWidth(150);
-            HBox hBox = new HBox();
-            hBox.getChildren().add(imageView);
-            hBox.setPadding(new Insets(7,7,50,70));
-
-            return hBox;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
 
 }

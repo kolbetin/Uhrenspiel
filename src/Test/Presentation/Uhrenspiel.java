@@ -63,9 +63,9 @@ public class Uhrenspiel extends Application  {
           expertSummaryGUI.start(stage2);
 
         expertSummaryGUI.setSuccess(false);
-          expertSummaryGUI.start(stage3);
+          expertSummaryGUI.start(stage3);*/
 
-          summaryScreen.start(stage3);*/
+          summaryScreen.start(stage3);
           mainScreen.start(stage1);
 
           mainScreen.newGameButton.setOnAction(event -> {

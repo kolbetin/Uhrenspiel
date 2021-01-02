@@ -81,7 +81,7 @@ public class SummaryGUI extends MainGUI {
 
             BorderPane root = new BorderPane();
 
-            root.setTop(getPicture());
+            root.setTop(setPicture("summaryWellDone.png",140,150,450));
             root.setBottom(bottom);
             root.setCenter(middle);
             root.setPadding(new Insets(70, 250, 7, 20));
@@ -99,36 +99,6 @@ public class SummaryGUI extends MainGUI {
         VBox vBox = new VBox(5);
 
         return vBox;
-    }
-
-    /**
-     * Die Methode erstellt das Bild.
-     *
-     * @return Gibt den Node für das auszugebende Bild zurück.
-     */
-    public Node getPicture() {
-        try {
-
-            input = new FileInputStream("src/Test/Presentation/image/summaryWellDone.png");
-
-            //prepare image object
-            Image image = new Image(input);
-
-
-            //create ImageView object
-            ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(140);
-            imageView.setFitWidth(150);
-            HBox hBox = new HBox();
-            hBox.getChildren().add(imageView);
-            hBox.setPadding(new Insets(7,7,50,450));
-
-            return hBox;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
 

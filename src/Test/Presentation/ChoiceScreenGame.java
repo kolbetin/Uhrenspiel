@@ -71,7 +71,7 @@ public class ChoiceScreenGame extends MainGUI {
         middle.getChildren().addAll(  text1, text2,text3, text5, text4);
 
         right.getChildren().addAll( level1, level2, level3, level4, leadedGame );
-        paneRight.setRight(getPicture());
+        paneRight.setRight(setPicture("ChoiceScreenSmiley.png",150,150,70));
         paneRight.setLeft(right);
 
         bottom.getChildren().add(backButton);
@@ -107,34 +107,5 @@ public class ChoiceScreenGame extends MainGUI {
         return vBox;
     }
 
-    /**
-     * Die Methode erstellt das Bild.
-     *
-     * @return Gibt den Node für das auszugebende Bild zurück.
-     */
-    public Node getPicture() {
-        try {
-
-            FileInputStream input = new FileInputStream("src/Test/Presentation/image/ChoiceScreenSmiley.png");
-
-            //prepare image object
-            Image image = new Image(input);
-
-
-            //create ImageView object
-            ImageView imageView = new ImageView(image);
-            imageView.setFitHeight(150);
-            imageView.setFitWidth(150);
-            HBox hBox = new HBox();
-            hBox.getChildren().add(imageView);
-            hBox.setPadding(new Insets(7,7,150,70));
-
-            return hBox;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
 }
