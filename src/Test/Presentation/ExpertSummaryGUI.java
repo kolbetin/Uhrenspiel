@@ -58,13 +58,13 @@ public class ExpertSummaryGUI extends MainGUI {
         hBox.setPadding(new Insets(7, 400, 7, 7));
 
 
-        VBox vBox = new VBox(40);
-        vBox.getChildren().addAll(getPicture(), label, hBox);
+        VBox vBox = new VBox(20);
+        vBox.getChildren().addAll(setPicture(getPicture(),300,400,110), label, hBox);
 
-        vBox.setPadding(new Insets(100, 7, 7, 7));
+        vBox.setPadding(new Insets(50, 7, 7, 7));
 
         BorderPane root = new BorderPane();
-        root.setCenter(vBox);
+        root.setTop(vBox);
 
         return root;
 
@@ -86,35 +86,22 @@ public class ExpertSummaryGUI extends MainGUI {
      * @return Gibt das Node zurück für das auszugebende Bild.
      */
 
-    public Node getPicture() {
+    public String getPicture() {
         try {
 
             if(success) {
-                input  = new FileInputStream("src/Test/Presentation/image/expertHappy.png");
                 label.setText("Super, du bist jetzt ein Experte im Uhren lesen!!!");
                 repeatButton.setVisible(false);
                 preLevel.setVisible(false);
+                return "expertHappy.png";
 
             }
             else {
-                input = new FileInputStream("src/Test/Presentation/image/expertEncourage.png");
                 label.setText("Leider, bist du noch kein Experte. Versuchs nochmal!!!");
                 repeatButton.setVisible(true);
+                return "expertEncourage.png";
 
             }
-
-            //prepare image object
-            Image image = new Image(input);
-
-            //create ImageView object
-            ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(400);
-            imageView.setFitHeight(300);
-            HBox hBox = new HBox();
-            hBox.getChildren().add(imageView);
-            hBox.setPadding(new Insets(7,7,7,80));
-
-            return hBox;
 
         } catch (Exception e) {
             e.printStackTrace();
