@@ -29,45 +29,33 @@ public class ClockElements {
     public Circle outerCircle;
     public Circle innerCircle;
 
-
-    // Drawing a Circle1
+    // Kreise und Nummern 1 bis 12 für die Zifferblätter im Uhrenbild
     Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
     Text nummer1 = new Text(358, 192, "1");
-    // Drawing a Circle2
     Circle circle2 = new Circle(418, 234, 25, Color.GREEN);
     Text nummer2 = new Text(410, 244, "2");
-    // Drawing a Circle3
     Circle circle3 = new Circle(435, 300, 25, Color.RED);
     Text nummer3 = new Text(427, 310, "3");
-    // Drawing a Circle4
     Circle circle4 = new Circle(418, 366, 25, Color.GREEN);
     Text nummer4 = new Text(410, 376, "4");
-    // Drawing a Circle5
     Circle circle5 = new Circle(366, 418, 25, Color.GREEN);
     Text nummer5 = new Text(358, 428, "5");
-    // Drawing a Circle6
     Circle circle6 = new Circle(300, 435, 25, Color.RED);
     Text nummer6 = new Text(292, 445, "6");
-    // Drawing a Circle7
     Circle circle7 = new Circle(234, 418, 25, Color.GREEN);
     Text nummer7 = new Text(226, 428, "7");
-    // Drawing a Circle8
     Circle circle8 = new Circle(182, 366, 25, Color.GREEN);
     Text nummer8 = new Text(174, 376, "8");
-    // Drawing a Circle9
     Circle circle9 = new Circle(165, 300, 25, Color.RED);
     Text nummer9 = new Text(157, 310, "9");
-    // Drawing a Circle10
     Circle circle10 = new Circle(182, 234, 25, Color.GREEN);
     Text nummer10 = new Text(167, 244, "10");
-    // Drawing a Circle11
     Circle circle11 = new Circle(234, 182, 25, Color.GREEN);
     Text nummer11 = new Text(219, 192, "11");
-    // Drawing a Circle12
     Circle circle12 = new Circle(300, 165, 25, Color.RED);
     Text nummer12 = new Text(285, 175, "12");
 
-    // Gruppe Uhrzeiten
+    // Gruppieren von Kreisen und Nummern zur jeweiligen Ziffer 1 bis 12
     Group ziffer_1 = new Group(circle1, nummer1);
     Group ziffer_2 = new Group (circle2, nummer2);
     Group ziffer_3 = new Group (circle3, nummer3);
@@ -81,14 +69,16 @@ public class ClockElements {
     Group ziffer_11 = new Group (circle11, nummer11);
     Group ziffer_12 = new Group (circle12, nummer12);
 
+    // Gruppieren von allen Ziffern für die erstellung des Uhrenbildes
     public Group ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
 
-    public void createUhrKreise(){
+
+    /*public void createUhrKreise(){
         // Hauptkreise Uhr
         outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
         outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         innerCircle = new Circle(300, 300, 6, Color.BLACK);
-    }
+    }*/
 
     EventHandler<MouseEvent> eventHandler = getEventHandler();
 
@@ -116,7 +106,7 @@ public class ClockElements {
      * die Minuten- und Stunden-Linien.
      */
     public ClockElements (){
-        createUhrKreise();
+        //createUhrKreise();
         setupClockElements();
         createZiffernMap();
         createMinutenMap();
@@ -150,6 +140,10 @@ public class ClockElements {
         circle11.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         nummer12.setFont(nummerFont);
         circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
+        outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        innerCircle = new Circle(300, 300, 6, Color.BLACK);
     }
 
 
