@@ -175,4 +175,4 @@ public class ClockSkin {
         stunde.toFront();
     }
 
-}  // Ende Klasse
+}  // Ende Klasse ClockSkin

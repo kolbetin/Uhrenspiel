@@ -29,45 +29,33 @@ public class ClockElements {
     public Circle outerCircle;
     public Circle innerCircle;
 
-
-    // Drawing a Circle1
+    // Kreise und Nummern 1 bis 12 für die Zifferblätter im Uhrenbild
     Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
     Text nummer1 = new Text(358, 192, "1");
-    // Drawing a Circle2
     Circle circle2 = new Circle(418, 234, 25, Color.GREEN);
     Text nummer2 = new Text(410, 244, "2");
-    // Drawing a Circle3
     Circle circle3 = new Circle(435, 300, 25, Color.RED);
     Text nummer3 = new Text(427, 310, "3");
-    // Drawing a Circle4
     Circle circle4 = new Circle(418, 366, 25, Color.GREEN);
     Text nummer4 = new Text(410, 376, "4");
-    // Drawing a Circle5
     Circle circle5 = new Circle(366, 418, 25, Color.GREEN);
     Text nummer5 = new Text(358, 428, "5");
-    // Drawing a Circle6
     Circle circle6 = new Circle(300, 435, 25, Color.RED);
     Text nummer6 = new Text(292, 445, "6");
-    // Drawing a Circle7
     Circle circle7 = new Circle(234, 418, 25, Color.GREEN);
     Text nummer7 = new Text(226, 428, "7");
-    // Drawing a Circle8
     Circle circle8 = new Circle(182, 366, 25, Color.GREEN);
     Text nummer8 = new Text(174, 376, "8");
-    // Drawing a Circle9
     Circle circle9 = new Circle(165, 300, 25, Color.RED);
     Text nummer9 = new Text(157, 310, "9");
-    // Drawing a Circle10
     Circle circle10 = new Circle(182, 234, 25, Color.GREEN);
     Text nummer10 = new Text(167, 244, "10");
-    // Drawing a Circle11
     Circle circle11 = new Circle(234, 182, 25, Color.GREEN);
     Text nummer11 = new Text(219, 192, "11");
-    // Drawing a Circle12
     Circle circle12 = new Circle(300, 165, 25, Color.RED);
     Text nummer12 = new Text(285, 175, "12");
 
-    // Gruppe Uhrzeiten
+    // Gruppieren von Kreisen und Nummern zur jeweiligen Ziffer 1 bis 12
     Group ziffer_1 = new Group(circle1, nummer1);
     Group ziffer_2 = new Group (circle2, nummer2);
     Group ziffer_3 = new Group (circle3, nummer3);
@@ -81,17 +69,31 @@ public class ClockElements {
     Group ziffer_11 = new Group (circle11, nummer11);
     Group ziffer_12 = new Group (circle12, nummer12);
 
+    // Gruppieren von allen Ziffern für die erstellung des Uhrenbildes
     public Group ziffern = new Group (ziffer_1,ziffer_2,ziffer_3,ziffer_4,ziffer_5,ziffer_6,ziffer_7,ziffer_8,ziffer_9,ziffer_10,ziffer_11,ziffer_12);
 
-    public void createUhrKreise(){
-        // Hauptkreise Uhr
-        outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
-        outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        innerCircle = new Circle(300, 300, 6, Color.BLACK);
+    /**
+     * Der Konstruktor der Klasse ClockElements führt verschiedene Methoden der eigenen Klasse aus um die grafischen
+     * Elemente so bereitzustellen damit sie von der Klasse ClockSkin nur noch für den jeweiligen Spielmodus korrekt
+     * zusammengebaut werden müssen. Als zentrales Element erstellt er auch die verschiedenen Maps für die Ziffern sowie
+     * die Minuten- und Stunden-Linien.
+     */
+    public ClockElements (){
+        //createUhrKreise();
+        setupClockElements();
+        createZiffernMap();
+        createMinutenMap();
+        createStundenMap();
     }
 
+    // EventHandler auf dem Ziffernblatt sowie den einzelnen Ziffern selbst zur Änderung der Farbe des Uhrenbildes
     EventHandler<MouseEvent> eventHandler = getEventHandler();
 
+    /**
+     * Der EventHandler steuert die zufällige Farbänderung des Ziffernblatts sowie der einzelnen Ziffern im Uhrenbild.
+     * Dies ist eine versteckte Funktion im Spiel und soll beim Spieler beim Zufälligen anklicken der Uhr für eine
+     * entsprechende Überraschung sorgen .
+     */
     EventHandler<MouseEvent> getEventHandler() {
         //Creating the mouse event handler
         return event -> {
@@ -110,19 +112,10 @@ public class ClockElements {
     }
 
     /**
-     * Der Konstruktor der Klasse ClockElements führt verschiedene Methoden der eigenen Klasse aus um die grafischen
-     * Elemente so bereitzustellen damit sie von der Klasse ClockSkin nur noch für den jeweiligen Spielmodus korrekt
-     * zusammengebaut werden müssen. Als zentrales Element erstellt er auch die verschiedenen Maps für die Ziffern sowie
-     * die Minuten- und Stunden-Linien.
+     * Die Methode "setupClockElements" formatiert die einzelnen Elemente des Uhrenbildes. Es werden die Nummern der
+     * Ziffern 1 bis 12 mit der Schriftart Comic Sans MS formatiert und fügt dem jeweiligen Kreis zum Event Handler
+     * hinzu. Weiter werden der äussere und innere Kreis für das Zifferblatt erstellt und dem Event Handler hinzugefügt.
      */
-    public ClockElements (){
-        createUhrKreise();
-        setupClockElements();
-        createZiffernMap();
-        createMinutenMap();
-        createStundenMap();
-    }
-
     public void setupClockElements(){
         Font nummerFont = new Font("Comic Sans MS", 30);
 
@@ -150,12 +143,20 @@ public class ClockElements {
         circle11.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         nummer12.setFont(nummerFont);
         circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+
+        outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
+        outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        innerCircle = new Circle(300, 300, 6, Color.BLACK);
     }
 
-
+    /**
+     * Die Methode "createZiffernMap" erstellt eine Hashmap für die einzelnen Ziffern. Als Key wird ein Integer mit
+     * der jeweiligen Zahl der Ziffer definiert. Als Value die jeweilige Gruppe für eine Ziffer, welche aus einem Kreis
+     * und Text mit der entsprechenden Zahl besteht.
+     */
     public void createZiffernMap() {
 
-        // Kreiert ZiffernMap für mit Ziffernblätter
         ziffernMap.put(1, ziffer_1);
         ziffernMap.put(2, ziffer_2);
         ziffernMap.put(3, ziffer_3);
@@ -172,7 +173,12 @@ public class ClockElements {
         ziffernMap.put(13,ziffer_1);
     }
 
-
+    /**
+     * Die Methode "createMinutenMap" erstellt die Linien für die einzelnen Positionen des Minutenzeigers und fügt sie
+     * der Hashmap "MinutenMap" hinzu. Als Key wird ein String mit der jeweiligen anzuzeigenden Minute definiert.
+     * Als Value die jeweilige Linie für den Minutenzeiger mit den entsprechenden Koordinaten für die korrekte Zeit
+     * hinterlegt.
+     */
     public void createMinutenMap() {
 
         // Koordinaten für Minutenzeiger
@@ -187,6 +193,12 @@ public class ClockElements {
         minutenMap.put("15", minuten_15);
     }
 
+    /**
+     * Die Methode "createStundenMap" erstellt die Linien für die einzelnen Positionen des Stundenzeigers und fügt sie
+     * der Hashmap "stundenMap" hinzu. Als Key wird ein String mit der jeweiligen anzuzeigenden Stunde definiert.
+     * Als Value die jeweilige Linie für den Stundenzeiger mit den entsprechenden Koordinaten für die korrekte Zeit
+     * hinterlegt.
+     */
     public void createStundenMap() {
 
         // Linien 12 Uhr
@@ -314,4 +326,4 @@ public class ClockElements {
 
     }
 
-} // Ende Klasse
+} // Ende Klasse ClockElements
