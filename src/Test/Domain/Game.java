@@ -84,8 +84,7 @@ public class Game {
             questionsAnswermap.antwortenMapLevel2();
             questionsAnswermap.antwortenMapLevel3();
         }
-        System.out.println(questionsAnswermap.antwortenMap.keySet());
-        System.out.println(level);
+
     }
 
 

@@ -17,8 +17,7 @@ import java.util.*;
 public class SavedData {
 
     // Instanzvariablen
-    private IOInterface bufferInterface;
-    private Random random;
+    private IOInterface ioInterface;
     public List<String> progress;
 
 
@@ -27,8 +26,7 @@ public class SavedData {
      */
     public SavedData() {
         progress = new ArrayList();
-        random = new Random();
-        bufferInterface = new FileWriter();
+        ioInterface = new FileWriter();
     }
 
     /**
@@ -52,7 +50,7 @@ public class SavedData {
      *             verwendet um die abzuspeichernden Informationen in das zu speichernde File zu schreiben.
      */
     public void saveProgress(File file, List<String> list) throws IOException {
-        bufferInterface.save(file, list);
+        ioInterface.save(file, list);
     }
 
     /**
@@ -63,8 +61,7 @@ public class SavedData {
      *             verwendet um das File zu Laden.
      */
     public void loadProgress(File file) throws ClassNotFoundException, IOException {
-        setProgress(bufferInterface.load(file));
-        System.out.println("Das Spiel wurde geladen: " + progress);
+        setProgress(ioInterface.load(file));
     }
 
     /**

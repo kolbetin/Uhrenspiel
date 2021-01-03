@@ -24,9 +24,6 @@ public class QuestionsAnswer {
      */
     public QuestionsAnswer() {
         antwortenMap = new HashMap<>();
-
-        System.out.println(antwortenMap.size());
-
     }
 
     /**

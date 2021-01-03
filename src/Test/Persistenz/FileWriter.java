@@ -28,7 +28,7 @@ public class FileWriter implements IOInterface {
             for (String string : progress) {
                 writer.write(string);
                 writer.newLine();
-            }
+             }
 
         } catch (IOException e) {
             throw new IOException("Daten können nicht in der Datei " + file + " gespeichert werden!");
@@ -49,9 +49,8 @@ public class FileWriter implements IOInterface {
                 while (progress != null) {
                     spielstand.add(progress);
                     progress = reader.readLine();
+                    }
 
-                }
-                 System.out.println(spielstand);
                 return spielstand;
             }
         }

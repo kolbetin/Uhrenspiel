@@ -292,7 +292,7 @@ public class Uhrenspiel extends Application  {
         guiMC.endButton.setOnAction(event -> endGame());
         guiMC.saveButton.setOnAction(event -> saveProgress());
 
-        showData();
+       // showData();
   }
     /**
      * Die Methode gibt alle relevanten Spielparameter in der Konsole aus.
@@ -344,7 +344,7 @@ public class Uhrenspiel extends Application  {
           guiFA.endButton.setOnAction(event -> endGame());
           guiFA.saveButton.setOnAction(event -> saveProgress());
 
-          showData();
+        //  showData();
       }
 
     /**
@@ -545,6 +545,7 @@ public class Uhrenspiel extends Application  {
 
     /**
      * Die Methode beendet ein Spiel, mit Alert, falls nicht gespeichert wurde.
+     *
      * Der Spieler wird zum Main Screen zurückgeleitet.
      */
 
@@ -567,6 +568,7 @@ public class Uhrenspiel extends Application  {
     }
     /**
      * Die Methode beendet ein Spiel ohne Alert für Speicherung.
+     *
      * Der Spieler wird zum Main Screen zurückgeleitet.
      */
     public void endGamewithoutsave(){
@@ -654,7 +656,7 @@ public class Uhrenspiel extends Application  {
         game.playedGames.clear();
         game.playedGames.addAll(Arrays.asList(data.progress.get(3)));
         game.taskNumber= Integer.parseInt(data.progress.get(0));
-        showData();
+      //  showData();
     }
 
     /**
