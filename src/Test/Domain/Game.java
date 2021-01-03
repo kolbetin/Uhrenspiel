@@ -176,4 +176,4 @@ public class Game {
         return questionsAnswermap.antwortenMap.get(keys);
     }
 
-}
+}// Ende Klasse Game

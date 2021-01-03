@@ -184,4 +184,4 @@ class checkEntryFATest {
     }
 
 
-}
+}// Ende Klasse checkEntryFATest

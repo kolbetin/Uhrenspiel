@@ -100,4 +100,4 @@ public class ChoiceScreenGame extends MainGUI {
     }
 
 
-}
+}// Ende Klasse ChoiceScreenGame

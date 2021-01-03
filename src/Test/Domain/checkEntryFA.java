@@ -150,7 +150,7 @@ public class checkEntryFA {
             return checkHour();
         }
 
-}
+}// Ende Klasse checkEntryFA
 
 
 

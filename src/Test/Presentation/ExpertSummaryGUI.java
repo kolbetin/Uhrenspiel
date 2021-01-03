@@ -111,4 +111,4 @@ public class ExpertSummaryGUI extends MainGUI {
     }
 
 
-}
+}// Ende Klasse ExpertSummaryGUI

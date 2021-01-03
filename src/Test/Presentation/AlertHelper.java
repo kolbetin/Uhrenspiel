@@ -66,7 +66,4 @@ public class AlertHelper {
         alert.show();
     }
 
-
-
-
-}
+}// Ende Klasse AlertHelper

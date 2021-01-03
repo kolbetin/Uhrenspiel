@@ -306,4 +306,4 @@ class GameTest {
         game.key = "12:00";
         Assert.assertFalse(game.checkAnswerFA(hour,minutes));
     }
-}
+}// Ende Klasse GameTest

@@ -1,13 +1,16 @@
+/**
+ * Die Klasse erstellt die Auswahl GUI für den Lernmodus.
+ *
+ * @author Tina Kolbe & Oliver Piert
+ * @version 1.0
+ */
+
 package Test.Presentation;
 
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -17,6 +20,7 @@ import java.io.FileInputStream;
 
 public class ChoiceScreenLernmodus extends MainGUI {
 
+    //Instanzvariablen
      public Label willkommensText;
      public Button level1;
      public Button level2;
@@ -29,6 +33,9 @@ public class ChoiceScreenLernmodus extends MainGUI {
      public Button backButton;
 
 
+    /**
+     * Die Methode überschreibt den Mittelteil der MainGUI.
+     */
     @Override
     public BorderPane middleArea(){
 
@@ -40,7 +47,9 @@ public class ChoiceScreenLernmodus extends MainGUI {
         level2 = new Button("Start");
         level3 = new Button("Start");
         level4 = new Button("Start");
+
         backButton = new Button("Zurück");
+
         text1 = new Text("Volle Stunde, zum Beispiel 01:00 Uhr?");
         text2 = new Text("Halbe Stunde, zum Beispiel 2:30 Uhr?");
         text3 = new Text("Viertel nach, zum Beispiel 3:15 Uhr?");
@@ -60,17 +69,17 @@ public class ChoiceScreenLernmodus extends MainGUI {
         paneRight.setRight(setPicture("ChoiceScreenLernendesSmiley.png",200,200,70));
         paneRight.setLeft(right);
 
-
         bottom.getChildren().add(backButton);
+
+        middle.setPadding(new Insets(50,7,10,7));
+        right.setPadding(new Insets(50,7,10,70));
+        bottom.setPadding(new Insets(0,7,150,7));
 
         BorderPane root = new BorderPane();
 
         root.setTop(willkommensText);
         root.setPadding(new Insets(150,170,7,20));
 
-        middle.setPadding(new Insets(50,7,10,7));
-        right.setPadding(new Insets(50,7,10,70));
-        bottom.setPadding(new Insets(0,7,150,7));
         root.setLeft(middle);
         root.setRight(paneRight);
         root.setBottom(bottom);
@@ -78,6 +87,10 @@ public class ChoiceScreenLernmodus extends MainGUI {
         return  root;
 
     }
+
+    /**
+     * Die Methode überschreibt den linken Teil der MainGUI.
+     */
 
     @Override
     public Pane leftArea() {
@@ -88,4 +101,4 @@ public class ChoiceScreenLernmodus extends MainGUI {
 
 
 
-}
+}  // Ende Klasse ChoiceScreenLernmodus
