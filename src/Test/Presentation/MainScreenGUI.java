@@ -29,8 +29,6 @@ public class MainScreenGUI extends MainGUI {
     /**
      * Die Methode überschreibt den mittleren Teil der MainGUI.
      */
-
-
     @Override
     public BorderPane middleArea(){
 
@@ -62,7 +60,6 @@ public class MainScreenGUI extends MainGUI {
     /**
      * Die Methode überschreibt den linken Teil der MainGUI.
      */
-
     @Override
     public Pane leftArea() {
         final VBox vBox = new VBox(5);
