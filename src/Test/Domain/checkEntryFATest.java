@@ -1,6 +1,5 @@
 /**
- * Die Klasse nimmt die Eingabe der beiden Textfelder für die freie Antwort entgegen
- *  und prüft die Eingabe auf Validität.
+ * Die Klasse testet, ob die Klasse checkEntryFA alle möglichen Eingaben korrekt prüft.
  *
  *  @author Tina Kolbe & Oliver Piert
  *  @version 1.0
@@ -19,7 +18,9 @@ class checkEntryFATest {
     private String minutes;
 
     /**
-     * Die Methode wird vor jedem Test ausgeführt und bereitet das set up für die Tests.
+     * Die Methode wird vor jedem Test ausgeführt und bereitet das set up für die Tests vor.
+     *
+     * Die Klasse checkEntryFA wird initialisiert.
      */
 
     @BeforeEach

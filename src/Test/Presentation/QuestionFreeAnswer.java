@@ -1,5 +1,5 @@
 /**
- * Die Klasse erstellt die GUI für die Antwortenmoduse und Auswahlbildschirme.
+ * Die Klasse erstellt die GUI für den Antwortenmodus Freie Antwort.
  *
  *  @author Tina Kolbe & Oliver Piert
  *  @version 1.0
@@ -13,6 +13,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 public class QuestionFreeAnswer extends MainGUI {
+    //Instanzvariablen
     public Button goOn;
     public TextField givenHour;
     public TextField givenMinutes;
@@ -20,7 +21,7 @@ public class QuestionFreeAnswer extends MainGUI {
 
 
     /**
-     * Die Methode überschreibt den unteren Antwortenteil des Mittelteils der Hauptgui.
+     * Die Methode überschreibt den unteren Antwortenteil des Mittelteils der MainGUI.
      */
 
     @Override

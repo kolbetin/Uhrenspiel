@@ -30,30 +30,31 @@ public class MainGUI {
     public Button answer3;
     public Button answer4;
     public Button saveButton;
-    public Label answerCount;
+    public Label labelTaskCount;
     public Button goOn;
     private ClockSkin clock;
-    public Label questionLabel;
+    public Label labelQuestion;
     public Label header;
     public String time = "08:30"; //Standardwert: 12:00
     public Node node;
-    public Label level;
-    public Label richtigeAntwort;
-    public Label falscheAntwort;
+    public Label labelLevel;
+    public Label labelCorrectAnswer;
+    public Label labelWrongAnswer;
     public Label allAnswers;
     public Label levelexplain;
-    private int levelnummer = 0;
-    private int aufgabennummer = 0;
+    private int levelNo = 0;
+    private int taskNo = 0;
     private int sum = 0;
-    private int richtigeAntwortNummer = 0;
-    private int falscheAntwortNummer = 0;
+    private int correctAnswerNo = 0;
+    private int wrongAnswerNo = 0;
     private List<String> answers;
     private boolean strictGame;
     private String addImage;
+    private int totalTaskNumber = 0;
 
 
     /**
-     * Die Methode erstellt den Hauptbildschirm.
+     * Die Methode erstellt den MainGUI.
      *
      * @param primaryStage nimmt die Stage entgegeben um den Hauptbildschirm anzeigen zu können.
      */
@@ -67,7 +68,6 @@ public class MainGUI {
         borderPane.setTop(upperArea());
         borderPane.setRight(middleArea());
         borderPane.setLeft(leftArea());
-        // borderPane.setStyle("-fx-border-image-width: 1; -fx-border-color: black");
 
         Scene scene = new Scene(borderPane, 1400, 700);
         scene.getStylesheets().add(MainGUI.class.getResource("clock.css").toExternalForm());
@@ -77,20 +77,20 @@ public class MainGUI {
     }
 
     /**
-     * Die Methode erstellt den Mittelteil des Hauptbildschirms.
+     * Die Methode erstellt den Mittelteil der MainGUI.
      *
-     * @return Gibt die BorderPane des Mittelteils für den Hauptbildschirm zurück.
+     * @return Gibt die BorderPane des Mittelteils für die MainGUI zurück.
      */
     public BorderPane middleArea() {
 
         final BorderPane middleArea = new BorderPane();
         middleArea.setId("middleArea");
 
-        answerCount = new Label("Aufgabe: " + aufgabennummer + "  von 10");
-        level = new Label("Level: " + levelnummer);
+        labelTaskCount = new Label("Aufgabe: " + taskNo + "  von " + totalTaskNumber);
+        labelLevel = new Label("Level: " + levelNo);
 
         final HBox upper = new HBox(100);
-        upper.getChildren().addAll(level, answerCount);
+        upper.getChildren().addAll(labelLevel, labelTaskCount);
         upper.setPadding(new Insets(7, 7, 7, 7));
 
         final VBox vBox = new VBox(30);
@@ -119,10 +119,10 @@ public class MainGUI {
         BorderPane borderPane = new BorderPane();
         borderPane.setId("questionArea");
 
-        questionLabel = new Label("Frage: " + "Wie spät ist es?");
+        labelQuestion = new Label("Frage: " + "Wie spät ist es?");
 
 
-        borderPane.setTop(questionLabel);
+        borderPane.setTop(labelQuestion);
 
 
         return borderPane;
@@ -140,11 +140,11 @@ public class MainGUI {
         //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: yellow");
 
 
-        if(!strictGame & levelnummer >0){
+        if(!strictGame & levelNo >0){
             header = new Label("Freies Spiel");
         }
         else {
-            if(strictGame & levelnummer>0){
+            if(strictGame & levelNo >0){
                 header = new Label("Expertenmodus");
             }
             else {
@@ -198,13 +198,13 @@ public class MainGUI {
         vbox.getChildren().addAll(saveButton, endButton);
 
 
-        richtigeAntwort = new Label("Richtige Antworten: " + richtigeAntwortNummer);
-        falscheAntwort = new Label("Falsche Antworten: " + falscheAntwortNummer);
+        labelCorrectAnswer = new Label("Richtige Antworten: " + correctAnswerNo);
+        labelWrongAnswer = new Label("Falsche Antworten: " + wrongAnswerNo);
         levelexplain = new Label("In diesem Level: ");
 
         final VBox vb = new VBox(20);
         vb.setSpacing(50);
-        vb.getChildren().addAll(levelexplain, richtigeAntwort, falscheAntwort);
+        vb.getChildren().addAll(levelexplain, labelCorrectAnswer, labelWrongAnswer);
 
         // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: #59ff00");
         borderPane.setPadding(new Insets(100, 7, 7, 7));
@@ -268,15 +268,16 @@ public class MainGUI {
      * @param  strictGame Übergibt einen Boolean für den Expertenmodus mit true oder false.
      */
 
-    public void setGameValues(int tasknumber, int level, double sum, int correctAnswer, int wrongAnswer, List answers, boolean strictGame) {
+    public void setGameValues(int tasknumber, int level, double sum, int correctAnswer, int wrongAnswer, List answers, boolean strictGame, int totalTaskNumber) {
         this.answers.clear();
-        this.aufgabennummer = tasknumber;
-        this.levelnummer = level;
+        this.taskNo = tasknumber;
+        this.levelNo = level;
         this.sum = (int) sum;
-        this.richtigeAntwortNummer = correctAnswer;
-        this.falscheAntwortNummer = wrongAnswer;
+        this.correctAnswerNo = correctAnswer;
+        this.wrongAnswerNo = wrongAnswer;
         this.answers.addAll(answers);
         this.strictGame = strictGame;
+        this.totalTaskNumber = totalTaskNumber;
     }
 
     /**

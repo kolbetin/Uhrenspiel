@@ -9,17 +9,15 @@
 package Test.Presentation;
 
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import java.io.FileInputStream;
 
 
 public class ExpertSummaryGUI extends MainGUI {
 
+    //Instanzvariablen
      private Label label;
      public Button close;
      private Boolean success = false;
@@ -39,7 +37,7 @@ public class ExpertSummaryGUI extends MainGUI {
 
 
     /**
-     * Die Methode überschreibt den mittleren Teil der Hauptbildschirms.
+     * Die Methode überschreibt den mittleren Teil der MainGUI.
      */
 
     @Override
@@ -71,7 +69,7 @@ public class ExpertSummaryGUI extends MainGUI {
     }
 
     /**
-     * Die Methode überschreibt den linken Teil des Hauptbildschirms.
+     * Die Methode überschreibt den linken Teil des MainGUI.
      */
 
     @Override
@@ -81,16 +79,18 @@ public class ExpertSummaryGUI extends MainGUI {
     }
 
     /**
-     * Die Methode erstellt das Bild und gibt je nach Erfolg oder Misserfolg ein unterschiedliches Bild zur
+     * Die Methode erstellt das Bild und gibt je nach Erfolg oder Misserfolg ein unterschiedliches Bild zurück.
      *
-     * @return Gibt das Node zurück für das auszugebende Bild.
+     * Zudem wird der Text je nach Erfolg oder Misserfolg geändert. Es werden unterschiedliche Buttons bei Erfolg
+     * oder Misserfolg gezeigt.
+     *
+     * @return Gibt das String zurück für das auszugebende Bild.
      */
 
     public String getPicture() {
         try {
 
             if(success) {
-
                 label.setText("Super, du bist jetzt ein Experte im Uhren lesen!!!");
                 repeatButton.setVisible(false);
                 preLevel.setVisible(false);

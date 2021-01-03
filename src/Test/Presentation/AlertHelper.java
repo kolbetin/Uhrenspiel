@@ -16,8 +16,8 @@ public class AlertHelper {
     /**
      * Die Methode erstellt den Confirmation Alert.
 
-     * @param title nimmt den String für den Titel des Alters entgegen.
-     * @param message nimmt den String für die Nachricht des Alters entgegen.
+     * @param title nimmt den String für den Titel des Alerts entgegen.
+     * @param message nimmt den String für die Nachricht des Alerts entgegen.
      */
     public static boolean  confirmationAlert( String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -37,8 +37,8 @@ public class AlertHelper {
     /**
      * Die Methode erstellt den Information Alert.
 
-     * @param title nimmt den String für den Titel des Alters entgegen.
-     * @param message nimmt den String für die Nachricht des Alters entgegen.
+     * @param title nimmt den String für den Titel des Alerts entgegen.
+     * @param message nimmt den String für die Nachricht des Alerts entgegen.
      */
 
     public static void informationAlert( String title, String message) {
@@ -52,8 +52,8 @@ public class AlertHelper {
     /**
      * Die Methode erstellt den Error Alert.
      *
-     * @param title nimmt den String für den Titel des Alters entgegen.
-     * @param message nimmt den String für die Nachricht des Alters entgegen.
+     * @param title nimmt den String für den Titel des Alerts entgegen.
+     * @param message nimmt den String für die Nachricht des Alerts entgegen.
      */
 
 

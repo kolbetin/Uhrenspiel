@@ -1,6 +1,6 @@
 /**
  * Die Klasse nimmt die Eingabe der beiden Textfelder für die freie Antwort entgegen
- *  und prüft die Eingabe auf Validität.
+ * und prüft die Eingabe auf Validität.
  *
  *  @author Tina Kolbe & Oliver Piert
  *  @version 1.0
@@ -23,8 +23,7 @@ public class checkEntryFA {
 
 
     /**
-     * Die Methode nimmt die eingegebenen Parameter entgegen und startet den Check der Eingabe auf Vollständigkeit
-     * und nach korrekten Muster
+     * Die Methode nimmt die eingegebenen Parameter entgegen und startet den Check der Eingabe auf Validität
      *
      * @param  hour  Übergibt einen String mit der Stunde im Format "12"
      * @param  minutes Übergibt einen String mit der Minuten im Format "45"
@@ -44,11 +43,11 @@ public class checkEntryFA {
     }
 
     /**
-     * Die Methode prüft ob die Eingabe nicht Null, Buchstaben, Negativzahlen oder Sonderzeichen ist und
+     * Die Methode prüft, dass die Eingabe nicht Null, Buchstaben, Negativzahlen oder Sonderzeichen ist und
      * dass nur Zahlen zwischen 1 und 12 eingegeben worden sind
      *
 
-     * @return  Gibt den Boolean zurück ob die Stunde korrekt eingegeben wurde,
+     * @return  Gibt den Boolean zurück, ob die Stunde valide eingegeben wurde,
      *          so dass die Antwort auf Richtigkeit geprüften werden kann.
      */
 
@@ -73,8 +72,8 @@ public class checkEntryFA {
     }
 
     /**
-     * Die Methode prüft ob die Eingabe nicht Null, Buchstaben, Negativzahlen oder Sonderzeichen ist und
-     * dass nur die Zahlen 00, 15, 30 oder 45 eingegeben worden sind
+     * Die Methode prüft, dass die Eingabe nicht Null, Buchstaben, Negativzahlen oder Sonderzeichen ist und
+     * dass nur Zahlen zwischen 0 - 59 eingegeben worden sind
      *
 
      * @return  Gibt den Boolean zurück ob die Minuten korrekt eingegeben wurden,

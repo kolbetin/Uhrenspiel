@@ -1,5 +1,5 @@
 /**
- * Die Klasse ist die Hauptklasse die alle GUI's zusammenführt und durch das Spiel führt.
+ * Die Klasse ist die Hauptklasse die die Presentation mit der Domain zusammenführt und durch das Spiel führt.
  *
  *  @author Tina Kolbe & Oliver Piert
  *  @version 1.0
@@ -13,7 +13,6 @@ import Test.Persistenz.SavedData;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +26,7 @@ import java.util.Random;
 
 public class Uhrenspiel extends Application  {
 
+    //Instanzvariablen
     private Random random;
     private MainGUI guiMC;
     private QuestionFreeAnswer guiFA;
@@ -46,6 +46,7 @@ public class Uhrenspiel extends Application  {
     private Spielanleitung spielanleitung;
     private checkEntryFA checkEntryFA;
     private boolean success = false;
+    private int totalTaskNumber = 10;
 
 
     /**
@@ -86,9 +87,9 @@ public class Uhrenspiel extends Application  {
           expertSummaryGUI.start(stage2);
 
         expertSummaryGUI.setSuccess(false);
-          expertSummaryGUI.start(stage3);
+          expertSummaryGUI.start(stage3);*/
 
-        //  summaryScreen.start(stage3);*/
+        // summaryScreen.start(stage3);
           mainScreen.start(stage1);
 
           mainScreen.newGameButton.setOnAction(event -> {
@@ -244,7 +245,7 @@ public class Uhrenspiel extends Application  {
      public void setgoOnButton(){
          game.playedGames.add(game.key);
 
-          if( game.taskNumber <10) {
+          if( game.taskNumber <totalTaskNumber) {
               if (game.level < 4) {
                   if (game.taskNumber < 5) {
                       newGameMultipleChoice();
@@ -279,6 +280,7 @@ public class Uhrenspiel extends Application  {
                 game.wrongAnswer,
                 game.answerList,
                 strictGame
+                ,totalTaskNumber
         );
 
         guiMC.start(stage1);
@@ -317,7 +319,8 @@ public class Uhrenspiel extends Application  {
                   game.correctAnswer,
                   game.wrongAnswer,
                   game.answerList,
-                  strictGame
+                  strictGame,
+                  totalTaskNumber
           );
           guiFA.start(stage1);
 
@@ -373,7 +376,7 @@ public class Uhrenspiel extends Application  {
                 {
                   guiFA.submitButton.setId("buttonOkay");
                   guiFA.submitButton.setText("");
-                  guiFA.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
+                  guiFA.labelQuestion.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                   game.correctAnswer++;
                   manageButtonsFA();
                   game.sum++;
@@ -381,7 +384,7 @@ public class Uhrenspiel extends Application  {
                 else {
                   guiFA.submitButton.setId("buttonNotOkay");
                   guiFA.submitButton.setText("");
-                  guiFA.questionLabel.setText("Das war leider nicht richtig!\n"
+                  guiFA.labelQuestion.setText("Das war leider nicht richtig!\n"
                           + "Deine Antwort: " + game.answer+ " Uhr.\n"
                           + "Die korrekte Antwort ist: " + game.getAnswerFA(game.key)+ " Uhr.");
                   game.wrongAnswer++;
@@ -440,7 +443,7 @@ public class Uhrenspiel extends Application  {
                      if (button.getText().equals(game.getAnswerFA(game.key)) ) {
                          button.setId("buttonOkay");
                          button.setText("");
-                         guiMC.questionLabel.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
+                         guiMC.labelQuestion.setText("Toll gemacht! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                          game.correctAnswer++;
                          manageButtonsMC();
                          game.sum++;
@@ -449,7 +452,7 @@ public class Uhrenspiel extends Application  {
                      else {
                          button.setId("buttonNotOkay");
                          button.setText("");
-                         guiMC.questionLabel.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
+                         guiMC.labelQuestion.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                          game.wrongAnswer++;
                          manageButtonsMC();
                          game.sum++;
@@ -484,7 +487,7 @@ public class Uhrenspiel extends Application  {
         }
 
         if (!strictGame) {
-            summaryScreen.willkommensText.setText("Level: " + game.level + " wurde abgeschlossen!");
+            summaryScreen.headerSummary.setText("Level: " + game.level + " wurde abgeschlossen!");
             if (game.level < 4) {
                 summaryScreen.nextGame.setOnAction(event -> {
                     game.level = game.level + 1;
@@ -502,9 +505,9 @@ public class Uhrenspiel extends Application  {
             pct = (float) (game.correctAnswer / internalsum);
 
             if (pct >= 0.6) {
-                summaryScreen.willkommensText.setText("Level: " + game.level + " wurde erfolgreich abgeschlossen!");
+                summaryScreen.headerSummary.setText("Level: " + game.level + " wurde erfolgreich abgeschlossen!");
             } else {
-                summaryScreen.willkommensText.setText("Level: " + game.level + " wurde nicht erfolgreich abgeschlossen!");
+                summaryScreen.headerSummary.setText("Level: " + game.level + " wurde nicht erfolgreich abgeschlossen!");
             }
             if (pct >= 0.6 & game.level < 4) {
                 summaryScreen.nextGame.setOnAction(event -> {

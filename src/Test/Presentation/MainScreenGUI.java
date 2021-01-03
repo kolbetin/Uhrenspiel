@@ -1,5 +1,5 @@
 /**
- * Die Klasse erstellt die GUI für die Antwortenmoduse und Auswahlbildschirme.
+ * Die Klasse erstellt die MainGUI für die Antwortenmoduse und Auswahlbildschirme.
  *
  *  @author Tina Kolbe & Oliver Piert
  *  @version 1.0
@@ -8,17 +8,12 @@
 package Test.Presentation;
 
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import java.io.FileInputStream;
 
 
 public class MainScreenGUI extends MainGUI {
@@ -32,7 +27,7 @@ public class MainScreenGUI extends MainGUI {
 
 
     /**
-     * Die Methode überschreibt den mittleren Teil des Hauptbildschirms.
+     * Die Methode überschreibt den mittleren Teil der MainGUI.
      */
 
 
@@ -65,7 +60,7 @@ public class MainScreenGUI extends MainGUI {
 
 
     /**
-     * Die Methode überschreibt den linken Teil des Hauptbildschirms.
+     * Die Methode überschreibt den linken Teil der MainGUI.
      */
 
     @Override

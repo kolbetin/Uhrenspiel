@@ -18,7 +18,9 @@ class GameTest {
     private String minutes;
 
     /**
-     * Die Methode wird vor jedem Test ausgeführt und bereitet das set up für die Tests.
+     * Die Methode wird vor jedem Test ausgeführt und bereitet das set up für die Tests vor.
+     *
+     * Die Klasse Game wird intialisiert.
      */
 
     @BeforeEach
@@ -28,6 +30,7 @@ class GameTest {
 
     /**
      * Die Methode testet die Erstellung der nächsten Frage.
+     *
      * Es wird getestet das Uhrzeiten innerhalb eines Aufgabensets nicht doppelt
      * abgefragt werden.
 

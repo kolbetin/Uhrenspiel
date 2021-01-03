@@ -1,5 +1,6 @@
 /**
- * Die Klasse steuert den Spielablauf. Hier wird die Frage Uhrzeit mit der Antwort erstellt.
+ * Die Klasse steuert den Spielablauf. Hier wird die Frage (Uhrzeit) mit der Antwort erstellt.
+ *
  *
  *  @author Tina Kolbe & Oliver Piert
  *  @version 1.0
@@ -8,9 +9,6 @@
 package Test.Domain;
 
 import Test.Persistenz.QuestionsAnswer;
-import javafx.application.Application;
-import javafx.stage.Stage;
-
 import java.util.*;
 
 
@@ -57,13 +55,14 @@ public class Game {
         randomAnswer();
         answerSet();
         taskNumber++;
-        System.out.println(key);
     }
 
 
     /**
      * Die Methode nimmt das ausgewählte Level entgegen und befüllt den Fragen Antwortenkatalog
      * entsprechend der Level.
+     *
+     * Das Level wird in der Klasse Uhrenspiel gesetzt.
      *
      * @param  level Übergibt einen Integer mit dem Level
      *
@@ -92,12 +91,13 @@ public class Game {
 
     /**
      * Die Methode nimmt die eingegebenen Parameter im Modus Freie Antwort entgegen und startet
-     * den Check ob die Antwort auf Korrekt oder Falsch ist.
+     * den Check ob die Antwort korrekt oder falsch ist. Dieser Check wird erst gestartet, wenn die Eingabe valide ist.
+     *
      *
      * @param  hour  Übergibt einen String mit der Stunde im Format "12"
      * @param  minutes Übergibt einen String mit der Minuten im Format "45"
      *
-     * @return    Gibt den Boolean zurück ob die Uhrzeit korrekt eingegeben wurde.
+     * @return    Gibt den Boolean zurück, ob die Uhrzeit korrekt oder falsch eingegeben wurde.
      */
 
     public boolean checkAnswerFA(String hour, String minutes){
@@ -176,9 +176,5 @@ public class Game {
     public String getAnswerFA(String keys) {
         return questionsAnswermap.antwortenMap.get(keys);
     }
-/*
-    public void start(Stage primaryStage) {}
-      public static void main(String[] args) {
-        launch(args);
-    }*/
+
 }
