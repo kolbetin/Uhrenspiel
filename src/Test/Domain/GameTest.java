@@ -9,6 +9,7 @@
 package Test.Domain;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -60,7 +61,7 @@ class GameTest {
         Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
         Assert.assertEquals(1,game.taskNumber);
-        System.out.println(game.playedGames);
+
 
         game.nextQuestion();
 
@@ -68,7 +69,7 @@ class GameTest {
         Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
         Assert.assertEquals(2,game.taskNumber);
-        System.out.println(game.playedGames);
+
 
         game.nextQuestion();
 
@@ -76,7 +77,7 @@ class GameTest {
         Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
         Assert.assertEquals(3,game.taskNumber);
-        System.out.println(game.playedGames);
+
 
 
         game.playedGames.clear();
@@ -100,21 +101,21 @@ class GameTest {
         Assert.assertNotEquals(game.playedGames, game.key);
         Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
-        System.out.println(game.playedGames);
+
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
         Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
-        System.out.println(game.playedGames);
+
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
         Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
-        System.out.println(game.playedGames);
+
 
 
         game.playedGames.clear();
@@ -137,28 +138,28 @@ class GameTest {
 
         Assert.assertNotEquals(game.playedGames, game.key);
         Assert.assertTrue(game.keyList.contains(game.key));
-        System.out.println(game.playedGames);
+
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
         Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
-        System.out.println(game.playedGames);
+
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
         Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
-        System.out.println(game.playedGames);
+
 
         game.nextQuestion();
 
         Assert.assertNotEquals(game.playedGames, game.key);
         Assert.assertTrue(game.keyList.contains(game.key));
         game.playedGames.add(game.key);
-        System.out.println(game.playedGames);
+
 
         game.playedGames.clear();
 
@@ -274,7 +275,7 @@ class GameTest {
         minutes = "00";
         game.setLevel(1);
         game.key = "11:00";
-        Assert.assertFalse(game.checkAnswerFA(hour,minutes));
+        Assertions.assertFalse(game.checkAnswerFA(hour,minutes));
 
         hour = "11";
         minutes = "00";
