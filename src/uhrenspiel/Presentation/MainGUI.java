@@ -24,6 +24,7 @@ import java.util.List;
 
 public class MainGUI {
 
+    public static Scene scene;
     public Button endButton;
     public Button answer1;
     public Button answer2;
@@ -69,7 +70,7 @@ public class MainGUI {
         borderPane.setRight(middleArea());
         borderPane.setLeft(leftArea());
 
-        Scene scene = new Scene(borderPane, 1400, 700);
+        scene = new Scene(borderPane, 1400, 700);
         scene.getStylesheets().add(MainGUI.class.getResource("clock.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.setTitle("Uhrenspiel");
