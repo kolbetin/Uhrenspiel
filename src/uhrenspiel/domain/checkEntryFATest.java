@@ -5,7 +5,7 @@
  *  @version 1.0
  */
 
-package Test.Domain;
+package uhrenspiel.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ class checkEntryFATest {
     private String minutes;
 
     /**
-     * Die Methode wird vor jedem Test ausgeführt und bereitet das set up für die Tests vor.
+     * Die Methode wird vor jedem uhrenspiel ausgeführt und bereitet das set up für die Tests vor.
      *
      * Die Klasse checkEntryFA wird initialisiert.
      */

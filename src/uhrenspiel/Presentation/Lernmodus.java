@@ -9,7 +9,7 @@
  * @version 1.0
  */
 
-package Test.Presentation;
+package uhrenspiel.Presentation;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;

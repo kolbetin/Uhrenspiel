@@ -7,9 +7,9 @@
  */
 
 
-package Test.Domain;
+package uhrenspiel.domain;
 
-import Test.Presentation.AlertHelper;
+import uhrenspiel.Presentation.AlertHelper;
 
 public class checkEntryFA {
     // Instanzvariablen

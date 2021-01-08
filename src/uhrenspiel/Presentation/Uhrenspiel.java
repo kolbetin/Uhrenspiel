@@ -5,11 +5,11 @@
  *  @version 1.0
  */
 
-package Test.Presentation;
+package uhrenspiel.Presentation;
 
-import Test.Domain.Game;
-import Test.Domain.checkEntryFA;
-import Test.Persistenz.SavedData;
+import uhrenspiel.domain.Game;
+import uhrenspiel.domain.checkEntryFA;
+import uhrenspiel.persistenz.SavedData;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;

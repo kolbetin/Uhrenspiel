@@ -8,7 +8,7 @@
  * @author Tina Kolbe & Oliver Piert
  * @version 1.0
  */
-package Test.Presentation;
+package uhrenspiel.Presentation;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;

@@ -6,7 +6,7 @@
  */
 
 
-package Test.Domain;
+package uhrenspiel.domain;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -19,7 +19,7 @@ class GameTest {
     private String minutes;
 
     /**
-     * Die Methode wird vor jedem Test ausgeführt und bereitet das set up für die Tests vor.
+     * Die Methode wird vor jedem uhrenspiel ausgeführt und bereitet das set up für die Tests vor.
      *
      * Die Klasse Game wird intialisiert.
      */

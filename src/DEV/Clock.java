@@ -203,7 +203,7 @@ public class Clock {
 
         //scene.setFill(Color.LAVENDER);
         //stage.setTitle("Uhren Skin");
-        //scene.getStylesheets().add  (Test.class.getResource("clock.css").toExternalForm());
+        //scene.getStylesheets().add  (uhrenspiel.class.getResource("clock.css").toExternalForm());
         //stage.setScene(scene);
 
         //Displaying the contents of the stage

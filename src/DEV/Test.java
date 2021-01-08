@@ -24,7 +24,7 @@ public class Test  extends Application {
             primaryStage.setTitle("JavaFX ImageView Tutorial - tutorialkart.com");
 
             //read image as stream
-          //  FileInputStream input = new FileInputStream("src/Test/Presentation/image/expertHappy.png");
+          //  FileInputStream input = new FileInputStream("src/uhrenspiel/Presentation/image/expertHappy.png");
             //prepare image object
             Image image = new Image(input);
 
@@ -57,7 +57,7 @@ public class Test  extends Application {
 
         try {
             //read image as stream
-            FileInputStream input = new FileInputStream("src/Test/Presentation/image/Success.jfif");
+            FileInputStream input = new FileInputStream("src/uhrenspiel/Presentation/image/Success.jfif");
             //prepare image object
             Image image = new Image(input);
 

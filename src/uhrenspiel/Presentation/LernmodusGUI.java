@@ -7,7 +7,7 @@
  * @version 1.0
  */
 
-package Test.Presentation;
+package uhrenspiel.Presentation;
 
 
 import javafx.geometry.Insets;
@@ -55,7 +55,7 @@ public class LernmodusGUI extends MainGUI {
 
         uberschrift.setText("Lernmodus - Wo stehen die Ziffern auf der Uhr?");
         levelLM.setText("Level");
-        explanation.setText("Test");
+        explanation.setText("uhrenspiel");
         explanation.setId("textExplanation");
         zeiger.setText("Legende:\n"
                 + "Stundenzeiger: kurzer schwarzer Zeiger\n"

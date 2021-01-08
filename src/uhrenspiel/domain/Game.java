@@ -6,9 +6,9 @@
  *  @version 1.0
  */
 
-package Test.Domain;
+package uhrenspiel.domain;
 
-import Test.Persistenz.QuestionsAnswer;
+import uhrenspiel.persistenz.QuestionsAnswer;
 import java.util.*;
 
 

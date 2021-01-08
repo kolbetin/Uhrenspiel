@@ -1,7 +1,7 @@
-package Test;
+package uhrenspiel;
 
 
-import Test.Presentation.Uhrenspiel;
+import uhrenspiel.Presentation.Uhrenspiel;
 
 
 public class UhrenspielApp {

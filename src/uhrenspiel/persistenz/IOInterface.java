@@ -6,7 +6,7 @@
  * @version 1.0
  */
 
-package Test.Persistenz;
+package uhrenspiel.persistenz;
 
 import java.io.File;
 import java.io.IOException;

@@ -6,7 +6,7 @@
  */
 
 
-package Test.Presentation;
+package uhrenspiel.Presentation;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -287,7 +287,7 @@ public class MainGUI {
      */
     public Node setPicture(String addImage, int height, int width, int left) {
         try {
-            String path="src/Test/Presentation/image/";
+            String path="src/uhrenspiel/Presentation/image/";
             this.addImage = addImage;
             FileInputStream input = new FileInputStream(path+addImage);
 
