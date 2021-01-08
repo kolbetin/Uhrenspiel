@@ -473,7 +473,7 @@ public class Uhrenspiel extends Application  {
 
         summaryScreen.start(stage1);
 
-        summaryScreen.backButton.setOnAction(event -> endGamewithoutsave());
+        summaryScreen.backButton.setOnAction(event ->   startChoiceScreenGame());
         summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
         if(game.level>1) {
