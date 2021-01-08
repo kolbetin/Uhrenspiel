@@ -1,22 +1,9 @@
-package Test;
+package PROD;
 
 import java.awt.*;
-import java.io.FileInputStream;
-import java.util.Collection;
 
-import Test.Presentation.MainGUI;
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class Test  extends Application {
 

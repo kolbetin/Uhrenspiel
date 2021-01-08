@@ -26,7 +26,7 @@ public class SavedData {
      */
     public SavedData() {
         progress = new ArrayList();
-        ioInterface = new FileWriter();
+        ioInterface = new IOSerialisierung();
     }
 
     /**

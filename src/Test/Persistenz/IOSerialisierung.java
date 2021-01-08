@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FileWriter implements IOInterface {
+public class IOSerialisierung implements IOInterface {
 
 
     /**

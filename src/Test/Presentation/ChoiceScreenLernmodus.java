@@ -15,8 +15,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import java.io.FileInputStream;
-
 
 public class ChoiceScreenLernmodus extends MainGUI {
 
