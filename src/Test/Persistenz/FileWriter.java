@@ -16,7 +16,7 @@ public class FileWriter implements IOInterface {
 
 
     /**
-     * Die Methode "save" erstellt den BufferedWriter mit FileWriter zur Speicherung von Uhrenspiel Spielständen.
+     * Die Methode "save" erstellt den BufferedWriter mit einem FileWriter zur Speicherung von Uhrenspiel Spielständen.
      *
      * @param file Der Parameter vom Typ File wird vom FileWriter verwendet um die Datei abzuspeichern.
      * @param progress Der Parameter progress vom Typ String wird vom BufferedWriter verwendet um die abzuspeichernden
@@ -36,7 +36,7 @@ public class FileWriter implements IOInterface {
     }
 
     /**
-     * Die Methode "load" erstellt den BufferedReader mit FileReader zum Laden von Uhrenspiel Spielständen.
+     * Die Methode "load" erstellt den BufferedReader mit einem FileReader zum Laden von Uhrenspiel Spielständen.
      *
      * @param file Der Parameter vom Typ File wird vom FileReader verwendet um die Datei zu laden.
      **/
