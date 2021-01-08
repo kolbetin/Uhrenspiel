@@ -19,6 +19,8 @@ public class ClockSkin {
     private ClockElements clockElements; // Grafikelemente die für das Uhrenbild (ClockSkin) benötigt werden
     Line stunde; // Variable für den Stundenzeiger
     Line minute; // Variable für den Minutenzeiger
+    MainGUI mainGui = new MainGUI(); // Variable für den Zugriff auf MainGui und das StyleSheet "clock.css"
+
 
     /**
      * Konstruktor der Klasse ClockSkin. Der Konstruktor nimmt keine Parameter entgegen, da die verschiedenen
@@ -42,11 +44,14 @@ public class ClockSkin {
         clockElements = new ClockElements();
 
         this.stunde = parserStunde(anzuzeigendeZeit);
-        stunde.setStrokeWidth(5); // move to CSS File
+        //stunde.setStrokeWidth(5); // move to CSS File
 
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
-        minute.setStroke(Color.RED); // move to CSS File
-        minute.setStrokeWidth(4); // move to CSS File
+        //minute.setStroke(Color.RED); // move to CSS File
+        //minute.setStrokeWidth(4); // move to CSS File
+        mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
+        minute.setId("minute");
+        stunde.setId("stunde");
 
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
         Group clock = new Group(clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
@@ -73,11 +78,14 @@ public class ClockSkin {
         clockElements = new ClockElements();
 
         this.stunde = parserStunde(anzuzeigendeZeit);
-        stunde.setStrokeWidth(5); // move to CSS File
+        //stunde.setStrokeWidth(5); // move to CSS File
 
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
-        minute.setStroke(Color.RED); // move to CSS File
-        minute.setStrokeWidth(5); // move to CSS File
+        //minute.setStroke(Color.RED); // move to CSS File
+        //minute.setStrokeWidth(4); // move to CSS File
+        mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
+        minute.setId("minute");
+        stunde.setId("stunde");
 
         Group ziffer = parserZiffern(anzuzeigendeZiffer);
         Group ziffer2 = parserZiffern(anzuzeigendeZiffer + 1);

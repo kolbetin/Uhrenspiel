@@ -30,6 +30,8 @@ public class ClockElements {
     public final HashMap<String, Line> stundenMap = new HashMap<>();
     public Circle outerCircle;
     public Circle innerCircle;
+    private MainGUI mainGui = new MainGUI(); // Variable für den Zugriff auf MainGui und das StyleSheet "clock.css"
+
 
     // Kreise und Nummern 1 bis 12 für die Zifferblätter im Uhrenbild
     Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
@@ -85,6 +87,7 @@ public class ClockElements {
         createZiffernMap();
         createMinutenMap();
         createStundenMap();
+        mainGui.scene.getStylesheets().add(ClockElements.class.getResource("clock.css").toExternalForm());
     }
 
     // EventHandler auf dem Ziffernblatt sowie den einzelnen Ziffern selbst zur Änderung der Farbe des Uhrenbildes
@@ -118,31 +121,34 @@ public class ClockElements {
      * hinzu. Weiter werden der äussere und innere Kreis für das Zifferblatt erstellt und dem Event Handler hinzugefügt.
      */
     public void setupClockElements() {
-        Font nummerFont = new Font("Comic Sans MS", 30);
+        //Font nummerFont = new Font("Comic Sans MS", 30);
 
-        nummer1.setFont(nummerFont);
+        // Formatieren der Nummern in den Zifferblättern mit dem StyleSheet
+        nummer1.setId("nummerFont");
+        nummer2.setId("nummerFont");
+        nummer3.setId("nummerFont");
+        nummer4.setId("nummerFont");
+        nummer5.setId("nummerFont");
+        nummer6.setId("nummerFont");
+        nummer7.setId("nummerFont");
+        nummer8.setId("nummerFont");
+        nummer9.setId("nummerFont");
+        nummer10.setId("nummerFont");
+        nummer11.setId("nummerFont");
+        nummer12.setId("nummerFont");
+
+        // Hinzufügen des Event Handlers zu den Zifferblättern im Uhrenbild
         circle1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer2.setFont(nummerFont);
         circle2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer3.setFont(nummerFont);
         circle3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer4.setFont(nummerFont);
         circle4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer5.setFont(nummerFont);
         circle5.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer6.setFont(nummerFont);
         circle6.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer7.setFont(nummerFont);
         circle7.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer8.setFont(nummerFont);
         circle8.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer9.setFont(nummerFont);
         circle9.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer10.setFont(nummerFont);
         circle10.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer11.setFont(nummerFont);
         circle11.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        nummer12.setFont(nummerFont);
         circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
 
