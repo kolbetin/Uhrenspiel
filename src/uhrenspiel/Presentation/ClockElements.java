@@ -16,7 +16,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.util.HashMap;
@@ -83,7 +82,7 @@ public class ClockElements {
      * die Minuten- und Stunden-Linien.
      */
     public ClockElements() {
-        setupClockElements();
+        setupEventHandler();
         createZiffernMap();
         createMinutenMap();
         createStundenMap();
@@ -116,26 +115,10 @@ public class ClockElements {
     }
 
     /**
-     * Die Methode "setupClockElements" formatiert die einzelnen Elemente des Uhrenbildes. Es werden die Nummern der
-     * Ziffern 1 bis 12 mit der Schriftart Comic Sans MS formatiert und fügt dem jeweiligen Kreis zum Event Handler
-     * hinzu. Weiter werden der äussere und innere Kreis für das Zifferblatt erstellt und dem Event Handler hinzugefügt.
+     * Die Methode "setupEventHandler" fügt dem jeweiligen Kreis zum Event Handler hinzu.
+     * Weiter werden der äussere und innere Kreis für das Zifferblatt erstellt und dem Event Handler hinzugefügt.
      */
-    public void setupClockElements() {
-        //Font nummerFont = new Font("Comic Sans MS", 30);
-
-        // Formatieren der Nummern in den Zifferblättern mit dem StyleSheet
-        nummer1.setId("nummerFont");
-        nummer2.setId("nummerFont");
-        nummer3.setId("nummerFont");
-        nummer4.setId("nummerFont");
-        nummer5.setId("nummerFont");
-        nummer6.setId("nummerFont");
-        nummer7.setId("nummerFont");
-        nummer8.setId("nummerFont");
-        nummer9.setId("nummerFont");
-        nummer10.setId("nummerFont");
-        nummer11.setId("nummerFont");
-        nummer12.setId("nummerFont");
+    public void setupEventHandler() {
 
         // Hinzufügen des Event Handlers zu den Zifferblättern im Uhrenbild
         circle1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);

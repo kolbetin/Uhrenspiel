@@ -8,7 +8,6 @@
 
 package uhrenspiel.domain;
 
-import uhrenspiel.persistenz.QuestionsAnswer;
 import java.util.*;
 
 

@@ -44,11 +44,10 @@ public class ClockSkin {
         clockElements = new ClockElements();
 
         this.stunde = parserStunde(anzuzeigendeZeit);
-        //stunde.setStrokeWidth(5); // move to CSS File
 
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
-        //minute.setStroke(Color.RED); // move to CSS File
-        //minute.setStrokeWidth(4); // move to CSS File
+
+        // Formatierung LerningClock über das clock.css StyleSheet
         mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
         minute.setId("minute");
         stunde.setId("stunde");
@@ -78,11 +77,10 @@ public class ClockSkin {
         clockElements = new ClockElements();
 
         this.stunde = parserStunde(anzuzeigendeZeit);
-        //stunde.setStrokeWidth(5); // move to CSS File
 
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
-        //minute.setStroke(Color.RED); // move to CSS File
-        //minute.setStrokeWidth(4); // move to CSS File
+
+        // Formatierung LerningClock über das clock.css StyleSheet
         mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
         minute.setId("minute");
         stunde.setId("stunde");

@@ -7,7 +7,7 @@
  * @author Tina Kolbe & Oliver Piert
  * @version 1.0
  */
-package uhrenspiel.persistenz;
+package uhrenspiel.domain;
 
 
 import java.util.*;
