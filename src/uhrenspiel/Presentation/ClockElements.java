@@ -58,6 +58,8 @@ public class ClockElements {
     Circle circle12 = new Circle(300, 165, 25, Color.RED);
     Text nummer12 = new Text(285, 175, "12");
 
+
+
     // Gruppieren von Kreisen und Nummern zur jeweiligen Ziffer 1 bis 12
     Group ziffer_1 = new Group(circle1, nummer1);
     Group ziffer_2 = new Group(circle2, nummer2);
@@ -105,8 +107,7 @@ public class ClockElements {
             double g = rand.nextDouble();
             double b = rand.nextDouble();
             Color randomColor = new Color(r, g, b, 1);
-            //System.out.println("The color is: " +
-            //        randomColor.toString());
+
             if (event.getSource() instanceof Circle) {
                 Circle c = (Circle) event.getSource();
                 c.setFill(randomColor);
@@ -134,10 +135,9 @@ public class ClockElements {
         circle11.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
-
-        outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY);
+        outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY); // To CSS
         outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        innerCircle = new Circle(300, 300, 6, Color.BLACK);
+        innerCircle = new Circle(300, 300, 6, Color.BLACK); // To CSS
     }
 
     /**
