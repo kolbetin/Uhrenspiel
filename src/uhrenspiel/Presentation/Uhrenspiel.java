@@ -532,7 +532,10 @@ public class Uhrenspiel extends Application  {
                             game.level = 1;
                             newGame();
                         });
-                        expertSummaryGUI.preLevel.setOnAction(event ->   newGame() );
+                        expertSummaryGUI.preLevel.setOnAction(event ->{
+                            expertenModus = true;
+                            newGame();
+                        } );
                         expertSummaryGUI.close.setOnAction(event ->      endGamewithoutsave());
                     }
                 }

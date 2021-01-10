@@ -33,7 +33,6 @@ public class MainGUI {
     public Button saveButton;
     public Label labelTaskCount;
     public Button goOn;
-    private ClockSkin clock;
     public Label labelQuestion;
     public Label header;
     public String time = "08:30"; //Standardwert: 12:00
@@ -50,7 +49,6 @@ public class MainGUI {
     private int wrongAnswerNo = 0;
     private List<String> answers;
     private boolean strictGame;
-    private String addImage;
     private int totalTaskNumber = 0;
 
 
@@ -169,7 +167,7 @@ public class MainGUI {
         hbox.setId("clockArea");
 
 
-        clock = new ClockSkin();
+        ClockSkin clock = new ClockSkin();
         node = clock.createClock(time);
 
         //   borderPane.setStyle("-fx-border-width:  1; -fx-border-color: #882cc1");
@@ -290,7 +288,6 @@ public class MainGUI {
         try {
 
             String path="src/uhrenspiel/Presentation/image/";
-            this.addImage = addImage;
             FileInputStream input = new FileInputStream(path+addImage);
 
             //prepare image object
