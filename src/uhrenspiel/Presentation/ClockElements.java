@@ -27,12 +27,14 @@ public class ClockElements {
     public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
     public final HashMap<String, Line> minutenMap = new HashMap<>();
     public final HashMap<String, Line> stundenMap = new HashMap<>();
-    public Circle outerCircle;
-    public Circle innerCircle;
     private MainGUI mainGui = new MainGUI(); // Variable für den Zugriff auf MainGui und das StyleSheet "clock.css"
 
 
-    // Kreise und Nummern 1 bis 12 für die Zifferblätter im Uhrenbild
+    // Uhrenelemente: Äusserer und innerer Uhrenkreis
+    Circle outerCircle = new Circle(300, 300, 160);
+    Circle innerCircle = new Circle(300, 300, 6);
+
+    // Uhrenelemente: Kreise und Nummern 1 bis 12 für die Zifferblätter im Uhrenbild
     Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
     Text nummer1 = new Text(358, 192, "1");
     Circle circle2 = new Circle(418, 234, 25, Color.GREEN);
@@ -59,7 +61,6 @@ public class ClockElements {
     Text nummer12 = new Text(285, 175, "12");
 
 
-
     // Gruppieren von Kreisen und Nummern zur jeweiligen Ziffer 1 bis 12
     Group ziffer_1 = new Group(circle1, nummer1);
     Group ziffer_2 = new Group(circle2, nummer2);
@@ -84,12 +85,18 @@ public class ClockElements {
      * die Minuten- und Stunden-Linien.
      */
     public ClockElements() {
+        // Kreieren der verschiedenen Maps die zur Erstellung des Uhrenbildes benötigt werden
         setupEventHandler();
         createZiffernMap();
         createMinutenMap();
         createStundenMap();
-        mainGui.scene.getStylesheets().add(ClockElements.class.getResource("clock.css").toExternalForm());
+        // Verknüpfung mit dem StyleSheet "clock.css" und setzen der benötigten ID's
+        //mainGui.scene.getStylesheets().add(ClockElements.class.getResource("clock.css").toExternalForm());
+        //outerCircle.setId("outerCircle");
+        //innerCircle.setId("innerCircle");
     }
+
+
 
     // EventHandler auf dem Ziffernblatt sowie den einzelnen Ziffern selbst zur Änderung der Farbe des Uhrenbildes
     EventHandler<MouseEvent> eventHandler = getEventHandler();
@@ -118,6 +125,8 @@ public class ClockElements {
     /**
      * Die Methode "setupEventHandler" fügt dem jeweiligen Kreis zum Event Handler hinzu.
      * Weiter werden der äussere und innere Kreis für das Zifferblatt erstellt und dem Event Handler hinzugefügt.
+     * Dies ist ein verstecktes Feature im Uhrenspiel und soll den Spieler überraschen, wenn sich beim Anklicken des
+     * Uhrenbildes die Farbe der Uhr oder der Ziffern ändert.
      */
     public void setupEventHandler() {
 
@@ -134,10 +143,7 @@ public class ClockElements {
         circle10.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         circle11.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-
-        outerCircle = new Circle(300, 300, 160, Color.LIGHTGRAY); // To CSS
         outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        innerCircle = new Circle(300, 300, 6, Color.BLACK); // To CSS
     }
 
     /**

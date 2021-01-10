@@ -97,7 +97,6 @@
 #textExplanation{
     -fx-font-size: 20px;
     -fx-fill: #073566;
-
 }
 
 #minute{
@@ -109,6 +108,11 @@
     -fx-stroke-width: 5px;
 }
 
+#outerCircle{
+    -fx-fill: LAVENDER;
+}
 
-
+#innerCircle{
+    -fx-fill: #000000;
+}
 

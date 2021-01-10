@@ -15,11 +15,11 @@ import javafx.scene.shape.Line;
 
 public class ClockSkin {
 
-    // Instanzvariablen
-    private ClockElements clockElements; // Grafikelemente die für das Uhrenbild (ClockSkin) benötigt werden
     Line stunde; // Variable für den Stundenzeiger
     Line minute; // Variable für den Minutenzeiger
     MainGUI mainGui = new MainGUI(); // Variable für den Zugriff auf MainGui und das StyleSheet "clock.css"
+    // Instanzvariablen
+    private ClockElements clockElements; // Grafikelemente die für das Uhrenbild (ClockSkin) benötigt werden
 
 
     /**
@@ -48,15 +48,19 @@ public class ClockSkin {
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
 
         // Formatierung LerningClock über das clock.css StyleSheet
-        mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
-        minute.setId("minute");
-        stunde.setId("stunde");
+        //mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
+        //minute.setId("minute");
+        //stunde.setId("stunde");
 
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
         Group clock = new Group(clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
-        clockElements.outerCircle.toBack();
-        clockElements.innerCircle.toFront();
-        stunde.toFront();
+
+        //clockElements.outerCircle.toBack();
+        //clockElements.innerCircle.toFront();
+        //stunde.toFront();
+
+        formatSettings();
+
         Node clockSkin = clock;
         return clockSkin;
     }
@@ -81,9 +85,9 @@ public class ClockSkin {
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
 
         // Formatierung LerningClock über das clock.css StyleSheet
-        mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
-        minute.setId("minute");
-        stunde.setId("stunde");
+        //mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
+        //minute.setId("minute");
+        //stunde.setId("stunde");
 
         Group ziffer = parserZiffern(anzuzeigendeZiffer);
         Group ziffer2 = parserZiffern(anzuzeigendeZiffer + 1);
@@ -134,7 +138,9 @@ public class ClockSkin {
                 learningClock = clock;
             }
         }
-        finalFormatSettings();
+
+        formatSettings();
+
         return learningClock;
     } // Ende Methode clockLearningClock
 
@@ -177,10 +183,19 @@ public class ClockSkin {
     }
 
     /**
-     * Die Methode "finalFormatSetting" stellt die korrekte Reihenfolge des grossen äusseren und des kleinen
-     * inneren Kreises sowie des Stundenzeigers im Uhrenbild sicher.
+     * Die Methode "formatSetting" verknüpft die Klasse mit dem Stylesheet "clock.css" und formatiert den
+     * grossen äusseren und des kleinen inneren Kreis im Uhrenbild.
      */
-    public void finalFormatSettings() {
+    public void formatSettings() {
+
+        // Formatieren des Uhrenbildes über das clock.css StyleSheet
+        mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
+        minute.setId("minute");
+        stunde.setId("stunde");
+        clockElements.outerCircle.setId("outerCircle");
+        clockElements.innerCircle.setId("innerCircle");
+
+        // Formatieren der Reihenfolge der Uhrenkreise
         clockElements.outerCircle.toBack();
         clockElements.innerCircle.toFront();
         stunde.toFront();
