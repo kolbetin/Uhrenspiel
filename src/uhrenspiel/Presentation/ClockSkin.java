@@ -195,19 +195,12 @@ public class ClockSkin {
         clockElements.outerCircle.setId("outerCircle");
         clockElements.innerCircle.setId("innerCircle");
 
-        // Formatiert die Schriftart der Zifferblätter
-        clockElements.ziffer_1.setId("ziffernFont");
-        clockElements.ziffer_2.setId("ziffernFont");
-        clockElements.ziffer_3.setId("ziffernFont");
-        clockElements.ziffer_4.setId("ziffernFont");
-        clockElements.ziffer_5.setId("ziffernFont");
-        clockElements.ziffer_6.setId("ziffernFont");
-        clockElements.ziffer_7.setId("ziffernFont");
-        clockElements.ziffer_8.setId("ziffernFont");
-        clockElements.ziffer_9.setId("ziffernFont");
-        clockElements.ziffer_10.setId("ziffernFont");
-        clockElements.ziffer_11.setId("ziffernFont");
-        clockElements.ziffer_12.setId("ziffernFont");
+        // Formatiert die Schriftart der Zifferblätter 1 bis 12
+        int i = 1;
+        while (i < 13){
+            clockElements.ziffernMap.get(i).setId("ziffernFont");
+            i += 1;
+        }
 
         // Formatieren der Reihenfolge der Uhrenkreise
         clockElements.outerCircle.toBack();
