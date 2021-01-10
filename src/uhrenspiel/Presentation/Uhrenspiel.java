@@ -42,10 +42,9 @@ public class Uhrenspiel extends Application  {
     private ArrayList<MainGUI> guiList;
     private Game game;
     private SavedData data;
-    private boolean strictGame = false;
+    private boolean expertenModus = false;
     private Spielanleitung spielanleitung;
     private checkEntryFA checkEntryFA;
-    private boolean success = false;
     private int totalTaskNumber = 10;
 
 
@@ -126,7 +125,7 @@ public class Uhrenspiel extends Application  {
         choiceScreenGame.header.setText("Neues Spiel");
 
         choiceScreenGame.leadedGame.setOnAction(e ->{
-            strictGame=true;
+            expertenModus =true;
             game.level = 1;
              newGame();
         });
@@ -213,7 +212,7 @@ public class Uhrenspiel extends Application  {
                 game.playedGames.clear();
                 game.setLevel(game.level);
 
-                if(!strictGame){
+                if(!expertenModus){
                 game.sum =0;
                  }
         }
@@ -279,7 +278,7 @@ public class Uhrenspiel extends Application  {
                 game.correctAnswer,
                 game.wrongAnswer,
                 game.answerList,
-                strictGame
+                expertenModus
                 ,totalTaskNumber
         );
 
@@ -319,7 +318,7 @@ public class Uhrenspiel extends Application  {
                   game.correctAnswer,
                   game.wrongAnswer,
                   game.answerList,
-                  strictGame,
+                  expertenModus,
                   totalTaskNumber
           );
           guiFA.start(stage1);
@@ -484,7 +483,7 @@ public class Uhrenspiel extends Application  {
          summaryScreen.preLevel.setDisable(true);
         }
 
-        if (!strictGame) {
+        if (!expertenModus) {
             summaryScreen.headerSummary.setText("Level: " + game.level + " wurde abgeschlossen!");
             if (game.level < 4) {
                 summaryScreen.nextGame.setOnAction(event -> {
@@ -528,7 +527,7 @@ public class Uhrenspiel extends Application  {
                         expertSummaryGUI.setSuccess(false);
                         expertSummaryGUI.start(stage1);
                         expertSummaryGUI.repeatButton.setOnAction(event -> {
-                            strictGame = true;
+                            expertenModus = true;
                             game.sum = 0;
                             game.level = 1;
                             newGame();
@@ -548,7 +547,7 @@ public class Uhrenspiel extends Application  {
      */
 
     public void endGame(){
-          strictGame= false;
+          expertenModus = false;
 
            if (!game.saved) {
                Boolean alert = AlertHelper.confirmationAlert("Achtung",
@@ -570,7 +569,7 @@ public class Uhrenspiel extends Application  {
      * Der Spieler wird zum Main Screen zurückgeleitet.
      */
     public void endGamewithoutsave(){
-        strictGame= false;
+        expertenModus = false;
         game.sum = 0;
         stage1.close();
         start(stage1);
@@ -578,8 +577,8 @@ public class Uhrenspiel extends Application  {
     }
 
     /**
-     * Die Methode wählt den Speicherort aus und gibt einen Namen für das File vor,
-     * welcher beim speichern abgeändert werden kann.
+     * Die Methode schlägt den Speicherort und einen Namen für das File vor,
+     * Speicherort und Filename kann beim speichern abgeändert werden.
      */
 
       private String createFileName () {
@@ -587,15 +586,19 @@ public class Uhrenspiel extends Application  {
           }
 
     /**
-     * Die Methode speichert ein Spiel. Speicherort kann frei gewählt werden.
+     * Die Methode speichert ein Spiel. Speicherort und Filename können frei gewählt werden.
+     *
+     * Folgende Speilkomponenten werden gespeichert: Aufgabennummer, Levelnummer, Boolean Expertenmodus, Liste playedGames
+     * Anzahl korrekte Antworten, Anzahl falsche Antworten, Anzahl insgesamt beantwortete Fragen
      */
 
     public void saveProgress() {
         try {
+            // Alle Spielkomponenten, welche gespeichert werden sollen werden der Liste progress hinzufügt.
             data.progress.clear();
             data.progress.add(Integer.toString(game.taskNumber -1));
             data.progress.add(Integer.toString(game.level));
-            data.progress.add(Boolean.toString( strictGame));
+            data.progress.add(Boolean.toString(expertenModus));
             data.progress.add(game.playedGames.toString());
             data.progress.add(Integer.toString(game.correctAnswer));
             data.progress.add(Integer.toString(game.wrongAnswer));
@@ -650,7 +653,7 @@ public class Uhrenspiel extends Application  {
         game.wrongAnswer = Integer.parseInt(data.progress.get(5));
         game.level = Integer.parseInt(data.progress.get(1));
         game.sum = Integer.parseInt(data.progress.get(6));
-        strictGame = Boolean.valueOf(data.progress.get(2));
+        expertenModus = Boolean.valueOf(data.progress.get(2));
         game.playedGames.clear();
         game.playedGames.addAll(Arrays.asList(data.progress.get(3)));
         game.taskNumber= Integer.parseInt(data.progress.get(0));

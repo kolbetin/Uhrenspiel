@@ -17,7 +17,7 @@ public interface IOInterface {
     /**
      * Methode "save" zum Speichern von Uhrenspiel Spielständen.
      *
-     * @param file Der Parameter vom Typ File wird vom FileWriter verwendet um die Datei abzuspeichern.
+     * @param file Der Parameter vom Typ File wird vonm FileWriter verwendet um die Datei abzuspeichern.
      * @param progress Der Parameter progress vom Typ String wird vom BufferedWriter verwendet um die abzuspeichernden
      *                 Informationen entgegen zu nehmen und in die abzuspeichernde Datei zu schreiben.
      */

@@ -1,5 +1,5 @@
 /**
- * Die Klasse "SavedData" ist für das Speichern und Landen von Uhrenspiel Spielständen zuständig. Dazu wird über
+ * Die Klasse "SavedData" ist für das Speichern und Laden von Uhrenspiel Spielständen zuständig. Dazu wird über
  * das Interface "IOInterface" auf die benötigten "save" und "load" Methoden zugegriffen.
  *
  * @author Tina Kolbe & Oliver Piert
@@ -9,7 +9,6 @@ package uhrenspiel.persistenz;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -31,9 +30,9 @@ public class SavedData {
 
     /**
      * Die Methode "setProgress" stellt sicher, dass die Liste von Strings "progress" geleert wird bevor diese mit
-     * dem neuen abzuspeichernden Spielvortschritt befüllt wird.
+     * dem neuen abzuspeichernden Spielfortschritt befüllt wird.
      *
-     * @param newprogress Der Parameter enthält eine Liste von Strings mit dem neu abzuspeichernden Spielvortschritt.
+     * @param newprogress Der Parameter enthält eine Liste von Strings mit den geladenen Spielstand und befüllt die Liste progess entsprechend.
      */
     public void setProgress(List<String> newprogress) {
         this.progress.clear();

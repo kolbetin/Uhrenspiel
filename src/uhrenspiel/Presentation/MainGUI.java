@@ -54,6 +54,16 @@ public class MainGUI {
     private int totalTaskNumber = 0;
 
 
+
+    /**
+     * Konstruktor der Klasse.
+     */
+
+    public MainGUI() {
+        answers = new ArrayList<>();
+    }
+
+
     /**
      * Die Methode erstellt den MainGUI.
      *
@@ -103,9 +113,6 @@ public class MainGUI {
         middleArea.setBottom(vBox);
         middleArea.setCenter(clockArea());
 
-
-        //middleArea.setStyle("-fx-border-image-width: 1; -fx-border-color: blue");
-
         return middleArea;
 
     }
@@ -118,13 +125,10 @@ public class MainGUI {
 
     public Pane questionArea() {
         BorderPane borderPane = new BorderPane();
-        borderPane.setId("questionArea");
 
         labelQuestion = new Label("Frage: " + "Wie spät ist es?");
 
-
         borderPane.setTop(labelQuestion);
-
 
         return borderPane;
     }
@@ -138,17 +142,12 @@ public class MainGUI {
         final VBox vBox = new VBox();
         vBox.setId("upperArea");
 
-        //  vBox.setStyle("-fx-border-width:  1; -fx-border-color: yellow");
-
-
-        if(!strictGame & levelNo >0){
+        if (!strictGame & levelNo > 0) {
             header = new Label("Freies Spiel");
-        }
-        else {
-            if(strictGame & levelNo >0){
+        } else {
+            if (strictGame & levelNo > 0) {
                 header = new Label("Expertenmodus");
-            }
-            else {
+            } else {
                 header = new Label("Uhrenspiel");
             }
 
@@ -185,7 +184,7 @@ public class MainGUI {
     /**
      * Die Methode erstellt den linken Bildschirmteil im Hauptbildschirm.
      *
-     *  @return Gibt die Pane zurück für den linken Bildschirmteil im Hauptbildschirm.
+     * @return Gibt die Pane zurück für den linken Bildschirmteil im Hauptbildschirm.
      */
     public Pane leftArea() {
         final BorderPane borderPane = new BorderPane();
@@ -253,20 +252,20 @@ public class MainGUI {
         hBox.getChildren().addAll(antwort, answer1, answer2, answer3, answer4);
         hBox.getChildren().add(goOn);
 
-
         return hBox;
     }
 
     /**
      * Die Methode nimmt die aktuelle Spielparameter entgegen zum erstellen des nächsten Fragebildschirms.
      *
-     * @param  tasknumber  Übergibt einen Integer der aktuellen Aufgabennummer.
-     * @param  level Übergibt einen Integer der aktuellen Level.
-     * @param  sum  Übergibt einen Integer der Anzahl der aktullen insgesamt beantworteten Fragen.
-     * @param  correctAnswer Übergibt einen Integer mit der Anzahl der aktuell korrekt beantworteten Fragen.
-     * @param  wrongAnswer Übergibt einen Integer mit der Anzahl der aktuell falsch beantworteten Fragen.
-     * @param  answers Übergibt eine Liste der Antworten, für die aktuelle Frage (Uhrzeit).
-     * @param  strictGame Übergibt einen Boolean für den Expertenmodus mit true oder false.
+     * @param tasknumber        Übergibt einen Integer der aktuellen Aufgabennummer.
+     * @param level             Übergibt einen Integer der aktuellen Level.
+     * @param sum               Übergibt einen Integer der Anzahl der aktullen insgesamt beantworteten Fragen.
+     * @param correctAnswer     Übergibt einen Integer mit der Anzahl der aktuell korrekt beantworteten Fragen.
+     * @param wrongAnswer       Übergibt einen Integer mit der Anzahl der aktuell falsch beantworteten Fragen.
+     * @param answers           Übergibt eine Liste der Antworten, für die aktuelle Frage (Uhrzeit).
+     * @param strictGame        Übergibt einen Boolean für den Expertenmodus mit true oder false.
+     * @param totalTaskNumber   Übergbit einen Integer mit der Anzahl des Aufgabensets.
      */
 
     public void setGameValues(int tasknumber, int level, double sum, int correctAnswer, int wrongAnswer, List answers, boolean strictGame, int totalTaskNumber) {
@@ -281,13 +280,15 @@ public class MainGUI {
         this.totalTaskNumber = totalTaskNumber;
     }
 
+
     /**
-     * Die Methode erstellt das Bild.
+     * Die Methode lädt und erstellt das Bild.
      *
      * @return Gibt den Node für das auszugebende Bild zurück.
      */
     public Node setPicture(String addImage, int height, int width, int left) {
         try {
+
             String path="src/uhrenspiel/Presentation/image/";
             this.addImage = addImage;
             FileInputStream input = new FileInputStream(path+addImage);
@@ -312,14 +313,6 @@ public class MainGUI {
         return null;
     }
 
-
-    /**
-     * Konstruktor der Klasse.
-     */
-
-    public MainGUI() {
-        answers = new ArrayList<>();
-    }
 
 
 }

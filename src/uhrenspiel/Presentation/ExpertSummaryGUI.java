@@ -21,7 +21,6 @@ public class ExpertSummaryGUI extends MainGUI {
      private Label label;
      public Button close;
      private Boolean success = false;
-     private FileInputStream input;
      public Button repeatButton;
      public Button preLevel;
 

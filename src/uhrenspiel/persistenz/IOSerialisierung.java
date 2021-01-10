@@ -1,5 +1,5 @@
 /**
- * Die Klasse "FileWriter" erstellt einen BufferedWriter mit FileWriter und einen BufferedReader mit FileReader zur
+ * Die Klasse "IOSerialisierung" erstellt einen BufferedWriter mit FileWriter und einen BufferedReader mit FileReader zur
  * Speicherung sowie Laden von Uhrenspiel Spielständen. Dazu implementiert die Klasse das Inferface "IOInterface".
  *
  * @author Tina Kolbe & Oliver Piert
@@ -40,8 +40,7 @@ public class IOSerialisierung implements IOInterface {
      *
      * @param file Der Parameter vom Typ File wird vom FileReader verwendet um die Datei zu laden.
      **/
-    public List<String> load(File file) throws IOException,
-            ClassNotFoundException {
+    public List<String> load(File file) throws IOException, ClassNotFoundException {
              try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 List<String> spielstand = new ArrayList<>();
 
