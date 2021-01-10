@@ -164,17 +164,12 @@ public class MainGUI {
     public Pane clockArea() {
 
         final HBox hbox = new HBox();
-        hbox.setId("clockArea");
-
 
         ClockSkin clock = new ClockSkin();
         node = clock.createClock(time);
 
-        //   borderPane.setStyle("-fx-border-width:  1; -fx-border-color: #882cc1");
         hbox.setPadding(new Insets(70, 7, 7, 200));
-
         hbox.getChildren().add(node);
-
 
         return hbox;
     }
@@ -204,7 +199,6 @@ public class MainGUI {
         vb.setSpacing(50);
         vb.getChildren().addAll(levelexplain, labelCorrectAnswer, labelWrongAnswer);
 
-        // borderPane.setStyle("-fx-border-width:  1; -fx-border-color: #59ff00");
         borderPane.setPadding(new Insets(100, 7, 7, 7));
         vb.setPadding(new Insets(50, 7, 7, 7));
         vbox.setPadding(new Insets(7, 7, 7, 7));
