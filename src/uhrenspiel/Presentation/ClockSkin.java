@@ -188,6 +188,7 @@ public class ClockSkin {
             i += 1;
         }
 
+
         // Formatieren der Reihenfolge der Uhrenkreise
         clockElements.outerCircle.toBack();
         clockElements.innerCircle.toFront();

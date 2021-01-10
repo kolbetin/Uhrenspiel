@@ -25,6 +25,7 @@ public class ClockElements {
 
     // Instanzvariablen
     public final HashMap<Integer, Group> ziffernMap = new HashMap<>();
+    public final HashMap<Integer, Circle> circleMap = new HashMap<>();
     public final HashMap<String, Line> minutenMap = new HashMap<>();
     public final HashMap<String, Line> stundenMap = new HashMap<>();
     private MainGUI mainGui = new MainGUI(); // Variable für den Zugriff auf MainGui und das StyleSheet "clock.css"
@@ -118,29 +119,6 @@ public class ClockElements {
         };
     }
 
-    /**
-     * Die Methode "setupEventHandler" fügt dem jeweiligen Kreis zum Event Handler hinzu.
-     * Weiter werden der äussere und innere Kreis für das Zifferblatt erstellt und dem Event Handler hinzugefügt.
-     * Dies ist ein verstecktes Feature im Uhrenspiel und soll den Spieler überraschen, wenn sich beim Anklicken des
-     * Uhrenbildes die Farbe der Uhr oder der Ziffern ändert.
-     */
-    public void setupEventHandler() {
-
-        // Hinzufügen des Event Handlers zu den Zifferblättern im Uhrenbild
-        circle1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle5.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle6.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle7.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle8.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle9.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle10.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle11.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-    }
 
     /**
      * Die Methode "createZiffernMap" erstellt eine Hashmap für die einzelnen Ziffern. Als Key wird ein Integer mit
@@ -166,6 +144,58 @@ public class ClockElements {
         chleife dort für die Variable ziffer2 am Schluss 12+1 rechnet und mit diesem Key die zuletzt verwendete
         Ziffer 1 aus der Map holt.*/
         ziffernMap.put(13, ziffer_1);
+    }
+
+    /**
+     * Die Methode "createCircleMap" erstellt eine Hashmap für die einzelnen Kreise der Ziffernblätter. Als Key wird
+     * ein Integer mit der jeweiligen Zahl der Ziffer definiert. Als Value der jewilige Kreis für eine Ziffer.
+     */
+    public void createCircleMap(){
+
+        circleMap.put(1, circle1);
+        circleMap.put(2, circle2);
+        circleMap.put(3, circle3);
+        circleMap.put(4, circle4);
+        circleMap.put(5, circle5);
+        circleMap.put(6, circle6);
+        circleMap.put(7, circle7);
+        circleMap.put(8, circle8);
+        circleMap.put(9, circle9);
+        circleMap.put(10, circle10);
+        circleMap.put(11, circle11);
+        circleMap.put(12, circle12);
+    }
+
+    /**
+     * Die Methode "setupEventHandler" fügt dem jeweiligen Kreis zum Event Handler hinzu.
+     * Weiter werden der äussere und innere Kreis für das Zifferblatt erstellt und dem Event Handler hinzugefügt.
+     * Dies ist ein verstecktes Feature im Uhrenspiel und soll den Spieler überraschen, wenn sich beim Anklicken des
+     * Uhrenbildes die Farbe der Uhr oder der Ziffern ändert.
+     */
+    public void setupEventHandler() {
+
+        // Hinzufügen des Event Handlers zu den Zifferblättern im Uhrenbild
+        circle1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle5.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle6.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle7.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle8.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle9.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle10.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle11.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+        circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
+
+        // Hinzufügen des Event Handlers zu den Zifferblättern im Uhrenbild
+        /*int i = 1;
+        while (i < 13){
+            circleMap.get(i).addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);;
+            i += 1;
+        }*/
     }
 
     /**

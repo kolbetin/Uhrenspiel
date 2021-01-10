@@ -50,7 +50,10 @@
     -fx-alignment: CENTER;
 }
 
+
+
 .root {
+    /*-fx-background-color: lavender;*/
     -fx-background-color: linear-gradient(to bottom, cornsilk, wheat);
     -fx-padding: 12;
     -fx-background-insets: 5;
@@ -58,7 +61,6 @@
     -fx-alignment: CENTER;
     -fx-font-family: "Comic Sans MS";
     -fx-font-weight: bold;
-
 }
 #buttonOkay  {
     -fx-background-image:  url(image/summaryHappy.png);
@@ -66,8 +68,6 @@
     -fx-background-repeat: stretch;
     -fx-background-position:  CENTER CENTER;
     -fx-background-color: #0af60a;
-
-
 }
 
 #buttonNotOkay{
@@ -76,7 +76,6 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position:  CENTER CENTER;
     -fx-background-color: #e01c33;
-
 }
 
 .button {
@@ -115,9 +114,10 @@
 
 #outerCircle{
     -fx-fill: LAVENDER;
+/*-fx-fill: steelblue;*/
 }
 
 #innerCircle{
-    -fx-fill: #000000;
+-fx-fill: #000000;
 }
 
