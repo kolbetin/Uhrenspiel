@@ -47,17 +47,8 @@ public class ClockSkin {
 
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
 
-        // Formatierung LerningClock über das clock.css StyleSheet
-        //mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
-        //minute.setId("minute");
-        //stunde.setId("stunde");
-
         // Kreiert Hauptgruppe und fügt dieser der Node clockSkin hinzu
         Group clock = new Group(clockElements.outerCircle, clockElements.ziffern, stunde, minute, clockElements.innerCircle);
-
-        //clockElements.outerCircle.toBack();
-        //clockElements.innerCircle.toFront();
-        //stunde.toFront();
 
         formatSettings();
 
@@ -83,11 +74,6 @@ public class ClockSkin {
         this.stunde = parserStunde(anzuzeigendeZeit);
 
         this.minute = parserMinuten(anzuzeigendeZeit.substring(3));
-
-        // Formatierung LerningClock über das clock.css StyleSheet
-        //mainGui.scene.getStylesheets().add(ClockSkin.class.getResource("clock.css").toExternalForm());
-        //minute.setId("minute");
-        //stunde.setId("stunde");
 
         Group ziffer = parserZiffern(anzuzeigendeZiffer);
         Group ziffer2 = parserZiffern(anzuzeigendeZiffer + 1);

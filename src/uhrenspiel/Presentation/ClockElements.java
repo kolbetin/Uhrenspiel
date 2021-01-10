@@ -90,10 +90,6 @@ public class ClockElements {
         createZiffernMap();
         createMinutenMap();
         createStundenMap();
-        // Verknüpfung mit dem StyleSheet "clock.css" und setzen der benötigten ID's
-        //mainGui.scene.getStylesheets().add(ClockElements.class.getResource("clock.css").toExternalForm());
-        //outerCircle.setId("outerCircle");
-        //innerCircle.setId("innerCircle");
     }
 
 
