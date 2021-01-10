@@ -183,8 +183,8 @@ public class ClockSkin {
     }
 
     /**
-     * Die Methode "formatSetting" verknüpft die Klasse mit dem Stylesheet "clock.css" und formatiert den
-     * grossen äusseren und des kleinen inneren Kreis im Uhrenbild.
+     * Die Methode "formatSetting" verknüpft die Klasse mit dem Stylesheet "clock.css" und formatiert die
+     * Elemente des Uhrenbildes.
      */
     public void formatSettings() {
 
@@ -194,6 +194,20 @@ public class ClockSkin {
         stunde.setId("stunde");
         clockElements.outerCircle.setId("outerCircle");
         clockElements.innerCircle.setId("innerCircle");
+
+        // Formatiert die Schriftart der Zifferblätter
+        clockElements.ziffer_1.setId("ziffernFont");
+        clockElements.ziffer_2.setId("ziffernFont");
+        clockElements.ziffer_3.setId("ziffernFont");
+        clockElements.ziffer_4.setId("ziffernFont");
+        clockElements.ziffer_5.setId("ziffernFont");
+        clockElements.ziffer_6.setId("ziffernFont");
+        clockElements.ziffer_7.setId("ziffernFont");
+        clockElements.ziffer_8.setId("ziffernFont");
+        clockElements.ziffer_9.setId("ziffernFont");
+        clockElements.ziffer_10.setId("ziffernFont");
+        clockElements.ziffer_11.setId("ziffernFont");
+        clockElements.ziffer_12.setId("ziffernFont");
 
         // Formatieren der Reihenfolge der Uhrenkreise
         clockElements.outerCircle.toBack();
