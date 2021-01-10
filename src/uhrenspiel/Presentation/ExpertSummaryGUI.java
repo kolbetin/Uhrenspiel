@@ -46,7 +46,7 @@ public class ExpertSummaryGUI extends MainGUI {
 
         label = new Label();
 
-        close = new Button("Zurück");
+        close = new Button("Beenden");
 
         repeatButton = new Button("Expertenmodus Wiederholen");
         preLevel = new Button("Nochmal Level 4");

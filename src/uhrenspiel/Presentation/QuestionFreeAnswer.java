@@ -29,7 +29,7 @@ public class QuestionFreeAnswer extends MainGUI {
 
         final HBox hBox = new HBox(10);
         hBox.setId("answerArea");
-        hBox.setPadding(new Insets(15, 10, 10, 7));
+        hBox.setPadding(new Insets(0, 10, 10, 7));
         submitButton = new Button("Abschicken");
         givenHour = new TextField();
         givenMinutes = new TextField();

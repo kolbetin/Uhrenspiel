@@ -56,8 +56,8 @@ public class ChoiceScreenGame extends MainGUI {
                 + "Fragen pro Level von 1-4 richtig beantworten!");
         text5 = new Text("Level 1-3 gemischt?");
 
-        final VBox middle = new VBox(35);
-        final VBox right = new VBox(20);
+        final VBox middle = new VBox(33);
+        final VBox right = new VBox(25);
         final VBox bottom = new VBox(10);
         final BorderPane paneRight = new BorderPane();
 
@@ -75,7 +75,7 @@ public class ChoiceScreenGame extends MainGUI {
 
         final BorderPane root = new BorderPane();
 
-        root.setPadding(new Insets(150, 170, 7, 20));
+        root.setPadding(new Insets(100, 170, 7, 20));
         middle.setPadding(new Insets(50, 7, 10, 7));
         bottom.setPadding(new Insets(0, 7, 50, 7));
 

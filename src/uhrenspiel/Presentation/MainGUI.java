@@ -94,7 +94,7 @@ public class MainGUI {
         upper.getChildren().addAll(labelLevel, labelTaskCount);
         upper.setPadding(new Insets(7, 7, 7, 7));
 
-        final VBox vBox = new VBox(30);
+        final VBox vBox = new VBox(20);
 
         vBox.getChildren().addAll(questionArea(), answerArea());
         middleArea.setPadding(new Insets(7, 7, 7, 100));

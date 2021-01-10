@@ -54,8 +54,8 @@ public class ChoiceScreenLernmodus extends MainGUI {
         text4 = new Text("Viertel vor, zum Beispiel 3:45 Uhr?");
 
 
-        final VBox middle = new VBox(33);
-        final VBox right = new VBox(18);
+        final VBox middle = new VBox(40);
+        final VBox right = new VBox(29);
         final VBox bottom = new VBox(10);
         final BorderPane paneRight = new BorderPane();
 
@@ -71,12 +71,12 @@ public class ChoiceScreenLernmodus extends MainGUI {
 
         middle.setPadding(new Insets(50,7,10,7));
         right.setPadding(new Insets(50,7,10,70));
-        bottom.setPadding(new Insets(0,7,150,7));
+        bottom.setPadding(new Insets(0,7,100,7));
 
         BorderPane root = new BorderPane();
 
         root.setTop(willkommensText);
-        root.setPadding(new Insets(150,170,7,20));
+        root.setPadding(new Insets(120,170,7,20));
 
         root.setLeft(middle);
         root.setRight(paneRight);

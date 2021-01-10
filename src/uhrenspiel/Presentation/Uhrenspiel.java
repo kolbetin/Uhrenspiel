@@ -384,9 +384,7 @@ public class Uhrenspiel extends Application  {
                 else {
                   guiFA.submitButton.setId("buttonNotOkay");
                   guiFA.submitButton.setText("");
-                  guiFA.labelQuestion.setText("Das war leider nicht richtig!\n"
-                          + "Deine Antwort: " + game.answer+ " Uhr.\n"
-                          + "Die korrekte Antwort ist: " + game.getAnswerFA(game.key)+ " Uhr.");
+                  guiFA.labelQuestion.setText("Leider falsch! Die korrekte Antwort ist: " + game.getAnswerFA(game.key)+ " Uhr.");
                   game.wrongAnswer++;
                   manageButtonsFA();
                   game.sum++;
@@ -452,7 +450,7 @@ public class Uhrenspiel extends Application  {
                      else {
                          button.setId("buttonNotOkay");
                          button.setText("");
-                         guiMC.labelQuestion.setText("Das war leider nicht richtig! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
+                         guiMC.labelQuestion.setText("Leider falsch! Die korrekte Antwort ist: " + game.getAnswerFA(game.key) + " Uhr.");
                          game.wrongAnswer++;
                          manageButtonsMC();
                          game.sum++;

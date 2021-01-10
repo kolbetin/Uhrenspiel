@@ -48,7 +48,7 @@ public class SummaryGUI extends MainGUI {
     public BorderPane middleArea() {
             header.setText("Zusammenfassung");
 
-            headerSummary = new Label();
+            headerSummary = new Label("Level wurd erfolgreich durchgeführt");
 
             labelCorrectAnswer = new Label("Richtige Antworten: " + correctAnswer);
             labelWrongAnswer = new Label("Falsche Antworten: " + wrongAnswer);
@@ -64,14 +64,14 @@ public class SummaryGUI extends MainGUI {
 
 
             middle.getChildren().addAll(headerSummary, labelCorrectAnswer, labelWrongAnswer);
-            middle.setPadding(new Insets(7, 270, 7, 400));
+            middle.setPadding(new Insets(7, 270, 7, 450));
 
             bottom.getChildren().addAll(backButton, preLevel, repeatLevel, nextGame);
-            bottom.setPadding(new Insets(50, 7, 200, 250));
+            bottom.setPadding(new Insets(50, 7, 200, 320));
 
             BorderPane root = new BorderPane();
 
-            root.setTop(setPicture("summaryWellDone.png",140,150,450));
+            root.setTop(setPicture("summaryWellDone.png",140,150,570));
             root.setBottom(bottom);
             root.setCenter(middle);
             root.setPadding(new Insets(70, 250, 7, 20));
