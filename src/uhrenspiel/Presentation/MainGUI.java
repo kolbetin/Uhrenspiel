@@ -95,7 +95,7 @@ public class MainGUI {
         final BorderPane middleArea = new BorderPane();
         middleArea.setId("middleArea");
 
-        labelTaskCount = new Label("Aufgabe: " + taskNo + "  von " + totalTaskNumber);
+        labelTaskCount = new Label("Aufgabe: " + taskNo + " von " + totalTaskNumber);
         labelLevel = new Label("Level: " + levelNo);
 
         final HBox upper = new HBox(100);
