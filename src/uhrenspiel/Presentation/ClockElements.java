@@ -36,31 +36,30 @@ public class ClockElements {
     Circle innerCircle = new Circle(300, 300, 6);
 
     // Uhrenelemente: Kreise und Nummern 1 bis 12 für die Zifferblätter im Uhrenbild
-    Circle circle1 = new Circle(366, 182, 25, Color.GREEN);
+    Circle circle1 = new Circle(366, 182, 25);
     Text nummer1 = new Text(358, 192, "1");
-    Circle circle2 = new Circle(418, 234, 25, Color.GREEN);
+    Circle circle2 = new Circle(418, 234, 25);
     Text nummer2 = new Text(410, 244, "2");
-    Circle circle3 = new Circle(435, 300, 25, Color.RED);
+    Circle circle3 = new Circle(435, 300, 25);
     Text nummer3 = new Text(427, 310, "3");
-    Circle circle4 = new Circle(418, 366, 25, Color.GREEN);
+    Circle circle4 = new Circle(418, 366, 25);
     Text nummer4 = new Text(410, 376, "4");
-    Circle circle5 = new Circle(366, 418, 25, Color.GREEN);
+    Circle circle5 = new Circle(366, 418, 25);
     Text nummer5 = new Text(358, 428, "5");
-    Circle circle6 = new Circle(300, 435, 25, Color.RED);
+    Circle circle6 = new Circle(300, 435, 25);
     Text nummer6 = new Text(292, 445, "6");
-    Circle circle7 = new Circle(234, 418, 25, Color.GREEN);
+    Circle circle7 = new Circle(234, 418, 25);
     Text nummer7 = new Text(226, 428, "7");
-    Circle circle8 = new Circle(182, 366, 25, Color.GREEN);
+    Circle circle8 = new Circle(182, 366, 25);
     Text nummer8 = new Text(174, 376, "8");
-    Circle circle9 = new Circle(165, 300, 25, Color.RED);
+    Circle circle9 = new Circle(165, 300, 25);
     Text nummer9 = new Text(157, 310, "9");
-    Circle circle10 = new Circle(182, 234, 25, Color.GREEN);
+    Circle circle10 = new Circle(182, 234, 25);
     Text nummer10 = new Text(167, 244, "10");
-    Circle circle11 = new Circle(234, 182, 25, Color.GREEN);
+    Circle circle11 = new Circle(234, 182, 25);
     Text nummer11 = new Text(219, 192, "11");
-    Circle circle12 = new Circle(300, 165, 25, Color.RED);
+    Circle circle12 = new Circle(300, 165, 25);
     Text nummer12 = new Text(285, 175, "12");
-
 
     // Gruppieren von Kreisen und Nummern zur jeweiligen Ziffer 1 bis 12
     Group ziffer_1 = new Group(circle1, nummer1);
@@ -86,14 +85,13 @@ public class ClockElements {
      * die Minuten- und Stunden-Linien.
      */
     public ClockElements() {
-        // Kreieren der verschiedenen Maps die zur Erstellung des Uhrenbildes benötigt werden
+        // Formatiert die Ziffern und kreieren der verschiedenen Maps die zur Erstellung des Uhrenbildes benötigt werden
+        formatSettings();
         setupEventHandler();
         createZiffernMap();
         createMinutenMap();
         createStundenMap();
     }
-
-
 
     // EventHandler auf dem Ziffernblatt sowie den einzelnen Ziffern selbst zur Änderung der Farbe des Uhrenbildes
     EventHandler<MouseEvent> eventHandler = getEventHandler();
@@ -118,7 +116,6 @@ public class ClockElements {
             }
         };
     }
-
 
     /**
      * Die Methode "createZiffernMap" erstellt eine Hashmap für die einzelnen Ziffern. Als Key wird ein Integer mit
@@ -348,6 +345,28 @@ public class ClockElements {
         stundenMap.put("11:45", stunde_11_45);
         stundenMap.put("12:00", stunde_12_00);
         stundenMap.put("12:15", stunde_12_15);
+    }
+
+    /**
+     * Die Methode "formatSetting" verknüpft die Klasse mit dem Stylesheet "clock.css" und formatiert die
+     * Kreise für die Ziffern im Uhrenbild.
+     */
+    public void formatSettings(){
+
+        mainGui.scene.getStylesheets().add(ClockElements.class.getResource("clock.css").toExternalForm());
+
+        circle1.setId("greenCircle");
+        circle2.setId("greenCircle");
+        circle3.setId("redCircle");
+        circle4.setId("greenCircle");
+        circle5.setId("greenCircle");
+        circle6.setId("redCircle");
+        circle7.setId("greenCircle");
+        circle8.setId("greenCircle");
+        circle9.setId("redCircle");
+        circle10.setId("greenCircle");
+        circle11.setId("greenCircle");
+        circle12.setId("redCircle");
     }
 
 } // Ende Klasse ClockElements

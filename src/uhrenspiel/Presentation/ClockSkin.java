@@ -81,6 +81,7 @@ public class ClockSkin {
         Group basicClockElements = new Group(clockElements.outerCircle, stunde, minute, clockElements.innerCircle);
         Node learningClock = null;
 
+        // if-Prüfung steuert die angezeigten Zifferblätter für die "volle Stunde" im Lernmodus
         if (anzuzeigendeZeit.substring(3, 5).contains("00")) {
 
             if (anzuzeigendeZiffer != 12) {
@@ -92,6 +93,7 @@ public class ClockSkin {
             }
         }
 
+        // if-Prüfung steuert die angezeigten Zifferblätter für "viertel nach" im Lernmodus
         if (anzuzeigendeZeit.substring(3, 5).contains("15")) {
 
             if (anzuzeigendeZiffer != 3) {
@@ -103,6 +105,7 @@ public class ClockSkin {
             }
         }
 
+        // if-Prüfung steuert die angezeigten Zifferblätter für "halbe Stunde" im Lernmodus
         if (anzuzeigendeZeit.substring(3, 5).contains("30")) {
 
             if (anzuzeigendeZiffer != 5 && anzuzeigendeZiffer != 6) {
@@ -114,6 +117,7 @@ public class ClockSkin {
             }
         }
 
+        // if-Prüfung steuert die angezeigten Zifferblätter für "viertel vor" im Lernmodus
         if (anzuzeigendeZeit.substring(3, 5).contains("45")) {
 
             if (anzuzeigendeZiffer != 8) {

@@ -118,6 +118,14 @@
 }
 
 #innerCircle{
--fx-fill: #000000;
+-fx-fill: BLACK;
+}
+
+#greenCircle{
+    -fx-fill: GREEN;
+}
+
+#redCircle{
+    -fx-fill: RED;
 }
 
