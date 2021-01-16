@@ -45,7 +45,7 @@ public class Uhrenspiel extends Application  {
     private boolean expertenModus = false;
     private Spielanleitung spielanleitung;
     private checkEntryFA checkEntryFA;
-    private int totalTaskNumber = 3;
+    private int totalTaskNumber = 10;
 
 
     /**
