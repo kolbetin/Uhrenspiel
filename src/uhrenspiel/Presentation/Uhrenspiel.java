@@ -45,7 +45,7 @@ public class Uhrenspiel extends Application  {
     private boolean expertenModus = false;
     private Spielanleitung spielanleitung;
     private checkEntryFA checkEntryFA;
-    private int totalTaskNumber = 10;
+    private int totalTaskNumber = 3;
 
 
     /**
@@ -461,7 +461,10 @@ public class Uhrenspiel extends Application  {
 
         summaryScreen.start(stage1);
 
-        summaryScreen.backButton.setOnAction(event ->   startChoiceScreenGame());
+        summaryScreen.backButton.setOnAction(event ->   {
+            game.sum=0;
+            startChoiceScreenGame();
+        });
         summaryScreen.repeatLevel.setOnAction(event -> newGame());
 
         if(game.level>1) {
