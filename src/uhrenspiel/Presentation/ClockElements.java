@@ -87,6 +87,7 @@ public class ClockElements {
     public ClockElements() {
         // Formatiert die Ziffern und kreieren der verschiedenen Maps die zur Erstellung des Uhrenbildes benötigt werden
         formatSettings();
+        createCircleMap();
         setupEventHandler();
         createZiffernMap();
         createMinutenMap();
@@ -164,35 +165,21 @@ public class ClockElements {
     }
 
     /**
-     * Die Methode "setupEventHandler" fügt dem jeweiligen Kreis zum Event Handler hinzu.
-     * Weiter werden der äussere und innere Kreis für das Zifferblatt erstellt und dem Event Handler hinzugefügt.
+     * Die Methode "setupEventHandler" fügt dem jeweiligen Kreis im Uhrenbild zum Event Handler hinzu.
      * Dies ist ein verstecktes Feature im Uhrenspiel und soll den Spieler überraschen, wenn sich beim Anklicken des
      * Uhrenbildes die Farbe der Uhr oder der Ziffern ändert.
      */
     public void setupEventHandler() {
 
-        // Hinzufügen des Event Handlers zu den Zifferblättern im Uhrenbild
-        circle1.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle2.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle3.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle4.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle5.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle6.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle7.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle8.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle9.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle10.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle11.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        circle12.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-
+        // Hinzufügen des Event Handlers zum grossen Uhrenkreis des Uhrenbildes
         outerCircle.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
 
         // Hinzufügen des Event Handlers zu den Zifferblättern im Uhrenbild
-        /*int i = 1;
+        int i = 1;
         while (i < 13){
             circleMap.get(i).addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);;
             i += 1;
-        }*/
+        }
     }
 
     /**
