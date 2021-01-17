@@ -37,8 +37,6 @@ public class Uhrenspiel extends Application  {
     private ChoiceScreenLernmodus choiceScreenLernmodus;
     private Lernmodus learnModus;
     private Stage stage1;
-    private Stage stage2;
-    private Stage stage3;
     private ArrayList<MainGUI> guiList;
     private Game game;
     private SavedData data;
@@ -76,7 +74,6 @@ public class Uhrenspiel extends Application  {
 
 
       public void start(Stage primaryStage) {
-
 
           stage1 = new Stage();
 
