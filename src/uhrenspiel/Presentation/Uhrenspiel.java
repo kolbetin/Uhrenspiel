@@ -116,6 +116,7 @@ public class Uhrenspiel extends Application  {
             expertenModus =true;
             game.level = 1;
              newGame();
+
         });
 
         choiceScreenGame.level1.setOnAction(e -> {
@@ -458,8 +459,8 @@ public class Uhrenspiel extends Application  {
 
         summaryScreen.start(stage1);
 
-        summaryScreen.backButton.setOnAction(event ->   {
-            game.sum=0;
+        summaryScreen.backButton.setOnAction(event -> {
+            game.sum = 0;
             startChoiceScreenGame();
         });
         summaryScreen.repeatLevel.setOnAction(event -> newGame());
@@ -499,7 +500,6 @@ public class Uhrenspiel extends Application  {
             }
             if (pct >= 0.6 & game.level < 4) {
                 summaryScreen.nextGame.setOnAction(event -> {
-
                     game.level = game.level + 1;
                     newGame();
                 });
@@ -541,7 +541,6 @@ public class Uhrenspiel extends Application  {
      */
 
     public void endGame(){
-          expertenModus = false;
 
            if (!game.saved) {
                Boolean alert = AlertHelper.confirmationAlert("Achtung",
@@ -549,12 +548,14 @@ public class Uhrenspiel extends Application  {
                if (alert) {
                   stage1.close();
                    start(stage1);
-                   game.sum = 0;
+
                }
            }
             else{
                 stage1.close();
                 start(stage1);
+               expertenModus = false;
+               game.sum = 0;
             }
     }
     /**
@@ -597,7 +598,7 @@ public class Uhrenspiel extends Application  {
             data.progress.add(Integer.toString(game.correctAnswer));
             data.progress.add(Integer.toString(game.wrongAnswer));
             data.progress.add(Integer.toString((int)game.sum));
-
+            System.out.println(data.progress);
             File file = data.chooseSaveFile(new File(createFileName()), stage1);
             if (file != null) {
                 data.saveProgress(file, data.progress);

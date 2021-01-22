@@ -85,7 +85,7 @@ public class checkEntryFA {
         if (!givenMinutes.trim().isEmpty()
                 & givenMinutes != null
                 & givenMinutes.matches("[0-9]*")
-                & givenMinutes.length() <3
+                & givenMinutes.length() ==2
         ) {
             minutes = Integer.valueOf(givenMinutes);
 
@@ -120,7 +120,7 @@ public class checkEntryFA {
                 clearHour = true;
             }
             if (!checkMinutes()) {
-                AlertHelper.errorAlert("Fehler", "Bitte die Minuten zwischen 0 und 59 eingeben");
+                AlertHelper.errorAlert("Fehler", "Bitte die Minuten zwischen 00 und 59 eingeben");
                 clearMinute = true;
 
             } else System.out.println("Eingabe okay");
